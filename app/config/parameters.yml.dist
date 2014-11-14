@@ -1,0 +1,27 @@
+parameters:
+  database_driver:   pdo_mysql
+  database_host:     localhost
+  database_port:     ~
+  database_name:     symfony
+  database_user:     root
+  database_password: ~
+
+  mailer_transport: smtp
+  mailer_host:      localhost
+  mailer_user:      ~
+  mailer_password:  ~
+  mailer_port:      587
+
+  app.title: [[APP_TITLE]]
+  app.name:  [[APP_NAMESPACE]]
+  app.defaulthost: %app.name%.test
+  app.email.support: support@%app.defaulthost%
+  app.email.contact: contact@%app.defaulthost%
+  app.email.noreply: noreply@%app.defaulthost%
+
+  locale:            ru
+  secret:            ThisTokenIsNotSoSecretChangeIt
+
+  timezone: "Europe/Kiev"
+
+  app.gempath: null

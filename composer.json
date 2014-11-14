@@ -1,0 +1,86 @@
+{
+    "name":              "brander/project-briefer",
+    "license":           "proprietary",
+    "type":              "project",
+    "description":       "Briefer project",
+    "minimum-stability": "stable",
+    "repositories":      [
+        {
+            "type":    "composer",
+            "url":     "https://composer.werkint.com/",
+            "options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile":      "app/config/composer/werkint.crt",
+                    "local_cert":  "app/config/composer/satis-brander.pem"
+                }
+            }
+        }
+    ],
+    "autoload":          {
+        "psr-0": {
+            "Briefer\\": "src/"
+        }
+    },
+    "require":           {
+        "symfony/symfony":            "2.5.*",
+        "symfony/assetic-bundle":     "*",
+        "symfony/monolog-bundle":     "*",
+        "symfony/swiftmailer-bundle": "*",
+        "symfony/dom-crawler":        "*",
+
+        "doctrine/common":                     "2.4.*",
+        "doctrine/orm":                        "*",
+        "doctrine/doctrine-bundle":            "*",
+        "stof/doctrine-extensions-bundle":     "*",
+
+        "friendsofsymfony/jsrouting-bundle":    "*",
+        "friendsofsymfony/rest-bundle":         "1.5.*@dev",
+        "incenteev/composer-parameter-handler": "*",
+        "jms/security-extra-bundle":            "*",
+        "jms/serializer-bundle":                "*",
+        "lexik/monolog-browser-bundle":         "dev-master",
+        "sensio/distribution-bundle":           "*",
+        "sensio/framework-extra-bundle":        "~3.0",
+        "symfony/icu":                          "*",
+        "twig/extensions":                      "*",
+        "twig/twig":                            "*",
+        "willdurand/js-translation-bundle":     "*",
+
+        "ext-openssl": "*",
+        "ext-imagick": "*",
+        "ext-bcmath":  "*",
+        "ext-curl":    "*",
+        "ext-mysql":   "*",
+
+        "php": ">=5.5"
+    },
+    "scripts":           {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
+        ],
+        "post-update-cmd":  [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
+        ]
+    },
+    "config":            {
+        "bin-dir": "app/bin"
+    },
+    "extra":             {
+        "symfony-app-dir":           "app",
+        "symfony-web-dir":           "web",
+        "werkint-webscript-scripts": "app/webscripts",
+        "incenteev-parameters":      {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias":              {
+            "dev-master": "0.1-dev"
+        }
+    }
+}

@@ -39,6 +39,8 @@
         "incenteev/composer-parameter-handler": "*",
         "jms/security-extra-bundle":            "*",
         "jms/serializer-bundle":                "*",
+        "knplabs/knp-menu-bundle":              "*",
+        "knplabs/knp-paginator-bundle":         "*",
         "lexik/monolog-browser-bundle":         "dev-master",
         "sensio/distribution-bundle":           "*",
         "sensio/framework-extra-bundle":        "~3.0",

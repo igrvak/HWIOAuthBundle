@@ -40,6 +40,9 @@ class AppKernel extends Kernel
             new \JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),
 
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
             new \Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         ]);

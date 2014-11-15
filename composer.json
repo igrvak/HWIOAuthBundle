@@ -30,8 +30,12 @@
         "symfony/dom-crawler":        "*",
 
         "doctrine/common":                     "2.4.*",
-        "doctrine/orm":                        "*",
+        "doctrine/data-fixtures":              "*",
         "doctrine/doctrine-bundle":            "*",
+        "doctrine/doctrine-fixtures-bundle":   "*",
+        "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
+        "doctrine/migrations":                 "1.0.*@dev",
+        "doctrine/orm":                        "*",
         "stof/doctrine-extensions-bundle":     "*",
 
         "friendsofsymfony/jsrouting-bundle":    "*",

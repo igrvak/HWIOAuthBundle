@@ -24,4 +24,6 @@ parameters:
 
   timezone: "Europe/Kiev"
 
+  werkint_redis_pass: ~
+
   app.gempath: null

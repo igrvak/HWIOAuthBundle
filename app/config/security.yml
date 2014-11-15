@@ -9,6 +9,14 @@ security:
   access_decision_manager:
     strategy: unanimous
 
+  providers:
+    test:
+      memory:
+        users:
+          admin:
+            password: admin
+            roles:    ROLE_ADMIN
+
   firewalls:
     dev:
       pattern: ^/_(profiler|wdt)/

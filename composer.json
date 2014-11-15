@@ -1,8 +1,8 @@
 {
-    "name":              "brander/project-briefer",
+    "name":              "brander/project-[[APP_NAME]]",
     "license":           "proprietary",
     "type":              "project",
-    "description":       "Briefer project",
+    "description":       "[[APP_TITLE]] project",
     "minimum-stability": "stable",
     "repositories":      [
         {
@@ -19,7 +19,7 @@
     ],
     "autoload":          {
         "psr-0": {
-            "Briefer\\": "src/"
+            "__GENERIC\\": "src/"
         }
     },
     "require":           {

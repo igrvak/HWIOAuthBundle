@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7115ad391be3690ebbe3765d74604e3e",
+    "hash": "5bbe519d846fe4871bb74afe782aa6a0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -827,6 +827,54 @@
                 "uploadable"
             ],
             "time": "2014-01-12 16:34:06"
+        },
+        {
+            "name": "ikimea/browser",
+            "version": "1.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ikimea/Browser.git",
+                "reference": "032b4a04ace39bd77e8ffc399f3ee63484890ae6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ikimea/Browser/zipball/032b4a04ace39bd77e8ffc399f3ee63484890ae6",
+                "reference": "032b4a04ace39bd77e8ffc399f3ee63484890ae6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Ikimea\\Browser\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ikimea",
+                    "homepage": "http://www.ikimea.com"
+                },
+                {
+                    "name": "Gary White",
+                    "homepage": "http://www.apptools.com/phptools/browser/"
+                },
+                {
+                    "name": "Chris Schuld",
+                    "homepage": "http://chrisschuld.com"
+                }
+            ],
+            "description": "Detecting the user’s browser",
+            "homepage": "http://www.ikimea.com",
+            "keywords": [
+                "browser"
+            ],
+            "time": "2014-09-25 12:43:30"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1813,6 +1861,61 @@
             "time": "2014-01-09 22:37:17"
         },
         {
+            "name": "predis/predis",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "d4be306d0aca28b5633b96adef03b29fea569c2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/d4be306d0aca28b5633b96adef03b29fea569c2f",
+                "reference": "d4be306d0aca28b5633b96adef03b29fea569c2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete PHP client library for Redis",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "time": "2014-08-01 09:59:50"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -2569,6 +2672,596 @@
             "time": "2014-10-17 12:53:44"
         },
         {
+            "name": "werkint/form-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@werkint.com:werkint/formbundle.git",
+                "reference": "5da436b571d37848e9153aef653bb821a5eb7bb9"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-form-bundle-dev-master-e0cb19.tar",
+                "reference": "5da436b571d37848e9153aef653bb821a5eb7bb9",
+                "shasum": "6e10e851e4fbb8042b7adbaf56fb10c52e712194"
+            },
+            "require": {
+                "php": ">=5.5",
+                "symfony/framework-bundle": "*",
+                "werkint/framework-extra-bundle": "*",
+                "werkint/webapp-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Bundle\\FormBundle\\": "src/",
+                    "Werkint\\Bundle\\FormBundle\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "Form improvement bundle",
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-10-18 16:14:06"
+        },
+        {
+            "name": "werkint/framework-extra-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@werkint.com:werkint/frameworkextrabundle.git",
+                "reference": "16b7bc8c5e113c5bf3e2bf74b980e91f11a9073a"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-framework-extra-bundle-dev-master-a31948.tar",
+                "reference": "16b7bc8c5e113c5bf3e2bf74b980e91f11a9073a",
+                "shasum": "52adabcfdb8182bbb61a83a80ecd7387fce15df3"
+            },
+            "require": {
+                "php": ">=5.4",
+                "symfony/console": "*",
+                "symfony/framework-bundle": "*",
+                "twig/twig": "*",
+                "werkint/object-routing": "*",
+                "werkint/redis-bundle": "0.1.*-dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Bundle\\FrameworkExtraBundle\\": "src/",
+                    "Werkint\\Bundle\\FrameworkExtraBundle\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "Bundle for werkint stuff",
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-10-26 10:58:09"
+        },
+        {
+            "name": "werkint/jsmin",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/JsMin.git",
+                "reference": "49186aef5401c27f9a504a785032194f77d6dabd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Werkint/JsMin/zipball/49186aef5401c27f9a504a785032194f77d6dabd",
+                "reference": "49186aef5401c27f9a504a785032194f77d6dabd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsMin": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Douglas Crockford",
+                    "homepage": "http://www.crockford.com"
+                },
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                },
+                {
+                    "name": "Steve Clay",
+                    "email": "steve@mrclay.org",
+                    "homepage": "http://www.mrclay.org/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ryan Grove",
+                    "email": "ryan@wonko.com",
+                    "role": "PHP port"
+                },
+                {
+                    "name": "Andrea Giammarchi",
+                    "homepage": "http://www.3site.eu",
+                    "role": "spaceBeforeRegExp"
+                }
+            ],
+            "description": "Library for minifying JavaScript files",
+            "time": "2013-11-10 11:34:43"
+        },
+        {
+            "name": "werkint/minifycss",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/MinifyCSS.git",
+                "reference": "01b3ee11f3c6d0f62629b56be6957d5e5ce89d88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Werkint/MinifyCSS/zipball/01b3ee11f3c6d0f62629b56be6957d5e5ce89d88",
+                "reference": "01b3ee11f3c6d0f62629b56be6957d5e5ce89d88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MinifyCss": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                },
+                {
+                    "name": "Steve Clay",
+                    "email": "steve@mrclay.org",
+                    "homepage": "http://www.mrclay.org/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Library for minifying CSS files",
+            "time": "2013-06-30 15:36:40"
+        },
+        {
+            "name": "werkint/object-routing",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/object-routing.git",
+                "reference": "3d8c762005d976b8de7f0454cdbcfa0cdae87ed7"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-object-routing-3d8c762005d976b8de7f0454cdbcfa0cdae87ed7-zip-81bb20.tar",
+                "reference": "3d8c762005d976b8de7f0454cdbcfa0cdae87ed7",
+                "shasum": "bb86d8a652e21fffd156d9ba9e31e43312b2f150"
+            },
+            "require": {
+                "jms/metadata": "1.*",
+                "symfony/property-access": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/common": "2.*",
+                "symfony/routing": "2.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JMS": "src/"
+                }
+            },
+            "license": [
+                "Apache2"
+            ],
+            "description": "Library for generating routes based on objects.",
+            "support": {
+                "source": "https://github.com/Werkint/object-routing/tree/master"
+            },
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-07-20 23:19:15"
+        },
+        {
+            "name": "werkint/phpsass",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/phpsass.git",
+                "reference": "3602e3ead66f5340bcb2c08f3fc512a379d2e0fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Werkint/phpsass/zipball/3602e3ead66f5340bcb2c08f3fc512a379d2e0fb",
+                "reference": "3602e3ead66f5340bcb2c08f3fc512a379d2e0fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "script/",
+                    "renderers/",
+                    "tree/",
+                    "SassException.php",
+                    "SassFile.php",
+                    "SassParser.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Richard Lyon",
+                    "homepage": "https://github.com/richthegeek"
+                },
+                {
+                    "name": "Sebastian Siemssen",
+                    "homepage": "https://twitter.com/thefubhy"
+                },
+                {
+                    "name": "Steve Jones",
+                    "homepage": "https://github.com/darthsteven"
+                },
+                {
+                    "name": "Sam Richard",
+                    "homepage": "https://github.com/snugug"
+                }
+            ],
+            "description": "PHPSass is a PHP compiler for SASS, a popular CSS pre-processor language.",
+            "homepage": "http://phpsass.com",
+            "time": "2013-06-30 15:38:17"
+        },
+        {
+            "name": "werkint/redis-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/RedisBundle.git",
+                "reference": "a78d6fdb9e95fb3a959065a8501afec5272e6308"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-redis-bundle-a78d6fdb9e95fb3a959065a8501afec5272e6308-zip-59cb81.tar",
+                "reference": "a78d6fdb9e95fb3a959065a8501afec5272e6308",
+                "shasum": "75e5fbc40912cc77eca2467a29c282c60b747ceb"
+            },
+            "require": {
+                "doctrine/common": "*",
+                "php": ">=5.5",
+                "predis/predis": "*",
+                "symfony/framework-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Bundle\\RedisBundle\\": "src/",
+                    "Werkint\\Bundle\\RedisBundle\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "Bundle providing Redis (namespaced) for services via tags",
+            "support": {
+                "source": "https://github.com/Werkint/RedisBundle/tree/master",
+                "issues": "https://github.com/Werkint/RedisBundle/issues"
+            },
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-08-23 11:27:35"
+        },
+        {
+            "name": "werkint/requirejs-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@werkint.com:werkint/requirejsbundle.git",
+                "reference": "df0bb9f2ac9fadbe19a3ef976a273571633820e0"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-requirejs-bundle-dev-master-d50690.tar",
+                "reference": "df0bb9f2ac9fadbe19a3ef976a273571633820e0",
+                "shasum": "58330702e46f9fb46099004721dc707cc5300991"
+            },
+            "require": {
+                "kriswallsmith/assetic": ">=1.0",
+                "php": ">=5.5",
+                "symfony/finder": ">=2.0",
+                "symfony/framework-bundle": ">=2.0.9",
+                "symfony/yaml": ">=2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.*",
+                "twig/extensions": "v1.0.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Bundle\\RequireJSBundle\\": "src",
+                    "Werkint\\Bundle\\RequireJSBundle\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Montag",
+                    "email": "kmontag@cs.stanford.edu"
+                },
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "This bundle provides integration of the RequireJS library into Symfony2",
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-06-05 10:19:45"
+        },
+        {
+            "name": "werkint/sprites-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/SpritesBundle.git",
+                "reference": "fe0ecdaf49e692e09c8dca4216c2277a854649c9"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-sprites-bundle-fe0ecdaf49e692e09c8dca4216c2277a854649c9-zip-e3f730.tar",
+                "reference": "fe0ecdaf49e692e09c8dca4216c2277a854649c9",
+                "shasum": "308dbda035ab45a77633410f43e78f9ee11ed00e"
+            },
+            "require": {
+                "ext-imagick": "*",
+                "php": ">=5.5",
+                "symfony/framework-bundle": "*"
+            },
+            "require-dev": {
+                "werkint/framework-extra-bundle": "0.1.x-dev",
+                "werkint/webapp-bundle": "0.1.x-dev"
+            },
+            "suggest": {
+                "twig/twig": "Twig function for sprites displaying",
+                "werkint/framework-extra-bundle": "Support of werkint:compile command",
+                "werkint/webapp-bundle": "Automatic sprites-mixins file include"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Bundle\\SpritesBundle\\": "src/",
+                    "Werkint\\Bundle\\SpritesBundle\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "Sprites module",
+            "support": {
+                "source": "https://github.com/Werkint/SpritesBundle/tree/master",
+                "issues": "https://github.com/Werkint/SpritesBundle/issues"
+            },
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-07-28 01:28:48"
+        },
+        {
+            "name": "werkint/webapp-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/WebappBundle.git",
+                "reference": "27eb1b64a60bff5f9a46780655b94821b6b5eeaf"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-webapp-bundle-27eb1b64a60bff5f9a46780655b94821b6b5eeaf-zip-d49c46.tar",
+                "reference": "27eb1b64a60bff5f9a46780655b94821b6b5eeaf",
+                "shasum": "e7d96362181594ed26337d0ddd2ce7d696f0f493"
+            },
+            "require": {
+                "friendsofsymfony/rest-bundle": "~1.4",
+                "ikimea/browser": "*",
+                "php": ">=5.5",
+                "sensio/framework-extra-bundle": "*",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/twig-bundle": "*",
+                "twig/twig": "~1.14",
+                "werkint/jsmin": "*",
+                "werkint/minifycss": "*",
+                "werkint/phpsass": "*"
+            },
+            "require-dev": {
+                "twig/twig": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Bundle\\WebappBundle\\": "src/",
+                    "Werkint\\Bundle\\WebappBundle\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "Werkint Webapp bundle",
+            "support": {
+                "source": "https://github.com/Werkint/WebappBundle/tree/master",
+                "issues": "https://github.com/Werkint/WebappBundle/issues"
+            },
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-09-27 16:45:37"
+        },
+        {
+            "name": "werkint/webcomponents",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@werkint.com:werkint/webcomponents.git",
+                "reference": "85f6b551bf31fce7b0ae9f29bcfa5072652c2ed1"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-1c71eb.tar",
+                "reference": "85f6b551bf31fce7b0ae9f29bcfa5072652c2ed1",
+                "shasum": "2a0f26fd053412b2d5def5d1391162dac0c6646e"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Werkint\\Webcomponents\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                }
+            ],
+            "description": "Werkint webcomponents",
+            "transport-options": {
+                "ssl": {
+                    "verify_peer": true,
+                    "cafile": "app/config/composer/werkint.crt",
+                    "local_cert": "app/config/composer/satis-brander.pem"
+                }
+            },
+            "time": "2014-10-26 23:13:22"
+        },
+        {
             "name": "willdurand/js-translation-bundle",
             "version": "v2.1.4",
             "target-dir": "Bazinga/Bundle/JsTranslationBundle",
@@ -2721,7 +3414,15 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/rest-bundle": 20,
-        "lexik/monolog-browser-bundle": 20
+        "lexik/monolog-browser-bundle": 20,
+        "werkint/object-routing": 20,
+        "werkint/framework-extra-bundle": 20,
+        "werkint/form-bundle": 20,
+        "werkint/redis-bundle": 20,
+        "werkint/sprites-bundle": 20,
+        "werkint/webapp-bundle": 20,
+        "werkint/requirejs-bundle": 20,
+        "werkint/webcomponents": 20
     },
     "prefer-stable": false,
     "platform": {

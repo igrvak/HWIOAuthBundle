@@ -47,6 +47,15 @@
         "twig/twig":                            "*",
         "willdurand/js-translation-bundle":     "*",
 
+        "werkint/object-routing":         "dev-master",
+        "werkint/framework-extra-bundle": "0.1.*-dev",
+        "werkint/form-bundle":            "0.1.*-dev",
+        "werkint/redis-bundle":           "0.1.*-dev",
+        "werkint/sprites-bundle":         "0.1.*-dev",
+        "werkint/webapp-bundle":          "0.1.*-dev",
+        "werkint/requirejs-bundle":       "2.0.x-dev",
+        "werkint/webcomponents":          "0.1.x-dev",
+
         "ext-openssl": "*",
         "ext-imagick": "*",
         "ext-bcmath":  "*",

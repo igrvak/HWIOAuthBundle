@@ -21,6 +21,11 @@ class AppKernel extends Kernel
             $bundles = array_merge($bundles, $list);
         };
 
+        // Should be first
+        $addBundles([
+            new \Werkint\Bundle\RequireJSBundle\WerkintRequireJSBundle(),
+        ]);
+
         // Framework
         $addBundles([
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),

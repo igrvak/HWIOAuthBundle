@@ -52,8 +52,17 @@ class AppKernel extends Kernel
             ]);
         }
 
+        // Werkint
+        $addBundles([
+            new \Werkint\Bundle\FrameworkExtraBundle\WerkintFrameworkExtraBundle(),
+            new \Werkint\Bundle\FormBundle\WerkintFormBundle(),
+            new \Werkint\Bundle\RedisBundle\WerkintRedisBundle(),
+            new \Werkint\Bundle\SpritesBundle\WerkintSpritesBundle(),
+            new \Werkint\Bundle\WebappBundle\WerkintWebappBundle(),
+        ]);
         // Основные
         $addBundles([
+            new \__GENERIC\Bundle\AppBundle\__GENERICAppBundle(),
         ]);
 
         $addBundles([

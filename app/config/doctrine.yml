@@ -1,0 +1,96 @@
+# Doctrine Configuration
+# Doctrine ORM
+doctrine:
+  orm:
+    auto_generate_proxy_classes: %kernel.debug%
+    mappings:
+      gedmo_translatable:
+        type: annotation
+        prefix: Gedmo\Translatable\Entity
+        dir: %gedmo.lib.directory%/Gedmo/Translatable/Entity
+        alias: GedmoTranslatable
+        is_bundle: false
+      # __GENERIC Bundles
+      __GENERICAppBundle: ~
+      # Werkint
+      WerkintFrameworkExtraBundle: ~
+
+    resolve_target_entities: ~
+
+    # All caching in Redis
+    metadata_cache_driver:
+      type: service
+      id:   werkint.redis.doctrinecacher
+    query_cache_driver:
+      type: service
+      id:   werkint.redis.doctrinecacher
+    result_cache_driver:
+      type: service
+      id:   werkint.redis.doctrinecacher
+
+  dbal:
+    default_connection:  default
+    connections:
+      default:
+        driver:   pdo_mysql
+        host:     localhost
+        port:     ~
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+      # Connection for storing logs
+      logger:
+        driver:    pdo_mysql
+        host:      localhost
+        port:      ~
+        dbname:    %database_name%
+        user:      %database_user%
+        password:  %database_password%
+        charset:   UTF8
+        logging:   false
+        profiling: false
+
+# Service classes
+parameters:
+  gedmo.lib.directory:
+    %kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib
+
+# Support for Trees in doctrine2
+stof_doctrine_extensions:
+  default_locale: %locale%
+  translation_fallback: true
+  orm:
+    default:
+      translatable: true
+      timestampable: true
+      tree: true
+
+#simple_things_entity_audit:
+#  revision_table_name: util_audit_revisions
+#  audited_entities: []
+
+monolog:
+  handlers:
+    main:
+      # type: stream
+      # path: %kernel.root_dir%/logs/app.log
+      type: buffer
+      handler: lexik_monolog_browser
+      level: error
+      channels: ['!finance']
+      #formatter: emisser_core_endpoint.processing.financelogger.formatter
+    lexik_monolog_browser:
+      type: service
+      id: lexik_monolog_browser.handler.doctrine_dbal
+
+doctrine_migrations:
+  dir_name: %kernel.root_dir%/../src/__GENERIC/Data/Migrations
+  namespace: __GENERIC\Data\Migrations
+  name: __GENERIC Migrations
+  table_name: util_migrations
+
+lexik_monolog_browser:
+  doctrine:
+    connection_name: logger
+    table_name: meest_log

@@ -1,0 +1,36 @@
+werkint_framework_extra:
+  security: true
+  requirejs: true
+
+#werkint_validation: true
+
+# RequireJS for bundles
+werkint_require_js:
+  #base_dir: ~ # Prepended in MeestAppBundle
+  base_url: %app.path.webres%/js
+  gempath: %app.gempath%
+  options:
+    enforceDefine: true
+
+werkint_redis:
+  project: %app.name%
+  connection:
+    pass:  %werkint_redis_pass%
+
+werkint_webapp:
+  respath: %app.path.webres%/cached
+  resdir:  %kernel.root_dir%/cache/scripts
+  revpath: %kernel.root_dir%/cache/revision
+  project: %app.name%
+  browsers:
+    warn: true
+  filters:
+    css:
+      - scss
+      - cssurls
+    js: ~
+
+werkint_sprites:
+  path:   %app.path.sprites%
+  dir:    %app.dir.sprites%
+  styles: %app.sprites.styles%

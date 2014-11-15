@@ -1,0 +1,33 @@
+# Advanced expressions in security
+jms_security_extra:
+  expressions: true
+  voters:
+    disable_acl: false
+
+# Generic security config
+security:
+  access_decision_manager:
+    strategy: unanimous
+
+  firewalls:
+    dev:
+      pattern: ^/_(profiler|wdt)/
+      security: false
+      context: mainuser
+    main:
+      pattern: ^/
+      context: mainuser
+      host: %app.defaulthost%
+      anonymous: true
+      switch_user: { role: ROLE_ADMIN, parameter: ___switch_user }
+
+  access_control: # [^/]+/
+    - path: ^/(bundles|_|res/js|translations/)
+      access: "isAnonymous() || hasRole('ROLE_USER')"
+    - path: ^/login
+      access: "isAnonymous()"
+    - path: ^/register
+      access: "isAnonymous()"
+
+  role_hierarchy:
+    ROLE_ADMIN: [ROLE_USER]

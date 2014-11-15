@@ -1,0 +1,14 @@
+__GENERIC_app:
+  resource: "@__GENERICAppBundle/Resources/config/routing.yml"
+  prefix: /
+
+fos_js_routing:
+  resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+_bazinga_jstranslation:
+  resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+
+werkint_framework_extra:
+  resource: "@WerkintFrameworkExtraBundle/Resources/config/routing.yml"
+  options:
+    expose: true

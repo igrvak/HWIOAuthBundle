@@ -1,0 +1,121 @@
+imports:
+  - { resource: parameters.yml }
+  - { resource: werkint.yml }
+  - { resource: doctrine.yml }
+  - { resource: security.yml }
+
+parameters:
+  session_expire: 63072000 # 365*2 days in seconds
+  app.assets_version: 1
+  # Router
+  router.request_context.host:  %app.defaulthost%
+  router.request_context.scheme: https
+  router.request_context.base_url: ""
+  # App default directories
+  app.path.webres: /res
+  app.path.img:    %app.path.webres%/img
+  app.dir.web:     %kernel.root_dir%/../web
+  locales_supported:
+    - ru
+    - ua
+    - en
+  # Sprites
+  app.path.sprites:   %app.path.img%/sprites
+  app.dir.sprites:    %app.dir.web%%app.path.sprites%
+  app.sprites.styles: %app.dir.sprites%/styles.scss
+  # Routing
+  meest.routing.admin: /admin
+  meest.routing.cabinet: /cabinet
+
+# Generic framework config
+framework:
+  secret: %secret%
+  router:
+    resource: %kernel.root_dir%/config/routing.yml
+    strict_requirements: %kernel.debug%
+  request:
+    formats:
+      scss: "text/css"
+  form: true
+  csrf_protection: true
+  trusted_hosts: [".*"]
+  validation:
+    enabled: true
+    enable_annotations: false
+  templating:
+    engines: ["twig"]
+    assets_version: %app.assets_version%
+    assets_version_format: "%%s?bust=%%s"
+  default_locale: %locale%
+  translator:
+    enabled: true
+    fallback: %locale%
+  fragments:       ~
+  # Important for file uploading
+  http_method_override: false
+  # Storing sessions in Redis
+  session:
+    handler_id: werkint.redis.session
+    cookie_lifetime: %session_expire%
+    gc_maxlifetime: %session_expire%
+
+# Twig templater
+twig:
+  debug:             %kernel.debug%
+  strict_variables:  %kernel.debug%
+  base_template_class: Werkint\Bundle\WebappBundle\Twig\Extension\Template
+  globals:
+    assets_version: %app.assets_version%
+  form:
+    resources:
+      - "::twig/form_layout.twig"
+
+# Disabling some standart behaviour
+sensio_framework_extra:
+  view:
+    annotations: false
+assetic:
+  debug: %kernel.debug%
+  use_controller:
+    enabled: %kernel.debug%
+    profiler: false
+  filters:
+    sass:
+      bin: %app.gempath%/bin/sass
+    scss:
+      bin: %app.gempath%/bin/sass
+jms_di_extra:
+  doctrine_integration: false
+  locations:
+    all_bundles: false
+
+# RESTful controllers
+fos_rest:
+  serializer:
+    serialize_null: true
+  view:
+    view_response_listener: true
+    formats:
+      json: true
+  body_listener: true
+  format_listener:
+    rules:
+      - { path: '^/', stop: true }
+
+# Swiftmailer Configuration
+swiftmailer:
+  host: %mailer_host%
+  port: %mailer_port%
+  transport:  smtp
+  encryption: tls
+  username: %mailer_user%
+  password: %mailer_password%
+
+# Using translations on client-side
+bazinga_js_translation:
+  locale_fallback: %locale%
+
+# Menu
+knp_menu:
+  twig:
+    template: "::twig/knp_menu.twig"

@@ -1,0 +1,8 @@
+{% macro formCol(element, tr_attribute) %}
+  {% spaceless %}
+    <div {% if tr_attribute is defined and tr_attribute is not null %}{% for attr, val in tr_attribute %} {{ attr }}="{{ val }}"{% endfor %}{% endif %}>
+      <div>{{ form_label(element) }}</div>
+      <div>{{ form_widget(element) }}</div>
+    </div>
+  {% endspaceless %}
+{% endmacro %}

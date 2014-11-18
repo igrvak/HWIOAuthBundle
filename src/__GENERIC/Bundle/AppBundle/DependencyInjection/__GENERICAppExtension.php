@@ -37,6 +37,10 @@ class __GENERICAppExtension extends Extension implements
     public function load(array $configs, ContainerBuilder $container)
     {
         $configDir = realpath(__DIR__ . '/../Resources/config');
+        $container->setParameter(
+            $this->getAlias() . '.scripts_dir',
+            realpath(__DIR__ . '/../Resources/scripts')
+        );
 
         $loader = new YamlFileLoader(
             $container,

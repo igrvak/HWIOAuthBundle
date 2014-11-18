@@ -1,6 +1,6 @@
 parameters:
   [[APP_NAME]]_app.twig.appextension.class:
-    __GENERIC\Bundle\AppBundle\Service\Twig\MeestAppExtension
+    __GENERIC\Bundle\AppBundle\Service\Twig\__GENERICAppExtension
   [[APP_NAME]]_app.listener.controller.class:
     __GENERIC\Bundle\AppBundle\EventListener\ControllerLoader
   [[APP_NAME]]_app.menu.class:

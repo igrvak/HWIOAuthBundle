@@ -1,0 +1,140 @@
+/**
+ * Стили основного шаблона
+ */
+#layout_main,
+#layout_footer .cont {
+  margin: 0 auto;
+  padding: 0 0;
+}
+#layout_main {
+  width: 100%;
+  @media #{$global-responsive-query} {
+    & {
+      width: $global-width-responsive;
+    }
+  }
+  margin: 0;
+  @include box-sizing(border-box);
+  padding-bottom: $global-footer-height+1.5rem;
+
+  #layout_page {
+    width: $global-width;
+    @media #{$global-responsive-query} {
+      & {
+        width: 100%;
+      }
+    }
+    margin: 0 auto;
+  }
+}
+#layout_header {
+  background: #eee;
+  width: 100%;
+  height: $global-header-height;
+  padding-top: 0;
+  position: relative;
+  @media #{$global-responsive-query} {
+    & {
+      height: auto;
+    }
+  }
+  .cont {
+    width: $global-width;
+    @media #{$global-responsive-query} {
+      & {
+        width: 100%;
+      }
+    }
+    margin: 0 auto;
+    white-space: nowrap;
+    position: relative;
+    height: 100%;
+    .bar-top {
+      height: $global-header-bartop-height;
+      line-height: $global-header-bartop-height;
+      ul {
+        margin-left: 2em;
+      }
+      ul, li {
+        display: inline-block;
+        height: 100%;
+      }
+      li {
+        a {
+          padding: 0 1em;
+          color: #000;
+          display: block;
+          height: 100%;
+          box-sizing: border-box;
+          line-height: $global-header-bartop-height;
+          text-decoration: none;
+        }
+      }
+
+      li.current a, li a:hover {
+        border-bottom: solid .2em #c1c1c1;
+      }
+    }
+    .bar-bottom {
+      height: $global-header-barbottom-height;
+      line-height: $global-header-barbottom-height;
+      background: #aaa;
+    }
+    .logo {
+      height: 85%;
+      display: inline-block;
+      vertical-align: middle;
+      @media #{$global-responsive-query} {
+        & {
+          width: 3em;
+        }
+      }
+      img {
+        display: block;
+        height: 100%;
+      }
+    }
+  }
+}
+#layout_footer {
+  height: $global-footer-height;
+  width: 100%;
+  @media #{$global-responsive-query} {
+    & {
+      width: $global-width-responsive;
+    }
+  }
+  padding: .5rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #888;
+  .cont {
+    width: $global-width;
+    @media #{$global-responsive-query} {
+      & {
+        width: 100%;
+      }
+    }
+    margin: 0 auto;
+    position: relative;
+    color: white;
+    .footer-copyright {
+      position: absolute;
+      text-align: center;
+      left: 1em;
+      color: white;
+      top: 0;
+      .footer-small-text {
+        font-size: 12px;
+      }
+      .footer-big-text {
+        font-size: 15px;
+      }
+    }
+    .footer-sitename {
+      text-align: center;
+      color: white;
+    }
+  }
+}

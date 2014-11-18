@@ -1,0 +1,11 @@
+{% extends '::page.twig' %}
+
+{% trans_default_domain "__GENERICAppBundle" %}
+
+{% block title %}
+  {{ 'home.title'|trans }}
+{% endblock %}
+
+{% block page %}
+  <div>{{ 'home.text'|trans }}</div>
+{% endblock %}

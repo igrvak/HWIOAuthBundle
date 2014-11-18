@@ -1,0 +1,15 @@
+{% extends '::default.twig' %}
+
+{% trans_default_domain "MeestAppBundle" %}
+
+{% block pageBase %}
+<div id="layout_page_cont" class="layout-page {% spaceless %}{% block pageClass %}{% endblock %}{% endspaceless %}">
+  <h1 class="page-title">{% block pageTitle %}{{ block('title') }}{% endblock %}</h1>
+  {% block page %}{% endblock %}
+
+  <div class="templates" id="global_page_templates">
+    {% block pageTemplates %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

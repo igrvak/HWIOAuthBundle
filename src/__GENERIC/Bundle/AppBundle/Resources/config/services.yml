@@ -1,1 +1,27 @@
+parameters:
+  [[APP_NAME]]_app.listener.controller.class:
+    __GENERIC\Bundle\AppBundle\EventListener\ControllerLoader
+  [[APP_NAME]]_app.menu.class:
+    __GENERIC\Bundle\AppBundle\Service\Util\MenuBuilder
+
 services:
+  # Фабрика меню
+  [[APP_NAME]]_app.menu:
+    class: %[[APP_NAME]]_app.menu.class%
+  # Главное меню
+  [[APP_NAME]]_app.menu.main:
+    class: Knp\Menu\MenuItem
+    factory_service: [[APP_NAME]]_app.menu
+    factory_method:  createMain
+    arguments:
+      - @knp_menu.factory
+      - @security.context
+    tags:
+      - { name: knp_menu.menu, alias: [[APP_NAME]].main }
+  # Главный контроллер
+  [[APP_NAME]]_app.listener.controller:
+    class: %[[APP_NAME]]_app.listener.controller.class%
+    arguments:
+      - @service_container
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: initController }

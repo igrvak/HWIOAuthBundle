@@ -1,0 +1,42 @@
+{% extends '::base.twig' %}
+
+{% trans_default_domain "__GENERICAppBundle" %}
+
+{% block basePage %}
+  <div id="layout_main">
+    <header id="layout_header">
+      <div class="cont">
+        <div class="bar-top">
+          <a href="{{ path('home') }}" title="{{ var.title }}" class="logo"><img src="{{ asset('bundles/[[APP_NAME]]app/img/logo.png') }}" alt="logo"/>
+          </a>
+          {% block topmenu %}
+            {{ knp_menu_render('[[APP_NAME]].main') }}
+          {% endblock %}
+        </div>
+        <div class="bar-bottom">
+        </div>
+      </div>
+    </header>
+    <section id="layout_page">
+      {% block globalhook_break_page %}
+        {% block body %}
+          {% block pageBase %}
+            {% block page %}{% endblock %}
+          {% endblock %}
+        {% endblock %}
+      {% endblock %}
+    </section>
+  </div>
+  <footer id="layout_footer">
+    <div class="cont">
+      <div class="footer-copyright">
+        <div class="footer-small-text">{{ 'footer.development_and_design'|trans }}</div>
+        <div class="footer-big-text">{{ 'footer.brander'|trans }}</div>
+      </div>
+
+      <div class="footer-sitename">
+        {{ 'footer.sitename'|trans }}
+      </div>
+    </div>
+  </footer>
+{% endblock %}

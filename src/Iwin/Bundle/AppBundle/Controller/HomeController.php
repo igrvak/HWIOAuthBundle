@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Bundle\AppBundle\Controller;
+namespace Iwin\Bundle\AppBundle\Controller;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\DependencyInjection\ContainerInterface;

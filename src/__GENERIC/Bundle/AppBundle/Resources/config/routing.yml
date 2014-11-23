@@ -1,5 +1,0 @@
-[[APP_NAME]]_app:
-  resource: "@__GENERICAppBundle/Controller"
-  type: annotation
-  options:
-    expose: true

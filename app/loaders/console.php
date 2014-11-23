@@ -1,6 +1,6 @@
 <?php
 namespace {
-    use __GENERIC\Model\AppKernel;
+    use Iwin\Model\AppKernel;
     use Symfony\Bundle\FrameworkBundle\Console\Application;
     use Symfony\Component\Console\Input\ArgvInput;
     use Symfony\Component\Debug\Debug;

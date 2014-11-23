@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Model;
+namespace Iwin\Model;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -71,7 +71,7 @@ class AppKernel extends Kernel
         ]);
         // Основные
         $addBundles([
-            new \__GENERIC\Bundle\AppBundle\__GENERICAppBundle(),
+            new \Iwin\Bundle\AppBundle\IwinAppBundle(),
         ]);
 
         $addBundles([

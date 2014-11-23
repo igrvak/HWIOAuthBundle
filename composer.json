@@ -1,8 +1,8 @@
 {
-    "name":              "brander/project-[[APP_NAME]]",
+    "name":              "brander/project-iwin",
     "license":           "proprietary",
     "type":              "project",
-    "description":       "[[APP_TITLE]] project",
+    "description":       "IWin project",
     "minimum-stability": "stable",
     "repositories":      [
         {
@@ -19,7 +19,7 @@
     ],
     "autoload":          {
         "psr-0": {
-            "__GENERIC\\": "src/"
+            "Iwin\\": "src/"
         }
     },
     "require":           {

@@ -1,5 +1,5 @@
-__GENERIC_app:
-  resource: "@__GENERICAppBundle/Resources/config/routing.yml"
+Iwin_app:
+  resource: "@IwinAppBundle/Resources/config/routing.yml"
   prefix: /
 
 fos_js_routing:

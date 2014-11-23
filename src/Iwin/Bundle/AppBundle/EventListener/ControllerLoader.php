@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Bundle\AppBundle\EventListener;
+namespace Iwin\Bundle\AppBundle\EventListener;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -53,7 +53,7 @@ class ControllerLoader
         $webapp->getLoader()->blockStart('_root');
 
         // Скрипты бандла
-        $dir = $this->par('[[APP_NAME]]_app.scripts_dir');
+        $dir = $this->par('iwin_app.scripts_dir');
 
         // Шрифты
         $webapp->addVar('debug', $this->par('kernel.debug'));

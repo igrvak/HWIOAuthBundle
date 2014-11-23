@@ -1,0 +1,37 @@
+parameters:
+  iwin_app.twig.appextension.class:
+    Iwin\Bundle\AppBundle\Service\Twig\IwinAppExtension
+  iwin_app.listener.controller.class:
+    Iwin\Bundle\AppBundle\EventListener\ControllerLoader
+  iwin_app.menu.class:
+    Iwin\Bundle\AppBundle\Service\Util\MenuBuilder
+
+services:
+  # Фабрика меню
+  iwin_app.menu:
+    class: %iwin_app.menu.class%
+  # Главное меню
+  iwin_app.menu.main:
+    class: Knp\Menu\MenuItem
+    factory_service: iwin_app.menu
+    factory_method:  createMain
+    arguments:
+      - @knp_menu.factory
+      - @security.context
+    tags:
+      - { name: knp_menu.menu, alias: iwin.main }
+  # Главный контроллер
+  iwin_app.listener.controller:
+    class: %iwin_app.listener.controller.class%
+    arguments:
+      - @service_container
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: initController }
+  # Twig - основное расширение сайта
+  iwin_app.twig.appextension:
+    class: %iwin_app.twig.appextension.class%
+    public: false
+    arguments:
+      - @service_container
+    tags:
+      - { name: twig.extension }

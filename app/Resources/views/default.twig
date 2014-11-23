@@ -1,16 +1,16 @@
 {% extends '::base.twig' %}
 
-{% trans_default_domain "__GENERICAppBundle" %}
+{% trans_default_domain "IwinAppBundle" %}
 
 {% block basePage %}
   <div id="layout_main">
     <header id="layout_header">
       <div class="cont">
         <div class="bar-top">
-          <a href="{{ path('home') }}" title="{{ var.title }}" class="logo"><img src="{{ asset('bundles/[[APP_NAME]]app/img/logo.png') }}" alt="logo"/>
+          <a href="{{ path('home') }}" title="{{ var.title }}" class="logo"><img src="{{ asset('bundles/iwinapp/img/logo.png') }}" alt="logo"/>
           </a>
           {% block topmenu %}
-            {{ knp_menu_render('[[APP_NAME]].main') }}
+            {{ knp_menu_render('iwin.main') }}
           {% endblock %}
         </div>
         <div class="bar-bottom">

@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Bundle\AppBundle\Service\Util;
+namespace Iwin\Bundle\AppBundle\Service\Util;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -25,7 +25,7 @@ class MenuBuilder
 
         $menu->addChild('home.title', [
             'route' => 'home',
-        ])->setExtra('translation_domain', '__GENERICAppBundle');
+        ])->setExtra('translation_domain', 'IwinAppBundle');
 
         return $menu;
     }

@@ -11,7 +11,7 @@
         </script>
 
         {% block baseIcon %}
-          <link rel="icon" type="image/png" href="{{ asset('bundles/[[APP_NAME]]app/img/logo.png') }}">
+          <link rel="icon" type="image/png" href="{{ asset('bundles/iwinapp/img/logo.png') }}">
         {% endblock %}
 
         {% block baseScripts %}
@@ -20,11 +20,11 @@
           <script type="text/javascript"
               src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
           <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
-          {% for key in ['__GENERICAppBundle'] %}
+          {% for key in ['IwinAppBundle'] %}
             <script src="{{ path('bazinga_jstranslation_js', {'domain': key}) }}"></script>
           {% endfor %}
 
-          <script src="/bundles/[[APP_NAME]]app/config.js"></script>
+          <script src="/bundles/iwinapp/config.js"></script>
         {% endblock %}
 
         {% block baseMetatags %}

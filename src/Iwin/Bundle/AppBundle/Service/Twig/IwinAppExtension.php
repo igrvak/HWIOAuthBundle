@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Bundle\AppBundle\Service\Twig;
+namespace Iwin\Bundle\AppBundle\Service\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Werkint\Bundle\FrameworkExtraBundle\Twig\AbstractExtension;
@@ -9,9 +9,9 @@ use Werkint\Bundle\FrameworkExtraBundle\Twig\AbstractExtension;
  *
  * @author Bogdan Yurov <bogdan@yurov.me>
  */
-class __GENERICAppExtension extends AbstractExtension
+class IwinAppExtension extends AbstractExtension
 {
-    const EXT_NAME = '[[APP_NAME]]_app';
+    const EXT_NAME = 'iwin_app';
 
     protected function init()
     {

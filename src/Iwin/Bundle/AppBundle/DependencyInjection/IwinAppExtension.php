@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Bundle\AppBundle\DependencyInjection;
+namespace Iwin\Bundle\AppBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -9,11 +9,11 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * __GENERICAppExtension.
+ * IwinAppExtension.
  *
  * @author Bogdan Yurov <bogdan@yurov.me>
  */
-class __GENERICAppExtension extends Extension implements
+class IwinAppExtension extends Extension implements
     PrependExtensionInterface
 {
     /**

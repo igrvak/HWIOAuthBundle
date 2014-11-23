@@ -1,0 +1,5 @@
+iwin_app:
+  resource: "@IwinAppBundle/Controller"
+  type: annotation
+  options:
+    expose: true

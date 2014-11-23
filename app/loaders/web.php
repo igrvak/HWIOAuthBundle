@@ -1,7 +1,7 @@
 <?php
 namespace {
-    use __GENERIC\Model\AppCache;
-    use __GENERIC\Model\AppKernel;
+    use Iwin\Model\AppCache;
+    use Iwin\Model\AppKernel;
     use Symfony\Component\ClassLoader\ApcClassLoader;
     use Symfony\Component\Debug\Debug;
     use Symfony\Component\HttpFoundation\Request;

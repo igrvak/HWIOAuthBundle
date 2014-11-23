@@ -10,8 +10,8 @@ doctrine:
         dir: %gedmo.lib.directory%/Gedmo/Translatable/Entity
         alias: GedmoTranslatable
         is_bundle: false
-      # __GENERIC Bundles
-      __GENERICAppBundle: ~
+      # Iwin Bundles
+      IwinAppBundle: ~
       # Werkint
       WerkintFrameworkExtraBundle: ~
 
@@ -85,9 +85,9 @@ monolog:
       id: lexik_monolog_browser.handler.doctrine_dbal
 
 doctrine_migrations:
-  dir_name: %kernel.root_dir%/../src/__GENERIC/Data/Migrations
-  namespace: __GENERIC\Data\Migrations
-  name: __GENERIC Migrations
+  dir_name: %kernel.root_dir%/../src/Iwin/Data/Migrations
+  namespace: Iwin\Data\Migrations
+  name: Iwin Migrations
   table_name: util_migrations
 
 lexik_monolog_browser:

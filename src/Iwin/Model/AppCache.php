@@ -1,5 +1,5 @@
 <?php
-namespace __GENERIC\Model;
+namespace Iwin\Model;
 
 use Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache;
 

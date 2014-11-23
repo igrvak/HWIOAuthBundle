@@ -1,15 +1,15 @@
 <?php
-namespace __GENERIC\Bundle\AppBundle;
+namespace Iwin\Bundle\AppBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * __GENERICAppBundle.
+ * IwinAppBundle.
  *
  * @author Bogdan Yurov <bogdan@yurov.me>
  */
-class __GENERICAppBundle extends Bundle
+class IwinAppBundle extends Bundle
 {
     /**
      * {@inheritdoc}

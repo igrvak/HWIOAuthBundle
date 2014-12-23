@@ -42,7 +42,7 @@
         "friendsofsymfony/rest-bundle":         "1.5.*@dev",
         "incenteev/composer-parameter-handler": "*",
         "jms/security-extra-bundle":            "*",
-        "jms/serializer-bundle":                "*",
+        "jms/serializer-bundle":                "0.13.*",
         "knplabs/knp-menu-bundle":              "*",
         "knplabs/knp-paginator-bundle":         "*",
         "lexik/monolog-browser-bundle":         "dev-master",

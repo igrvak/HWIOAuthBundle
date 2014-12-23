@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b97762ff499b4f037908057fe159eff",
+    "hash": "6d28e8d20b6c4908c9423f9a0e7ec18b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1151,6 +1151,54 @@
             "time": "2014-12-17 16:18:07"
         },
         {
+            "name": "fzaninotto/faker",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/010c7efedd88bf31141a02719f51fb44c732d5a0",
+                "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": []
+            },
+            "autoload": {
+                "psr-0": {
+                    "Faker": "src/",
+                    "Faker\\PHPUnit": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2014-06-04 14:43:02"
+        },
+        {
             "name": "gedmo/doctrine-extensions",
             "version": "v2.3.9",
             "source": {
@@ -1229,6 +1277,64 @@
                 "uploadable"
             ],
             "time": "2014-01-12 16:34:06"
+        },
+        {
+            "name": "hautelook/alice-bundle",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hautelook/AliceBundle.git",
+                "reference": "44824200e88cdec9b9f8ee5056c4a197299e5293"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/44824200e88cdec9b9f8ee5056c4a197299e5293",
+                "reference": "44824200e88cdec9b9f8ee5056c4a197299e5293",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "~1.2",
+                "doctrine/doctrine-fixtures-bundle": "~2.2",
+                "nelmio/alice": "~1.7",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.4",
+                "hautelook/solarium-fixtures": "~1.0",
+                "solarium/solarium": "~3.1",
+                "symfony/browser-kit": "~2.1",
+                "symfony/console": "~2.1",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/validator": "~2.1",
+                "symfony/yaml": "~2.1"
+            },
+            "suggest": {
+                "hautelook/solarium-fixtures": "To add Solarium fixtures"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Hautelook\\AliceBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baldur Rensch",
+                    "email": "brensch@gmail.com"
+                }
+            ],
+            "description": "Symfony2 Bundle that helps loading fixture data written with the Alice library",
+            "keywords": [
+                "Fixture",
+                "Symfony2",
+                "alice",
+                "orm"
+            ],
+            "time": "2014-10-19 05:10:40"
         },
         {
             "name": "ikimea/browser",
@@ -1949,7 +2055,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2278,6 +2384,180 @@
                 "psr-3"
             ],
             "time": "2014-09-30 13:30:58"
+        },
+        {
+            "name": "nelmio/alice",
+            "version": "1.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nelmio/alice.git",
+                "reference": "33cfab06b7e0d546c001ba95f9c594e4bd63d958"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/33cfab06b7e0d546c001ba95f9c594e4bd63d958",
+                "reference": "33cfab06b7e0d546c001ba95f9c594e4bd63d958",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "~1.0",
+                "php": ">=5.3",
+                "symfony/yaml": "~2.0"
+            },
+            "require-dev": {
+                "doctrine/common": "~2.3",
+                "phpunit/phpunit": "3.7.*",
+                "symfony/property-access": "~2.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nelmio\\Alice\\": "src/Nelmio/Alice"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Shelburne"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                }
+            ],
+            "description": "Expressive fixtures generator",
+            "keywords": [
+                "Fixture",
+                "data",
+                "orm",
+                "test"
+            ],
+            "time": "2014-10-10 13:07:37"
+        },
+        {
+            "name": "odesskij/generator-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/odesskij/GeneratorBundle.git",
+                "reference": "ee9256107df452acb135120d6fc5590f8cdea4c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/odesskij/GeneratorBundle/zipball/ee9256107df452acb135120d6fc5590f8cdea4c4",
+                "reference": "ee9256107df452acb135120d6fc5590f8cdea4c4",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.0",
+                "symfony/framework-bundle": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "twig/twig": "~1.11"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Odesskij\\Bundle\\GeneratorBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Vladimir Odesskij",
+                    "email": "odesskij1992@gmail.com"
+                }
+            ],
+            "description": "This bundle generates code for you",
+            "time": "2014-11-20 14:44:20"
+        },
+        {
+            "name": "oneup/uploader-bundle",
+            "version": "v1.3.1",
+            "target-dir": "Oneup/UploaderBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1up-lab/OneupUploaderBundle.git",
+                "reference": "00bff0181fc1592134f1aa36469ea44d69585a9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/00bff0181fc1592134f1aa36469ea44d69585a9a",
+                "reference": "00bff0181fc1592134f1aa36469ea44d69585a9a",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/finder": ">=2.2.0",
+                "symfony/framework-bundle": ">=2.2"
+            },
+            "require-dev": {
+                "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "knplabs/gaufrette": "0.2.*@dev",
+                "phpunit/phpunit": "~4.1",
+                "sensio/framework-extra-bundle": "2.*",
+                "symfony/browser-kit": "2.*",
+                "symfony/class-loader": "2.*",
+                "symfony/security-bundle": "2.*"
+            },
+            "suggest": {
+                "knplabs/knp-gaufrette-bundle": "0.1.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Oneup\\UploaderBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Schmid",
+                    "email": "js@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handles multi file uploads in Symfony2. Features included: Chunked upload, Orphans management, Gaufrette support.",
+            "homepage": "http://1up.io",
+            "keywords": [
+                "FancyUpload",
+                "FineUploader",
+                "MooUpload",
+                "Uploadify",
+                "YUI3 Uploader",
+                "blueimp",
+                "dropzone",
+                "fileupload",
+                "jQuery File Uploader",
+                "plupload",
+                "upload"
+            ],
+            "time": "2014-07-04 14:58:01"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -3451,7 +3731,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-object-routing-3d8c762005d976b8de7f0454cdbcfa0cdae87ed7-zip-81bb20.tar",
                 "reference": "3d8c762005d976b8de7f0454cdbcfa0cdae87ed7",
-                "shasum": "bd0a8e529f8a74747e2c4d0ce16a6ead45b48885"
+                "shasum": "bb86d8a652e21fffd156d9ba9e31e43312b2f150"
             },
             "require": {
                 "jms/metadata": "1.*",
@@ -3549,7 +3829,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-redis-bundle-a78d6fdb9e95fb3a959065a8501afec5272e6308-zip-59cb81.tar",
                 "reference": "a78d6fdb9e95fb3a959065a8501afec5272e6308",
-                "shasum": "2b59f767e2eabc37b8baae51fb1c23b7a4ce3ecd"
+                "shasum": "75e5fbc40912cc77eca2467a29c282c60b747ceb"
             },
             "require": {
                 "doctrine/common": "*",
@@ -3597,14 +3877,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@code.werkint.com:werkint/requirejsbundle.git",
+                "url": "git@werkint.com:werkint/requirejsbundle.git",
                 "reference": "df0bb9f2ac9fadbe19a3ef976a273571633820e0"
             },
             "dist": {
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-requirejs-bundle-dev-master-d50690.tar",
                 "reference": "df0bb9f2ac9fadbe19a3ef976a273571633820e0",
-                "shasum": "9cc3c8434d3734a6b65716dd418b98f2f888b98c"
+                "shasum": "58330702e46f9fb46099004721dc707cc5300991"
             },
             "require": {
                 "kriswallsmith/assetic": ">=1.0",
@@ -3665,7 +3945,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-sprites-bundle-fe0ecdaf49e692e09c8dca4216c2277a854649c9-zip-e3f730.tar",
                 "reference": "fe0ecdaf49e692e09c8dca4216c2277a854649c9",
-                "shasum": "240d2796572abba07b32f482244652facdf1c4f1"
+                "shasum": "308dbda035ab45a77633410f43e78f9ee11ed00e"
             },
             "require": {
                 "ext-imagick": "*",
@@ -3728,7 +4008,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-webapp-bundle-27eb1b64a60bff5f9a46780655b94821b6b5eeaf-zip-d49c46.tar",
                 "reference": "27eb1b64a60bff5f9a46780655b94821b6b5eeaf",
-                "shasum": "31e6eebc478dfd54865076d91a3e520d2d249e30"
+                "shasum": "e7d96362181594ed26337d0ddd2ce7d696f0f493"
             },
             "require": {
                 "friendsofsymfony/rest-bundle": "~1.4",
@@ -3981,6 +4261,7 @@
     "stability-flags": {
         "doctrine/doctrine-migrations-bundle": 20,
         "doctrine/migrations": 20,
+        "odesskij/generator-bundle": 20,
         "friendsofsymfony/rest-bundle": 20,
         "lexik/monolog-browser-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
@@ -3994,7 +4275,6 @@
         "werkint/webcomponents": 20
     },
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": {
         "ext-openssl": "*",
         "ext-imagick": "*",

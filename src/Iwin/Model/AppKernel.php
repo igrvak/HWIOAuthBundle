@@ -29,6 +29,7 @@ class AppKernel extends Kernel
         // Framework
         $addBundles([
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new \Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -51,6 +52,8 @@ class AppKernel extends Kernel
             new \Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new \Hautelook\AliceBundle\HautelookAliceBundle(),
+            new \Oneup\UploaderBundle\OneupUploaderBundle(),
         ]);
 
         // Debug
@@ -58,6 +61,7 @@ class AppKernel extends Kernel
             $addBundles([
                 new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle(),
                 new \Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
+                new \Odesskij\Bundle\GeneratorBundle\OdesskijGeneratorBundle(),
             ]);
         }
 

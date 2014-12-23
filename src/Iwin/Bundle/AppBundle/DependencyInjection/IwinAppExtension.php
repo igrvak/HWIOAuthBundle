@@ -47,5 +47,6 @@ class IwinAppExtension extends Extension implements
             new FileLocator($configDir)
         );
         $loader->load('services.yml');
+        $loader->load('doctrine.yml');
     }
 }

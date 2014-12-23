@@ -8,4 +8,7 @@
 
 {% block page %}
   <div>{{ 'home.text'|trans }}</div>
+
+  <div class="upload" style="height: 300px; width: 300px; background-color: rgb(100,100,100)" data-url="{{ oneup_uploader_endpoint('gallery') }}" >
+  </div>
 {% endblock %}

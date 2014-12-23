@@ -1,7 +1,7 @@
 <?php
 namespace Iwin\Bundle\AppBundle\Service\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Werkint\Bundle\FrameworkExtraBundle\Twig\AbstractExtension;
 
 /**
@@ -11,28 +11,41 @@ use Werkint\Bundle\FrameworkExtraBundle\Twig\AbstractExtension;
  */
 class IwinAppExtension extends AbstractExtension
 {
+    protected $vars;
+    protected $locales;
+    protected $request;
+    protected $globals;
+
     const EXT_NAME = 'iwin_app';
 
+    /**
+     * {@inheritdoc}
+     */
     protected function init()
     {
-        // TODO: write
+        $this->vars += [
+            'langlinks' => $this->getLangPaths(),
+        ];
+        $this->globals = [
+            'var' => $this->vars,
+        ];
     }
 
     /**
-     * @param ContainerInterface $cont
+     * @param array   $vars
+     * @param Request $request
+     * @param array   $locales
      */
     public function __construct(
-        ContainerInterface $cont
+        array $vars,
+        Request $request,
+        array $locales
     ) {
-        $this->globals = [
-            'var' => [
-                'title'           => $cont->getParameter('app.title'),
-                'langs'           => $cont->getParameter('locales_supported'),
-                'localeIsDefault' => $cont->isScopeActive('request') ?
-                        $cont->get('request')->getLocale() === $cont->getParameter('kernel.default_locale') :
-                        $cont->getParameter('locale') === $cont->getParameter('kernel.default_locale'),
-            ],
-        ];
+        $this->request = $request;
+        $this->locales = $locales;
+        $this->vars = $vars['params'];
+
+        parent::__construct();
     }
 
     /**
@@ -42,5 +55,23 @@ class IwinAppExtension extends AbstractExtension
         \Twig_Environment $env
     ) {
         $this->globals['macros'] = $env->loadTemplate('::twig/macros.twig');
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getLangPaths()
+    {
+        if (!$this->request) {
+            return [];
+        }
+        $langPath = substr($this->request->getRequestUri(), 4);
+        $langPath = $this->request->getScheme() . '://' . $this->request->getHttpHost() . '/%s/' . str_replace('%', '%%', $langPath);
+        $langs = [];
+        foreach ($this->locales as $lang) {
+            $langs[$lang] = sprintf($langPath, $lang);
+        }
+
+        return $langs;
     }
 }

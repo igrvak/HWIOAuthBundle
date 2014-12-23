@@ -16,9 +16,9 @@ parameters:
   app.path.img:    %app.path.webres%/img
   app.dir.web:     %kernel.root_dir%/../web
   locales_supported:
-    - ru
-    - ua
     - en
+    - ru
+    - sp
   # Sprites
   app.path.sprites:   %app.path.img%/sprites
   app.dir.sprites:    %app.dir.web%%app.path.sprites%
@@ -84,6 +84,8 @@ assetic:
       bin: %app.gempath%/bin/sass
     scss:
       bin: %app.gempath%/bin/sass
+      load_paths:
+        - %kernel.root_dir%/Resources/sass
 jms_di_extra:
   doctrine_integration: false
   locations:

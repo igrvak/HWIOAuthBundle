@@ -1,0 +1,65 @@
+%layout,
+.layout {
+	&:after {
+		content: "";
+		display: table;
+		width: 100%;
+		clear: both;
+	}
+}
+%list-reset {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+//               __          
+//   _________  / /___  _____
+//  / ___/ __ \/ / __ \/ ___/
+// / /__/ /_/ / / /_/ / /    
+// \___/\____/_/\____/_/     
+//                          
+$dark1: #0b1b2b;
+$dark1-darken: #040b13;
+
+$col1: #00adc7;
+$col1-light: #00c5e3;
+$col1-light-des: lighten(desaturate($col1,50%),25%);
+$col1-dark: #019bb2;
+
+$col2: #ff754a;
+$col2-light: #ff9371;
+$col2-dark: #e66138;
+
+$col3: #589c43;
+$col3-light: #6dc045;
+$col3-dark: #49852c;
+
+$white: #f2f2f2;
+
+//            _     ____  __  
+//  _      __(_)___/ / /_/ /_ 
+// | | /| / / / __  / __/ __ \
+// | |/ |/ / / /_/ / /_/ / / /
+// |__/|__/_/\__,_/\__/_/ /_/ 
+//                           
+
+$width-full: max-width 1920px;
+$width-semifull: max-width 1600px;
+$width-laptop: max-width 1366px;
+$width-medium: max-width 1024px;
+$width-small: max-width 768px;
+$width-mobile: max-width 480px;
+
+$w-f: $width-full;
+$w-sf: $width-semifull;
+$w-l: $width-laptop;
+$w-m: $width-medium;
+$w-s: $width-small;
+$w-mob: $width-mobile;
+
+.a-left {text-align: left;}
+.a-right {text-align: right;}
+.a-center {text-align: center;}
+.fleft {float: left;}
+.fright {float: right;}

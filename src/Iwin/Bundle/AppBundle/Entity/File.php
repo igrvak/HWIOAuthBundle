@@ -47,6 +47,12 @@ class File
     protected $hash;
 
     /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    protected $mimeType;
+
+    /**
      * @return int
      */
     public function getId()
@@ -80,5 +86,22 @@ class File
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getMimeType()
+    {
+        return $this->mimeType;
+    }
+
+    /**
+     * @param string $mimeType
+     * @return $this
+     */
+    public function setMimeType($mimeType)
+    {
+        $this->mimeType = $mimeType;
+        return $this;
+    }
 
 }

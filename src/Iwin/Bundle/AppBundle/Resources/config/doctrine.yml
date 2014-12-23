@@ -2,7 +2,7 @@ parameters:
   iwin_app.repo.file.class:
     Iwin\Bundle\AppBundle\Entity\FileRepository
   iwin_app.repo.image.class:
-    Iwin\Bundle\AppBundle\Entity\ImageRepository
+    Iwin\Bundle\AppBundle\Entity\FileImageRepository
 
 services:
   iwin_app.repo.file:
@@ -14,4 +14,4 @@ services:
     class:            %iwin_app.repo.image.class%
     factory_service:  doctrine.orm.entity_manager
     factory_method:   getRepository
-    arguments: [IwinAppBundle:Image]
+    arguments: [IwinAppBundle:FileImage]

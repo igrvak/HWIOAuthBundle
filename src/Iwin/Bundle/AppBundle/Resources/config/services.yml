@@ -42,5 +42,10 @@ services:
     arguments:
       - @doctrine.orm.entity_manager
       - @oneup_uploader.templating.uploader_helper
+      - @iwin_app.image_manager
     tags:
       - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
+  iwin_app.image_manager:
+    class: Intervention\Image\ImageManager
+    arguments:
+      - {driver: imagick}

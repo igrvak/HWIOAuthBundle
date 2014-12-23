@@ -66,9 +66,6 @@ twig:
   base_template_class: Werkint\Bundle\WebappBundle\Twig\Extension\Template
   globals:
     assets_version: %app.assets_version%
-  form:
-    resources:
-      - "::twig/form_layout.twig"
 
 # Disabling some standart behaviour
 sensio_framework_extra:

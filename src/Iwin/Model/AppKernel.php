@@ -69,9 +69,11 @@ class AppKernel extends Kernel
             new \Werkint\Bundle\SpritesBundle\WerkintSpritesBundle(),
             new \Werkint\Bundle\WebappBundle\WerkintWebappBundle(),
         ]);
+
         // Основные
         $addBundles([
             new \Iwin\Bundle\AppBundle\IwinAppBundle(),
+            new \FOS\UserBundle\FOSUserBundle(),
         ]);
 
         $addBundles([

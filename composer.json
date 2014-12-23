@@ -52,7 +52,8 @@
         "twig/extensions":                      "*",
         "twig/twig":                            "*",
         "willdurand/js-translation-bundle":     "*",
-
+        "friendsofsymfony/user-bundle":         "~2.0@dev",
+        
         "werkint/object-routing":         "dev-master",
         "werkint/framework-extra-bundle": "0.1.*-dev",
         "werkint/form-bundle":            "0.1.*-dev",
@@ -68,7 +69,8 @@
         "ext-curl":    "*",
         "ext-mysql":   "*",
 
-        "php": ">=5.5"
+        "php": ">=5.5",
+        "sensio/generator-bundle": "~2.5"
     },
     "scripts":           {
         "post-install-cmd": [

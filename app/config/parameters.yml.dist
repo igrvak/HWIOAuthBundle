@@ -22,7 +22,7 @@ parameters:
   locale:            ru
   secret:            ThisTokenIsNotSoSecretChangeIt
 
-  timezone: "Europe/Kiev"
+  timezone: "America/New_York"
 
   werkint_redis_pass: ~
 

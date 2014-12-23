@@ -12,3 +12,6 @@ werkint_framework_extra:
   resource: "@WerkintFrameworkExtraBundle/Resources/config/routing.yml"
   options:
     expose: true
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

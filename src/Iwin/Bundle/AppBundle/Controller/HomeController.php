@@ -2,6 +2,7 @@
 namespace Iwin\Bundle\AppBundle\Controller;
 
 use JMS\DiExtraBundle\Annotation as DI;
+use Oneup\UploaderBundle\Templating\Helper\UploaderHelper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Werkint\Bundle\FrameworkExtraBundle\Annotation as Rest;
 

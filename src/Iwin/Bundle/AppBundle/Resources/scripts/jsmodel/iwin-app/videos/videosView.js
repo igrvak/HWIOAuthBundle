@@ -52,7 +52,7 @@ define([
         },
         "removeVideo": function (e) {
             var obj = this.$(e.currentTarget),
-                index = obj.data('objid');
+                index = obj.closest('li').data('ordinal');
 
             var el = this.model.get('list').at(index);
             this.model.get('list').remove(el);

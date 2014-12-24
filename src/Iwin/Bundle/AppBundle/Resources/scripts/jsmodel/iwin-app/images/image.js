@@ -8,8 +8,9 @@ define([
         "idAttribute": 'hash',
 
         "defaults": {
-            "uri":  null, // Не url !!!
-            "hash": null
+            "uri":     null, // Не url !!!
+            "hash":    null,
+            "ordinal": 0,
         },
     });
 

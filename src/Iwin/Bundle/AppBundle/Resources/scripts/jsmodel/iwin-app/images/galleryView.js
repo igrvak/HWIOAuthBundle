@@ -6,6 +6,7 @@ define([
     'dropzone',
     'iwin-app/util/collectionView',
     './image',
+    'jqueryui',
 ], function (_, Backbone, templating, Routing, Dropzone, CollectionView, ImageModel) {
     'use strict';
 
@@ -26,6 +27,7 @@ define([
 
         "events": {
             "click .remove": 'removeImage',
+            "sortstop .images":  "sortStop",
         },
 
         "render": function () {
@@ -45,15 +47,30 @@ define([
                 this.render();
             }, this));
 
+            this.$el.find('.images').sortable({
+                "items": "li.image",
+            }).disableSelection();
+
             return this;
         },
 
         "removeImage": function (e) {
             var obj = this.$(e.currentTarget),
-                index = obj.data('objid');
+                index = obj.closest('li').data('ordinal');
 
             var el = this.model.get('list').at(index);
             this.model.get('list').remove(el);
+            this.render();
+        },
+
+        "sortStop":  function (e, ui) {
+            // Обновляем индекс в коллекции
+            // TODO: быдлокод
+            this.model.get('list').updateOrdinal(
+                ui.item.data('ordinal'),
+                ui.item.index()
+            );
+            ui.item.data('ordinal', ui.item.index());
             this.render();
         },
     });

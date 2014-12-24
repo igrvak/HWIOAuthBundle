@@ -17,17 +17,6 @@
       <div class="tab-content">
         <div id="ad">
           <div class="create-ad">
-            <section class="videos">
-              <h2 class="heading">Videos</h2>
-
-              <div class="videos-container"></div>
-            </section>
-
-            <section class="main-info">
-              <h2 class="heading">Gallery</h2>
-
-              <div class="gallery-container"></div>
-            </section>
             <section class="benefits">
               <ul class="benefits__list">
                 <li>
@@ -62,6 +51,19 @@
                 </a>
               </div>
             </section>
+
+            <section class="main-info">
+              <h2 class="heading">Gallery</h2>
+
+              <p style="text-align: center">You can sort images by simply draggin them. - правда работает</p>
+              <div class="gallery-container"></div>
+            </section>
+
+            <section class="videos">
+              <h2 class="heading">Videos</h2>
+
+              <div class="videos-container"></div>
+            </section>
           </div>
         </div>
         <div id="task"></div>
@@ -76,11 +78,11 @@
 
   {# @formatter:off #}{% raw %}
   <script type="text/x-twig-template" data-id="iwin-app-images-gallery">
-      <ul class="{{ list.length>0?'':'drop-maximized' }}">
+      <ul class="images {{ list.length>0?'':'drop-maximized' }}">
         {% for i, image in list.toArray() %}
-          <li>
+          <li class="image" data-ordinal="{{ i }}">
             <img src="{{ image.uri }}" alt="{{ image.hash }}"/>
-            <button data-objid="{{ i }}" class="remove">Remove</button>
+            <button class="remove">Remove</button>
           </li>
         {% endfor %}
         <li>
@@ -91,9 +93,9 @@
   <script type="text/x-twig-template" data-id="iwin-app-videos-videos">
       <ul>
         {% for i, video in _context.list.toArray() %}
-          <li>
+          <li data-ordinal="{{ i }}">
             <input type="text" value="{{ video.uri }}" name="list[{{ i }}].uri" />
-            <button class="remove" data-objid="{{ i }}">Удалить</button>
+            <button class="remove">Удалить</button>
           </li>
         {% endfor %}
         <li>

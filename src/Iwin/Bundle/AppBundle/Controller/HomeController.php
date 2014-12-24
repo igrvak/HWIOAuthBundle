@@ -24,4 +24,14 @@ class HomeController
         return [
         ];
     }
+
+    /**
+     * @Rest\Get("/social", name="social")
+     * @Rest\View()
+     */
+    public function socialAction()
+    {
+        return [
+        ];
+    }
 }

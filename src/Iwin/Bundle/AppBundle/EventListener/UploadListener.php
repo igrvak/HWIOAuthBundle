@@ -47,23 +47,21 @@ class UploadListener
         /** @var \Symfony\Component\HttpFoundation\File\File $file */
         $file = $event->getFile();
 
-        if(in_array($file->getMimeType(), [
+        if (in_array($file->getMimeType(), [
             'image/gif',
             'image/jpeg',
             'image/png',
-        ])){
+        ])) {
             $f = new FileImage();
-            $i =  $this->manager->make($file->getRealPath());
+            $i = $this->manager->make($file->getRealPath());
             $f->setWidth($i->width());
             $f->setHeight($i->height());
-        }
-        else{
+        } else {
             $f = new File();
         }
-        $f->setMimeType($file->getMimeType());
-        $f->setPath(
-            $this->helper->endpoint($event->getType()) . '/' . $file->getBasename()
-        );
+        $f->setMimeType($file->getMimeType())
+            ->setStorage($event->getType())
+            ->setName($file->getBasename());
         $this->em->persist($f);
         $this->em->flush($f);
 

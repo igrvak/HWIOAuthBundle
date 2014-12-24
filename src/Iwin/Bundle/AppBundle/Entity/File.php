@@ -38,12 +38,6 @@ class File
      * @ORM\Column(type="string")
      * @var string
      */
-    protected $path;
-
-    /**
-     * @ORM\Column(type="string")
-     * @var string
-     */
     protected $hash;
 
     /**
@@ -51,6 +45,18 @@ class File
      * @var string
      */
     protected $mimeType;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    protected $storage;
 
     /**
      * @return int
@@ -71,24 +77,6 @@ class File
     /**
      * @return string
      */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * @param string $path
-     * @return $this
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getMimeType()
     {
         return $this->mimeType;
@@ -104,4 +92,39 @@ class File
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStorage()
+    {
+        return $this->storage;
+    }
+
+    /**
+     * @param string $storage
+     * @return $this
+     */
+    public function setStorage($storage)
+    {
+        $this->storage = $storage;
+        return $this;
+    }
 }

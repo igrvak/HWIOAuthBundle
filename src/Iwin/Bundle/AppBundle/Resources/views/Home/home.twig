@@ -77,11 +77,14 @@
   {# @formatter:off #}{% raw %}
   <script type="text/x-twig-template" data-id="iwin-app-images-gallery">
       <ul class="{{ list.length>0?'':'drop-maximized' }}">
-        {% for image in list.toArray() %}
-          <li><img src="{{ image.uri }}" alt="{{ image.hash }}"/></li>
+        {% for i, image in list.toArray() %}
+          <li>
+            <img src="{{ image.uri }}" alt="{{ image.hash }}"/>
+            <button data-objid="{{ i }}" class="remove">Remove</button>
+          </li>
         {% endfor %}
         <li>
-          <div class="drop" style="height: 150px; width: 150px; background-color: rgb(100,100,100)"></div>
+          <img class="drop" />
         </li>
       </ul>
   </script>

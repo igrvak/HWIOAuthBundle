@@ -4,19 +4,28 @@ define([
     'templating',
     'routing',
     'dropzone',
+    'iwin-app/util/collectionView',
     './image',
-], function (_, Backbone, templating, Routing, Dropzone, ImageModel) {
+], function (_, Backbone, templating, Routing, Dropzone, CollectionView, ImageModel) {
     'use strict';
 
     var viewId = 'iwin-app-images-gallery';
 
-    var View = Backbone.View.extend({
+    var View = CollectionView.extend({
+        "relatedModel": ImageModel,
+
         "dropzone": null,
         "template": templating.get(viewId),
 
         "initialize": function () {
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
+
+            CollectionView.prototype.initialize.apply(this, arguments);
+        },
+
+        "events": {
+            "click .remove": 'removeImage',
         },
 
         "render": function () {
@@ -24,21 +33,28 @@ define([
                 this.dropzone.disable();
             }
 
-            this.$el.html(this.template({
-                'list': this.model,
-            }));
+            this.$el.html(this.template(this.model));
 
             this.$el.find('.drop').each(_.bind(function (ind, el) {
                 this.dropzone = new Dropzone(el, {
-                    url: Routing.generate('_uploader_upload_gallery'),
+                    "url": Routing.generate('_uploader_upload_gallery'),
                 });
             }, this));
             this.dropzone.on('success', _.bind(function (event, data) {
-                this.model.add(new ImageModel(data));
+                this.model.get('list').add(new ImageModel(data));
                 this.render();
             }, this));
 
             return this;
+        },
+
+        "removeImage": function (e) {
+            var obj = this.$(e.currentTarget),
+                index = obj.data('objid');
+
+            var el = this.model.get('list').at(index);
+            this.model.get('list').remove(el);
+            this.render();
         },
     });
 

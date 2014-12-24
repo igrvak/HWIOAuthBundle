@@ -4124,13 +4124,13 @@
             "source": {
                 "type": "git",
                 "url": "git@code.werkint.com:werkint/webcomponents.git",
-                "reference": "b3609d0252953bd149bb3e50f6ab7afdc555ed98"
+                "reference": "66f8db3d3ed456170d280b7ba535a2a6c1ef0ea6"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-516e00.tar",
-                "reference": "b3609d0252953bd149bb3e50f6ab7afdc555ed98",
-                "shasum": "43f90d3b46f03ac16e183283167d1b21a34fdb29"
+                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-2de9d6.tar",
+                "reference": "66f8db3d3ed456170d280b7ba535a2a6c1ef0ea6",
+                "shasum": "aab29961c9cb3b3b431a69135e5af43d4be06cb8"
             },
             "require": {
                 "php": ">=5.4"
@@ -4163,7 +4163,7 @@
                     "local_cert": "app/config/composer/satis-brander.pem"
                 }
             },
-            "time": "2014-12-23 12:04:05"
+            "time": "2014-12-24 14:23:58"
         },
         {
             "name": "willdurand/js-translation-bundle",

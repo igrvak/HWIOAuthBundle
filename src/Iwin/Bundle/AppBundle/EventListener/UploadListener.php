@@ -66,10 +66,9 @@ class UploadListener
         } else {
             $f = new File();
         }
-        $f->setMimeType($file->getMimeType());
-        $f->setPath(
-            $this->helper->endpoint($event->getType()) . '/' . $file->getBasename()
-        );
+        $f->setMimeType($file->getMimeType())
+            ->setStorage($event->getType())
+            ->setName($file->getBasename());
         $this->em->persist($f);
         $this->em->flush($f);
 

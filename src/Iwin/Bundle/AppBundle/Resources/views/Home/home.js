@@ -3,16 +3,32 @@ requirejs([
     'underscore',
     'iwin-app/images/imageCollection',
     'iwin-app/images/galleryView',
+    'iwin-app/videos/videoCollection',
+    'iwin-app/videos/videosView',
+    'jquery/openclose',
     'domReady!',
-], function ($, _, ImageCollection, GalleryView) {
+], function ($, _, ImageCollection, GalleryView, VideoCollection, VideosView) {
     'use strict';
 
     var cont = $('#page_target');
 
-    var view = new GalleryView({
-        'model': new ImageCollection(),
-        'el':    cont,
+    cont.find('div.open-close').openClose({
+        activeClass: 'active',
+        opener:      '.opener',
+        slider:      '.slide',
+        animSpeed:   400,
+        effect:      'slide',
     });
 
-    view.render();
+    var view1 = new GalleryView({
+        'model': new ImageCollection(),
+        'el':    cont.find('.gallery-container'),
+    });
+    view1.render();
+
+    var view2 = new VideosView({
+        'model': new VideoCollection(),
+        'el':    cont.find('.videos-container'),
+    });
+    view2.render();
 });

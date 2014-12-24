@@ -32,13 +32,13 @@ class IwinAppExtension extends AbstractExtension
     }
 
     /**
-     * @param array   $vars
-     * @param Request $request
-     * @param array   $locales
+     * @param array        $vars
+     * @param Request|null $request
+     * @param array        $locales
      */
     public function __construct(
         array $vars,
-        Request $request,
+        Request $request = null,
         array $locales
     ) {
         $this->request = $request;

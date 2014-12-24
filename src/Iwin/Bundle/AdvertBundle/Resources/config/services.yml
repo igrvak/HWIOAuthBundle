@@ -1,0 +1,7 @@
+parameters:
+#  iwin_advert.example.class:
+#    Iwin\Bundle\AdvertBundle\Example
+
+services:
+#  iwin_advert.example:
+#    class: %iwin_advert.example.class%

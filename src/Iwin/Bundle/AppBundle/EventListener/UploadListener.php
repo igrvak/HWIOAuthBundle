@@ -32,7 +32,11 @@ class UploadListener
      * @param UploaderHelper $helper
      * @param ImageManager $manager
      */
-    public function __construct(EntityManagerInterface $em, UploaderHelper $helper, ImageManager $manager)
+    public function __construct(
+        EntityManagerInterface $em,
+        UploaderHelper $helper,
+        ImageManager $manager
+    )
     {
         $this->em = $em;
         $this->helper = $helper;
@@ -67,6 +71,8 @@ class UploadListener
         $this->em->persist($f);
         $this->em->flush($f);
 
-        $event->getResponse()['reference'] = $f->getHash();
+        $ret = $event->getResponse();
+        $ret['hash'] = $f->getHash();
+        $ret['uri'] = 'https://www.google.com.ua/intl/en_ALL/images/srpr/logo11w.png';
     }
 }

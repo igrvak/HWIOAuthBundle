@@ -1,14 +1,18 @@
 requirejs([
     'jquery',
     'underscore',
-    'dropzone'
-], function ($, _, Dropzone) {
+    'iwin-app/images/imageCollection',
+    'iwin-app/images/galleryView',
+    'domReady!',
+], function ($, _, ImageCollection, GalleryView) {
     'use strict';
 
-    var dropzone = new Dropzone('.upload', {url: $('.upload').attr('data-url')});
-    var uploads = [];
-    dropzone.on('success', function (event, data) {
-        uploads.push(data);
-        console.log(uploads);
+    var cont = $('#page_target');
+
+    var view = new GalleryView({
+        'model': new ImageCollection(),
+        'el':    cont,
     });
+
+    view.render();
 });

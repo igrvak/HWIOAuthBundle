@@ -7,8 +7,22 @@
 {% endblock %}
 
 {% block page %}
-  <div>{{ 'home.text'|trans }}</div>
+  <div id="page_target" data-url="{{ oneup_uploader_endpoint('gallery') }}"></div>
+{% endblock %}
 
-  <div class="upload" style="height: 300px; width: 300px; background-color: rgb(100,100,100)" data-url="{{ oneup_uploader_endpoint('gallery') }}" >
-  </div>
+{% block pageTemplates %}
+  {{ parent() }}
+
+  {# @formatter:off #}{% raw %}
+  <script type="text/x-twig-template" data-id="iwin-app-images-gallery">
+      <ul>
+        {% for image in list.toArray() %}
+          <li><img src="{{ image.uri }}" alt="{{ image.hash }}"/></li>
+        {% endfor %}
+        <li>
+          <div class="drop" style="height: 150px; width: 150px; background-color: rgb(100,100,100)"></div>
+        </li>
+      </ul>
+  </script>
+  {% endraw %}{# @formatter:on #}
 {% endblock %}

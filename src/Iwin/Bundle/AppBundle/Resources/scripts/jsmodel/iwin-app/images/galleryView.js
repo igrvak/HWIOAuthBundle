@@ -26,14 +26,25 @@ define([
         },
 
         "events": {
-            "click .remove": 'removeImage',
-            "sortstop .images":  "sortStop",
+            "click .remove":    'removeImage',
+            "sortstop .images": "sortStop",
         },
 
-        "render": function () {
+        "removeDropzone": function () {
             if (this.dropzone) {
                 this.dropzone.disable();
             }
+            this.dropzone = null;
+        },
+
+        "remove": function () {
+            this.removeDropzone();
+
+            CollectionView.prototype.remove.apply(this, arguments);
+        },
+
+        "render": function () {
+            this.removeDropzone();
 
             this.$el.html(this.template(this.model));
 
@@ -63,7 +74,7 @@ define([
             this.render();
         },
 
-        "sortStop":  function (e, ui) {
+        "sortStop": function (e, ui) {
             // Обновляем индекс в коллекции
             // TODO: быдлокод
             this.model.get('list').updateOrdinal(

@@ -1,5 +1,5 @@
 #page_target {
-  input {
+  .videos input {
     display: inline-block;
     margin: .5em;
     width: 400px;
@@ -23,6 +23,23 @@
         background: #ccc;
         width: 150px;
         height: 150px;
+      }
+    }
+  }
+}
+.tab-content {
+  background: #f2f2f2;
+}
+.coupon-create {
+  margin-top: 3em;
+  .two-columns-input {
+    white-space: nowrap;
+    label {
+      display: inline-block;
+      vertical-align: bottom;
+      width: 48%;
+      &:first-child {
+        margin-right: 4%;
       }
     }
   }

@@ -4,13 +4,18 @@
     requirejs.config({
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
-        shim:          {
+        "shim":        {
             'facebook': {
                 exports: 'FB'
             }
         },
-        paths:         {
+        "paths":       {
             'facebook': '//connect.facebook.net/en_US/all'
+        },
+        "map":         {
+            "*": {
+                "select2/select2": "config/select2/select2"
+            },
         }
     });
     requirejs([

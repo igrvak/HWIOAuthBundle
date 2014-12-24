@@ -1,6 +1,14 @@
-Iwin_app:
+iwin_app:
   resource: "@IwinAppBundle/Resources/config/routing.yml"
   prefix: /
+  options:
+    expose: true
+
+iwin_advert:
+  resource: "@IwinAdvertBundle/Resources/config/routing.yml"
+  prefix: /
+  options:
+    expose: true
 
 fos_js_routing:
   resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

@@ -15,3 +15,5 @@ vendor
 web/bundles
 web/res/img/sprites
 web/res/js
+web/res/cached
+web/uploads

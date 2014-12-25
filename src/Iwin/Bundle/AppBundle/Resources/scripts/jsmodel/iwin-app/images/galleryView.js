@@ -66,6 +66,7 @@ define([
         },
 
         "removeImage": function (e) {
+            e.preventDefault();
             var obj = this.$(e.currentTarget),
                 index = obj.closest('li').data('ordinal');
 

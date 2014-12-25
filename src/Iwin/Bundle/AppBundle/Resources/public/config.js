@@ -6,17 +6,21 @@
         'urlArgs':     'bust=' + window.$assets_version,
         "shim":        {
             'facebook': {
-                exports: 'FB'
-            }
+                exports: 'FB',
+            },
         },
         "paths":       {
-            'facebook': '//connect.facebook.net/en_US/all'
+            'facebook': '//connect.facebook.net/en_US/all',
         },
         "map":         {
-            "*": {
-                "select2/select2": "config/select2/select2"
+            "*":           {
+                "select2/select2": "config/select2/select2",
+                "twig":            "config/twig",
             },
-        }
+            "config/twig": {
+                "twig": "twig",
+            },
+        },
     });
     requirejs([
         'jquery',

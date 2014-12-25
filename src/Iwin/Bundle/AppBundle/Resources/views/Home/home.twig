@@ -159,11 +159,11 @@
         {% for i, image in list.toArray() %}
           <li class="image" data-ordinal="{{ i }}">
             <img src="{{ image.uri }}" alt="{{ image.hash }}"/>
-            <button class="remove">Remove</button>
+            <a href="#remove" class="remove"></a>
           </li>
         {% endfor %}
         <li>
-          <img class="drop" />
+          <div class="drop"></div>
         </li>
       </ul>
   </script>

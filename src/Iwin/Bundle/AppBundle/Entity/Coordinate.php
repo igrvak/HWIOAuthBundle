@@ -1,6 +1,7 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\InheritanceType("SINGLE_TABLE")
@@ -16,22 +17,19 @@ class Coordinate {
      * @var int
      */
     protected $id;
-
-    /**
-     * @ORM\Column(type="float")
-     * @var float
-     */
-    protected $longitude;
-
-    /**
-     * @ORM\Column(type="float")
-     * @var float
-     */
-    protected $latitude;
-
     /**
      * @ORM\Column(type="string")
      * @var string
      */
     protected $address;
+    /**
+     * @ORM\Column(type="float")
+     * @var float
+     */
+    protected $latitude;
+    /**
+     * @ORM\Column(type="float")
+     * @var float
+     */
+    protected $longitude;
 }

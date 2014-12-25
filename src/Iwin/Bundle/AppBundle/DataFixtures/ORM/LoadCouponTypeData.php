@@ -40,6 +40,7 @@ class LoadCouponTypeData extends AbstractFixture implements
         foreach ($this->getData() as $name => $drow) {
             $row = new CouponType();
             $row->setClass($name);
+            $row->setHasDiscount($drow['hasDiscount']);
 
             foreach ($drow['titles'] as $lang => $title) {
                 $trans->translate($row, 'title', $lang, $title);

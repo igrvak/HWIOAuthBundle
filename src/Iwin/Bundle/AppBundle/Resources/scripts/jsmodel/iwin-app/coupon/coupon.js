@@ -4,8 +4,8 @@ define([
     'iwin-app/util/basemodel',
     './couponMultilang',
     './couponType',
-    './couponTypeCollection',
-], function (_, Backbone, BaseModel, CouponMultilang, CouponType, CouponTypeCollection) {
+    './couponDiscount',
+], function (_, Backbone, BaseModel, CouponMultilang, CouponType, CouponDiscount) {
     'use strict';
 
     var langs = window.$langs;
@@ -25,6 +25,9 @@ define([
                     }));
                 }, this);
             }
+            if (!this.get('discount')) {
+                this.set('discount', new CouponDiscount());
+            }
         },
 
         "relations": [
@@ -33,10 +36,13 @@ define([
                 "key":          'multilang',
                 "relatedModel": CouponMultilang
             }, {
-                "type":              Backbone.HasOne,
-                "key":               'type',
-                "relatedCollection": CouponTypeCollection,
-                "relatedModel":      CouponType,
+                "type":         Backbone.HasOne,
+                "key":          'type',
+                "relatedModel": CouponType,
+            }, {
+                "type":         Backbone.HasOne,
+                "key":          'discount',
+                "relatedModel": CouponDiscount,
             },
         ],
     });

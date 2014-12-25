@@ -4,105 +4,80 @@ define([
     'backbone',
     'templating',
     'iwin-app/util/collectionView',
-    'iwin-app/coupon/coupon',
-    './couponTypeCollection',
-    'select2/select2',
-    'jquery/inputevent',
-    'jqueryui',
-    'backbone/modelbinder',
-], function ($, _, Backbone, templating, CollectionView, CouponModel, CouponTypeCollection) {
+    './coupon',
+    './couponEditView',
+], function ($, _, Backbone, templating, CollectionView, CouponModel, CouponEditView) {
     'use strict';
 
-    var viewId = 'iwin-app-coupon-coupon',
-        langDefault = window.$lang_default,
-        langs = window.$langs;
+    var viewId = 'iwin-app-coupon-coupons';
 
     var View = CollectionView.extend({
-        "langsSelected": langDefault,
+        "couponEditing": false,
+        "couponView":    null,
+        "relatedModel":  CouponModel,
 
-        "couponTypes": null,
-
-        "relatedModel": CouponModel,
-
-        "modelBinder": undefined,
-        "template":    templating.get(viewId),
+        "template": templating.get(viewId),
 
         "initialize": function () {
-            this.modelBinder = new Backbone.ModelBinder();
-
-            this.model.on('change:type', this.render, this);
-
-            this.couponTypes = new CouponTypeCollection();
-            this.couponTypes.on('sync', this.render, this);
-            this.couponTypes.fetch();
+            this.model.on('sync', this.render, this);
 
             CollectionView.prototype.initialize.apply(this, arguments);
         },
 
         "events": {
-            "txtinput .limited-length": 'limitLength',
-            "click .tabset a":          'selectTab',
+            "click .btn-add":    'createCoupon',
+            "click .btn-cancel": 'createCancel',
         },
 
         "render": function () {
-            this.$el.find('.select2').select2('destroy');
-
             this.$el.html(this.template(this.model, {
-                "types":         this.couponTypes,
-                "langs":         langs,
-                "langsDef":      langDefault,
-                "langsSelected": this.langsSelected,
+                "couponEditing": this.couponEditing,
             }));
 
-            this.$el.find('.select2').select2({
-                "minimumResultsForSearch": -1,
-                "containerCssClass":       function () {
-                    return $(this).attr('class');
-                },
-            });
+            if (this.couponEditing) {
+                this.couponView.setElement(this.$el.find('.coupon-holder'));
+                this.couponView.render();
+            }
 
-            this.$el.find('.date-field').datepicker({
-                "dateFormat": 'yy-mm-dd',
-                "onSelect":   function () {
-                    $(this).trigger('change');
-                }
-            });
-
-            var bindings = _.merge({}, Backbone.ModelBinder.createDefaultBindings(this.el, 'name'), {
-                "type": {
-                    "selector":  "[name=type]",
-                    "converter": _.bind(function (direction, value) {
-                        return direction === 'ModelToView' ?
-                            (value ? value.id : null) :
-                            this.couponTypes.get(value);
-                    }, this),
-                },
-            });
-            this.modelBinder.bind(this.model.get('list[0]'), this.el, bindings);
             this.delegateEvents();
 
-            this.$el.find('.limited-length').trigger('txtinput');
             return this;
         },
 
-        "selectTab": function (e) {
+        "createCoupon": function (e) {
             e.preventDefault();
-            var obj = $(e.currentTarget);
 
-            this.langsSelected = obj.data('lang');
+            var model = new CouponModel();
+            this.model.get('list').add(model);
+
+            if (this.couponView) {
+                throw 'Wrong view';
+            }
+
+            this.couponView = new CouponEditView({
+                "model": model,
+            });
+
+            this.couponEditing = true;
+
             this.render();
         },
+        "createCancel": function (e) {
+            e.preventDefault();
 
-        "limitLength": function (e) {
-            var obj = $(e.currentTarget),
-                maxlen = obj.data('maxlength'),
-                slen = obj.val().length;
-            if (slen > maxlen) {
-                slen = maxlen;
-                obj.val(obj.val().substr(0, slen));
+            if (!this.couponView) {
+                throw 'Wrong view';
             }
-            var len = '' + slen + '/' + maxlen;
-            obj.closest('.value-box').find('.progress').text(len);
+
+            var model = this.couponView.model;
+            this.model.get('list').remove(model);
+
+            this.couponView.remove();
+            this.couponView = null;
+
+            this.couponEditing = false;
+
+            this.render();
         },
     });
 

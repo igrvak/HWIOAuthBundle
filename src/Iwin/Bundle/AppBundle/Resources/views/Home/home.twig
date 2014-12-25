@@ -6,6 +6,43 @@
   Create Free
 {% endblock %}
 
+{% block pageBenefits %}
+  <section class="benefits">
+    <ul class="benefits__list">
+      <li>
+        <div class="icon">
+          <img src="{{ asset('bundles/iwinapp/img/old/ico12.png') }}" height="30" width="30" alt="">
+        </div>
+        <div class="block">A large base of potential buyers</div>
+      </li>
+      <li>
+        <div class="icon">
+          <img src="{{ asset('bundles/iwinapp/img/old/ico13.png') }}" height="30" width="30" alt="">
+        </div>
+        <div class="block">Different ways to promote your ad</div>
+      </li>
+      <li>
+        <div class="icon">
+          <img src="{{ asset('bundles/iwinapp/img/old/ico14.png') }}" height="30" width="30" alt="">
+        </div>
+        <div class="block">Guarantee of service quality</div>
+      </li>
+    </ul>
+    <div class="benefits__descr open-close">
+      <div class="slide">
+        <div class="holder">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, velit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dignissimos nemo labore porro. Excepturi consectetur sapiente porro, dicta necessitatibus debitis.</p>
+        </div>
+      </div>
+      <a href="#" class="opener">
+        <span>All benefits you get</span>
+        <span>Collapse</span>
+      </a>
+    </div>
+  </section>
+{% endblock %}
+
 {% block page %}
   <div id="page_target">
     <div class="create-content tabs">
@@ -17,41 +54,7 @@
       <div class="tab-content">
         <div id="ad">
           <div class="create-ad">
-            <section class="benefits">
-              <ul class="benefits__list">
-                <li>
-                  <div class="icon">
-                    <img src="{{ asset('bundles/iwinapp/img/old/ico12.png') }}" height="30" width="30" alt="">
-                  </div>
-                  <div class="block">A large base of potential buyers</div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <img src="{{ asset('bundles/iwinapp/img/old/ico13.png') }}" height="30" width="30" alt="">
-                  </div>
-                  <div class="block">Different ways to promote your ad</div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <img src="{{ asset('bundles/iwinapp/img/old/ico14.png') }}" height="30" width="30" alt="">
-                  </div>
-                  <div class="block">Guarantee of service quality</div>
-                </li>
-              </ul>
-              <div class="benefits__descr open-close">
-                <div class="slide">
-                  <div class="holder">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, velit.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dignissimos nemo labore porro. Excepturi consectetur sapiente porro, dicta necessitatibus debitis.</p>
-                  </div>
-                </div>
-                <a href="#" class="opener">
-                  <span>All benefits you get</span>
-                  <span>Collapse</span>
-                </a>
-              </div>
-            </section>
-
+            {{ block('pageBenefits') }}
             <div class="advertmodel-container"></div>
           </div>
         </div>
@@ -68,11 +71,7 @@
   {# @formatter:off #}{% raw %}
   <script type="text/x-twig-template" data-id="iwin-advert-advert">
     <section class="main-info">
-      <h2 class="heading">Coupons</h2>
-
-      <section class="coupon-create">
-        <div class="coupon-holder"></div>
-      </section>
+      <div class="coupon-holder"></div>
     </section>
 
     <section class="main-info">
@@ -87,6 +86,25 @@
 
       <div class="videos-container"></div>
     </section>
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-app-coupon-coupons">
+    {% if not couponEditing %}
+      <section class="coupon-start">
+        <h2 class="heading">Coupons</h2>
+        <div class="holder">
+          <div class="block">
+            <span class="sub-title">Didn’t add any coupons yet?</span>
+            <p>Don’t miss the chance to increase a number of customers!</p>
+          </div>
+          <a href="#add" class="btn-add">Add coupon</a>
+        </div>
+      </section>
+    {% else %}
+      <h2 class="heading">Coupon editing</h2>
+      <section class="coupon-create">
+        <div class="coupon-holder"></div>
+      </section>
+    {% endif %}
   </script>
   <script type="text/x-twig-template" data-id="iwin-app-coupon-coupon">
     <div class="two-columns-input">
@@ -107,23 +125,25 @@
         </div>
       </label>
     </div>
-    <div class="two-columns-input" style="display: none;">
-      <label>
-        <div class="caption">Discount</div>
-        <div class="value-box">
-          <input type="text">
-        </div>
-      </label>
-      <label>
-        <div class="caption"></div>
-        <div class="value-box">
-          <select class="select2">
-            <option>%</option>
-            <option>$</option>
-          </select>
-        </div>
-      </label>
-    </div>
+    {% if coupon.type.has_discount %}
+      <div class="two-columns-input">
+        <label>
+          <div class="caption">Discount</div>
+          <div class="value-box">
+            <input type="text" name="discount.amount" />
+          </div>
+        </label>
+        <label>
+          <div class="caption"></div>
+          <div class="value-box">
+            <select class="select2" name="discount.isAbsolute">
+              <option value="0">%</option>
+              <option value="1">$</option>
+            </select>
+          </div>
+        </label>
+      </div>
+    {% endif %}
 
     <div class="inner-tabs">
       <ul class="tabset">
@@ -157,6 +177,7 @@
     </div>
     <div class="value-box">
       <button type="submit" class="btn">Create</button>
+      <button type="submit" class="btn btn-cancel">Cancel</button>
     </div>
   </script>
   <script type="text/x-twig-template" data-id="iwin-app-images-gallery">

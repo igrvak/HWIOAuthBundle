@@ -5,12 +5,16 @@
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
         shim:          {
-            'facebook': {
+            'facebook-api': {
                 exports: 'FB'
+            },
+            'linkedin-api': {
+                exports: 'IN'
             }
         },
         paths:         {
-            'facebook': '//connect.facebook.net/en_US/all'
+            'facebook-api': '//connect.facebook.net/en_US/all',
+            'linkedin-api': '//platform.linkedin.com/in.js?async=true'
         }
     });
     requirejs([

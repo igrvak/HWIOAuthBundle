@@ -18,22 +18,22 @@ requirejs([
 
     $('#twitter').on('click', function (event) {
         event.preventDefault();
-        hello.login('twitter');
+        hello.login('twitter', {display: 'none'});
     });
 
     $('#g').on('click', function (event) {
         event.preventDefault();
-        hello.login('google');
+        hello.login('google', {display: 'none'});
     });
 
     $('#linkedin').on('click', function (event) {
         event.preventDefault();
-        hello.login('linkedin');
+        hello.login('linkedin', {display: 'none'});
     });
 
     $('#facebook').on('click', function (event) {
         event.preventDefault();
-        hello.login('facebook');
+        hello.login('facebook', {display: 'none'});
     });
 
     //hello.on('auth.login', function (r) {

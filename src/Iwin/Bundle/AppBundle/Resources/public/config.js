@@ -4,13 +4,9 @@
     requirejs.config({
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
-        "shim":        {
-            'facebook': {
-                exports: 'FB',
-            },
-        },
         "paths":       {
-            'facebook': '//connect.facebook.net/en_US/all',
+            'facebook-api': '//connect.facebook.net/en_US/all',
+            'linkedin-api': '//platform.linkedin.com/in.js?async=true',
         },
         "map":         {
             "*":           {
@@ -19,6 +15,14 @@
             },
             "config/twig": {
                 "twig": "twig",
+            },
+        },
+        "shim":        {
+            'facebook-api': {
+                exports: 'FB',
+            },
+            'linkedin-api': {
+                exports: 'IN',
             },
         },
     });

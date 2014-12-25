@@ -77,7 +77,7 @@
     <section class="main-info">
       <h2 class="heading">Gallery</h2>
 
-      <p style="text-align: center">You can sort images by simply draggin them. - правда работает</p>
+      <div class="message-tip">You can sort images by simply dragging them. - правда работает</div>
       <div class="gallery-container"></div>
     </section>
 
@@ -185,7 +185,7 @@
         {% for i, image in list.toArray() %}
           <li class="image" data-ordinal="{{ i }}">
             <img src="{{ image.uri }}" alt="{{ image.hash }}"/>
-            <a href="#remove" class="remove"></a>
+            <a href="#remove" class="btn-location-remove remove"></a>
           </li>
         {% endfor %}
         <li>
@@ -198,12 +198,12 @@
         {% for i, video in _context.list.toArray() %}
           <li data-ordinal="{{ i }}">
             <input type="text" value="{{ video.uri }}" name="list[{{ i }}].uri" />
-            <button class="remove">Удалить</button>
+            <a href="#remove" class="btn-location-remove remove"></a>
           </li>
         {% endfor %}
         <li>
           <input type="text" value="" class="new"/>
-          <button class="add">Добавить</button>
+          <button class="btn add">Добавить</button>
         </li>
       </ul>
   </script>

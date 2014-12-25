@@ -6,22 +6,20 @@
   <div id="wrapper">
     <header id="header" class="header">
       <strong class="logo"><a href="{{ path('home') }}">{{ var.title }}</a></strong>
-      <a href="#user_profile" class="account authorized">
-        <span class="account__availability online"></span>
-        <span class="account__inbox">0</span>
+      <a href="#user_profile" class="account">
 				<span class="account__avatar">
-					<img src="{{ asset('bundles/iwinapp/img/old/img01.jpg') }}" alt="" width="49" height="50">
+					<img src="{{ asset('bundles/iwinapp/img/old/ico01.png') }}" height="17" width="17" alt="">
 				</span>
-        <span class="account__name"><span>Daniela</span></span>
+        <span class="account__name"><span>{{ 'user.login'|trans }}</span></span>
       </a>
-      <a href="#send_invite" class="btn wide square">Send invite</a>
+      <a href="#send_invite" class="btn wide square">{{ 'main.sendinvite'|trans }}</a>
       <nav id="sections">
         {% block topmenu %}
           {{ knp_menu_render('iwin.main') }}
         {% endblock %}
       </nav>
       <div class="bottom-block">
-        <a href="#need_help" class="support-link">Need help?</a>
+        <a href="#need_help" class="support-link">{{ 'main.needhelp'|trans }}</a>
         <ul class="lang">
           {% for lang in var.langs %}
             <li class="{{ app.request.locale == lang?'active':'' }}"><a href="{{ var.langlinks[lang] }}">{{ lang|upper }}</a></li>

@@ -25,5 +25,6 @@ requirejs([
 
         'el': cont.find('.advertmodel-container'),
     });
+    console.log(view);
     view.render();
 });

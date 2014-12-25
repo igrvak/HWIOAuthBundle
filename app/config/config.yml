@@ -133,3 +133,9 @@ oneup_uploader:
     gallery:
       frontend: dropzone
       enable_progress: true
+
+# Multilanguage site
+jms_i18n_routing:
+  default_locale: %locale%
+  locales: %locales_supported%
+  strategy: prefix

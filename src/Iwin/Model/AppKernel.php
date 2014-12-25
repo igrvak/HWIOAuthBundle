@@ -43,6 +43,7 @@ class AppKernel extends Kernel
 
             new \JMS\AopBundle\JMSAopBundle(),
             new \JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new \JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new \JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),
 

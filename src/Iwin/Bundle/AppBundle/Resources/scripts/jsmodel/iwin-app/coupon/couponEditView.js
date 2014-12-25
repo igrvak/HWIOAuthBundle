@@ -12,7 +12,7 @@ define([
     'use strict';
 
     var viewId = 'iwin-app-coupon-coupon',
-        langDefault = window.$lang_default,
+        langDefault = $('html').attr('lang'),
         langs = window.$langs;
 
     var View = Backbone.View.extend({

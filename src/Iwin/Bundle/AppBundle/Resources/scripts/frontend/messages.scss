@@ -1,0 +1,52 @@
+.message-tip {
+	background: #f5fff2;
+	border: 2px solid #c0dbb8;
+	line-height: 24px;
+	border-radius: 2px;
+	padding: 14px 18px 13px 56px;
+	position: relative;
+	margin: 0 0 7px;
+	p {margin: 0;}
+	&:before {
+		content: "";
+		position: absolute;
+		top: 18px;
+		left: 20px;
+		background: url('@IwinAppBundle/img/old/messages.png') no-repeat -17px 0;
+		width: 16px;
+		height: 16px;
+	}
+	.login-popup & {
+		line-height: 18px;
+		padding-left: 36px;
+		&:before {
+			top: 15px;
+			left: 12px;
+		}
+	}
+	.tip-close {
+		position: absolute;
+		text-indent: -9999px;
+		top: 18px;
+		right: 20px;
+		width: 10px;
+		height: 10px;
+		background: url('@IwinAppBundle/img/old/messages.png') no-repeat -34px 0;
+	}
+	&.closable {
+		padding-right: 63px;
+	}
+}
+.message-error {
+	@extend .message-tip;
+	border-color: #ffbaa5;
+	background: #ffeee9;
+	&:before {background-position: 0 0;}
+}
+.brv-required {
+	&:after {
+		content: " *";
+		font-weight: bold;
+		color: #DB3939;
+	}
+}

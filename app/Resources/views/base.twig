@@ -1,54 +1,50 @@
-{% spaceless %}
+{# @formatter:off #}{% spaceless %}
 {% block globalhook_break__root %}
-  <!DOCTYPE html>
-  <html lang="{{ app.request.locale }}" {% block html_attributes %}class="no-js"{% endblock %}>
-  <head>
-    {% spaceless %}
-      {% block baseHead %}
-        <title>{% spaceless %}{% block titleBase %}{{ var.title }}: {% spaceless %}{% block title %}{% endblock %}{% endspaceless %}{% endblock %}{% endspaceless %}</title>
-        <script>
-          window.$assets_version = '{{ assets_version }}';
-          window.$langs = {
-            "en": "English",
-            "ru": "Русский",
-            "sp": "Español",
-          };
-          window.$lang_default = 'en';
-        </script>
-
-        {% block baseIcon %}
-          <link rel="icon" type="image/png" href="{{ asset('bundles/iwinapp/img/logo.png') }}">
-        {% endblock %}
-
-        {% block baseScripts %}
-          {{ require_js_initialize() }}
-          <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-          <script type="text/javascript"
-              src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-          <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
-          {% for key in ['IwinAppBundle'] %}
-            <script src="{{ path('bazinga_jstranslation_js', {'domain': key}) }}"></script>
-          {% endfor %}
-
-          <script src="/bundles/iwinapp/config.js"></script>
-        {% endblock %}
-
-        {% block baseMetatags %}
-          <meta name="robots" content="noindex">
-        {% endblock %}
-
-        {{ webapp_head_init() }}
-        {% block head %}{% endblock %}
-      {% endblock %}
-    {% endspaceless %}
-  </head>
-  <body {% block body_attributes %}{% endblock %}>
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" {% block html_attributes %}class="no-js"{% endblock %}>
+<head>
   {% spaceless %}
-    {% block basePage %}
-      {% block page %}{% endblock %}
+    {% block baseHead %}
+      <title>{% spaceless %}{% block titleBase %}{{ var.title }}: {% spaceless %}{% block title %}{% endblock %}{% endspaceless %}{% endblock %}{% endspaceless %}</title>
+      <script>window.$assets_version = '{{ assets_version }}';</script>
+      <script>window.$langs = {"en": "English","ru": "Русский","sp": "Español",};</script>
+
+      {% block baseIcon %}
+        <link rel="icon" type="image/png" href="{{ asset('bundles/iwinapp/img/logo.png') }}">
+      {% endblock %}
+
+      {% block baseScripts %}
+        {{ require_js_initialize() }}
+        <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script type="text/javascript"
+            src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+        <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+        {% for key in ['IwinAppBundle'] %}
+          <script src="{{ path('bazinga_jstranslation_js', {'domain': key}) }}"></script>
+        {% endfor %}
+
+        <script src="/bundles/iwinapp/config.js"></script>
+      {% endblock %}
+
+      {% block baseMetatags %}
+        <meta name="robots" content="noindex">
+        {% for lang in var.langs if lang != app.request.locale %}
+          <link rel="alternate" hreflang="{{ lang }}" href="{{ var.langlinks[lang] }}"/>
+        {% endfor %}
+      {% endblock %}
+
+      {{ webapp_head_init() }}
+      {% block head %}{% endblock %}
     {% endblock %}
   {% endspaceless %}
-  </body>
-  </html>
+</head>
+<body {% block body_attributes %}{% endblock %}>
+{% spaceless %}
+  {% block basePage %}
+    {% block page %}{% endblock %}
+  {% endblock %}
+{% endspaceless %}
+</body>
+</html>
 {% endblock %}
 {% endspaceless %}

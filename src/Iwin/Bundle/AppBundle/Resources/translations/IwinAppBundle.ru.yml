@@ -1,7 +1,9 @@
-footer:
-  development_and_design: "Дизайн и разработка"
-  brander:  "Студия Brander"
-  sitename: "IWin"
-home:
-  title: "Главная страница"
-  text:  "Тестовый проект"
+menu:
+  advert: "Объявления"
+  services: "Услуги"
+  advices: "Консультации"
+user:
+  login: "Вход"
+main:
+  sendinvite: "Инвайт"
+  needhelp: "Нужна помощь?"

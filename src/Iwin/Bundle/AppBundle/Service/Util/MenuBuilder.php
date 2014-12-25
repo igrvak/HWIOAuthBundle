@@ -23,9 +23,15 @@ class MenuBuilder
     ) {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('home.title', [
+        $menu->addChild('Classified Ads', [
             'route' => 'home',
-        ])->setExtra('translation_domain', 'IwinAppBundle');
+        ]);
+        $menu->addChild('Qual Services', [
+            'route' => 'home',
+        ]);
+        $menu->addChild('Trusty Advices', [
+            'route' => 'home',
+        ]);
 
         return $menu;
     }

@@ -18,13 +18,37 @@ class FileImage extends File
      * @ORM\Column(type="integer")
      * @var string
      */
-    protected $width;
-
+    protected $height;
     /**
      * @ORM\Column(type="integer")
      * @var string
      */
-    protected $height;
+    protected $ordinal;
+    /**
+     * @ORM\Column(type="integer")
+     * @var string
+     */
+    protected $width;
+
+    // -- Accessors ---------------------------------------
+
+    /**
+     * @return string
+     */
+    public function getOrdinal()
+    {
+        return $this->ordinal;
+    }
+
+    /**
+     * @param string $ordinal
+     * @return $this
+     */
+    public function setOrdinal($ordinal)
+    {
+        $this->ordinal = $ordinal;
+        return $this;
+    }
 
     /**
      * @return string

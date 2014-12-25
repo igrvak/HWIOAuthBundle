@@ -12,7 +12,7 @@ parameters:
   mailer_password:  ~
   mailer_port:      587
 
-  app.title: "IWin"
+  app.title: "iWant iNeed"
   app.name:  "iwin"
   app.defaulthost: %app.name%.test
   app.email.support: support@%app.defaulthost%

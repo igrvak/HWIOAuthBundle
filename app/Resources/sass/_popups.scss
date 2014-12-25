@@ -1,0 +1,174 @@
+.lightbox {
+	background: #fff;
+	.heading {
+		position: relative;
+		background: #404040;
+		text-align: center;
+		padding: 24px 83px 24px;
+		h3 {
+			margin: 0;
+			font-weight: 300;
+			font-size: 22px;
+			line-height: 24px;
+			color: #fff;
+		}
+	}
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 83px;
+		@include anim;
+		text-indent: -9999px;
+		&:hover {background: rgba(0,0,0,.1);}
+		&:after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background: url('../../images/frontend/sprite.png') no-repeat -212px -156px;
+			width: 15px;
+			height: 15px;
+			margin: -7px 0 0 -8px;
+		}
+	}
+	.actions {
+		padding: 20px;
+		text-align: center;
+		& > * {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 36px;
+			&:first-child {margin-left: 0;}
+		}
+		[class^="btn"] {vertical-align: middle;}
+	}
+	.link-cancel {
+		display: inline-block;
+		vertical-align: middle;
+		text-decoration: none;
+		color: $col1;
+		&:hover {text-decoration: underline;}
+	}
+}
+.popup-category {
+	width: 800px;
+	.column {
+		background: #f2f2f2;
+		height: 400px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		float: left;
+		width: 33.33%;
+		position: relative;
+		&.disabled {
+			pointer-events: none;
+			&:before {
+				content: "";
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background: rgba(0,0,0,.3);
+			}
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 2px;
+			background: rgba(0,0,0,.15);
+		}
+		&:first-child:after {display: none;}
+		ul {
+			@extend %list-reset;
+			padding: 24px 0;
+		}
+		a {
+			display: block;
+			outline: none;
+			padding: 12px 28px 12px 43px;
+			color: $col1;
+			text-transform: uppercase;
+			font-size: 12px;
+			@include anim($dur: .1s);
+			text-decoration: none;
+			position: relative;
+		}
+		li {
+			&.active a,
+			a:hover {
+				background: #00adc7;
+				color: #fff;
+				&:after {
+					content: "";
+					position: absolute;
+					top: 50%;
+					right: 10px;
+					background: url('../../images/frontend/sprite.png') no-repeat -297px -93px;
+					width: 12px;
+					height: 27px;
+					margin-top: -14px;
+				}
+			}
+		}
+		&.first-level a {
+			padding-left: 40px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+		&.second-level {background: #e7e7e7;}
+		&.third-level {
+			background: #d7d7d7;
+			a:hover:after {display: none;}
+		}
+	}
+	.link-back {
+		left: 42px;
+		background: darken(#404040,3%);
+		&:hover {background: lighten(#404040,3%);}
+		&:active {background: darken(#404040,5%);}
+	}
+}
+.choose-location {
+	background: #f2f2f2;
+	position: relative;
+	@extend %layout;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		border-top: 2px solid rgba(0,0,0,.15);
+	}
+	.map-holder {
+		float: left;
+		position: relative;
+		width: 480px;
+	}
+	.choose-form {
+		float: left;
+		width: 318-40px;
+		padding: 17px 20px 0;
+	}
+	textarea {height: 84px;}
+	.actions {
+		text-align: left;
+		padding: 0;
+	}
+	.message-tip {
+		position: absolute;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+	}
+}

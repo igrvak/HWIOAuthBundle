@@ -1,0 +1,11 @@
+parameters:
+  iwin_advert.util.jsmodelprovider.class:
+    Iwin\Bundle\AdvertBundle\Service\Util\JsmodelProvider
+
+services:
+  iwin_advert.util.jsmodelprovider:
+    class: %iwin_advert.util.jsmodelprovider.class%
+    arguments:
+      - %iwin_advert.jsmodeldir%
+    tags:
+      - { name: werkint.requirejs.jsmodelprovider }

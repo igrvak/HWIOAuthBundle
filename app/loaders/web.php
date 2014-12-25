@@ -16,19 +16,17 @@ namespace {
     require_once __DIR__ . '/../bootstrap.php.cache';
 
     $kernel = new AppKernel(SYMFONY_ENV, explode('_', SYMFONY_ENV)[0] == 'dev');
+    $debug = $kernel->isDebug();
 
-    if (!$kernel->isDebug()) {
+    if (!$debug) {
         $kernel = new AppCache($kernel);
         $loader = new ApcClassLoader(SYMFONY_APPNAME . '_' . SYMFONY_ENV, $loader);
         $loader->register(true);
         $kern = $kernel->getKernel();
         /** @var AppKernel $kern */
         $kern->loadClassCache();
-    }
-
-    // TODO: включить всегда
-    $debug = $kernel->isDebug();
-    if ($debug) {
+    } elseif ($debug) {
+        // TODO: включить всегда
         Debug::enable();
     }
 

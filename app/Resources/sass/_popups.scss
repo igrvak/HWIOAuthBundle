@@ -27,7 +27,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			background: url('../../images/frontend/sprite.png') no-repeat -212px -156px;
+			background: url('@IwinAppBundle/img/old/sprite.png') no-repeat -212px -156px;
 			width: 15px;
 			height: 15px;
 			margin: -7px 0 0 -8px;
@@ -111,7 +111,7 @@
 					position: absolute;
 					top: 50%;
 					right: 10px;
-					background: url('../../images/frontend/sprite.png') no-repeat -297px -93px;
+					background: url('@IwinAppBundle/img/old/sprite.png') no-repeat -297px -93px;
 					width: 12px;
 					height: 27px;
 					margin-top: -14px;

@@ -7,7 +7,6 @@ namespace Iwin\Bundle\AppBundle\Entity;
  *
  * @author Vladimir Odesskij <odesskij1992@gmail.com>
  */
-class FileImageRepository extends FileRepository implements
-    FileImageRepositoryInterface
+class FileImageRepository extends FileRepository
 {
 }

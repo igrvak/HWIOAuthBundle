@@ -38,7 +38,7 @@ class IwinAppExtension extends AbstractExtension
      */
     public function __construct(
         array $vars,
-        Request $request,
+        Request $request = null,
         array $locales
     ) {
         $this->request = $request;

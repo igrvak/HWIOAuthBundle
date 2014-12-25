@@ -4,9 +4,10 @@
 define([
     'backbone',
     'iwin-app/util/basemodel',
+    'iwin-app/coupon/coupon',
     'iwin-app/coupon/couponCollection',
     './gallery',
-], function (Backbone, BaseModel, CouponCollection, GalleryModel) {
+], function (Backbone, BaseModel, Coupon, CouponCollection, GalleryModel) {
     'use strict';
 
     var Model = BaseModel.extend({
@@ -20,8 +21,8 @@ define([
             {
                 "type":              Backbone.HasMany,
                 "key":               'coupons',
-                "relatedModel":      CouponCollection.model,
-                "relatedColelction": CouponCollection,
+                "relatedModel":      Coupon,
+                "relatedCollection": CouponCollection,
             }, {
                 "type":         Backbone.HasOne,
                 "key":          'gallery',

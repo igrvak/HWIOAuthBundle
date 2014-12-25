@@ -1,9 +1,11 @@
 define([
     'backbone',
     'iwin-app/util/basemodel',
+    'iwin-app/videos/video',
     'iwin-app/videos/videoCollection',
+    'iwin-app/images/image',
     'iwin-app/images/imageCollection',
-], function (Backbone, BaseModel, VideoCollection, ImageCollection) {
+], function (Backbone, BaseModel, Video, VideoCollection, Image, ImageCollection) {
     'use strict';
 
     var Model = BaseModel.extend({
@@ -11,12 +13,12 @@ define([
             {
                 "type":              Backbone.HasMany,
                 "key":               'videos',
-                "relatedModel":      VideoCollection.model,
+                "relatedModel":      Video,
                 "relatedColelction": VideoCollection,
             }, {
                 "type":              Backbone.HasMany,
                 "key":               'images',
-                "relatedModel":      ImageCollection.model,
+                "relatedModel":      Image,
                 "relatedColelction": ImageCollection,
             },
         ],

@@ -1,5 +1,4 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Controller;
 
 use JMS\DiExtraBundle\Annotation as DI;

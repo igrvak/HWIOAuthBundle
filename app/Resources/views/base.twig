@@ -8,6 +8,12 @@
         <title>{% spaceless %}{% block titleBase %}{{ var.title }}: {% spaceless %}{% block title %}{% endblock %}{% endspaceless %}{% endblock %}{% endspaceless %}</title>
         <script>
           window.$assets_version = '{{ assets_version }}';
+          window.$langs = {
+            "en": "English",
+            "ru": "Русский",
+            "sp": "Español",
+          };
+          window.$lang_default = 'en';
         </script>
 
         {% block baseIcon %}

@@ -25,7 +25,11 @@ class AdvertController
                 'images' => [],
                 'videos' => [],
             ],
-            'coupons' => [],
+            'coupons' => [
+                [
+                    'hash'=>'test',
+                ],
+            ],
         ]));
     }
 }

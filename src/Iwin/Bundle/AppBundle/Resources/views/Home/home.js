@@ -1,14 +1,29 @@
 requirejs([
     'jquery',
     'underscore',
-    'dropzone'
-], function ($, _, Dropzone) {
+    'iwin-advert/advertModel',
+    'iwin-advert/advertView',
+    'json!/advertapi/__testadvert__',
+    'jquery/openclose',
+    'css!config/inner-tabs',
+    'domReady!',
+], function ($, _, AdvertModel, AdvertView, advertData) {
     'use strict';
 
-    var dropzone = new Dropzone('.upload', {url: $('.upload').attr('data-url')});
-    var uploads = [];
-    dropzone.on('success', function (event, data) {
-        uploads.push(data);
-        console.log(uploads);
+    var cont = $('#page_target');
+
+    cont.find('div.open-close').openClose({
+        activeClass: 'active',
+        opener:      '.opener',
+        slider:      '.slide',
+        animSpeed:   400,
+        effect:      'slide',
     });
+
+    var view = new AdvertView({
+        'model': new AdvertModel(advertData),
+
+        'el': cont.find('.advertmodel-container'),
+    });
+    view.render();
 });

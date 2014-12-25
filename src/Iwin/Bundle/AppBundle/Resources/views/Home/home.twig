@@ -3,12 +3,183 @@
 {% trans_default_domain "IwinAppBundle" %}
 
 {% block title %}
-  {{ 'home.title'|trans }}
+  Create Free
 {% endblock %}
 
 {% block page %}
-  <div>{{ 'home.text'|trans }}</div>
+  <div id="page_target">
+    <div class="create-content tabs">
+      <ul class="tabset">
+        <li class="active"><a href="#ad">AD</a></li>
+        <li><a href="#task">Task</a></li>
+        <li><a href="#profile">Profile</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="ad">
+          <div class="create-ad">
+            <section class="benefits">
+              <ul class="benefits__list">
+                <li>
+                  <div class="icon">
+                    <img src="{{ asset('bundles/iwinapp/img/old/ico12.png') }}" height="30" width="30" alt="">
+                  </div>
+                  <div class="block">A large base of potential buyers</div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img src="{{ asset('bundles/iwinapp/img/old/ico13.png') }}" height="30" width="30" alt="">
+                  </div>
+                  <div class="block">Different ways to promote your ad</div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img src="{{ asset('bundles/iwinapp/img/old/ico14.png') }}" height="30" width="30" alt="">
+                  </div>
+                  <div class="block">Guarantee of service quality</div>
+                </li>
+              </ul>
+              <div class="benefits__descr open-close">
+                <div class="slide">
+                  <div class="holder">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, velit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dignissimos nemo labore porro. Excepturi consectetur sapiente porro, dicta necessitatibus debitis.</p>
+                  </div>
+                </div>
+                <a href="#" class="opener">
+                  <span>All benefits you get</span>
+                  <span>Collapse</span>
+                </a>
+              </div>
+            </section>
 
-  <div class="upload" style="height: 300px; width: 300px; background-color: rgb(100,100,100)" data-url="{{ oneup_uploader_endpoint('gallery') }}" >
+            <div class="advertmodel-container"></div>
+          </div>
+        </div>
+        <div id="task"></div>
+        <div id="profile"></div>
+      </div>
+    </div>
   </div>
+{% endblock %}
+
+{% block pageTemplates %}
+  {{ parent() }}
+
+  {# @formatter:off #}{% raw %}
+  <script type="text/x-twig-template" data-id="iwin-advert-advert">
+    <section class="main-info">
+      <h2 class="heading">Coupons</h2>
+
+      <section class="coupon-create">
+        <div class="coupon-holder"></div>
+      </section>
+    </section>
+
+    <section class="main-info">
+      <h2 class="heading">Gallery</h2>
+
+      <p style="text-align: center">You can sort images by simply draggin them. - правда работает</p>
+      <div class="gallery-container"></div>
+    </section>
+
+    <section class="videos">
+      <h2 class="heading">Videos</h2>
+
+      <div class="videos-container"></div>
+    </section>
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-app-coupon-coupon">
+    <div class="two-columns-input">
+      <label>
+        <div class="caption">Type of coupon</div>
+        <div class="value-box">
+          <select id="select1" class="select2">
+            <option>123</option>
+            <option>234</option>
+            <option>345</option>
+          </select>
+        </div>
+      </label>
+      <label>
+        <div class="caption">Expires</div>
+        <div class="value-box">
+          <input type="text" class="date-field" id="calendar1">
+        </div>
+      </label>
+    </div>
+    <div class="two-columns-input">
+      <label>
+        <div class="caption">Discount</div>
+        <div class="value-box">
+          <input type="text" id="input1">
+        </div>
+      </label>
+      <label>
+        <div class="caption"></div>
+        <div class="value-box">
+          <select id="select1" class="select2">
+            <option>%</option>
+            <option>$</option>
+          </select>
+        </div>
+      </label>
+    </div>
+
+    <div class="inner-tabs" data-current="1">
+      <ul class="tabset">
+        <li class="active"><a href="#inner-tab1" class="active">English <span>(default)</span></a></li>
+        <li><a href="#inner-tab2">Русский</a></li>
+        <li><a href="#inner-tab3">Español</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="inner-tab1">
+          <div class="caption">
+            <label for="input2" class="title">Name</label>
+          </div>
+          <div class="value-box">
+            <div class="progress">0/100</div>
+            <input type="text" id="input2">
+          </div>
+          <div class="caption">
+            <label for="textarea1">Caption</label>
+          </div>
+          <div class="value-box">
+            <div class="progress">0/200</div>
+            <textarea id="textarea1" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="value-box">
+      <button type="submit" class="btn">Create</button>
+    </div>
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-app-images-gallery">
+      <ul class="images {{ list.length>0?'':'drop-maximized' }}">
+        {% for i, image in list.toArray() %}
+          <li class="image" data-ordinal="{{ i }}">
+            <img src="{{ image.uri }}" alt="{{ image.hash }}"/>
+            <button class="remove">Remove</button>
+          </li>
+        {% endfor %}
+        <li>
+          <img class="drop" />
+        </li>
+      </ul>
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-app-videos-videos">
+      <ul>
+        {% for i, video in _context.list.toArray() %}
+          <li data-ordinal="{{ i }}">
+            <input type="text" value="{{ video.uri }}" name="list[{{ i }}].uri" />
+            <button class="remove">Удалить</button>
+          </li>
+        {% endfor %}
+        <li>
+          <input type="text" value="" class="new"/>
+          <button class="add">Добавить</button>
+        </li>
+      </ul>
+  </script>
+  {% endraw %}{# @formatter:on #}
 {% endblock %}

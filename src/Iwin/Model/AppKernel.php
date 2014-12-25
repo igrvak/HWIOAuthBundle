@@ -54,6 +54,7 @@ class AppKernel extends Kernel
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new \Hautelook\AliceBundle\HautelookAliceBundle(),
             new \Oneup\UploaderBundle\OneupUploaderBundle(),
+            new \FOS\UserBundle\FOSUserBundle(),
         ]);
 
         // Debug
@@ -76,8 +77,9 @@ class AppKernel extends Kernel
 
         // Основные
         $addBundles([
+            new \Iwin\Bundle\AdvertBundle\IwinAdvertBundle(),
+            new \Iwin\Bundle\TaskBundle\IwinTaskBundle(),
             new \Iwin\Bundle\AppBundle\IwinAppBundle(),
-            new \FOS\UserBundle\FOSUserBundle(),
         ]);
 
         $addBundles([

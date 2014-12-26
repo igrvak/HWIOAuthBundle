@@ -38,6 +38,11 @@
         "doctrine/orm":                        "*",
         "stof/doctrine-extensions-bundle":     "*",
 
+        "hautelook/alice-bundle":              "*",
+        "odesskij/generator-bundle":           "3.0.*@dev",
+        "oneup/uploader-bundle":               "~1.3",
+        "intervention/image":                  "*",
+
         "friendsofsymfony/jsrouting-bundle":    "*",
         "friendsofsymfony/rest-bundle":         "1.5.*@dev",
         "incenteev/composer-parameter-handler": "*",
@@ -53,7 +58,7 @@
         "twig/twig":                            "*",
         "willdurand/js-translation-bundle":     "*",
         "friendsofsymfony/user-bundle":         "~2.0@dev",
-        
+
         "werkint/object-routing":         "dev-master",
         "werkint/framework-extra-bundle": "0.1.*-dev",
         "werkint/form-bundle":            "0.1.*-dev",

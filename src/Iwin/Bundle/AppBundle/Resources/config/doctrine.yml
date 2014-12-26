@@ -1,0 +1,17 @@
+parameters:
+  iwin_app.repo.file.class:
+    Iwin\Bundle\AppBundle\Entity\FileRepository
+  iwin_app.repo.image.class:
+    Iwin\Bundle\AppBundle\Entity\FileImageRepository
+
+services:
+  iwin_app.repo.file:
+    class:            %iwin_app.repo.file.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinAppBundle:File]
+  iwin_app.repo.image:
+    class:            %iwin_app.repo.image.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinAppBundle:FileImage]

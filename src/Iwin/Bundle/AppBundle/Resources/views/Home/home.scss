@@ -1,0 +1,29 @@
+#page_target {
+  input {
+    display: inline-block;
+    margin: .5em;
+    width: 400px;
+  }
+
+  .gallery-container {
+    li {
+      display: inline-block;
+      margin: .5em;
+      vertical-align: top;
+      border: solid 2px black;
+      width: 150px;
+      height: 150px;
+      img {
+        max-width: 150px;
+        max-height: 150px;
+      }
+
+      .drop {
+        cursor: pointer;
+        background: #ccc;
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+//               _      _           
+//    ____ ___  (_)  __(_)___  _____
+//   / __ `__ \/ / |/_/ / __ \/ ___/
+//  / / / / / / />  </ / / / (__  ) 
+// /_/ /_/ /_/_/_/|_/_/_/ /_/____/  
+//                                 
+
+@mixin anim($params: all, $dur: .15s, $type: ease-in-out, $delay: 0s) {
+	-webkit-transition: $params $dur $type $delay;
+	transition: $params $dur $type $delay;
+}
+@mixin anim-param($params...) {
+	-webkit-transition-property: $params;
+	transition-property: $params;
+}
+@mixin notrans {
+	-webkit-transition: none;
+	transition: none;
+}

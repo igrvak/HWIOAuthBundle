@@ -4,6 +4,14 @@
     requirejs.config({
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
+        shim:          {
+            'facebook': {
+                exports: 'FB'
+            }
+        },
+        paths:         {
+            'facebook': '//connect.facebook.net/en_US/all'
+        }
     });
     requirejs([
         'jquery',

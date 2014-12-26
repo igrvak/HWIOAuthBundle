@@ -1,0 +1,18 @@
+{% extends '::page.twig' %}
+
+{% trans_default_domain "IwinAppBundle" %}
+
+{% block title %}
+  {{ 'home.title'|trans }}
+{% endblock %}
+
+{% block page %}
+  <div>
+    <div id="fb-root"></div>
+    <script>
+
+    </script>
+
+    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+  </div>
+{% endblock %}

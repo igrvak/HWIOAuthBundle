@@ -1,10 +1,9 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Iwin\Bundle\AppBundle\Service\Util\IdGenerator;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * File Entity.
@@ -17,61 +16,38 @@ use Iwin\Bundle\AppBundle\Service\Util\IdGenerator;
  */
 class File
 {
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->hash = IdGenerator::getId();
-    }
-
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @var int
-     */
-    protected $id;
-
-    /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="guid")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @Serializer\Type("string")
      * @var string
      */
-    protected $hash;
-
+    protected $id;
     /**
      * @ORM\Column(type="string")
      * @var string
      */
     protected $mimeType;
-
     /**
      * @ORM\Column(type="string")
      * @var string
      */
     protected $name;
-
     /**
      * @ORM\Column(type="string")
      * @var string
      */
     protected $storage;
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    // -- Accessors ---------------------------------------
 
     /**
      * @return string
      */
-    public function getHash()
+    public function getId()
     {
-        return $this->hash;
+        return $this->id;
     }
 
     /**

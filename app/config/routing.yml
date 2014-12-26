@@ -10,6 +10,12 @@ iwin_advert:
   options:
     expose: true
 
+iwin_qual:
+  resource: "@IwinQualBundle/Resources/config/routing.yml"
+  prefix: /
+  options:
+    expose: true
+
 fos_js_routing:
   resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
@@ -18,8 +24,6 @@ _bazinga_jstranslation:
 
 werkint_framework_extra:
   resource: "@WerkintFrameworkExtraBundle/Resources/config/routing.yml"
-  options:
-    expose: true
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

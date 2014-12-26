@@ -6,6 +6,7 @@
   {% spaceless %}
     {% block baseHead %}
       <title>{% spaceless %}{% block titleBase %}{{ var.title }}: {% spaceless %}{% block title %}{% endblock %}{% endspaceless %}{% endblock %}{% endspaceless %}</title>
+      <script>window.$debug = {{ app.debug?'true':'false' }};</script>
       <script>window.$assets_version = '{{ assets_version }}';</script>
       <script>window.$langs = {"en": "English","ru": "Русский","sp": "Español",};</script>
 

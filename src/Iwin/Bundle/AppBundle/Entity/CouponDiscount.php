@@ -16,9 +16,9 @@ class CouponDiscount
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @var int
+     * @ORM\Column(type="guid")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @var string
      */
     protected $id;
     /**
@@ -40,7 +40,7 @@ class CouponDiscount
     // -- Accessors ---------------------------------------
 
     /**
-     * @return int
+     * @return string
      */
     public function getId()
     {

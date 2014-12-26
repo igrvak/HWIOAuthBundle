@@ -60,6 +60,7 @@
         "twig/extensions":                      "*",
         "twig/twig":                            "*",
         "willdurand/js-translation-bundle":     "*",
+        "nelmio/api-doc-bundle":                "*",
 
         "werkint/form-bundle":                  "0.1.*-dev",
         "werkint/framework-extra-bundle":       "0.1.*-dev",

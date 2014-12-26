@@ -1,7 +1,0 @@
-parameters:
-#  iwin_task.example.class:
-#    Iwin\Bundle\TaskBundle\Example
-
-services:
-#  iwin_task.example:
-#    class: %iwin_task.example.class%

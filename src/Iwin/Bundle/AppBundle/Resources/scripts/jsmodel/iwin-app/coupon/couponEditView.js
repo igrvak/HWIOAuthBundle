@@ -8,6 +8,7 @@ define([
     'jquery/inputevent',
     'jqueryui',
     'backbone/modelbinder',
+    'css!config/inner-tabs',
 ], function ($, _, Backbone, templating, CouponTypeCollection) {
     'use strict';
 

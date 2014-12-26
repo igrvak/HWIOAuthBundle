@@ -1,14 +1,11 @@
 define([
+    'lodash',
     'backbone',
     'iwin-app/util/basemodel',
-], function (Backbone, BaseModel) {
+], function (_, Backbone, BaseModel) {
     'use strict';
 
     var Model = BaseModel.extend({
-        "defaults": {
-            "uri":     null, // Не url !!!
-            "ordinal": 0,
-        },
     });
 
     return Model;

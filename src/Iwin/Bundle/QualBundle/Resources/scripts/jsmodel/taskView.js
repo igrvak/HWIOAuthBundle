@@ -4,12 +4,11 @@ define([
     'templating',
     'iwin-app/images/galleryView',
     'iwin-app/videos/videosView',
-    'iwin-app/coupon/couponsView',
     'jquery/openclose',
-], function (_, Backbone, templating, ImagesView, VideosView, CouponsView) {
+], function (_, Backbone, templating, ImagesView, VideosView) {
     'use strict';
 
-    var viewId = 'iwin-advert-advert';
+    var viewId = 'iwin-qual-task';
 
     var View = Backbone.View.extend({
         "template": templating.get(viewId),
@@ -23,7 +22,6 @@ define([
 
         "viewImages":  null,
         "viewVideos":  null,
-        "viewCoupons": null,
 
         "initializeViews": function () {
             this.viewImages = new ImagesView({
@@ -31,9 +29,6 @@ define([
             });
             this.viewVideos = new VideosView({
                 "model": this.model.get('gallery.videos'),
-            });
-            this.viewCoupons = new CouponsView({
-                "model": this.model.get('coupons'),
             });
         },
 
@@ -52,9 +47,6 @@ define([
 
             this.viewVideos.setElement(this.$el.find('.videos-container'));
             this.viewVideos.render();
-
-            this.viewCoupons.setElement(this.$el.find('.coupon-holder'));
-            this.viewCoupons.render();
 
             this.$el.find('div.open-close').openClose({
                 activeClass: 'active',

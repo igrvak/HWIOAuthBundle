@@ -1,0 +1,10 @@
+parameters:
+  iwin_qual.repo.task.class:
+    Iwin\Bundle\QualBundle\Entity\TaskRepository
+
+services:
+  iwin_qual.repo.task:
+    class:            %iwin_qual.repo.task.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinQualBundle:Task]

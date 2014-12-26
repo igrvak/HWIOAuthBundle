@@ -1,16 +1,15 @@
 <?php
-
-namespace Iwin\Bundle\TaskBundle;
+namespace Iwin\Bundle\QualBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * IwinTaskBundle.
+ * IwinQualBundle.
  *
  * @author Vladimir Odesskij <odesskij1992@gmail.com>
  */
-class IwinTaskBundle extends Bundle
+class IwinQualBundle extends Bundle
 {
     /**
      * {@inheritdoc}

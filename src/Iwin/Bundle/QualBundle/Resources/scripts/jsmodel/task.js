@@ -3,7 +3,8 @@ define([
     'routing',
     'iwin-app/util/basemodel',
     'iwin-app/gallery',
-], function (Backbone, Routing, BaseModel, GalleryModel) {
+    'iwin-app/profile/profile',
+], function (Backbone, Routing, BaseModel, GalleryModel, ProfileModel) {
     'use strict';
 
     var Model = BaseModel.extend({
@@ -14,6 +15,10 @@ define([
                 "type":         Backbone.HasOne,
                 "key":          'gallery',
                 "relatedModel": GalleryModel,
+            }, {
+                "type":         Backbone.HasOne,
+                "key":          'profile',
+                "relatedModel": ProfileModel,
             },
         ],
     });

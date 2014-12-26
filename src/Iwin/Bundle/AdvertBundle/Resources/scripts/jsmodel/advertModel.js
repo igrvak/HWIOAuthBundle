@@ -8,7 +8,8 @@ define([
     'iwin-app/coupon/coupon',
     'iwin-app/coupon/couponCollection',
     'iwin-app/gallery',
-], function (Backbone, Routing, BaseModel, Coupon, CouponCollection, GalleryModel) {
+    'iwin-app/profile/profile',
+], function (Backbone, Routing, BaseModel, Coupon, CouponCollection, GalleryModel, ProfileModel) {
     'use strict';
 
     var Model = BaseModel.extend({
@@ -24,6 +25,10 @@ define([
                 "type":         Backbone.HasOne,
                 "key":          'gallery',
                 "relatedModel": GalleryModel,
+            }, {
+                "type":         Backbone.HasOne,
+                "key":          'profile',
+                "relatedModel": ProfileModel,
             },
         ],
     });

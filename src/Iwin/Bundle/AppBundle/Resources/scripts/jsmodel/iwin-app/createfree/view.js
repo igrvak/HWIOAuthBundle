@@ -3,16 +3,13 @@ define([
     'underscore',
     'backbone',
     'templating',
-    'iwin-advert/advertModel',
     'iwin-advert/advertView',
-    'json!/advertapi',
-    'iwin-qual/task',
     'iwin-qual/taskView',
-    'json!/taskapi',
+    './profileView',
     'jquery/openclose',
     'css!config/inner-tabs',
     'domReady!',
-], function ($, _, Backbone, templating, AdvertModel, AdvertView, advertData, TaskModel, TaskView, taskData) {
+], function ($, _, Backbone, templating, AdvertView, TaskView, ProfileView) {
     'use strict';
 
     var viewId = 'iwin-app-createfree';
@@ -24,11 +21,14 @@ define([
 
         "initialize": function () {
             this.views = {
-                "advert": new AdvertView({
-                    'model': new AdvertModel(advertData),
+                "advert":  new AdvertView({
+                    'model': this.model.advert,
                 }),
-                "task":   new TaskView({
-                    'model': new TaskModel(taskData),
+                "task":    new TaskView({
+                    'model': this.model.task,
+                }),
+                "profile": new ProfileView({
+                    'model': this.model.profile,
                 }),
             };
         },

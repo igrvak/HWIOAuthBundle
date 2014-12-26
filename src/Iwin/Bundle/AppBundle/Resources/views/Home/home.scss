@@ -1,29 +1,108 @@
 #page_target {
-  input {
+  .videos input {
     display: inline-block;
     margin: .5em;
     width: 400px;
   }
+  .videos-container {
+    text-align: center;
+
+    .add {
+      vertical-align: middle;
+    }
+    .remove {
+      margin-right: 97px;
+      vertical-align: middle;
+      background: #ccc !important;
+    }
+  }
 
   .gallery-container {
-    li {
-      display: inline-block;
-      margin: .5em;
-      vertical-align: top;
-      border: solid 2px black;
-      width: 150px;
-      height: 150px;
-      img {
-        max-width: 150px;
-        max-height: 150px;
+    text-align: center;
+    ul {
+      padding: 0;
+      width: 850px;
+      margin: 1em auto 2em;
+      position: relative;
+      li {
+        display: inline-block;
+        margin: .5em 40px;
+        vertical-align: top;
+        width: 200px;
+        height: 135px;
+        position: relative;
+
+        img {
+          border: solid #ccc 3px;
+          cursor: move;
+        }
+        img, .drop {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          box-sizing: border-box;
+        }
+
+        .drop {
+          cursor: pointer;
+          border: dashed #ccc 3px;
+          & > * {
+            display: none;
+          }
+
+          &.dz-started {
+            background: url("#{$preloader-circle-url}") no-repeat center center;
+            background-size: 80px 80px;
+          }
+        }
+
+        .remove {
+          position: absolute;
+          display: block;
+          cursor: pointer;
+          top: 0;
+          left: 100%;
+          width: 50px;
+          height: 50px;
+          background: #ccc !important;
+        }
       }
 
-      .drop {
-        cursor: pointer;
-        background: #ccc;
-        width: 150px;
-        height: 150px;
+      &.drop-maximized {
+        height: 400px;
+        li {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          margin: .5em 0;
+        }
       }
     }
   }
+}
+.tab-content {
+  background: #f2f2f2;
+}
+.coupon-create {
+  margin-top: 3em;
+  .two-columns-input {
+    white-space: nowrap;
+    label {
+      display: inline-block;
+      vertical-align: bottom;
+      width: 48%;
+      &:first-child {
+        margin-right: 4%;
+      }
+    }
+  }
+}
+.create-ad {
+  padding-bottom: 300px;
+}
+.message-tip {
+  width: 500px;
+  margin: 2em auto 1em;
 }

@@ -1,6 +1,9 @@
 werkint_framework_extra:
   security: true
   requirejs: true
+  langs:
+    nolangredirect: true
+    supported: %locales_supported%
 
 #werkint_validation: true
 

@@ -42,6 +42,10 @@ class IwinAppExtension extends Extension implements
             realpath(__DIR__ . '/../Resources/scripts')
         );
 
+        $container->setParameter(
+            $this->getAlias() . '.config_directory',
+            $configDir
+        );
         $loader = new YamlFileLoader(
             $container,
             new FileLocator($configDir)

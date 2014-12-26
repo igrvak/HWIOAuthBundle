@@ -6,6 +6,43 @@
   Create Free
 {% endblock %}
 
+{% block pageBenefits %}
+  <section class="benefits">
+    <ul class="benefits__list">
+      <li>
+        <div class="icon">
+          <img src="{{ asset('bundles/iwinapp/img/old/ico12.png') }}" height="30" width="30" alt="">
+        </div>
+        <div class="block">A large base of potential buyers</div>
+      </li>
+      <li>
+        <div class="icon">
+          <img src="{{ asset('bundles/iwinapp/img/old/ico13.png') }}" height="30" width="30" alt="">
+        </div>
+        <div class="block">Different ways to promote your ad</div>
+      </li>
+      <li>
+        <div class="icon">
+          <img src="{{ asset('bundles/iwinapp/img/old/ico14.png') }}" height="30" width="30" alt="">
+        </div>
+        <div class="block">Guarantee of service quality</div>
+      </li>
+    </ul>
+    <div class="benefits__descr open-close">
+      <div class="slide">
+        <div class="holder">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, velit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dignissimos nemo labore porro. Excepturi consectetur sapiente porro, dicta necessitatibus debitis.</p>
+        </div>
+      </div>
+      <a href="#" class="opener">
+        <span>All benefits you get</span>
+        <span>Collapse</span>
+      </a>
+    </div>
+  </section>
+{% endblock %}
+
 {% block page %}
   <div id="page_target">
     <div class="create-content tabs">
@@ -17,53 +54,8 @@
       <div class="tab-content">
         <div id="ad">
           <div class="create-ad">
-            <section class="benefits">
-              <ul class="benefits__list">
-                <li>
-                  <div class="icon">
-                    <img src="{{ asset('bundles/iwinapp/img/old/ico12.png') }}" height="30" width="30" alt="">
-                  </div>
-                  <div class="block">A large base of potential buyers</div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <img src="{{ asset('bundles/iwinapp/img/old/ico13.png') }}" height="30" width="30" alt="">
-                  </div>
-                  <div class="block">Different ways to promote your ad</div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <img src="{{ asset('bundles/iwinapp/img/old/ico14.png') }}" height="30" width="30" alt="">
-                  </div>
-                  <div class="block">Guarantee of service quality</div>
-                </li>
-              </ul>
-              <div class="benefits__descr open-close">
-                <div class="slide">
-                  <div class="holder">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, velit.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dignissimos nemo labore porro. Excepturi consectetur sapiente porro, dicta necessitatibus debitis.</p>
-                  </div>
-                </div>
-                <a href="#" class="opener">
-                  <span>All benefits you get</span>
-                  <span>Collapse</span>
-                </a>
-              </div>
-            </section>
-
-            <section class="main-info">
-              <h2 class="heading">Gallery</h2>
-
-              <p style="text-align: center">You can sort images by simply draggin them. - правда работает</p>
-              <div class="gallery-container"></div>
-            </section>
-
-            <section class="videos">
-              <h2 class="heading">Videos</h2>
-
-              <div class="videos-container"></div>
-            </section>
+            {{ block('pageBenefits') }}
+            <div class="advertmodel-container"></div>
           </div>
         </div>
         <div id="task"></div>
@@ -77,16 +69,127 @@
   {{ parent() }}
 
   {# @formatter:off #}{% raw %}
+  <script type="text/x-twig-template" data-id="iwin-advert-advert">
+    <section class="main-info">
+      <div class="coupon-holder"></div>
+    </section>
+
+    <section class="main-info">
+      <h2 class="heading">Gallery</h2>
+
+      <div class="message-tip">You can sort images by simply dragging them. - правда работает</div>
+      <div class="gallery-container"></div>
+    </section>
+
+    <section class="videos">
+      <h2 class="heading">Videos</h2>
+
+      <div class="videos-container"></div>
+    </section>
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-app-coupon-coupons">
+    {% if not couponEditing %}
+      <section class="coupon-start">
+        <h2 class="heading">Coupons</h2>
+        <div class="holder">
+          <div class="block">
+            <span class="sub-title">Didn’t add any coupons yet?</span>
+            <p>Don’t miss the chance to increase a number of customers!</p>
+          </div>
+          <a href="#add" class="btn-add">Add coupon</a>
+        </div>
+      </section>
+    {% else %}
+      <h2 class="heading">Coupon editing</h2>
+      <section class="coupon-create">
+        <div class="coupon-holder"></div>
+      </section>
+    {% endif %}
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-app-coupon-coupon">
+    <div class="two-columns-input">
+      <label>
+        <div class="caption">Type of coupon</div>
+        <div class="value-box">
+          <select class="select2" name="type">
+            {% for type in types.toArray %}
+              <option value="{{ type.id }}">{{ type.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </label>
+      <label>
+        <div class="caption">Expires</div>
+        <div class="value-box">
+          <input type="text" class="date-field" name="expires"/>
+        </div>
+      </label>
+    </div>
+    {% if coupon.type.has_discount %}
+      <div class="two-columns-input">
+        <label>
+          <div class="caption">Discount</div>
+          <div class="value-box">
+            <input type="text" name="discount.amount" />
+          </div>
+        </label>
+        <label>
+          <div class="caption"></div>
+          <div class="value-box">
+            <select class="select2" name="discount.isAbsolute">
+              <option value="0">%</option>
+              <option value="1">$</option>
+            </select>
+          </div>
+        </label>
+      </div>
+    {% endif %}
+
+    <div class="inner-tabs">
+      <ul class="tabset">
+        {% for lang, title in langs %}
+          <li class="{{ lang==langsSelected?'active':'' }}">
+            <a href="#iwin-coupon-tab" data-lang="{{ lang }}">{{ title }}{% if lang == langsDef %} <span>(default)</span>{% endif %}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="tab-content">
+        {% for lang, title in langs %}
+        {% if lang == langsSelected %}
+          {% set mlPrefix = 'multilang['~(loop.index-1)~']' %}
+          <label class="title">
+            <div class="caption">Name</div>
+            <div class="value-box">
+              <div class="progress"></div>
+              <input type="text" name="{{ mlPrefix }}.name" data-maxlength="100" class="limited-length" />
+            </div>
+          </label>
+          <label class="textarea1">
+            <div class="caption">Caption</div>
+            <div class="value-box">
+              <div class="progress"></div>
+              <textarea cols="30" name="{{ mlPrefix }}.caption" rows="10" data-maxlength="200" class="limited-length"></textarea>
+            </div>
+          </label>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="value-box">
+      <button type="submit" class="btn">Create</button>
+      <button type="submit" class="btn btn-cancel">Cancel</button>
+    </div>
+  </script>
   <script type="text/x-twig-template" data-id="iwin-app-images-gallery">
       <ul class="images {{ list.length>0?'':'drop-maximized' }}">
         {% for i, image in list.toArray() %}
           <li class="image" data-ordinal="{{ i }}">
             <img src="{{ image.uri }}" alt="{{ image.hash }}"/>
-            <button class="remove">Remove</button>
+            <a href="#remove" class="btn-location-remove remove"></a>
           </li>
         {% endfor %}
         <li>
-          <img class="drop" />
+          <div class="drop"></div>
         </li>
       </ul>
   </script>
@@ -95,12 +198,12 @@
         {% for i, video in _context.list.toArray() %}
           <li data-ordinal="{{ i }}">
             <input type="text" value="{{ video.uri }}" name="list[{{ i }}].uri" />
-            <button class="remove">Удалить</button>
+            <a href="#remove" class="btn-location-remove remove"></a>
           </li>
         {% endfor %}
         <li>
           <input type="text" value="" class="new"/>
-          <button class="add">Добавить</button>
+          <button class="btn add">Добавить</button>
         </li>
       </ul>
   </script>

@@ -3,10 +3,11 @@ imports:
   - { resource: werkint.yml }
   - { resource: doctrine.yml }
   - { resource: security.yml }
+  - { resource: parameters_hash.yml }
 
 parameters:
   session_expire: 63072000 # 365*2 days in seconds
-  app.assets_version: 1
+  app.assets_version: %iwin_app_lastcommithash%
   # Router
   router.request_context.host:  %app.defaulthost%
   router.request_context.scheme: https
@@ -129,3 +130,10 @@ oneup_uploader:
     gallery:
       frontend: dropzone
       enable_progress: true
+
+# Multilanguage site
+jms_i18n_routing:
+  default_locale: %locale%
+  locales: %locales_supported%
+  strategy: prefix
+

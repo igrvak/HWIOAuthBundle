@@ -1,0 +1,9 @@
+menu:
+  advert: "Classified Ads"
+  services: "Qual Services"
+  advices: "Trusty Advices"
+user:
+  login: "Sign in"
+main:
+  sendinvite: "Send invite"
+  needhelp: "Need help?"

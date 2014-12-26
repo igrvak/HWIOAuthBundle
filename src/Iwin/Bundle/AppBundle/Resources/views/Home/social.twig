@@ -7,12 +7,41 @@
 {% endblock %}
 
 {% block page %}
-  <div>
-    <div id="fb-root"></div>
-    <script>
 
-    </script>
+  {#<script src="http://adodson.com/hello.js/dist/hello.all.js"></script>#}
 
-    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
-  </div>
+  {#<h1>hello.api( me )</h1>#}
+  {#<button id='google' onclick="hello.login('google');">google</button>#}
+  {#<button id='facebook' onclick="hello.login('facebook');">facebook</button>#}
+  {#<button id='windows' onclick="hello.login('windows');">windows</button>#}
+
+  {#<p>Listen to the event "auth.login", and call <code>hello( network ).api( 'me' ).then( handler )</code></p>#}
+
+  {#<script class="pre">#}
+  {#hello.on('auth.login', function (r) {#}
+  {#// Get Profile#}
+  {#hello(r.network).api('/me').then(function (p) {#}
+  {#var label = document.getElementById(r.network)#}
+  {#label.innerHTML = "<img src='" + p.thumbnail + "' width=24/>Connected to " + r.network + " as " + p.name;#}
+  {#});#}
+  {#});#}
+  {#</script>#}
+
+  {#<p>Intiate App credentials</p>#}
+
+  {#<script class="pre">#}
+  {#hello.init({#}
+  {#twitter:  '9xPg0TbmOIU3uLpUs6piWGhCF',#}
+  {#facebook: '774836025885842',#}
+  {#linkedin: '75l9jttrjuc4a2'#}
+  {#}, {#}
+  {#scope:        'email',#}
+  {#redirect_uri: Document.URL#}
+  {#});#}
+  {#</script>#}
+
+  <button id="twitter">twitter</button>
+  <button id="g">g+</button>
+  <button id="linkedin">linkedin</button>
+  <button id="facebook">facebook</button>
 {% endblock %}

@@ -59,7 +59,8 @@ class ControllerLoader
         $webapp->addVar('debug', $this->par('kernel.debug'));
 
         $webapp->attachFile($dir . '/frontend/defines.scss');
-        $webapp->attachFile($dir . '/frontend/main.scss');
+        $webapp->attachFile($dir . '/frontend/messages.scss');
+        $webapp->attachFile($dir . '/frontend/tooltip.scss');
 
         $webapp->getLoader()->blockStart('page');
     }

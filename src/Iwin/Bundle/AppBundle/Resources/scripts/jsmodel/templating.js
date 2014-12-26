@@ -2,6 +2,7 @@ define([
     'jquery',
     'lodash',
     'twig',
+    'assets',
     'domReady!',
 ], function ($, _, Twig) {
     'use strict';

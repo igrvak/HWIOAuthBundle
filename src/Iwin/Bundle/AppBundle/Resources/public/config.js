@@ -4,14 +4,27 @@
     requirejs.config({
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
-        shim:          {
-            'facebook': {
-                exports: 'FB'
-            }
+        "paths":       {
+            'facebook-api': '//connect.facebook.net/en_US/all',
+            'linkedin-api': '//platform.linkedin.com/in.js?async=true',
         },
-        paths:         {
-            'facebook': '//connect.facebook.net/en_US/all'
-        }
+        "map":         {
+            "*":           {
+                "select2/select2": "config/select2/select2",
+                "twig":            "config/twig",
+            },
+            "config/twig": {
+                "twig": "twig",
+            },
+        },
+        "shim":        {
+            'facebook-api': {
+                exports: 'FB',
+            },
+            'linkedin-api': {
+                exports: 'IN',
+            },
+        },
     });
     requirejs([
         'jquery',

@@ -25,7 +25,6 @@ define([
             this.add(model, {
                 "at": i2,
             });
-            console.log(this.models);
         },
     });
 

@@ -30,10 +30,11 @@ define([
             this.model.set(this.relatedKey, model);
 
             this.template = _.bind(function (supr) {
-                return _.bind(function () {
-                    return supr({
-                        'list': this.model.get(this.relatedKey),
-                    });
+                return _.bind(function (obj, extra) {
+                    return supr(_.merge(_.object([[
+                        this.relatedKey,
+                        this.model.get(this.relatedKey)
+                    ]]), extra || {}));
                 }, this);
             }, this)(this.template);
         },

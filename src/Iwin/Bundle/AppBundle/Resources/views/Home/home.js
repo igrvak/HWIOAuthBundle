@@ -1,13 +1,13 @@
 requirejs([
     'jquery',
     'underscore',
-    'iwin-app/images/imageCollection',
-    'iwin-app/images/galleryView',
-    'iwin-app/videos/videoCollection',
-    'iwin-app/videos/videosView',
+    'iwin-advert/advertModel',
+    'iwin-advert/advertView',
+    'json!/advertapi/__testadvert__',
     'jquery/openclose',
+    'css!config/inner-tabs',
     'domReady!',
-], function ($, _, ImageCollection, GalleryView, VideoCollection, VideosView) {
+], function ($, _, AdvertModel, AdvertView, advertData) {
     'use strict';
 
     var cont = $('#page_target');
@@ -20,15 +20,11 @@ requirejs([
         effect:      'slide',
     });
 
-    var view1 = new GalleryView({
-        'model': new ImageCollection(),
-        'el':    cont.find('.gallery-container'),
-    });
-    view1.render();
+    var view = new AdvertView({
+        'model': new AdvertModel(advertData),
 
-    var view2 = new VideosView({
-        'model': new VideoCollection(),
-        'el':    cont.find('.videos-container'),
+        'el': cont.find('.advertmodel-container'),
     });
-    view2.render();
+    console.log(view);
+    view.render();
 });

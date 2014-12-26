@@ -10,12 +10,14 @@ namespace {
     require_once __DIR__ . '/../bootstrap.php.cache';
 
     $input = new ArgvInput();
-    $env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ? : 'dev');
+    $env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ?: 'dev');
     define('SYMFONY_ENV', $env);
 
     // TODO: проверить безопасность
-    //$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(['--no-debug', '']) && explode('_', SYMFONY_ENV)[0] == 'dev';
-    Debug::enable();
+    $debug = SYMFONY_ENV !== 'prod';
+    if ($debug) {
+        Debug::enable();
+    }
 
     $kernel = new AppKernel(SYMFONY_ENV, explode('_', SYMFONY_ENV)[0] == 'dev');
 

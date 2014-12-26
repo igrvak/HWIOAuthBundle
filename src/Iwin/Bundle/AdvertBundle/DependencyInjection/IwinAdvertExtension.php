@@ -29,6 +29,10 @@ class IwinAdvertExtension extends Extension
             $configs
         );
         $container->setParameter(
+            $this->getAlias() . '.jsmodeldir',
+            realpath(__DIR__ . '/../Resources/scripts/jsmodel')
+        );
+        $container->setParameter(
             $this->getAlias(),
             $config
         );

@@ -1,0 +1,12 @@
+discount:
+  hasDiscount: true
+  titles:
+    ru: "Скидка"
+gift:
+  hasDiscount: false
+  titles:
+    ru: "Подарок"
+freeconsult:
+  hasDiscount: false
+  titles:
+    ru: "Бесплатная консультация"

@@ -2,8 +2,8 @@
 *.iml
 *~
 .idea
-/app/bin
-/app/cache
+app/bin
+app/cache
 !app/cache/.gitkeep
 /app/config/parameters.yml
 /app/config/settings

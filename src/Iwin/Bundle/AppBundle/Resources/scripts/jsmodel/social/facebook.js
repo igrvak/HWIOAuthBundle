@@ -35,13 +35,28 @@ define([
         },
         getData:  function (callback) {
             FB.api('/me', function (response) {
-                callback({
-                    id:     response.id,
-                    name:   response.name,
-                    gender: response.gender,
-                    link:   response.link,
-                    photo:  ''
-                });
+
+                FB.api(
+                    "/me/picture",
+                    {
+                        "redirect": false,
+                        "height":   "200",
+                        "type":     "normal",
+                        "width":    "200"
+                    },
+                    function (picture) {
+                        if (response && !response.error) {
+                            callback({
+                                id:     response.id,
+                                name:   response.name,
+                                gender: response.gender,
+                                link:   response.link,
+                                photo:  picture.data.url
+                            });
+                        }
+                    }
+                );
+
             });
         }
     });

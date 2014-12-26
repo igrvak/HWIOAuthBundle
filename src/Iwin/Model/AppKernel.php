@@ -82,10 +82,12 @@ class AppKernel extends Kernel
             new \Iwin\Bundle\AdvertBundle\IwinAdvertBundle(),
             new \Iwin\Bundle\QualBundle\IwinQualBundle(),
             new \Iwin\Bundle\AppBundle\IwinAppBundle(),
+            new \Iwin\UserBundle\UserBundle(),
         ]);
 
         $addBundles([
             new \Lexik\Bundle\MonologBrowserBundle\LexikMonologBrowserBundle(),
+            new \Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
         ]);
 
         return $bundles;

@@ -49,7 +49,7 @@
         "incenteev/composer-parameter-handler": "*",
         "jms/i18n-routing-bundle":              "*",
         "jms/security-extra-bundle":            "*",
-        "jms/serializer-bundle":                "*",
+        "jms/serializer-bundle":                "0.13.*",
         "knplabs/knp-menu-bundle":              "*",
         "knplabs/knp-paginator-bundle":         "*",
         "lexik/monolog-browser-bundle":         "dev-master",

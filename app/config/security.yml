@@ -6,7 +6,6 @@ jms_security_extra:
 
 # Generic security config
 security:
-security:
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
 

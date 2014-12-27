@@ -19,42 +19,41 @@ class UserSocial
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected  $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $userId;
+    protected $userId;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="social_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
+     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
      */
-    private $socialId;
+    protected $socialId;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="url_profile", type="string", length=255)
      */
-    private $urlProfile;
+    protected $urlProfile;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url_image", type="string", length=255)
      */
-    private $urlImage;
+    protected $urlImage;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nickname", type="string", length=255)
      */
-    private $nickname;
+    protected $nickname;
 
 
     /**

@@ -1,5 +1,5 @@
 iwin_user:
-    resource: "@IwinUserBundle/Controller/"
+    resource: "@IwinSharedBundle/Controller/"
     type:     annotation
     prefix:   /
 

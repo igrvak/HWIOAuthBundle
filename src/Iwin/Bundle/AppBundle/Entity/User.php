@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 use FOS\UserBundle\Model\User as BaseUser;
-use Iwin\Bundle\AppBundle\Entity\FileImage;
 use Doctrine\Common\Collections\ArrayCollection;
+use Iwin\Bundle\SharedBundle\Entity\Location;
 
 /**
  * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="UserRepository")
- * @Gedmo\TranslationEntity(class="UserTranslation")
+ * @Gedmo\TranslationEntity(class="Iwin\Bundle\AppBundle\Entity\UserTranslation")
  */
 class User extends BaseUser implements Translatable
 {
@@ -23,7 +23,7 @@ class User extends BaseUser implements Translatable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var string
@@ -65,31 +65,22 @@ class User extends BaseUser implements Translatable
     /**
      * @var FileImage|null
      *
-     * @ORM\OneToOne(targetEntity="FileImage", mappedBy="User")
+     * @ORM\OneToOne(targetEntity="FileImage")
      * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
      */
     protected $image_avatar;
 
 
     /**
-     * @var UserTranslation|null
+     * @var Location |null
      *
-     * @ORM\OneToOne(targetEntity="UserTranslation", mappedBy="User")
+     * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location")
      * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
      */
     protected $location;
 
     /**
-     * @ORM\OneToMany(targetEntity="Social")
-     * @ORM\JoinTable(
-     *       name="users_socials",
-     *      joinColumns={
-     *          @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *      },
-     *      inverseJoinColumns={
-     *          @ORM\JoinColumn(name="social_id", referencedColumnName="id", unique=true)
-     *      }
-     *  )
+     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="User")
      **/
     protected $socials;
 

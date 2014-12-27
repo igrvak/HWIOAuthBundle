@@ -81,7 +81,7 @@ class AppKernel extends Kernel
             new \Iwin\Bundle\AdvertBundle\IwinAdvertBundle(),
             new \Iwin\Bundle\TaskBundle\IwinTaskBundle(),
             new \Iwin\Bundle\AppBundle\IwinAppBundle(),
-            new \Iwin\Bundle\UserBundle\IwinUserBundle(),
+            new \Iwin\Bundle\SharedBundle\IwinSharedBundle(),
         ]);
 
         $addBundles([

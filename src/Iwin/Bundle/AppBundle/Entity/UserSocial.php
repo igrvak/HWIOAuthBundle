@@ -1,14 +1,14 @@
 <?php
 
-namespace Iwin\Bundle\UserBundle\Entity;
+namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * UserSocial
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Iwin\Bundle\UserBundle\Entity\UserSocialRepository")
+ * @ORM\Table(name="users_socials")
+ * @ORM\Entity(repositoryClass="UserSocialRepository")
  */
 class UserSocial
 {

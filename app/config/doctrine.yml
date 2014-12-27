@@ -12,7 +12,7 @@ doctrine:
         is_bundle: false
       # Iwin Bundles
       IwinAppBundle: ~
-      IwinUserBundle: ~
+      IwinSharedBundle: ~
 
       # Werkint
       WerkintFrameworkExtraBundle: ~

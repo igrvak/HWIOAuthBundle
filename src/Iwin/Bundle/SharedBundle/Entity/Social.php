@@ -1,6 +1,6 @@
 <?php
 
-namespace Iwin\Bundle\UserBundle\Entity;
+namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Social
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Iwin\Bundle\UserBundle\Entity\SocialRepository")
+ * @ORM\Entity(repositoryClass="SocialRepository")
  */
 class Social
 {

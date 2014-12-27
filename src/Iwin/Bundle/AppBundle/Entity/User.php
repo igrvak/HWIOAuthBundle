@@ -1,17 +1,18 @@
 <?php
 
-namespace Iwin\Bundle\UserBundle\Entity;
+namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 use FOS\UserBundle\Model\User as BaseUser;
-
+use Iwin\Bundle\AppBundle\Entity\FileImage;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="fos_user")
- * @ORM\Entity(repositoryClass="Iwin\Bundle\UserBundle\Entity\UserRepository")
- * @Gedmo\TranslationEntity(class="Iwin\Bundle\UserBundle\Entity\UserTranslation")
+ * @ORM\Entity(repositoryClass="UserRepository")
+ * @Gedmo\TranslationEntity(class="UserTranslation")
  */
 class User extends BaseUser implements Translatable
 {
@@ -30,7 +31,7 @@ class User extends BaseUser implements Translatable
      * @ORM\Column(name="nameFirst", type="string", length=255)
      * @Gedmo\Translatable()
      */
-    private $nameFirst;
+    protected $nameFirst;
 
     /**
      * @var string
@@ -38,32 +39,68 @@ class User extends BaseUser implements Translatable
      * @ORM\Column(name="nameLast", type="string", length=255)
      * @Gedmo\Translatable()
      */
-    private $nameLast;
+    protected $nameLast;
 
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="chatSkype", type="string", length=255)
      */
-    private $chatSkype;
+    protected $chatSkype;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthdate", type="date")
      */
-    private $birthdate;
+    protected $birthdate;
 
-
-    
     /**
+     * @var FileImage|null
+     *
+     * @ORM\OneToOne(targetEntity="FileImage", mappedBy="User")
+     * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
+     */
+    protected $image_avatar;
+
+
+    /**
+     * @var UserTranslation|null
+     *
+     * @ORM\OneToOne(targetEntity="UserTranslation", mappedBy="User")
+     * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
+     */
+    protected $location;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Social")
+     * @ORM\JoinTable(
+     *       name="users_socials",
+     *      joinColumns={
+     *          @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *      },
+     *      inverseJoinColumns={
+     *          @ORM\JoinColumn(name="social_id", referencedColumnName="id", unique=true)
+     *      }
+     *  )
+     **/
+    protected $socials;
+
+
+    public function __construct()
+    {
+        parent::__constructor();
+
+        $this->socials = new ArrayCollection();
+    }
+        /**
      * Get id
      *
      * @return integer 

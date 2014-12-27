@@ -70,7 +70,6 @@ class User extends BaseUser implements Translatable
      */
     protected $image_avatar;
 
-
     /**
      * @var Location |null
      *
@@ -83,7 +82,6 @@ class User extends BaseUser implements Translatable
      * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="User")
      **/
     protected $socials;
-
 
     public function __construct()
     {

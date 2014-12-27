@@ -1,0 +1,8 @@
+- type: "facebook"
+  is_active : TRUE
+- type: "twitter"
+  is_active : TRUE
+- type: "gplus"
+  is_active : TRUE
+- type: "linkedin"
+  is_active : TRUE

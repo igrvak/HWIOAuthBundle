@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Location
  *
- * @ORM\Table()
+ * @ORM\Table(name="iwin_shared_location")
  * @ORM\Entity(repositoryClass="LocationRepository")
  */
 class Location
@@ -19,29 +19,28 @@ class Location
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="latitude", type="decimal")
      */
-    private $latitude;
+    protected $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="langitude", type="decimal")
+     * @ORM\Column(name="longitude", type="decimal")
      */
-    private $langitude;
+    protected $longitude;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
-    private $address;
-
+    protected $address;
 
     /**
      * Get id

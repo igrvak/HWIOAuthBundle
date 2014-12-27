@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Social
  *
- * @ORM\Table()
+ * @ORM\Table(name="iwin_shared_social")
  * @ORM\Entity(repositoryClass="SocialRepository")
  */
 class Social
@@ -19,29 +19,21 @@ class Social
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
      */
-    private $type;
+    protected $type;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="is_active", type="boolean")
      */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="color", type="string", length=12)
-     */
-    private $color;
-
+    protected $isActive;
 
     /**
      * Get id
@@ -82,9 +74,9 @@ class Social
      * @param string $title
      * @return Social
      */
-    public function setTitle($title)
+    public function setIsActive($title)
     {
-        $this->title = $title;
+        $this->isActive = $title;
 
         return $this;
     }
@@ -94,31 +86,9 @@ class Social
      *
      * @return string 
      */
-    public function getTitle()
+    public function getIsActive()
     {
-        return $this->title;
+        return $this->isActive;
     }
 
-    /**
-     * Set color
-     *
-     * @param string $color
-     * @return Social
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string 
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
 }

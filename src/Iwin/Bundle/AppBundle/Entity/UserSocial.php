@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserSocial
  *
- * @ORM\Table(name="users_socials")
+ * @ORM\Table(name="iwin_app_users_socials")
  * @ORM\Entity(repositoryClass="UserSocialRepository")
  */
 class UserSocial
@@ -54,7 +54,6 @@ class UserSocial
      * @ORM\Column(name="nickname", type="string", length=255)
      */
     protected $nickname;
-
 
     /**
      * Get id

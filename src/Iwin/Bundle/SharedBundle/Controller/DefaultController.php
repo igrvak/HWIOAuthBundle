@@ -1,6 +1,5 @@
 <?php
-
-namespace Iwin\Bundle\UserBundle\Controller;
+namespace Iwin\Bundle\SharedBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

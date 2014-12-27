@@ -1,0 +1,3 @@
+iwin_shared:
+    resource: "@IwinSharedBundle/Controller"
+    type: annotation

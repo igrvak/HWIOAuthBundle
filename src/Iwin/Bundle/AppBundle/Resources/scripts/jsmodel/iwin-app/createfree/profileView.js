@@ -3,6 +3,7 @@ define([
     'backbone',
     'templating',
     'iwin-app/profile/profileView',
+    'jquery/openclose',
 ], function (_, Backbone, templating, ProfileView) {
     'use strict';
 
@@ -24,6 +25,14 @@ define([
 
             this.viewProfile.setElement(this.$el.find('.profile-container'));
             this.viewProfile.render();
+
+            this.$el.find('div.open-close').openClose({
+                activeClass: 'active',
+                opener:      '.opener',
+                slider:      '.slide',
+                animSpeed:   400,
+                effect:      'slide',
+            });
 
             return this;
         },

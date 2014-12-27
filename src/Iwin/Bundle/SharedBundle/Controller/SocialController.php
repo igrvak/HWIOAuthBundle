@@ -5,7 +5,6 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Iwin\Bundle\SharedBundle\Entity\SocialRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 
-
 /**
  * Управление социалками
  *

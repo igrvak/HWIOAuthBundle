@@ -1,7 +1,7 @@
 /**
  * Select2 Russian translation
  */
-define(['jquery', 'select2/core', 'css!config/select2/styles'], function ($) {
+define(['jquery', 'select2/core', 'css!./select2'], function ($) {
     'use strict';
 
     $.extend($.fn.select2.defaults, {
@@ -26,4 +26,5 @@ define(['jquery', 'select2/core', 'css!config/select2/styles'], function ($) {
             return "Поиск...";
         }
     });
+    return $;
 });

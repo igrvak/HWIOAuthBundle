@@ -13,7 +13,7 @@ requirejs([
 
     marker.prototype.destroy = function () {
         if (this._mapMarker) {
-            this._mapMarker.setMap(null)
+            this._mapMarker.setMap(null);
         }
     };
 
@@ -25,15 +25,15 @@ requirejs([
         this.destroy();
         this._map = map;
         var markerSettings = {
-            position: (this._coords instanceof Array ?
+            position: this._coords instanceof Array ?
                 new maps.LatLng(this._coords[0], this._coords[1]) :
-                this._coords),
-            map: map
+                this._coords,
+            map:      map
         };
         if (this._image) {
             markerSettings.icon = this._image;
         }
-        this._mapMarker = new maps.Marker(markerSettings)
+        this._mapMarker = new maps.Marker(markerSettings);
     };
 
     marker.prototype.refresh = function () {
@@ -43,8 +43,8 @@ requirejs([
     //-- Map ----------------------------------------------
 
     var defaultMapOptions = {
-        zoom: 5,
-        center: new maps.LatLng(0, 0),
+        zoom:      5,
+        center:    new maps.LatLng(0, 0),
         mapTypeId: maps.MapTypeId.ROADMAP
     };
 
@@ -71,14 +71,14 @@ requirejs([
             this._marker.setCoords(event.latLng);
             this._marker.refresh();
             this._selectedCoords = event.latLng;
-            if (this._addressCallback){
-                this.getAddress(this._addressCallback)                 
-            }            
+            if (this._addressCallback) {
+                this.getAddress(this._addressCallback);
+            }
         }.bind(this));
     };
-    
-    map.prototype.setAddressCallback = function(callback){
-        this._addressCallback = callback        
+
+    map.prototype.setAddressCallback = function (callback) {
+        this._addressCallback = callback;
     };
 
     map.prototype.getAddress = function (callback) {
@@ -91,19 +91,19 @@ requirejs([
                 null :
                 addresses[0].formatted_address);
         });
-    };  
-    
+    };
+
     //-- page ---------------------
-    
+
     var input = $('#input'),
         inputChangedByUser = false,
-        positionChanged = function(address){
-            if (inputChangedByUser){
-                return;                
+        positionChanged = function (address) {
+            if (inputChangedByUser) {
+                return;
             }
-            input.val(address)
+            input.val(address);
         };
-    input.keydown(function(){
+    input.keydown(function () {
         inputChangedByUser = true;
     });
 

@@ -6,6 +6,9 @@ define([
     'use strict';
 
     var Model = BaseModel.extend({
+        "isEmpty": function () {
+            return !this.get('address');
+        },
     });
 
     return Model;

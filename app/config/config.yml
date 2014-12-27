@@ -123,7 +123,7 @@ knp_menu:
 fos_user:
   db_driver: orm
   firewall_name: main
-  user_class: Iwin\Bundle\AppBundle\Entity\User
+  user_class: Iwin\Bundle\UserBundle\Entity\User
 
 oneup_uploader:
   mappings:

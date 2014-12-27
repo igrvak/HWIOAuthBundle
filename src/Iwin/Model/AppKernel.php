@@ -82,7 +82,7 @@ class AppKernel extends Kernel
             new \Iwin\Bundle\AdvertBundle\IwinAdvertBundle(),
             new \Iwin\Bundle\QualBundle\IwinQualBundle(),
             new \Iwin\Bundle\AppBundle\IwinAppBundle(),
-            new \Iwin\UserBundle\UserBundle(),
+            new \Iwin\Bundle\UserBundle\IwinUserBundle(),
         ]);
 
         $addBundles([

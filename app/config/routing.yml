@@ -1,3 +1,8 @@
+iwin_user:
+    resource: "@IwinUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 iwin_app:
   resource: "@IwinAppBundle/Resources/config/routing.yml"
   prefix: /

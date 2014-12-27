@@ -49,7 +49,6 @@ define([
             });
             this.on('map:address', function (address) {
                 this.model.set('address', address);
-                console.log(9);
             });
         },
 

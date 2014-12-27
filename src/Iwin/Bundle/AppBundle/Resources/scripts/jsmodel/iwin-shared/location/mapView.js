@@ -6,9 +6,10 @@ define([
     'use strict';
 
     var mapOpts = {
-        zoom:      4,
-        center:    null,
-        mapTypeId: gmaps.MapTypeId.ROADMAP
+        "zoom":            4,
+        "center":          null,
+        "mapTypeId":       gmaps.MapTypeId.ROADMAP,
+        "draggableCursor": "crosshair",
     };
 
     var View = Backbone.View.extend({
@@ -23,6 +24,7 @@ define([
             this.marker = new gmaps.Marker({
                 "position": this.map.getCenter(),
                 "map":      this.map,
+                "cursor":   "default",
             });
             this.updatePosition();
 

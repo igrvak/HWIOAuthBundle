@@ -33,11 +33,21 @@ class Coupon implements
      */
     protected $description;
     /**
+     * @ORM\OneToOne(targetEntity="CouponDiscount", inversedBy="coupon")
+     * @ORM\JoinColumn(name="discount_id", referencedColumnName="id", nullable=true)
+     * @var CouponDiscount|null
+     */
+    protected $discount;
+    /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank(message="iwin_app.coupon.expires")
      * @var \DateTime
      */
     protected $expires;
+    /**
+     * @Gedmo\Locale
+     */
+    protected $locale;
     /**
      * @ORM\Column(type="string",length=100)
      * @Assert\NotBlank(message="iwin_app.coupon.name")
@@ -52,18 +62,6 @@ class Coupon implements
      * @var CouponType
      */
     protected $type;
-
-    /**
-     * @ORM\OneToOne(targetEntity="CouponDiscount", inversedBy="coupon")
-     * @ORM\JoinColumn(name="discount_id", referencedColumnName="id", nullable=true)
-     * @var CouponDiscount|null
-     */
-    protected $discount;
-
-    /**
-     * @Gedmo\Locale
-     */
-    protected $locale;
 
     /**
      * {@inheritdoc}

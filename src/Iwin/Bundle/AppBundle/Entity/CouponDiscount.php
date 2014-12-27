@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @author Bogdan Yurov <bogdan@yurov.me>
  *
  * @ORM\Entity()
- * @ORM\Table(name="iwin_app_coupon_discount")
+ * @ORM\Table(name="iwin_shared_coupon_discount")
  */
 class CouponDiscount
 {

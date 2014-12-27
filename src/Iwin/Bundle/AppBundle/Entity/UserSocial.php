@@ -19,8 +19,30 @@ class UserSocial
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected  $id;
-
+    protected $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nickname", type="string", length=255)
+     */
+    protected $nickname;
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
+     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
+     */
+    protected $socialId;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_image", type="string", length=255)
+     */
+    protected $urlImage;
+    /**
+     * @var string
+     * @ORM\Column(name="url_profile", type="string", length=255)
+     */
+    protected $urlProfile;
     /**
      * @var integer
      * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
@@ -29,36 +51,9 @@ class UserSocial
     protected $userId;
 
     /**
-     * @var integer
-     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
-     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
-     */
-    protected $socialId;
-
-    /**
-     * @var string
-     * @ORM\Column(name="url_profile", type="string", length=255)
-     */
-    protected $urlProfile;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url_image", type="string", length=255)
-     */
-    protected $urlImage;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nickname", type="string", length=255)
-     */
-    protected $nickname;
-
-    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -81,7 +76,7 @@ class UserSocial
     /**
      * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -104,7 +99,7 @@ class UserSocial
     /**
      * Get socialId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSocialId()
     {
@@ -127,7 +122,7 @@ class UserSocial
     /**
      * Get urlProfile
      *
-     * @return string 
+     * @return string
      */
     public function getUrlProfile()
     {
@@ -150,7 +145,7 @@ class UserSocial
     /**
      * Get urlImage
      *
-     * @return string 
+     * @return string
      */
     public function getUrlImage()
     {
@@ -173,7 +168,7 @@ class UserSocial
     /**
      * Get nickname
      *
-     * @return string 
+     * @return string
      */
     public function getNickname()
     {

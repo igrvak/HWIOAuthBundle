@@ -1,5 +1,4 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,7 +9,7 @@ use Gedmo\Translatable\Translatable;
 use Iwin\Bundle\SharedBundle\Entity\Location;
 
 /**
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="iwin_app_user")
  * @ORM\Entity(repositoryClass="UserRepository")
  * @Gedmo\TranslationEntity(class="Iwin\Bundle\AppBundle\Entity\UserTranslation")
  */

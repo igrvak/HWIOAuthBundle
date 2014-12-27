@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @author Bogdan Yurov <bogdan@yurov.me>
  *
  * @ORM\Entity(repositoryClass="CouponRepository")
- * @ORM\Table(name="iwin_app_coupon")
+ * @ORM\Table(name="iwin_shared_coupon")
  */
 class Coupon implements
     Translatable

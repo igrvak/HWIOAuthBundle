@@ -18,3 +18,4 @@ app/cache
 /web/res/img/sprites
 /web/res/js
 /web/uploads
+/app/config/parameters_hash.yml

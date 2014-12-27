@@ -13,8 +13,8 @@
 {% block pageTemplates %}
   {{ parent() }}
 
-  {# @formatter:off #}{% raw %}
-
+  {# @formatter:off #}
+  {% raw %}
   {# Шаблон страницы CreateFree #}
   <script type="text/x-twig-template" data-id="iwin-app-createfree">
     <div class="create-content tabs">
@@ -339,10 +339,50 @@
   <script type="text/x-twig-template" data-id="iwin-app-profile">
       <section>
         <h2 class="heading">Contact information</h2>
+        <div class="profile-block">
+          <div class="left-block">
+             <div class="row">
+              <input type="text"/>
+             </div>
+             <div class="row">
+               <input type="text"/>
+             </div>
+             <div class="row">
+               <input type="text"/>
+             </div>
+             <div class="row">
+               <input type="text"/>
+             </div>
+             <div class="row">
+               <input type="text"/>
+             </div>
+          </div>
+          <div class="right-block">
 
-        <p style="text-align: center">TODO</p>
+          </div>
+        </div>
       </section>
   </script>
 
-  {% endraw %}{# @formatter:on #}
+  {# Шаблон социальных сетей #}
+  <script type="text/x-twig-template" data-id="iwin-app-profile-socials">
+      {% for social in list.toArray() %}
+          <div class="social-btn {% if not social.type.isActive %}disable{% endif %}{% if social.type.isActive and social.isEmpty() %}connect{% endif %}" id="btn-{{ social.type.type }}" data-network="{{ social.type.type }}">
+            {% if social.isEmpty() %}
+              {{ social.type.type }}
+            {% else %}
+            <img src="{{ social.photo }}" class="user-photo"/>
+              {{ social.name }}
+            {% endif %}
+          </div>
+          {% if not social.isEmpty() %}
+            <div class="remove" data-network="{{ social.type.type }}">
+              X
+            </div>
+          {% endif %}
+      {% endfor %}
+  </script>
+
+  {% endraw %}
+  {# @formatter:on #}
 {% endblock %}

@@ -18,7 +18,9 @@ define([
             }
         },
         login:    function (ifSuccess, ifFail) {
-            IN.UI.WidgetSignin();
+            //IN.UI.WidgetSignin();
+            $('.heading').html('<script type="in/Login"> Hello, <?js= firstName ?> <?js= lastName ?>. </script>');
+
             //FB.login(function (response) {
             //    if (response.status === 'connected') {
             //        ifSuccess();
@@ -33,11 +35,11 @@ define([
         },
         getData:  function (callback) {
             IN.API.Profile('me').result(function (response) {
-                callback({
-                    id:     response.id,
-                    name:   response.name,
-                    gender: response.gender,
-                    link:   response.link,
+                console.log({
+                    id:     response.values[0].id,
+                    name:   response.values[0].firstName + ' ' + response.values[0].lastName,
+                    gender: '',
+                    link:   '',
                     photo:  ''
                 });
             });

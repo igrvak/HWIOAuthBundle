@@ -27,15 +27,15 @@ class CouponDiscount
      */
     protected $amount;
     /**
-     * @ORM\Column(type="boolean")
-     * @var boolean
-     */
-    protected $isAbsolute;
-    /**
      * @ORM\OneToOne(targetEntity="Coupon", mappedBy="discount")
      * @var Coupon
      */
     protected $coupon;
+    /**
+     * @ORM\Column(type="boolean")
+     * @var boolean
+     */
+    protected $isAbsolute;
 
     // -- Accessors ---------------------------------------
 

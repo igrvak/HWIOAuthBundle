@@ -5,13 +5,15 @@ define([
     'iwin-app/images/galleryView',
     'iwin-app/videos/videosView',
     'iwin-app/profile/profileView',
+    'iwin-shared/location/routeView',
     'jquery/openclose',
-], function (_, Backbone, templating, ImagesView, VideosView, ProfileView) {
+], function (_, Backbone, templating, ImagesView, VideosView, ProfileView, RouteView) {
     'use strict';
 
     var viewId = 'iwin-qual-task';
 
     var View = Backbone.View.extend({
+        "views":    {},
         "template": templating.get(viewId),
 
         "initialize": function () {
@@ -21,20 +23,21 @@ define([
             this.model.on('sync', this.render, this);
         },
 
-        "viewImages":  null,
-        "viewVideos":  null,
-        "viewProfile":  null,
-
         "initializeViews": function () {
-            this.viewImages = new ImagesView({
-                "model": this.model.get('gallery.images'),
-            });
-            this.viewVideos = new VideosView({
-                "model": this.model.get('gallery.videos'),
-            });
-            this.viewProfile = new ProfileView({
-                "model": this.model.get('profile'),
-            });
+            this.views = {
+                "gallery": new ImagesView({
+                    "model": this.model.get('gallery.images'),
+                }),
+                "videos":  new VideosView({
+                    "model": this.model.get('gallery.videos'),
+                }),
+                "profile": new ProfileView({
+                    "model": this.model.get('profile'),
+                }),
+                "route":   new RouteView({
+                    "model": this.model.get('locations'),
+                }),
+            };
         },
 
         "events": {
@@ -42,19 +45,16 @@ define([
         },
 
         "render": function () {
-            this.viewImages.remove();
-            this.viewVideos.remove();
+            _.each(this.views, function (view) {
+                view.remove();
+            });
 
             this.$el.html(this.template(this.model));
 
-            this.viewImages.setElement(this.$el.find('.gallery-container'));
-            this.viewImages.render();
-
-            this.viewVideos.setElement(this.$el.find('.videos-container'));
-            this.viewVideos.render();
-
-            this.viewProfile.setElement(this.$el.find('.profile-container'));
-            this.viewProfile.render();
+            _.each(this.views, function (view, name) {
+                view.setElement(this.$el.find('.' + name + '-container'));
+                view.render();
+            }, this);
 
             this.$el.find('div.open-close').openClose({
                 activeClass: 'active',

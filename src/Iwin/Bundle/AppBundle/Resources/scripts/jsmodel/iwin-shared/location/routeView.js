@@ -23,16 +23,18 @@ define([
         "initialize": function () {
             this.modelBinder = new Backbone.ModelBinder();
 
-            this.viewMap = new MapView();
+            this.viewMap = new MapView({
+                "model": new LocationModel(),
+            });
 
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
 
-            if (!this.model.length) {
-                this.model.add(new LocationModel());
-            }
-
             CollectionView.prototype.initialize.apply(this, arguments);
+
+            if (!this.model.get('list').length) {
+                this.addItemEmpty();
+            }
         },
 
         "events": {
@@ -43,58 +45,60 @@ define([
         "render": function () {
             this.$el.html(this.template());
 
-            var map = this.viewMap, that = this;
-            this.$el.find('[href="#popup-location"]').fancybox({
-                "padding":   0,
-                "closeBtn":  false,
-                "scrolling": false,
+            var map = this.viewMap, that = this, clb;
+            this.$el.find('[href="#popup-location"]').click(function (e) {
+                e.preventDefault();
 
-                "beforeShow":  function () {
-                    var obj = this.element.closest('li').data('ordinal');
-                    obj = that.model.get('list').at(obj);
+                var obj = $(e.currentTarget).closest('li').data('ordinal');
+                obj = that.model.get('list').at(obj);
 
-                    var mapCont = this.content.find('#map'),
-                        input = this.content.find('.address'),
-                        button = this.content.find('.confirm');
+                $.fancybox({
+                    "href":      '#popup-location',
+                    "padding":   0,
+                    "closeBtn":  false,
+                    "scrolling": false,
 
-                    this.content.find('.action-close').click(function (e) {
-                        e.preventDefault();
-                        $.fancybox.close();
-                    });
+                    "afterShow":   function () {
+                        var mapCont = this.content.find('#map'),
+                            input = this.content.find('.address'),
+                            button = this.content.find('.confirm');
 
-                    input.bind('change', function () {
-                        button.toggleClass('disabled', !input.val());
-                    });
-                    button.click(function (e) {
-                        e.preventDefault();
-                        if ($(this).hasClass('disabled')) {
-                            return;
-                        }
-
-                        obj.set(input.data('pos'));
-                        that.render();
-                        $.fancybox.close();
-                    });
-
-                    map.setElement(mapCont);
-                    map.render();
-
-                    map.model.setAddressCallback(function (address, pos) {
-                        input.val(address);
-                        input.data('pos', {
-                            'address': address,
-                            'posLat':  pos.lat(),
-                            'posLong': pos.lng(),
+                        this.content.find('.action-close').click(function (e) {
+                            e.preventDefault();
+                            $.fancybox.close();
                         });
-                        input.trigger('change');
-                    });
-                },
-                "afterShow":   function () {
-                    map.model.repaint();
-                },
-                "beforeClose": function () {
-                    map.model.setAddressCallback(null);
-                },
+
+                        input.val(obj.get('address'));
+                        input.bind('change', function () {
+                            button.toggleClass('disabled', !input.val());
+                        });
+                        button.click(function (e) {
+                            e.preventDefault();
+                            if ($(this).hasClass('disabled')) {
+                                return;
+                            }
+
+                            obj.set(map.model.toJSON());
+                            that.render();
+                            $.fancybox.close();
+                        });
+
+                        map.setElement(mapCont);
+                        map.render();
+                        map.updatePosition(new LocationModel(obj.toJSON()));
+
+                        clb = function (address) {
+                            input.val(address);
+                            input.data('pos', this.pos);
+                            input.trigger('change');
+                        };
+
+                        map.on('map:address', clb);
+                    },
+                    "beforeClose": function () {
+                        map.off('map:address', clb);
+                    },
+                })
             });
 
             this.modelBinder.bind(this.model, this.el);
@@ -103,7 +107,10 @@ define([
             return this;
         },
 
-        "addItem":    function (e) {
+        "addItemEmpty": function () {
+            this.model.get('list').add(new LocationModel());
+        },
+        "addItem":      function (e) {
             e.preventDefault();
             var list = this.model.get('list');
 
@@ -112,16 +119,22 @@ define([
                 return;
             }
 
-            list.add(new LocationModel());
+            this.addItemEmpty();
             this.render();
         },
-        "removeItem": function (e) {
+        "removeItem":   function (e) {
             e.preventDefault();
             var obj = this.$(e.currentTarget),
+                list = this.model.get('list'),
                 index = obj.closest('li').data('ordinal');
 
-            var el = this.model.get('list').at(index);
-            this.model.get('list').remove(el);
+            var el = list.at(index);
+            list.remove(el);
+
+            if (!this.model.get('list').length) {
+                this.addItemEmpty();
+            }
+
             this.render();
         },
     });

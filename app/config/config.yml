@@ -19,7 +19,7 @@ parameters:
   locales_supported:
     - en
     - ru
-    - sp
+    - es
   # Sprites
   app.path.sprites:   %app.path.img%/sprites
   app.dir.sprites:    %app.dir.web%%app.path.sprites%

@@ -1,25 +1,56 @@
 define([
     'lodash',
     'backbone',
-    './map',
-], function (_, Backbone, Map) {
+    'google/maps'
+], function (_, Backbone, gmaps) {
     'use strict';
 
+    var mapOpts = {
+        zoom:      4,
+        center:    null,
+        mapTypeId: gmaps.MapTypeId.ROADMAP
+    };
+
     var View = Backbone.View.extend({
+        "map":     null,
+        "marker":  null,
         "mapCont": null,
 
         "initialize": function () {
             this.mapCont = document.createElement('div');
 
-            if (!this.model) {
-                this.model = new Map([ // TODO: move
-                    41.29911550842562,
-                    -93.86230468749999,
-                ]);
-            }
+            this.map = new gmaps.Map(this.mapCont, mapOpts);
+            this.marker = new gmaps.Marker({
+                "position": this.map.getCenter(),
+                "map":      this.map,
+            });
+            this.updatePosition();
 
-            this.model.show(this.mapCont);
-            console.log(this.model);
+            gmaps.event.addListener(this.map, 'click', _.bind(function (event) {
+                this.trigger('map:point', event.latLng);
+            }, this));
+
+            var geocoder = new gmaps.Geocoder();
+            this.on('map:point', function (pos) {
+                this.model.set({
+                    "posLat":  pos.lat(),
+                    "posLong": pos.lng(),
+                });
+                this.updatePosition();
+
+                geocoder.geocode({
+                    latLng: pos,
+                }, _.bind(function (addresses, status) {
+                    var address = status !== 'OK' ?
+                        null :
+                        addresses[0].formatted_address;
+                    this.trigger('map:address', address, pos);
+                }, this));
+            });
+            this.on('map:address', function (address) {
+                this.model.set('address', address);
+                console.log(9);
+            });
         },
 
         "render": function () {
@@ -29,8 +60,22 @@ define([
                 "width":  this.$el.width(),
                 "height": this.$el.height(),
             });
+            gmaps.event.trigger(this.map, 'resize');
 
             return this;
+        },
+
+        "updatePosition": function (model) {
+            if (model) {
+                this.model = model;
+            }
+
+            var pos = new gmaps.LatLng(
+                this.model.get('posLat'),
+                this.model.get('posLong')
+            );
+            this.map.setCenter(pos);
+            this.marker.setPosition(pos);
         },
     });
 

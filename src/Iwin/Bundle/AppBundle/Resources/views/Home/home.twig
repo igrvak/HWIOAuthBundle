@@ -249,6 +249,9 @@
                 <a href="#popup-location" class="btn-location square fancybox">
                   <span>Choose on map</span>
                 </a>
+                {% if not location.isEmpty %}
+                  <a href="#remove" class="btn-location-remove square remove" title="Remove location">Remove</a>
+                {% endif %}
                 <div class="location-input">
                   <input type="text" value="{{ location.address }}" readonly />
                 </div>
@@ -263,17 +266,6 @@
               </div>
             {% endif %}
             </li>
-          {% else %}
-          <li>
-            <div class="location-field">
-              <a href="#popup-location" class="btn-location square fancybox">
-                <span>Choose on map</span>
-              </a>
-              <div class="location-input">
-                <input type="text" readonly>
-              </div>
-            </div>
-          </li>
           {% endfor %}
         </ul>
         <a href="#add" class="link-add-location add">Add location</a>

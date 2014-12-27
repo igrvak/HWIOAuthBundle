@@ -106,3 +106,38 @@
   width: 500px;
   margin: 2em auto 1em;
 }
+.profile-block {
+  & > div {
+    display: inline-block;
+    padding: 1em;
+  }
+  input, .social-btn {
+    width: 15em;
+    margin: .4em;
+  }
+  .left-block {
+    text-align: right;
+    width: 40%;
+    margin-right: 3em;
+
+  }
+  .right-block {
+    margin-left: 3em;
+    text-align: left;
+    width: 40%;
+    .social-btn {
+      border: 1px dashed #008000;
+      &:not(.disable):hover {
+        border: 1px solid brown;
+        background: #ceeeff;
+      }
+      
+      height: 2.8em;
+      display: block;
+      .user-photo {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

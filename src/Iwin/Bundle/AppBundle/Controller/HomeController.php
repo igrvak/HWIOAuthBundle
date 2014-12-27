@@ -32,4 +32,24 @@ class HomeController
         return [
         ];
     }
+
+    /**
+     * @Rest\Get("/socials", name="socials-list", defaults={"_format": "json"})
+     * @Rest\View()
+     */
+    public function socialListAction()
+    {
+        return [
+            [
+                'type' => 'twitter'
+            ], [
+                'type' => 'gplus'
+            ], [
+                'type' => 'facebook',
+                'isActive' => true
+            ], [
+                'type' => 'linkedin'
+            ]
+        ];
+    }
 }

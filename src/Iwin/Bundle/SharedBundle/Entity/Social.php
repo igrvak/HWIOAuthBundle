@@ -1,8 +1,9 @@
 <?php
-
 namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Social
@@ -20,7 +21,12 @@ class Social
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    protected $isActive;
     /**
      * @var string
      *
@@ -29,16 +35,9 @@ class Social
     protected $type;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    protected $isActive;
-
-    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,7 +60,7 @@ class Social
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -84,7 +83,7 @@ class Social
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getIsActive()
     {

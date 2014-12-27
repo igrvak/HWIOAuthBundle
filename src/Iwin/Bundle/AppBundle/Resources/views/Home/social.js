@@ -7,7 +7,7 @@ requirejs([
 ], function ($, _, Backbone, facebook, linkedin) {
     'use strict';
     //
-    console.log(linkedin);
+    //console.log(linkedin);
 
 
     $('#facebook').on('click', function (event) {

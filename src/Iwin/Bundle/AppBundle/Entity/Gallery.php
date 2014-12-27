@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Bogdan Yurov <bogdan@yurov.me>
  *
  * @ORM\Entity()
- * @ORM\Table(name="iwin_app_gallery")
+ * @ORM\Table(name="iwin_shared_gallery")
  */
 class Gallery
 {

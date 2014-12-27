@@ -40,7 +40,7 @@ class Task
      */
     protected $id;
     /**
-     * @ORM\ManyToMany(targetEntity="\Iwin\Bundle\AppBundle\Entity\Location",cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="\Iwin\Bundle\SharedBundle\Entity\Location",cascade={"all"})
      * @ORM\JoinTable(name="iwin_qual_task_locations",
      *   joinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="location_id", referencedColumnName="id")}

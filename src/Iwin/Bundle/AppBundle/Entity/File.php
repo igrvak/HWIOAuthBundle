@@ -12,7 +12,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\Entity(repositoryClass="FileRepository")
- * @ORM\Table(name="iwin_app_file")
+ * @ORM\Table(name="iwin_sharedp_file")
  */
 class File
 {

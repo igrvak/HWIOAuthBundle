@@ -1,51 +1,44 @@
 <?php
-
 namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Location
- *
+ * @ORM\Entity()
  * @ORM\Table(name="iwin_shared_location")
- * @ORM\Entity(repositoryClass="LocationRepository")
  */
 class Location
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="guid")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @Serializer\Type("string")
+     * @var string
      */
     protected $id;
-
     /**
+     * @ORM\Column(type="string")
      * @var string
-     *
-     * @ORM\Column(name="latitude", type="decimal")
-     */
-    protected $latitude;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="longitude", type="decimal")
-     */
-    protected $longitude;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
      */
     protected $address;
+    /**
+     * @ORM\Column(type="float")
+     * @var float
+     */
+    protected $posLat;
+    /**
+     * @ORM\Column(type="float")
+     * @var float
+     */
+    protected $posLong;
+
+    // -- Accessors ---------------------------------------
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @return string
      */
     public function getId()
     {
@@ -53,71 +46,56 @@ class Location
     }
 
     /**
-     * Set latitude
-     *
-     * @param string $latitude
-     * @return Location
-     */
-    public function setLatitude($latitude)
-    {
-        $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * Get latitude
-     *
-     * @return string 
-     */
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-
-    /**
-     * Set langitude
-     *
-     * @param string $langitude
-     * @return Location
-     */
-    public function setLangitude($langitude)
-    {
-        $this->langitude = $langitude;
-
-        return $this;
-    }
-
-    /**
-     * Get langitude
-     *
-     * @return string 
-     */
-    public function getLangitude()
-    {
-        return $this->langitude;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     * @return Location
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * @param string $address
+     * @return $this
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPosLat()
+    {
+        return $this->posLat;
+    }
+
+    /**
+     * @param float $posLat
+     * @return $this
+     */
+    public function setPosLat($posLat)
+    {
+        $this->posLat = $posLat;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPosLong()
+    {
+        return $this->posLong;
+    }
+
+    /**
+     * @param float $posLong
+     * @return $this
+     */
+    public function setPosLong($posLong)
+    {
+        $this->posLong = $posLong;
+        return $this;
     }
 }

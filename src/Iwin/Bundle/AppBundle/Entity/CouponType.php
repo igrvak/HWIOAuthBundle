@@ -11,7 +11,7 @@ use Gedmo\Translatable\Translatable;
  * @author Bogdan Yurov <bogdan@yurov.me>
  *
  * @ORM\Entity(repositoryClass="CouponTypeRepository")
- * @ORM\Table(name="iwin_app_coupon_type")
+ * @ORM\Table(name="iwin_shared_coupon_type")
  */
 class CouponType implements
     Translatable

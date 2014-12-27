@@ -61,7 +61,7 @@ class LoadSocialData extends AbstractFixture implements
      */
     protected function getData()
     {
-        $path = $this->container->getParameter('iwin_app.config_directory');
+        $path = $this->container->getParameter('iwin_shared.config_directory');
         $path .= '/data/social.yml';
         $data = Yaml::parse(file_get_contents($path));
 

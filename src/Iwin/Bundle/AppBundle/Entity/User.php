@@ -8,6 +8,7 @@ use Gedmo\Translatable\Translatable;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
 use Iwin\Bundle\SharedBundle\Entity\Location;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Table(name="fos_user")
@@ -22,6 +23,7 @@ class User extends BaseUser implements Translatable
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Type("string")
      */
     protected $id;
 
@@ -30,6 +32,7 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\Column(name="nameFirst", type="string", length=255)
      * @Gedmo\Translatable()
+     * @Serializer\Type("string")
      */
     protected $nameFirst;
 
@@ -38,6 +41,7 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\Column(name="nameLast", type="string", length=255)
      * @Gedmo\Translatable()
+     * @Serializer\Type("string")
      */
     protected $nameLast;
 
@@ -45,6 +49,7 @@ class User extends BaseUser implements Translatable
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
+     * @Serializer\Type("string")
      */
     protected $phone;
 
@@ -52,6 +57,7 @@ class User extends BaseUser implements Translatable
      * @var string
      *
      * @ORM\Column(name="chatSkype", type="string", length=255)
+     * @Serializer\Type("string")
      */
     protected $chatSkype;
 
@@ -59,6 +65,7 @@ class User extends BaseUser implements Translatable
      * @var \DateTime
      *
      * @ORM\Column(name="birthdate", type="date")
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     protected $birthdate;
 
@@ -67,6 +74,7 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\OneToOne(targetEntity="FileImage")
      * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
+     * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\FileImage")
      */
     protected $image_avatar;
 
@@ -75,11 +83,16 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location")
      * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
+     *
+     * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
      */
     protected $location;
 
     /**
+     * @var Social[]|Collection
+     *
      * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="User")
+     * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;
 

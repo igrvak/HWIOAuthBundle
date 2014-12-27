@@ -56,6 +56,7 @@ class AppKernel extends Kernel
             new \Hautelook\AliceBundle\HautelookAliceBundle(),
             new \Oneup\UploaderBundle\OneupUploaderBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
         ]);
 
         // Debug
@@ -79,7 +80,7 @@ class AppKernel extends Kernel
         // Основные
         $addBundles([
             new \Iwin\Bundle\AdvertBundle\IwinAdvertBundle(),
-            new \Iwin\Bundle\TaskBundle\IwinTaskBundle(),
+            new \Iwin\Bundle\QualBundle\IwinQualBundle(),
             new \Iwin\Bundle\AppBundle\IwinAppBundle(),
             new \Iwin\Bundle\SharedBundle\IwinSharedBundle(),
         ]);

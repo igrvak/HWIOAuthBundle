@@ -1,12 +1,12 @@
 <?php
 
-namespace Iwin\Bundle\TaskBundle\DependencyInjection;
+namespace Iwin\Bundle\QualBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Configuration for IwinTaskBundle.
+ * Configuration for IwinQualBundle.
  *
  * @author Vladimir Odesskij <odesskij1992@gmail.com>
  */

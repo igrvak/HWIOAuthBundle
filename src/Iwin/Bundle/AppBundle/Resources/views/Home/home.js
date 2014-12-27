@@ -1,30 +1,33 @@
 requirejs([
     'jquery',
     'underscore',
+    'iwin-app/createfree/view',
+    'iwin-app/profile/profile',
+    'iwin-qual/task',
+    'json!/taskapi',
     'iwin-advert/advertModel',
-    'iwin-advert/advertView',
-    'json!/advertapi/__testadvert__',
-    'jquery/openclose',
-    'css!config/inner-tabs',
+    'json!/advertapi',
     'domReady!',
-], function ($, _, AdvertModel, AdvertView, advertData) {
+], function ($, _, CreateFreeView, ProfileModel, TaskModel, taskData, AdvertModel, advertData) {
     'use strict';
 
     var cont = $('#page_target');
 
-    cont.find('div.open-close').openClose({
-        activeClass: 'active',
-        opener:      '.opener',
-        slider:      '.slide',
-        animSpeed:   400,
-        effect:      'slide',
-    });
+    var modelProfile = new ProfileModel(),
+        modelAdvert = new AdvertModel(advertData),
+        modelTask = new TaskModel(taskData);
 
-    var view = new AdvertView({
-        'model': new AdvertModel(advertData),
+    modelAdvert.set('profile', modelProfile);
+    modelTask.set('profile', modelProfile);
 
-        'el': cont.find('.advertmodel-container'),
+    var view = new CreateFreeView({
+        "model": {
+            "advert":  modelAdvert,
+            "task":    modelTask,
+            "profile": modelProfile,
+        },
+
+        'el': cont,
     });
-    console.log(view);
     view.render();
 });

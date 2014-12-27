@@ -42,7 +42,7 @@ framework:
   trusted_hosts: [".*"]
   validation:
     enabled: true
-    enable_annotations: false
+    enable_annotations: true
   templating:
     engines: ["twig"]
     assets_version: %app.assets_version%
@@ -92,7 +92,7 @@ jms_di_extra:
 # RESTful controllers
 fos_rest:
   serializer:
-    serialize_null: true
+    serialize_null: false # Важно для десериализации объектов из JSON
   view:
     view_response_listener: true
     formats:
@@ -137,3 +137,4 @@ jms_i18n_routing:
   locales: %locales_supported%
   strategy: prefix
 
+nelmio_api_doc: ~

@@ -3,19 +3,17 @@
  */
 define([
     'backbone',
+    'routing',
     'iwin-app/util/basemodel',
     'iwin-app/coupon/coupon',
     'iwin-app/coupon/couponCollection',
-    './gallery',
-], function (Backbone, BaseModel, Coupon, CouponCollection, GalleryModel) {
+    'iwin-app/gallery',
+    'iwin-app/profile/profile',
+], function (Backbone, Routing, BaseModel, Coupon, CouponCollection, GalleryModel, ProfileModel) {
     'use strict';
 
     var Model = BaseModel.extend({
-        "idAttribute": 'hash',
-
-        "defaults": {
-            "hash": null,
-        },
+        "url": Routing.generate('iwin_advert_save'),
 
         "relations": [
             {
@@ -27,6 +25,10 @@ define([
                 "type":         Backbone.HasOne,
                 "key":          'gallery',
                 "relatedModel": GalleryModel,
+            }, {
+                "type":         Backbone.HasOne,
+                "key":          'profile',
+                "relatedModel": ProfileModel,
             },
         ],
     });

@@ -4,7 +4,8 @@ namespace Iwin\Bundle\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
-use Iwin\Bundle\AppBundle\Service\Util\IdGenerator;
+use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Купон
@@ -18,18 +19,11 @@ class Coupon implements
     Translatable
 {
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->hash = IdGenerator::getId();
-    }
-
-    /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @var int
+     * @ORM\Column(type="guid")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @Serializer\Type("string")
+     * @var string
      */
     protected $id;
     /**
@@ -40,23 +34,21 @@ class Coupon implements
     protected $description;
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="iwin_app.coupon.expires")
      * @var \DateTime
      */
     protected $expires;
     /**
-     * @ORM\Column(type="string")
-     * @var string
-     */
-    protected $hash;
-    /**
      * @ORM\Column(type="string",length=100)
+     * @Assert\NotBlank(message="iwin_app.coupon.name")
      * @Gedmo\Translatable()
      * @var string
      */
     protected $name;
     /**
      * @ORM\ManyToOne(targetEntity="CouponType")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull(message="iwin_app.coupon.type")
      * @var CouponType
      */
     protected $type;
@@ -84,7 +76,7 @@ class Coupon implements
     // -- Accessors ---------------------------------------
 
     /**
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -106,24 +98,6 @@ class Coupon implements
     public function setDiscount(CouponDiscount $discount = null)
     {
         $this->discount = $discount;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHash()
-    {
-        return $this->hash;
-    }
-
-    /**
-     * @param string $hash
-     * @return $this
-     */
-    public function setHash($hash)
-    {
-        $this->hash = $hash;
         return $this;
     }
 

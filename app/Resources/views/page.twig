@@ -3,13 +3,13 @@
 {% trans_default_domain "MeestAppBundle" %}
 
 {% block pageBase %}
-<div id="layout_page_cont" class="layout-page {% spaceless %}{% block pageClass %}{% endblock %}{% endspaceless %}">
-  <h1 class="heading">{% block pageTitle %}{{ block('title') }}{% endblock %}</h1>
-  {% block page %}{% endblock %}
+  <div id="layout_page_cont" class="layout-page {% spaceless %}{% block pageClass %}{% endblock %}{% endspaceless %}">
+    <h1 class="heading">{% block pageTitle %}{{ block('title') }}{% endblock %}</h1>
+    {% block page %}{% endblock %}
 
-  <div class="templates" id="global_page_templates">
-    {% block pageTemplates %}
-    {% endblock %}
+    <div class="templates" id="global_page_templates" style="display: none">
+      {% block pageTemplates %}
+      {% endblock %}
+    </div>
   </div>
-</div>
 {% endblock %}

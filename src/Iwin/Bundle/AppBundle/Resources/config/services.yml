@@ -11,6 +11,10 @@ parameters:
     Iwin\Bundle\AppBundle\Service\Util\FileUrlManager
 
 services:
+  jms_serializer.object_constructor:
+    alias: jms_serializer.doctrine_object_constructor
+    public: false
+
   # Фабрика меню
   iwin_app.menu:
     class: %iwin_app.menu.class%

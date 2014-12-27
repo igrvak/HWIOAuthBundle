@@ -73,7 +73,7 @@ class UploadListener
         $this->em->flush($f);
 
         $ret = $event->getResponse();
-        $ret['hash'] = $f->getHash();
+        $ret['id'] = $f->getId();
         $ret['uri'] = $this->fileUrlManager->getUrl($f);
     }
 }

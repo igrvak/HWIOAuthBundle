@@ -41,5 +41,6 @@ class IwinAdvertExtension extends Extension
             new FileLocator($configDir)
         );
         $loader->load('services.yml');
+        $loader->load('doctrine.yml');
     }
 }

@@ -1,0 +1,10 @@
+parameters:
+  iwin_advert.repo.advert.class:
+    Iwin\Bundle\AdvertBundle\Entity\AdvertRepository
+
+services:
+  iwin_advert.repo.advert:
+    class:            %iwin_advert.repo.advert.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinAdvertBundle:Advert]

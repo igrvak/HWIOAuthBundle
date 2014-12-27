@@ -1,6 +1,5 @@
 <?php
-
-namespace Iwin\Bundle\TaskBundle\DependencyInjection;
+namespace Iwin\Bundle\QualBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -10,11 +9,11 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * Extension for IwinTaskBundle.
+ * Extension for IwinQualBundle.
  *
  * @author Vladimir Odesskij <odesskij1992@gmail.com>
  */
-class IwinTaskExtension extends Extension
+class IwinQualExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -29,6 +28,10 @@ class IwinTaskExtension extends Extension
             $configs
         );
         $container->setParameter(
+            $this->getAlias() . '.jsmodeldir',
+            realpath(__DIR__ . '/../Resources/scripts/jsmodel')
+        );
+        $container->setParameter(
             $this->getAlias(),
             $config
         );
@@ -37,5 +40,6 @@ class IwinTaskExtension extends Extension
             new FileLocator($configDir)
         );
         $loader->load('services.yml');
+        $loader->load('doctrine.yml');
     }
 }

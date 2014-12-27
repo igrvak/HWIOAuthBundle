@@ -1,9 +1,9 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * FileImage Entity.
@@ -16,16 +16,19 @@ class FileImage extends File
 {
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Type("integer")
      * @var string
      */
     protected $height;
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Type("integer")
      * @var string
      */
     protected $ordinal;
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Type("integer")
      * @var string
      */
     protected $width;

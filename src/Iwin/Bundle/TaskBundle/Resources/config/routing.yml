@@ -1,3 +1,0 @@
-iwin_task:
-    resource: "@IwinTaskBundle/Controller"
-    type: annotation

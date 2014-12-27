@@ -1,0 +1,11 @@
+parameters:
+  iwin_qual.util.jsmodelprovider.class:
+    Iwin\Bundle\QualBundle\Service\Util\JsmodelProvider
+
+services:
+  iwin_qual.util.jsmodelprovider:
+    class: %iwin_qual.util.jsmodelprovider.class%
+    arguments:
+      - %iwin_qual.jsmodeldir%
+    tags:
+      - { name: werkint.requirejs.jsmodelprovider }

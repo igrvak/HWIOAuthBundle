@@ -5,7 +5,9 @@ define([
     'iwin-app/images/galleryView',
     'iwin-app/videos/videosView',
     'iwin-app/coupon/couponsView',
-], function (_, Backbone, templating, ImagesView, VideosView, CouponsView) {
+    'iwin-app/profile/profileView',
+    'jquery/openclose',
+], function (_, Backbone, templating, ImagesView, VideosView, CouponsView, ProfileView) {
     'use strict';
 
     var viewId = 'iwin-advert-advert';
@@ -23,6 +25,7 @@ define([
         "viewImages":  null,
         "viewVideos":  null,
         "viewCoupons": null,
+        "viewProfile": null,
 
         "initializeViews": function () {
             this.viewImages = new ImagesView({
@@ -34,6 +37,13 @@ define([
             this.viewCoupons = new CouponsView({
                 "model": this.model.get('coupons'),
             });
+            this.viewProfile= new ProfileView({
+                "model": this.model.get('profile'),
+            });
+        },
+
+        "events": {
+            "click .advert-save": 'saveModel',
         },
 
         "render": function () {
@@ -51,7 +61,22 @@ define([
             this.viewCoupons.setElement(this.$el.find('.coupon-holder'));
             this.viewCoupons.render();
 
+            this.viewProfile.setElement(this.$el.find('.profile-container'));
+            this.viewProfile.render();
+
+            this.$el.find('div.open-close').openClose({
+                activeClass: 'active',
+                opener:      '.opener',
+                slider:      '.slide',
+                animSpeed:   400,
+                effect:      'slide',
+            });
+
             return this;
+        },
+
+        "saveModel": function () {
+            this.model.save();
         },
     });
 

@@ -11,12 +11,6 @@ define([
     var langs = window.$langs;
 
     var Model = BaseModel.extend({
-        "idAttribute": 'hash',
-
-        "defaults": {
-            "hash": null,
-        },
-
         "initialize": function () {
             if (!this.get('multilang').length) {
                 _.each(langs, function (i, el) {

@@ -14,12 +14,12 @@ define([
                 "type":              Backbone.HasMany,
                 "key":               'videos',
                 "relatedModel":      Video,
-                "relatedColelction": VideoCollection,
+                "relatedCollection": VideoCollection,
             }, {
                 "type":              Backbone.HasMany,
                 "key":               'images',
                 "relatedModel":      Image,
-                "relatedColelction": ImageCollection,
+                "relatedCollection": ImageCollection,
             },
         ],
     });

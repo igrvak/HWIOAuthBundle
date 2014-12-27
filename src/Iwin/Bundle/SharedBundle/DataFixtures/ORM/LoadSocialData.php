@@ -1,5 +1,5 @@
 <?php
-namespace Iwin\Bundle\AppBundle\DataFixtures\ORM;
+namespace Iwin\Bundle\SharedBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * Загружает список социальных сетей
  *
- * @author Bogdan Yurov <garrykmia@gmail.com>
+ * @author Igor Malinovskiy <garrykmia@gmail.com>
  */
 class LoadSocialData extends AbstractFixture implements
     FixtureInterface,

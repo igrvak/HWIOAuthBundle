@@ -1,0 +1,10 @@
+parameters:
+  iwin_app.repo.social.class:
+    Iwin\Bundle\SharedBundle\Entity\SocialRepository
+
+services:
+  iwin_app.repo.social:
+    class:            %iwin_app.repo.social.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinSharedBundle:Social]

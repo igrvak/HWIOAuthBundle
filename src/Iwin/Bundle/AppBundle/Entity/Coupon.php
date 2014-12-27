@@ -52,6 +52,7 @@ class Coupon implements
      * @var CouponType
      */
     protected $type;
+
     /**
      * @ORM\OneToOne(targetEntity="CouponDiscount", inversedBy="coupon")
      * @ORM\JoinColumn(name="discount_id", referencedColumnName="id", nullable=true)

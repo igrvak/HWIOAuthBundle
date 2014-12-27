@@ -1,6 +1,6 @@
 <?php
 
-namespace Iwin\Bundle\UserBundle\Entity;
+namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

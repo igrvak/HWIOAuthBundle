@@ -62,6 +62,7 @@ class User extends BaseUser implements Translatable
     private $birthdate;
 
 
+    
     /**
      * Get id
      *

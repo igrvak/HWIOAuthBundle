@@ -11,6 +11,7 @@
         "map":         {
             "*":           {
                 "select2/select2": "config/select2/select2",
+                "fancybox":        "config/fancybox",
                 "twig":            "config/twig",
             },
             "config/twig": {

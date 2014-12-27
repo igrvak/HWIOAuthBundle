@@ -1,7 +1,8 @@
-iwin_user:
-    resource: "@IwinSharedBundle/Controller/"
-    type:     annotation
-    prefix:   /
+iwin_shared:
+  resource: "@IwinSharedBundle/Resources/config/routing.yml"
+  prefix: /
+  options:
+    expose: true
 
 iwin_app:
   resource: "@IwinAppBundle/Resources/config/routing.yml"

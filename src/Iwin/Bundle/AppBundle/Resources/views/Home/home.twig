@@ -62,8 +62,50 @@
         <div id="profile"></div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
 {% endblock %}
+=======
+  </script>
+
+  {# Шаблон создания профиля #}
+  <script type="text/x-twig-template" data-id="iwin-createfree-profile">
+    <div class="create-profile">
+      {% include 'iwin-advert-advert-benefits' %}
+
+      <div class="profile-container"></div>
+
+      <p style="text-align: center;margin-top: 2em"><button type="submit" class="btn advert-save">Save</button></p>
+    </div>
+  </script>
+
+  {# Шаблон создания таска #}
+  <script type="text/x-twig-template" data-id="iwin-qual-task">
+    <div class="create-ad">
+      {% include 'iwin-advert-advert-benefits' %}
+
+      <h2 class="heading">Main information</h2>
+      <div class="route-container"></div>
+
+      <section class="main-info">
+        <div class="coupon-holder"></div>
+      </section>
+
+      <section class="main-info">
+        <h2 class="heading">Gallery</h2>
+
+        <div class="message-tip">You can sort images by simply dragging them. - правда работает</div>
+        <div class="gallery-container"></div>
+      </section>
+
+      <section class="videos">
+        <h2 class="heading">Videos</h2>
+
+        <div class="videos-container"></div>
+      </section>
+
+      <div class="profile-container"></div>
+>>>>>>> master
 
 {% block pageTemplates %}
   {{ parent() }}
@@ -180,6 +222,77 @@
       <button type="submit" class="btn btn-cancel">Cancel</button>
     </div>
   </script>
+<<<<<<< HEAD
+=======
+
+  {# Шаблон выбора маршрута #}
+  <script type="text/x-twig-template" data-id="iwin-app-location-route">
+    <div class="section" style="padding: 20px 50px;">
+      <div class="location-box">
+        <ul class="location-list">
+          {% for i, location in list.toArray() %}
+            <li data-ordinal="{{ i }}">
+            {% if loop.index == 1 %}
+              <div class="location-field">
+                <a href="#popup-location" class="btn-location square fancybox">
+                  <span>Choose on map</span>
+                </a>
+                {% if not location.isEmpty %}
+                  <a href="#remove" class="btn-location-remove square remove" title="Remove location">Remove</a>
+                {% endif %}
+                <div class="location-input">
+                  <input type="text" value="{{ location.address }}" readonly />
+                </div>
+              </div>
+            {% else %}
+              <div class="location-field">
+                <a href="#remove" class="btn-location-remove square remove" title="Remove location">Remove</a>
+                <a href="#popup-location" class="btn-location square"></a>
+                <div class="location-input">
+                  <input type="text" value="{{ location.address }}" readonly>
+                </div>
+              </div>
+            {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        <div style="text-align: right">
+          <a href="#add" class="link-add-location add">Add location</a>
+        </div>
+      </div>
+    </div>
+    <div class="lightbox popup-location" id="popup-location" style="display: none">
+			<div class="heading">
+				<h3>Location A</h3>
+				<a href="#cancel" class="close action-close" title="Close">Close</a>
+			</div>
+			<div class="holder">
+				<div class="choose-location">
+					<div class="map-holder">
+						<div class="message-tip closable">
+							<p>Place the insertion point on the map addresses and we will automatically fill in the address.</p>
+							<a href="#" class="tip-close" title="Close">Close</a>
+						</div>
+						<div id="map"></div>
+					</div>
+					<div class="choose-form">
+						<label><div class="caption">Address</div>
+              <div class="value-box">
+                <input type="text" class="address" readonly />
+              </div>
+            </label>
+						<div class="actions">
+							<a href="#confirm" class="btn confirm disabled">Confirm</a>
+							<a href="#cancel" class="link-cancel action-close">Cancel</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </script>
+
+  {# Шаблон галереи изображений #}
+>>>>>>> master
   <script type="text/x-twig-template" data-id="iwin-app-images-gallery">
       <ul class="images {{ list.length>0?'':'drop-maximized' }}">
         {% for i, image in list.toArray() %}

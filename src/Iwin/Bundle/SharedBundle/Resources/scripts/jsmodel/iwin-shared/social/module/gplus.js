@@ -32,6 +32,9 @@ define([
             gapi.client.plus.people.get({
                 'userId': 'me'
             }).execute(function (response) {
+                if (response.code && response.code !== 200) {
+                    throw 'Error: ' + response.message;
+                }
                 callback({
                     id:     response.id,
                     name:   response.displayName,

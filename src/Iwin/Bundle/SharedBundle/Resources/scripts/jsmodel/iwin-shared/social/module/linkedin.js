@@ -27,10 +27,9 @@ define([
         },
         getData:  function (callback) {
             IN.API.Profile('me')
-                .fields(["id", "firstName", "lastName", "pictureUrl", "publicProfileUrl"])
+                .fields(['id', 'firstName', 'lastName', 'pictureUrl', 'publicProfileUrl'])
                 .result(function (response) {
 
-                    console.log(response);
                     callback({
                         id:    response.values[0].id,
                         name:  response.values[0].firstName + ' ' + response.values[0].lastName,

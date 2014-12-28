@@ -34,7 +34,6 @@ define([
         },
 
         "render": function () {
-            console.log('Loaded', manager.getLoaded());
             this.$el.html(this.template(this.model, {
                 "socialsLoaded": manager.getLoaded(),
             }));
@@ -44,11 +43,16 @@ define([
             return this;
         },
 
-        "connect": function (event) {
-            var socials = this.model.get('list');
-            var current = $(event.currentTarget);
+        "connect": function (e) {
+            var current = $(e.currentTarget);
+
+            if (current.closest('li').hasClass('disabled')) {
+                return;
+            }
+
             var network = manager.get(current.data('network')),
                 view = this;
+            var socials = this.model.get('list');
             network.login(function () {
                 network.getData(function (data) {
                     socials.each(function (social) {

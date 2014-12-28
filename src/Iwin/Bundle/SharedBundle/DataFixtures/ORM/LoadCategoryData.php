@@ -58,10 +58,10 @@ class LoadCategoryData extends AbstractFixture implements
 
         $trans = $manager->getRepository('GedmoTranslatable:Translation');
         $i = 0;
-        foreach ($this->getData() as $k => $row) {
+        foreach ($this->getData() as $row) {
             $cat = new Category();
             $cat->setImage($this->serviceUploader()->upload(
-                $this->getDataDir() . '/img/category/' . $k . '.png',
+                $this->getDataDir() . '/img/category/' . $row['class'] . '.png',
                 'category'
             ));
             foreach ($row['titles'] as $lang => $title) {
@@ -70,8 +70,10 @@ class LoadCategoryData extends AbstractFixture implements
 
             $gen(4, 2, $cat);
 
-            $this->addReference('category-' . $k, $cat);
-            $this->addReference('category-' . (++$i), $cat);
+            if (!$this->hasReference('category-' . $row['class'])) {
+                $this->addReference('category-' . $row['class'], $cat);
+                $this->addReference('category-' . (++$i), $cat);
+            }
         }
 
         $manager->flush();

@@ -11,10 +11,6 @@ parameters:
     Iwin\Bundle\AppBundle\Service\Util\FileUrlManager
 
 services:
-  jms_serializer.object_constructor:
-    alias: jms_serializer.doctrine_object_constructor
-    public: false
-
   # Фабрика меню
   iwin_app.menu:
     class: %iwin_app.menu.class%
@@ -68,3 +64,5 @@ services:
       - { driver: imagick } ### Image driver GD Library or Imagick PHP extension
   iwin_app.file_url_manager:
     class: %iwin_app.file_url_manager.class%
+    tags:
+      - { name: jms_serializer.event_subscriber }

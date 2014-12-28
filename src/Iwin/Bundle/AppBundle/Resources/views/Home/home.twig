@@ -171,7 +171,7 @@
       {% for i, category in list %}
         <li data-ordinal="{{ i }}">
           <div class="icon">
-            <img src="{{ category.image }}" height="24" width="24" alt="">
+            <img src="{{ category.image.uri }}" height="24" width="24" alt="">
           </div>
           <a href="#popup-category" class="fancybox">{{ category.title }}</a>
         </li>

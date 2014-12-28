@@ -37,7 +37,7 @@ class LoadAdvertData extends AbstractFixture implements
     public function load(ObjectManager $manager)
     {
         $advert = new Advert();
-        $advert->setCategory($this->getReference('category-0'));
+        $advert->setCategory($this->getReference('category-1'));
         $manager->persist($advert);
 
         $coupon = new Coupon();

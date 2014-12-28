@@ -17,6 +17,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="CategoryRepository")
  * @ORM\Table(name="iwin_shared_category")
  * @Gedmo\Tree(type="materializedPath")
+ * @Serializer\ExclusionPolicy("all")
  */
 class Category implements
     Translatable
@@ -32,6 +33,7 @@ class Category implements
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Gedmo\TreePathSource
      * @Serializer\Type("integer")
+     * @Serializer\Expose
      * @var integer
      */
     protected $id;
@@ -43,6 +45,7 @@ class Category implements
     /**
      * @ORM\ManyToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\FileImage", cascade={"persist"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     * @Serializer\Expose
      * @var FileImage|null
      */
     protected $image;
@@ -68,6 +71,7 @@ class Category implements
     /**
      * @Gedmo\Translatable()
      * @ORM\Column(name="title", type="string", length=100)
+     * @Serializer\Expose
      * @var string
      */
     protected $title;

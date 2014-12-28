@@ -150,3 +150,8 @@ jms_i18n_routing:
   strategy: prefix
 
 nelmio_api_doc: ~
+
+services: # TODO: check
+  jms_serializer.object_constructor:
+    alias: jms_serializer.doctrine_object_constructor
+    public: false

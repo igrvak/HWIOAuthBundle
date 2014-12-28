@@ -11,6 +11,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Vladimir Odesskij <odesskij1992@gmail.com>
  *
  * @ORM\Entity(repositoryClass="ImageRepository")
+ * @Serializer\ExclusionPolicy("none")
  */
 class FileImage extends File
 {

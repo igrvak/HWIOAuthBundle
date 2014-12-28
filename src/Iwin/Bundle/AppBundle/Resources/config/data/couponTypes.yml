@@ -1,12 +1,12 @@
 discount:
   hasDiscount: true
   titles:
-    ru: "Скидка"
+    en: "Discount"
 gift:
   hasDiscount: false
   titles:
-    ru: "Подарок"
+    en: "Gift"
 freeconsult:
   hasDiscount: false
   titles:
-    ru: "Бесплатная консультация"
+    en: "Free consult"

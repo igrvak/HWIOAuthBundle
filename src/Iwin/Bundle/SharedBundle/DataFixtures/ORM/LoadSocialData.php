@@ -67,5 +67,4 @@ class LoadSocialData extends AbstractFixture implements
 
         return $data;
     }
-
 }

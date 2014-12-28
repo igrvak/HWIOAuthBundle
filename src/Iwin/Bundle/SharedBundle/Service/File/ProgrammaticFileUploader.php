@@ -26,9 +26,9 @@ class ProgrammaticFileUploader
     protected $urlManager;
 
     /**
-     * @param FileManager $fileManager
+     * @param FileManager    $fileManager
      * @param FileUrlManager $urlManager
-     * @param string $webDir
+     * @param string         $webDir
      */
     public function __construct(FileManager $fileManager, FileUrlManager $urlManager, $webDir)
     {
@@ -39,20 +39,18 @@ class ProgrammaticFileUploader
 
 
     /**
-     * @param string $source full path to source file
+     * @param string $source  full path to source file
      * @param string $gallery Gallery Id for OneupUploaderBundle
-     * @return Iwin\File
+     * @return Iwin\File|Iwin\FileImage
      */
     public function upload($source, $gallery)
     {
         $f = new File($source);
 
-
-        $file = $this->fileManager
-            ->createFile(
-                $f,
-                $gallery
-            );
+        $file = $this->fileManager->createFile(
+            $f,
+            $gallery
+        );
 
         $f->move($this->webDir . '/' . $this->urlManager->getUrl($file));
         return $file;

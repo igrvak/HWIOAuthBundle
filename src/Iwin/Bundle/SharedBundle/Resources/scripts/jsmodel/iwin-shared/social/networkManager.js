@@ -12,6 +12,8 @@ define([
 
 
     console.log(gapi);
+
+
     FB.init({
         appId: window.$webapp.var.socials.facebook, //TODO: bidlokod
     });

@@ -31,10 +31,11 @@ parameters:
   # Маппим параметры, на массив
   socials:
     facebook:
-      id: %social.facebook.id%
-      secret: %social.facebook.secret%
+      id: %service.facebook.id%
+      secret: %service.facebook.secret%
   socials_pub:
-    facebook: %social.facebook.id%
+    facebook: %service.facebook.id%
+    gplus: %service.google.key_browser%
 
 # Generic framework config
 framework:

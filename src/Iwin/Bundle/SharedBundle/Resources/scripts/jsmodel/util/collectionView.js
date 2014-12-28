@@ -38,6 +38,10 @@ define([
                 }, this);
             }, this)(this.template);
         },
+
+        "addItemEmpty": function () {
+            this.model.get('list').add(new this.relatedModel());
+        },
     });
 
     return View;

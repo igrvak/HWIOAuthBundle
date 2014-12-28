@@ -141,6 +141,99 @@
     </section>
   </script>
 
+  {# Шаблон списка категорий #}
+  <script type="text/x-twig-template" data-id="iwin-shared-category-categories">
+    <section class="category-choose">
+      <h2 class="heading">Choose Category Of Your Ad</h2>
+      <div class="holder">
+        <div class="category-choose__list open-close">
+          <ul>
+            <li>
+              <div class="icon">
+                <img src="{{ asset('bundles/iwinapp/img/old/ico15.png') }}" height="24" width="24" alt="">
+              </div>
+              <a href="#popup-category" class="fancybox">appliances set up &amp; repair</a>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="{{ asset('bundles/iwinapp/img/old/ico16.png') }}" height="24" width="24" alt="">
+              </div>
+              <a href="#popup-category" class="fancybox">pickup / delivery / moving</a>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="{{ asset('bundles/iwinapp/img/old/ico17.png') }}" height="24" width="24" alt="">
+              </div>
+              <a href="#popup-category" class="fancybox">PC repair &amp; assistance</a>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="{{ asset('bundles/iwinapp/img/old/ico18.png') }}" height="24" width="24" alt="">
+              </div>
+              <a href="#popup-category" class="fancybox">nurse &amp; healthcare</a>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="{{ asset('bundles/iwinapp/img/old/ico19.png') }}" height="24" width="24" alt="">
+              </div>
+              <a href="#popup-category" class="fancybox">baby sitting / care</a>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="{{ asset('bundles/iwinapp/img/old/ico20.png') }}" height="24" width="24" alt="">
+              </div>
+              <a href="#popup-category" class="fancybox">photo &amp; video</a>
+            </li>
+          </ul>
+          <div class="slide js-slide-hidden" style="display: none;">
+            <ul>
+              <li>
+                <div class="icon">
+                  <img src="{{ asset('bundles/iwinapp/img/old/ico15.png') }}" height="24" width="24" alt="">
+                </div>
+                <a href="#popup-category" class="fancybox">appliances set up &amp; repair</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="{{ asset('bundles/iwinapp/img/old/ico16.png') }}" height="24" width="24" alt="">
+                </div>
+                <a href="#popup-category" class="fancybox">pickup / delivery / moving</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="{{ asset('bundles/iwinapp/img/old/ico17.png') }}" height="24" width="24" alt="">
+                </div>
+                <a href="#popup-category" class="fancybox">PC repair &amp; assistance</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="{{ asset('bundles/iwinapp/img/old/ico18.png') }}" height="24" width="24" alt="">
+                </div>
+                <a href="#popup-category" class="fancybox">nurse &amp; healthcare</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="{{ asset('bundles/iwinapp/img/old/ico19.png') }}" height="24" width="24" alt="">
+                </div>
+                <a href="#popup-category" class="fancybox">baby sitting / care</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="{{ asset('bundles/iwinapp/img/old/ico20.png') }}" height="24" width="24" alt="">
+                </div>
+                <a href="#popup-category" class="fancybox">photo &amp; video</a>
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="opener">
+            <span>SHOW ALL</span>
+            <span>HIDE</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </script>
+
   {# Шаблон списка купонов #}
   <script type="text/x-twig-template" data-id="iwin-app-coupon-coupons">
     {% if not couponEditing %}

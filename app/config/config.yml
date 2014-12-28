@@ -35,7 +35,9 @@ parameters:
       secret: %service.facebook.secret%
   socials_pub:
     facebook: %service.facebook.id%
-    gplus: %service.google.key_browser%
+    gplus:
+      oauthid: %service.google.key_browser%
+      apikey: %service.google.oauth.id%
 
 # Generic framework config
 framework:

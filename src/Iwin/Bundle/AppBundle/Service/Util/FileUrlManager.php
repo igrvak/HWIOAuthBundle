@@ -14,6 +14,15 @@ class FileUrlManager
      */
     public function getUrl(File $file)
     {
-        return '/uploads/' . $file->getStorage() . '/' . $file->getName();
+        return $this->getDir($file) . '/' . $file->getName();
+    }
+
+    /**
+     * @param File $file
+     * @return string
+     */
+    public function getDir(File $file)
+    {
+        return '/uploads/' . $file->getStorage();
     }
 }

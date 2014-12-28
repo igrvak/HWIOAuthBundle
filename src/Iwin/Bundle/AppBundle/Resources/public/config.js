@@ -5,11 +5,11 @@
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
         "paths":       {
-            'facebook-api': '//connect.facebook.net/en_US/all',
             'linkedin-api': '//platform.linkedin.com/in.js?async=true',
-            'google-api':   '//apis.google.com/js/client:plus'
+            'facebook-api': '//connect.facebook.net/en_US/all'
         },
-        "map":         {
+
+        "map":    {
             "*":           {
                 "select2/select2": "config/select2/select2",
                 "fancybox":        "config/fancybox",
@@ -19,15 +19,18 @@
                 "twig": "twig",
             },
         },
-        "shim":        {
-            'facebook-api': {
-                exports: 'FB',
+        "config": {
+            "iwin-shared/social/api/google-loader":   window.$socials.gplus,
+            "iwin-shared/social/api/facebook-loader": {
+                appId: window.$socials.facebook
             },
+        },
+        "shim":   {
             'linkedin-api': {
                 exports: 'IN',
             },
-            'google-api':   {
-                exports: 'gapi'
+            'facebook-api': {
+                exports: 'FB',
             }
         },
     });

@@ -41,6 +41,7 @@ services:
     public: false
     arguments:
       - params:
+          socials:  @=parameter('socials_pub')
           title:    @=parameter('app.title')
           langs:    @=parameter('locales_supported')
           # Является ли текущая локаль стандартной

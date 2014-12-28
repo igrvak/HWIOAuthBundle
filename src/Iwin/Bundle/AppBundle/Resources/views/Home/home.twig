@@ -52,7 +52,10 @@
     <div class="create-ad">
       {% include 'iwin-advert-advert-benefits' %}
 
+      <div class="category-container"></div>
+
       <h2 class="heading">Main information</h2>
+
       <div class="route-container"></div>
 
       <section class="main-info">
@@ -85,6 +88,8 @@
       <section class="main-info">
         <div class="coupon-holder"></div>
       </section>
+
+      <div class="category-container"></div>
 
       <section class="main-info">
         <h2 class="heading">Gallery</h2>
@@ -147,91 +152,31 @@
       <h2 class="heading">Choose Category Of Your Ad</h2>
       <div class="holder">
         <div class="category-choose__list open-close">
-          <ul>
-            <li>
-              <div class="icon">
-                <img src="{{ asset('bundles/iwinapp/img/old/ico15.png') }}" height="24" width="24" alt="">
-              </div>
-              <a href="#popup-category" class="fancybox">appliances set up &amp; repair</a>
-            </li>
-            <li>
-              <div class="icon">
-                <img src="{{ asset('bundles/iwinapp/img/old/ico16.png') }}" height="24" width="24" alt="">
-              </div>
-              <a href="#popup-category" class="fancybox">pickup / delivery / moving</a>
-            </li>
-            <li>
-              <div class="icon">
-                <img src="{{ asset('bundles/iwinapp/img/old/ico17.png') }}" height="24" width="24" alt="">
-              </div>
-              <a href="#popup-category" class="fancybox">PC repair &amp; assistance</a>
-            </li>
-            <li>
-              <div class="icon">
-                <img src="{{ asset('bundles/iwinapp/img/old/ico18.png') }}" height="24" width="24" alt="">
-              </div>
-              <a href="#popup-category" class="fancybox">nurse &amp; healthcare</a>
-            </li>
-            <li>
-              <div class="icon">
-                <img src="{{ asset('bundles/iwinapp/img/old/ico19.png') }}" height="24" width="24" alt="">
-              </div>
-              <a href="#popup-category" class="fancybox">baby sitting / care</a>
-            </li>
-            <li>
-              <div class="icon">
-                <img src="{{ asset('bundles/iwinapp/img/old/ico20.png') }}" height="24" width="24" alt="">
-              </div>
-              <a href="#popup-category" class="fancybox">photo &amp; video</a>
-            </li>
-          </ul>
-          <div class="slide js-slide-hidden" style="display: none;">
-            <ul>
-              <li>
-                <div class="icon">
-                  <img src="{{ asset('bundles/iwinapp/img/old/ico15.png') }}" height="24" width="24" alt="">
-                </div>
-                <a href="#popup-category" class="fancybox">appliances set up &amp; repair</a>
-              </li>
-              <li>
-                <div class="icon">
-                  <img src="{{ asset('bundles/iwinapp/img/old/ico16.png') }}" height="24" width="24" alt="">
-                </div>
-                <a href="#popup-category" class="fancybox">pickup / delivery / moving</a>
-              </li>
-              <li>
-                <div class="icon">
-                  <img src="{{ asset('bundles/iwinapp/img/old/ico17.png') }}" height="24" width="24" alt="">
-                </div>
-                <a href="#popup-category" class="fancybox">PC repair &amp; assistance</a>
-              </li>
-              <li>
-                <div class="icon">
-                  <img src="{{ asset('bundles/iwinapp/img/old/ico18.png') }}" height="24" width="24" alt="">
-                </div>
-                <a href="#popup-category" class="fancybox">nurse &amp; healthcare</a>
-              </li>
-              <li>
-                <div class="icon">
-                  <img src="{{ asset('bundles/iwinapp/img/old/ico19.png') }}" height="24" width="24" alt="">
-                </div>
-                <a href="#popup-category" class="fancybox">baby sitting / care</a>
-              </li>
-              <li>
-                <div class="icon">
-                  <img src="{{ asset('bundles/iwinapp/img/old/ico20.png') }}" height="24" width="24" alt="">
-                </div>
-                <a href="#popup-category" class="fancybox">photo &amp; video</a>
-              </li>
-            </ul>
-          </div>
-          <a href="#" class="opener">
-            <span>SHOW ALL</span>
-            <span>HIDE</span>
-          </a>
+          {% include 'iwin-shared-category-rows' with {'list': root.toArray()|slice(0, 6)} %}
+          {% if root.length > 6 %}
+            <div class="slide js-slide-hidden" style="display: none;">
+              {% include 'iwin-shared-category-rows' with {'list': root.toArray()|slice(6)} %}
+            </div>
+            <a href="#" class="opener">
+              <span>SHOW ALL</span>
+              <span>HIDE</span>
+            </a>
+          {% endif %}
         </div>
       </div>
     </section>
+  </script>
+  <script type="text/x-twig-template" data-id="iwin-shared-category-rows">
+    <ul>
+      {% for i, category in list %}
+        <li data-ordinal="{{ i }}">
+          <div class="icon">
+            <img src="{{ category.image }}" height="24" width="24" alt="">
+          </div>
+          <a href="#popup-category" class="fancybox">{{ category.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
   </script>
 
   {# Шаблон списка купонов #}

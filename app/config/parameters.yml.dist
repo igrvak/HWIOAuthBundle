@@ -19,7 +19,6 @@ parameters:
   app.email.contact: contact@%app.defaulthost%
   app.email.noreply: noreply@%app.defaulthost%
 
-  locale:            ru
   secret:            ThisTokenIsNotSoSecretChangeIt
 
   timezone: "America/New_York"

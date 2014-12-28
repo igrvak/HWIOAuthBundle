@@ -19,7 +19,7 @@ define([
             options.isMultiple = false;
             args.unshift(options);
 
-            CategoryCollection.prototype.initialize.apply(this, args);
+            CategoriesView.prototype.initialize.apply(this, args);
         },
     });
 

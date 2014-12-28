@@ -4,15 +4,17 @@ define([
     'backbone',
     'templating',
     'util/collectionView',
-    './category',
-], function ($, _, Backbone, templating, CollectionView, CategoryModel) {
+    './categoryCollection',
+    './categoryLink',
+    'jquery/openclose',
+], function ($, _, Backbone, templating, CollectionView, CategoryCollection, CategoryLinkModel) {
     'use strict';
 
     var viewId = 'iwin-shared-category-categories';
 
     var View = CollectionView.extend({
         "isMultiple":   true,
-        "relatedModel": CategoryModel,
+        "relatedModel": CategoryLinkModel,
 
         "modelBinder": undefined,
         "template":    templating.get(viewId),
@@ -21,6 +23,10 @@ define([
             _.extend(this, _.pick(options, 'isMultiple'));
 
             this.modelBinder = new Backbone.ModelBinder();
+
+            this.root = new CategoryCollection();
+            this.root.on('sync', this.render, this);
+            this.root.fetch();
 
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
@@ -38,10 +44,20 @@ define([
         },
 
         "render": function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template(this.model, {
+                "root": this.root,
+            }));
 
             this.modelBinder.bind(this.model, this.el);
             this.delegateEvents();
+
+            this.$el.find('div.open-close').openClose({
+                activeClass: 'active',
+                opener:      '.opener',
+                slider:      '.slide',
+                animSpeed:   400,
+                effect:      'slide',
+            });
 
             return this;
         },

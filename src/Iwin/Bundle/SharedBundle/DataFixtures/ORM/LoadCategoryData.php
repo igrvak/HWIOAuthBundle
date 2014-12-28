@@ -36,9 +36,9 @@ class LoadCategoryData extends AbstractFixture implements
     public function load(ObjectManager $manager)
     {
         # TODO: нормальные имена
-        $gen = function ($maxLevel, $level = 1) use (&$gen, &$manager) {
+        $gen = function ($maxLevel, $level = 1, $forceAmount = null) use (&$gen, &$manager) {
             $ret = [];
-            $amount = mt_rand(1,5);
+            $amount = $forceAmount ? $forceAmount : mt_rand(1, 5);
             for ($i = 0; $i < $amount; $i++) {
                 $cat = new Category();
                 $cat->setTitle(mt_rand(100000, 999999));
@@ -56,7 +56,9 @@ class LoadCategoryData extends AbstractFixture implements
             return $ret;
         };
 
-        $gen(4);
+        foreach ($gen(4, 1, 10) as $i => $cat) {
+            $this->addReference('category-' . $i, $cat);
+        }
 
         $manager->flush();
     }

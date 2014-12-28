@@ -16,6 +16,7 @@ parameters:
   app.path.webres: /res
   app.path.img:    %app.path.webres%/img
   app.dir.web:     %kernel.root_dir%/../web
+  locale: en
   locales_supported:
     - en
     - ru

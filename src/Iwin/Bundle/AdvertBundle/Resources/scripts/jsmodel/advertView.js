@@ -56,7 +56,7 @@ define([
                 view.render();
             }, this);
 
-            this.$el.find('div.open-close').openClose({
+            this.$el.find('.benefits div.open-close').openClose({
                 activeClass: 'active',
                 opener:      '.opener',
                 slider:      '.slide',

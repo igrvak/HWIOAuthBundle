@@ -27,7 +27,6 @@ class SocialController
      */
     public function listAction()
     {
-        $social = $this->repoSocial->findAll();
-        return $social;
+        return $this->repoSocial->findAll();
     }
 }

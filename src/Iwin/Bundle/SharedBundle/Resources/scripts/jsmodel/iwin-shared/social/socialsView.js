@@ -7,7 +7,7 @@ define([
     'iwin-shared/social/userSocial',
     'iwin-shared/social/networkManager',
     'backbone/modelbinder'
-], function ($, _, Backbone, templating, CollectionView, UserSocial, Manager) {
+], function ($, _, Backbone, templating, CollectionView, UserSocial, manager) {
     'use strict';
 
     var viewId = 'iwin-app-profile-socials';
@@ -23,6 +23,7 @@ define([
 
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
+            manager.on('social:load', this.render, this);
 
             CollectionView.prototype.initialize.apply(this, arguments);
         },
@@ -33,7 +34,10 @@ define([
         },
 
         "render": function () {
-            this.$el.html(this.template());
+            console.log('Loaded', manager.getLoaded());
+            this.$el.html(this.template(this.model, {
+                "socialsLoaded": manager.getLoaded(),
+            }));
             this.modelBinder.bind(this.model, this.el);
             this.delegateEvents();
 
@@ -43,7 +47,7 @@ define([
         "connect": function (event) {
             var socials = this.model.get('list');
             var current = $(event.currentTarget);
-            var network = Manager.get(current.data('network')),
+            var network = manager.get(current.data('network')),
                 view = this;
             network.login(function () {
                 network.getData(function (data) {
@@ -51,6 +55,7 @@ define([
                         if (social.get('type').get('type') !== current.data('network')) {
                             return;
                         }
+
                         social.set(data);
 
                     });
@@ -61,7 +66,7 @@ define([
         "remove":  function (event) {
             var socials = this.model.get('list');
             var current = $(event.currentTarget);
-            var network = Manager.get(current.data('network')),
+            var network = manager.get(current.data('network')),
                 view = this;
             socials.each(function (social) {
                 if (social.get('type').get('type') !== current.data('network')) {

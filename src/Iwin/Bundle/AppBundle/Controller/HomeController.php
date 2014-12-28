@@ -49,7 +49,8 @@ class HomeController
                 'type' => 'facebook',
                 'isActive' => true
             ], [
-                'type' => 'linkedin'
+                'type' => 'linkedin',
+                'isActive' => true
             ]
         ];
     }

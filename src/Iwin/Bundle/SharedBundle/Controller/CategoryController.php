@@ -3,9 +3,9 @@ namespace Iwin\Bundle\SharedBundle\Controller;
 
 use Entity\Category;
 use Entity\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use JMS\DiExtraBundle\Annotation as DI;
-use Werkint\Bundle\FrameworkExtraBundle\Annotation as Rest;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Возвращает категории

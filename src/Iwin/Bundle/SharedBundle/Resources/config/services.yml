@@ -1,0 +1,11 @@
+parameters:
+  iwin_shared.util.jsmodelprovider.class:
+    Iwin\Bundle\SharedBundle\Service\Util\JsmodelProvider
+
+services:
+  iwin_shared.util.jsmodelprovider:
+    class: %iwin_shared.util.jsmodelprovider.class%
+    arguments:
+      - %iwin_shared.jsmodeldir%
+    tags:
+      - { name: werkint.requirejs.jsmodelprovider }

@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'iwin-app/util/basemodel',
+    'util/basemodel',
 ], function (Backbone, BaseModel) {
     'use strict';
 

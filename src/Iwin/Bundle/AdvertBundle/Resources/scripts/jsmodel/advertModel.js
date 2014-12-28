@@ -4,7 +4,7 @@
 define([
     'backbone',
     'routing',
-    'iwin-app/util/basemodel',
+    'util/basemodel',
     'iwin-app/coupon/coupon',
     'iwin-app/coupon/couponCollection',
     'iwin-app/gallery',

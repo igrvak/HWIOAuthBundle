@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'iwin-shared/social/api/facebook',
+    'social/api/facebook',
 ], function (Backbone, FB) {
     'use strict';
 

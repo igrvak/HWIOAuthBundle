@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'iwin-shared/social/api/linkedin',
+    'social/api/linkedin',
 ], function (Backbone, IN) {
     'use strict';
 

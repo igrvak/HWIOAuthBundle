@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'iwin-shared/social/api/google',
+    'social/api/google',
 ], function (Backbone, gapi) {
     'use strict';
 

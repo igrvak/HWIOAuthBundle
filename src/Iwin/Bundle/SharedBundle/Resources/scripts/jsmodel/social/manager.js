@@ -38,7 +38,7 @@ define([
     };
 
     Manager.prototype.loadSocial = function (name) {
-        requirejs(['iwin-shared/social/module/' + name], _.bind(function (social) {
+        requirejs(['social/module/' + name], _.bind(function (social) {
             this.trigger('social:preload');
             this.registerSocial(social);
         }, this));

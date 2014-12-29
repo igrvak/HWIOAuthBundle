@@ -45,8 +45,10 @@ class ProgrammaticFileUploader
      */
     public function upload($source, $gallery)
     {
-        $f = new File($source);
 
+        $oldFile = sys_get_temp_dir() . '/' . uniqid() . '.' . pathinfo($source, PATHINFO_EXTENSION);
+        copy($source, $oldFile);
+        $f = new File($oldFile);
 
         $file = $this->fileManager
             ->createFile(
@@ -54,7 +56,8 @@ class ProgrammaticFileUploader
                 $gallery
             );
 
-        $f->move($this->webDir . '/' . $this->urlManager->getUrl($file));
+        $newFile = $this->webDir . '/' . $this->urlManager->getDir($file);
+        $f->move($newFile);
         return $file;
     }
 }

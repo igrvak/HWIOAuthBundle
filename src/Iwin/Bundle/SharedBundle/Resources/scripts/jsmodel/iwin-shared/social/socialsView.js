@@ -51,6 +51,7 @@ define([
                         if (social.get('type').get('type') !== current.data('network')) {
                             return;
                         }
+
                         social.set(data);
 
                     });

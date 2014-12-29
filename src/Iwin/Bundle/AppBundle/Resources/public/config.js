@@ -24,6 +24,9 @@
             "iwin-shared/social/api/facebook-loader": {
                 appId: window.$socials.facebook
             },
+            "iwin-shared/social/api/linkedin-loader": {
+                api_key: '75l9jttrjuc4a2'
+            }
         },
         "shim":   {
             'linkedin-api': {

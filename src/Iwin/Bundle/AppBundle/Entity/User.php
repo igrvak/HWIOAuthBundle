@@ -72,11 +72,11 @@ class User extends BaseUser implements Translatable
     /**
      * @var FileImage|null
      *
-     * @ORM\OneToOne(targetEntity="FileImage")
+     * @ORM\OneToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\FileImage")
      * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
      * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\FileImage")
      */
-    protected $image_avatar;
+    protected $imageAvatar;
 
     /**
      * @var Location |null
@@ -87,16 +87,18 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
      */
     protected $location;
+
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
+
     /**
      * @var Social[]|Collection
      *
-     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Iwin\Bundle\AppBundle\Entity\UserSocial", mappedBy="user")
      * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;

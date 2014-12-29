@@ -24,6 +24,7 @@ class Location
      * @var string
      */
     protected $address;
+
     /**
      * @ORM\Column(type="float")
      * @var float

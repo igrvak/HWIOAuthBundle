@@ -3,6 +3,7 @@
 namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Iwin\Bundle\SharedBundle\Entity\Social;
 
 /**
  * UserSocial
@@ -20,35 +21,41 @@ class UserSocial
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\User", inversedBy="socials")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @var Social
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
+     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
+     */
+    protected $social;
+
     /**
      * @var string
      *
      * @ORM\Column(name="nickname", type="string", length=255)
      */
     protected $nickname;
-    /**
-     * @var integer
-     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
-     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
-     */
-    protected $socialId;
+
     /**
      * @var string
      *
      * @ORM\Column(name="url_image", type="string", length=255)
      */
     protected $urlImage;
+
     /**
      * @var string
      * @ORM\Column(name="url_profile", type="string", length=255)
      */
     protected $urlProfile;
-    /**
-     * @var integer
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $userId;
+
 
     /**
      * Get id
@@ -61,49 +68,35 @@ class UserSocial
     }
 
     /**
-     * Set userId
-     *
-     * @param integer $userId
-     * @return UserSocial
+     * @param \Iwin\Bundle\SharedBundle\Entity\Social $social
      */
-    public function setUserId($userId)
+    public function setSocial($social)
     {
-        $this->userId = $userId;
-
-        return $this;
+        $this->social = $social;
     }
 
     /**
-     * Get userId
-     *
-     * @return integer
+     * @return \Iwin\Bundle\SharedBundle\Entity\Social
      */
-    public function getUserId()
+    public function getSocial()
     {
-        return $this->userId;
+        return $this->social;
     }
 
     /**
-     * Set socialId
-     *
-     * @param integer $socialId
-     * @return UserSocial
+     * @param \Iwin\Bundle\AppBundle\Entity\User $user
      */
-    public function setSocialId($socialId)
+    public function setUser(User $user)
     {
-        $this->socialId = $socialId;
-
-        return $this;
+        $this->user = $user;
     }
 
     /**
-     * Get socialId
-     *
-     * @return integer
+     * @return \Iwin\Bundle\AppBundle\Entity\User
      */
-    public function getSocialId()
+    public function getUser()
     {
-        return $this->socialId;
+        return $this->user;
     }
 
     /**

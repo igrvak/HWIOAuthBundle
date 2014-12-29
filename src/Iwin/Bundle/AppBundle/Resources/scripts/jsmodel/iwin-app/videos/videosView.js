@@ -2,7 +2,7 @@ define([
     'lodash',
     'backbone',
     'templating',
-    'iwin-app/util/collectionView',
+    'util/collectionView',
     './video',
     'backbone/modelbinder',
 ], function (_, Backbone, templating, CollectionView, VideoModel) {

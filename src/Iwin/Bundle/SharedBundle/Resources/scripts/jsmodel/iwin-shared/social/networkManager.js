@@ -1,11 +1,21 @@
 define([
     'facebook-api',
+    'google-api',
     'backbone'
-], function (FB, Backbone) {
+], function (FB, gapi, Backbone) {
     'use strict';
 
+
+    var google_client_id = '844288230442-72la5sqc6ahhbl355tpfhfphhc5n0sur.apps.googleusercontent.com';
+
+    var scopes = 'https://www.googleapis.com/auth/plus.me';
+
+
+    console.log(gapi);
+
+
     FB.init({
-        appId: '774836025885842', //TODO: bidlokod
+        appId: window.$webapp.var.socials.facebook, //TODO: bidlokod
     });
 
     var Facebook = Backbone.Model.extend({

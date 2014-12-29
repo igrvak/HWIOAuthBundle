@@ -2,7 +2,7 @@ define([
     'jquery',
     'lodash',
     'backbone',
-    'iwin-app/util/basemodel',
+    'util/basemodel',
     'iwin-shared/social/social',
 ], function ($, _, Backbone, BaseModel, Type) {
     'use strict';

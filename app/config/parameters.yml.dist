@@ -27,3 +27,11 @@ parameters:
   werkint_redis_pass: ~
 
   app.gempath: null
+
+  service.facebook.id: ~
+  service.facebook.secret: ~
+  service.google.projectid: ~
+  service.google.key_browser: ~
+  service.google.key_server: ~
+  service.google.oauth.id: ~
+  service.google.oauth.key: ~

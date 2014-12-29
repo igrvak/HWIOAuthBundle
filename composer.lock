@@ -2253,7 +2253,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2839,7 +2839,6 @@
                     "Odesskij\\Bundle\\GeneratorBundle\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2854,6 +2853,9 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "support": {
+                "source": "https://github.com/odesskij/GeneratorBundle/tree/master"
+            },
             "time": "2014-11-20 14:44:20"
         },
         {
@@ -4094,7 +4096,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-object-routing-3d8c762005d976b8de7f0454cdbcfa0cdae87ed7-zip-81bb20.tar",
                 "reference": "3d8c762005d976b8de7f0454cdbcfa0cdae87ed7",
-                "shasum": "bd0a8e529f8a74747e2c4d0ce16a6ead45b48885"
+                "shasum": "bb86d8a652e21fffd156d9ba9e31e43312b2f150"
             },
             "require": {
                 "jms/metadata": "1.*",
@@ -4192,7 +4194,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-redis-bundle-a78d6fdb9e95fb3a959065a8501afec5272e6308-zip-59cb81.tar",
                 "reference": "a78d6fdb9e95fb3a959065a8501afec5272e6308",
-                "shasum": "2b59f767e2eabc37b8baae51fb1c23b7a4ce3ecd"
+                "shasum": "75e5fbc40912cc77eca2467a29c282c60b747ceb"
             },
             "require": {
                 "doctrine/common": "*",
@@ -4240,14 +4242,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@code.werkint.com:werkint/requirejsbundle.git",
+                "url": "git@werkint.com:werkint/requirejsbundle.git",
                 "reference": "df0bb9f2ac9fadbe19a3ef976a273571633820e0"
             },
             "dist": {
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-requirejs-bundle-dev-master-d50690.tar",
                 "reference": "df0bb9f2ac9fadbe19a3ef976a273571633820e0",
-                "shasum": "9cc3c8434d3734a6b65716dd418b98f2f888b98c"
+                "shasum": "58330702e46f9fb46099004721dc707cc5300991"
             },
             "require": {
                 "kriswallsmith/assetic": ">=1.0",
@@ -4308,7 +4310,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-sprites-bundle-fe0ecdaf49e692e09c8dca4216c2277a854649c9-zip-e3f730.tar",
                 "reference": "fe0ecdaf49e692e09c8dca4216c2277a854649c9",
-                "shasum": "240d2796572abba07b32f482244652facdf1c4f1"
+                "shasum": "308dbda035ab45a77633410f43e78f9ee11ed00e"
             },
             "require": {
                 "ext-imagick": "*",
@@ -4371,7 +4373,7 @@
                 "type": "tar",
                 "url": "https://composer.werkint.com/dist/werkint-webapp-bundle-27eb1b64a60bff5f9a46780655b94821b6b5eeaf-zip-d49c46.tar",
                 "reference": "27eb1b64a60bff5f9a46780655b94821b6b5eeaf",
-                "shasum": "31e6eebc478dfd54865076d91a3e520d2d249e30"
+                "shasum": "e7d96362181594ed26337d0ddd2ce7d696f0f493"
             },
             "require": {
                 "friendsofsymfony/rest-bundle": "~1.4",

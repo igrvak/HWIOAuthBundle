@@ -4,7 +4,7 @@ define([
     'templating',
     'routing',
     'dropzone',
-    'iwin-app/util/collectionView',
+    'util/collectionView',
     './image',
     'jqueryui',
 ], function (_, Backbone, templating, Routing, Dropzone, CollectionView, ImageModel) {

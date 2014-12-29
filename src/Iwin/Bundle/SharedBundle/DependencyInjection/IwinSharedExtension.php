@@ -41,6 +41,10 @@ class IwinSharedExtension extends Extension implements
             $this->getAlias() . '.scripts_dir',
             realpath(__DIR__ . '/../Resources/scripts')
         );
+        $container->setParameter(
+            $this->getAlias() . '.jsmodeldir',
+            realpath(__DIR__ . '/../Resources/scripts/jsmodel')
+        );
 
         $container->setParameter(
             $this->getAlias() . '.config_directory',

@@ -7,6 +7,7 @@
         "paths":       {
             'facebook-api': '//connect.facebook.net/en_US/all',
             'linkedin-api': '//platform.linkedin.com/in.js?async=true',
+            'google-api':   '//apis.google.com/js/client:plus'
         },
         "map":         {
             "*":           {
@@ -25,6 +26,9 @@
             'linkedin-api': {
                 exports: 'IN',
             },
+            'google-api':   {
+                exports: 'gapi'
+            }
         },
     });
     requirejs([

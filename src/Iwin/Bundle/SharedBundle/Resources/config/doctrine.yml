@@ -1,10 +1,17 @@
 parameters:
-  iwin_app.repo.social.class:
+  iwin_shared.repo.category.class:
+    Iwin\Bundle\SharedBundle\Entity\CategoryRepository
+  iwin_shared.repo.social.class:
     Iwin\Bundle\SharedBundle\Entity\SocialRepository
 
 services:
-  iwin_app.repo.social:
-    class:            %iwin_app.repo.social.class%
+  iwin_shared.repo.category:
+    class:            %iwin_shared.repo.category.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinSharedBundle:Category]
+  iwin_shared.repo.social:
+    class:            %iwin_shared.repo.social.class%
     factory_service:  doctrine.orm.entity_manager
     factory_method:   getRepository
     arguments: [IwinSharedBundle:Social]

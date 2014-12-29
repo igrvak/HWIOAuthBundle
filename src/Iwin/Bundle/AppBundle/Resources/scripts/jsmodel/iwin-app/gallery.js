@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'iwin-app/util/basemodel',
+    'util/basemodel',
     'iwin-app/videos/video',
     'iwin-app/videos/videoCollection',
     'iwin-app/images/image',

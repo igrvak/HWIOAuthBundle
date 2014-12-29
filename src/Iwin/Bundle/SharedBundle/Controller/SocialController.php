@@ -14,19 +14,20 @@ use JMS\DiExtraBundle\Annotation as DI;
 class SocialController
 {
     /**
-     * @DI\Inject("iwin_app.repo.social")
+     * @DI\Inject("iwin_shared.repo.social")
      * @var SocialRepository
      */
-    private $socialRepo;
+    private $repoSocial;
 
     // -- Actions ---------------------------------------
+
     /**
      * @Rest\Get("/list.json", name="iwin_social_list", defaults={"_format": "json"})
      * @Rest\View()
      */
     public function listAction()
     {
-        $social = $this->socialRepo->findAll();
+        $social = $this->repoSocial->findAll();
         return $social;
     }
 }

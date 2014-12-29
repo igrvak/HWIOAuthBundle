@@ -4,6 +4,8 @@ namespace Iwin\Bundle\SharedBundle\Controller;
 use Entity\Category;
 use Entity\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use JMS\DiExtraBundle\Annotation as DI;
+use Werkint\Bundle\FrameworkExtraBundle\Annotation as Rest;
 
 /**
  * Возвращает категории

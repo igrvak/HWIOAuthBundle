@@ -3,15 +3,21 @@ parameters:
     Iwin\Bundle\SharedBundle\Service\File\ProgrammaticFileUploader
   iwin_shared.util.jsmodelprovider.class:
     Iwin\Bundle\SharedBundle\Service\Util\JsmodelProvider
+  iwin_shared.file.filemanager.class:
+    Iwin\Bundle\SharedBundle\Service\File\FileManager
 
 services:
   iwin_shared.file.programmaticfileuploader:
     class: %iwin_shared.file.programmaticfileuploader.class%
     arguments:
+      - @iwin_shared.file.filemanager
       - @iwin_app.file_url_manager
-
-
-services:
+      - %app.dir.web%
+  iwin_shared.file.filemanager:
+    class: %iwin_shared.file.filemanager.class%
+    arguments:
+      - @doctrine.orm.entity_manager
+      - @iwin_app.image_manager
   iwin_shared.util.jsmodelprovider:
     class: %iwin_shared.util.jsmodelprovider.class%
     arguments:

@@ -6,6 +6,7 @@ use Intervention\Image\ImageManager;
 use Iwin\Bundle\AppBundle\Entity\File;
 use Iwin\Bundle\AppBundle\Entity\FileImage;
 use Iwin\Bundle\AppBundle\Service\Util\FileUrlManager;
+use Iwin\Bundle\SharedBundle\Service\File\FileManager;
 use Oneup\UploaderBundle\Event\PostPersistEvent;
 use Oneup\UploaderBundle\Templating\Helper\UploaderHelper;
 
@@ -19,24 +20,35 @@ class UploadListener
      */
     private $em;
     /**
+     * @var FileManager
+     */
+    private $fileManager;
+    /**
+     * @var FileUrlManager
+     */
+    private $fileUrlManager;
+    /**
      * @var ImageManager
      */
     private $manager;
 
-
     /**
      * @param EntityManagerInterface $em
-     * @param ImageManager           $manager
-     * @param FileUrlManager         $fileUrlManager
+     * @param ImageManager $manager
+     * @param FileUrlManager $fileUrlManager
+     * @param FileManager $fileManager
      */
     public function __construct(
         EntityManagerInterface $em,
         ImageManager $manager,
-        FileUrlManager $fileUrlManager
-    ) {
+        FileUrlManager $fileUrlManager,
+        FileManager $fileManager
+    )
+    {
         $this->em = $em;
         $this->manager = $manager;
         $this->fileUrlManager = $fileUrlManager;
+        $this->fileManager = $fileManager;
     }
 
     /**
@@ -47,23 +59,7 @@ class UploadListener
         /** @var \Symfony\Component\HttpFoundation\File\File $file */
         $file = $event->getFile();
 
-        if (in_array($file->getMimeType(), [
-            'image/gif',
-            'image/jpeg',
-            'image/png',
-        ])) {
-            $f = new FileImage();
-            $i = $this->manager->make($file->getRealPath());
-            $f->setWidth($i->width());
-            $f->setHeight($i->height());
-        } else {
-            $f = new File();
-        }
-        $f->setMimeType($file->getMimeType())
-            ->setStorage($event->getType())
-            ->setName($file->getBasename());
-        $this->em->persist($f);
-        $this->em->flush($f);
+        $f = $this->fileManager->createFile($file, $event->getType());
 
         $ret = $event->getResponse();
         $ret['id'] = $f->getId();

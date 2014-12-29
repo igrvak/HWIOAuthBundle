@@ -19,10 +19,6 @@ class UploadListener
      */
     private $em;
     /**
-     * @var UploaderHelper
-     */
-    private $helper;
-    /**
      * @var ImageManager
      */
     private $manager;
@@ -30,18 +26,15 @@ class UploadListener
 
     /**
      * @param EntityManagerInterface $em
-     * @param UploaderHelper         $helper
      * @param ImageManager           $manager
      * @param FileUrlManager         $fileUrlManager
      */
     public function __construct(
         EntityManagerInterface $em,
-        UploaderHelper $helper,
         ImageManager $manager,
         FileUrlManager $fileUrlManager
     ) {
         $this->em = $em;
-        $this->helper = $helper;
         $this->manager = $manager;
         $this->fileUrlManager = $fileUrlManager;
     }

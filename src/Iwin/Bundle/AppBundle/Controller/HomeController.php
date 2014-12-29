@@ -43,7 +43,8 @@ class HomeController
             [
                 'type' => 'twitter'
             ], [
-                'type' => 'gplus'
+                'type' => 'gplus',
+                'isActive' => true
             ], [
                 'type' => 'facebook',
                 'isActive' => true

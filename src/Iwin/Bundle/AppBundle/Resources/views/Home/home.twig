@@ -366,21 +366,23 @@
 
   {# Шаблон социальных сетей #}
   <script type="text/x-twig-template" data-id="iwin-app-profile-socials">
-      {% for social in list.toArray() %}
-          <div class="social-btn {% if not social.type.isActive %}disable{% endif %}{% if social.type.isActive and social.isEmpty() %}connect{% endif %}" id="btn-{{ social.type.type }}" data-network="{{ social.type.type }}">
-            {% if social.isEmpty() %}
-              {{ social.type.type }}
-            {% else %}
-            <img src="{{ social.photo }}" class="user-photo"/>
-              {{ social.name }}
-            {% endif %}
-          </div>
-          {% if not social.isEmpty() %}
-            <div class="remove" data-network="{{ social.type.type }}">
-              X
-            </div>
+    {% for social in list.toArray() %}
+      {% if social.type.isActive %}
+        <div class="social-btn {% if not (social.type.type in socialsLoaded) %}disable{% endif %} {% if social.type.isActive and social.isEmpty() %}connect{% endif %}" id="btn-{{ social.type.type }}" data-network="{{ social.type.type }}">
+          {% if social.isEmpty() %}
+            {{ social.type.type }}
+          {% else %}
+          <img src="{{ social.photo }}" class="user-photo"/>
+            {{ social.name }}
           {% endif %}
-      {% endfor %}
+        </div>
+        {% if not social.isEmpty() %}
+          <div class="remove" data-network="{{ social.type.type }}">
+            X
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
   </script>
 
   {% endraw %}

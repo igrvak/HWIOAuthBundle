@@ -20,13 +20,18 @@
             },
         },
         "config": {
+            "iwin-shared/social/networkManager":      {
+                "list":[
+                    'gplus', 'facebook', 'linkedin',
+                ],
+            },
             "iwin-shared/social/api/google-loader":   window.$socials.gplus,
             "iwin-shared/social/api/facebook-loader": {
-                appId: window.$socials.facebook
+                appId: window.$socials.facebook,
             },
             "iwin-shared/social/api/linkedin-loader": {
-                api_key: '75l9jttrjuc4a2'
-            }
+                api_key: '75l9jttrjuc4a2',
+            },
         },
         "shim":   {
             'linkedin-api': {
@@ -34,7 +39,7 @@
             },
             'facebook-api': {
                 exports: 'FB',
-            }
+            },
         },
     });
     requirejs([

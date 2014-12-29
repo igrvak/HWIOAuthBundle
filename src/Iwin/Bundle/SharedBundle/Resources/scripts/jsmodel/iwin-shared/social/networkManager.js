@@ -1,24 +1,57 @@
 define([
+    'module',
+    'lodash',
     'backbone',
-    'iwin-shared/social/module/facebook',
-    'iwin-shared/social/module/google',
-    'iwin-shared/social/module/linkedin',
-], function (Backbone, Facebook, Google, LinkedIn) {
+], function (module, _, Backbone, undefined) {
     'use strict';
 
+    var optsDef = {
+        "autoload": true,
+        "list":     [],
+    };
 
-    var Manager = Backbone.Model.extend({
+    var Manager = function (optsIn) {
+        _.extend(this, Backbone.Events);
 
-        "initialize": function () {
-            this.set('facebook', new Facebook());
-            this.set('gplus', new Google());
-            this.set('linkedin', new LinkedIn());
-        },
-        "network":    function (key) {
-            return this.get(key);
+        var opts = _.extend({}, optsDef, optsIn);
+
+        this.socials = {};
+
+        if (opts.autoload) {
+            _.each(opts.list, function (name) {
+                this.loadSocial(name);
+            }, this);
         }
-    });
+    };
+
+    Manager.prototype.get = function (name) {
+        if (!this.socials[name]) {
+            throw 'Social ' + name + ' not loaded';
+        }
+        return this.socials[name];
+    };
+    Manager.prototype.getLoaded = function () {
+        return _.keys(this.socials);
+    };
+    Manager.prototype.isLoaded = function (name) {
+        return this.socials[name] !== undefined;
+    };
+
+    Manager.prototype.loadSocial = function (name) {
+        requirejs(['iwin-shared/social/module/' + name], _.bind(function (social) {
+            this.trigger('social:preload');
+            this.registerSocial(social);
+        }, this));
+    };
+    Manager.prototype.registerSocial = function (Social) {
+        var social = new Social(),
+            name = social.getName();
+
+        this.socials[name] = social;
+        this.trigger('social:load', social);
+        this.trigger('social:load:' + name);
+    };
 
 
-    return new Manager();
+    return new Manager(module.config());
 });

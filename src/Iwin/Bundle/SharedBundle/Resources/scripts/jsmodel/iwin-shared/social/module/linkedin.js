@@ -5,6 +5,9 @@ define([
     'use strict';
 
     var LinkedIn = Backbone.Model.extend({
+        getName:  function () {
+            return 'linkedin';
+        },
         isLogged: function (ifTrue, ifFalse) {
             if (IN.User.isAuthorized()) {
                 ifTrue();
@@ -31,7 +34,7 @@ define([
                     callback({
                         id:    response.values[0].id,
                         name:  response.values[0].firstName + ' ' + response.values[0].lastName,
-                        link:  '',
+                        link:  response.values[0].publicProfileUrl,
                         photo: response.values[0].pictureUrl
                     });
                 });

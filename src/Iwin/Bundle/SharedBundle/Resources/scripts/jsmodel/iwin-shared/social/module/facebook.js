@@ -5,6 +5,9 @@ define([
     'use strict';
 
     var Facebook = Backbone.Model.extend({
+        getName:  function () {
+            return 'facebook';
+        },
         isLogged: function (ifTrue, ifFalse) {
             FB.getLoginStatus(function (response) {
                 if (response.status === 'connected') {

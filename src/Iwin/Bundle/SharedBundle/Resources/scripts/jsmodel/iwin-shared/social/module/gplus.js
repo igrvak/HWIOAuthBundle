@@ -5,6 +5,9 @@ define([
     'use strict';
 
     var GPLUS = Backbone.Model.extend({
+        getName:  function () {
+            return 'gplus';
+        },
         isLogged: function (ifTrue, ifFalse) {
             if (gapi.auth.getToken().status.google_logged_in === true) {
                 ifTrue();

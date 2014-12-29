@@ -23,16 +23,18 @@ define([
 
         },
         getData:  function (callback) {
-            IN.API.Profile('me').result(function (response) {
+            IN.API.Profile('me')
+                .fields(["id", "firstName", "lastName", "pictureUrl", "publicProfileUrl"])
+                .result(function (response) {
 
-                console.log(response);
-                callback({
-                    id:    response.values[0].id,
-                    name:  response.values[0].firstName + ' ' + response.values[0].lastName,
-                    link:  '',
-                    photo: response.values[0].pictureUrl
+                    console.log(response);
+                    callback({
+                        id:    response.values[0].id,
+                        name:  response.values[0].firstName + ' ' + response.values[0].lastName,
+                        link:  '',
+                        photo: response.values[0].pictureUrl
+                    });
                 });
-            });
         }
     });
 

@@ -1,13 +1,14 @@
 <?php
-
 namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Social
  *
- * @ORM\Table()
+ * @ORM\Table(name="iwin_shared_social")
  * @ORM\Entity(repositoryClass="SocialRepository")
  */
 class Social
@@ -19,34 +20,24 @@ class Social
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    protected $id;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    protected $isActive;
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
      */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="color", type="string", length=12)
-     */
-    private $color;
-
+    protected $type;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,7 +60,7 @@ class Social
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -82,9 +73,9 @@ class Social
      * @param string $title
      * @return Social
      */
-    public function setTitle($title)
+    public function setIsActive($title)
     {
-        $this->title = $title;
+        $this->isActive = $title;
 
         return $this;
     }
@@ -92,33 +83,11 @@ class Social
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
-    public function getTitle()
+    public function getIsActive()
     {
-        return $this->title;
+        return $this->isActive;
     }
 
-    /**
-     * Set color
-     *
-     * @param string $color
-     * @return Social
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string 
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
 }

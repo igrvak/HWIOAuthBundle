@@ -1,3 +1,6 @@
 iwin_shared:
     resource: "@IwinSharedBundle/Controller"
     type: annotation
+    options:
+      expose: true
+

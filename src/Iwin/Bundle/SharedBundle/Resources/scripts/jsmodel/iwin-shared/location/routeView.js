@@ -3,7 +3,7 @@ define([
     'lodash',
     'backbone',
     'templating',
-    'iwin-app/util/collectionView',
+    'util/collectionView',
     './location',
     './mapView',
     'fancybox/fancybox',
@@ -98,7 +98,7 @@ define([
                     "beforeClose": function () {
                         map.off('map:address', clb);
                     },
-                })
+                });
             });
 
             this.modelBinder.bind(this.model, this.el);
@@ -121,6 +121,8 @@ define([
 
             this.addItemEmpty();
             this.render();
+
+            this.$el.find('[href="#popup-location"]').last().click();
         },
         "removeItem":   function (e) {
             e.preventDefault();

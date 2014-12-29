@@ -7,6 +7,8 @@ parameters:
     Iwin\Bundle\AppBundle\Entity\FileRepository
   iwin_app.repo.image.class:
     Iwin\Bundle\AppBundle\Entity\FileImageRepository
+  iwin_app.repo.user.class:
+    Iwin\Bundle\AppBundle\Entity\UserRepository
 
 services:
   iwin_app.repo.coupon:
@@ -29,3 +31,8 @@ services:
     factory_service:  doctrine.orm.entity_manager
     factory_method:   getRepository
     arguments: [IwinAppBundle:FileImage]
+  iwin_app.repo.profile:
+    class:            %iwin_app.repo.user.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinAppBundle:User]

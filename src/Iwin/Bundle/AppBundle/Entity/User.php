@@ -1,27 +1,37 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
-use FOS\UserBundle\Model\User as BaseUser;
-use Doctrine\Common\Collections\ArrayCollection;
 use Iwin\Bundle\SharedBundle\Entity\Location;
+use Iwin\Bundle\SharedBundle\Entity\Social;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="iwin_app_user")
  * @ORM\Entity(repositoryClass="UserRepository")
  * @Gedmo\TranslationEntity(class="Iwin\Bundle\AppBundle\Entity\UserTranslation")
  */
 class User extends BaseUser implements Translatable
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->socials = new ArrayCollection();
+    }
+
     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Type("string")
      */
     protected $id;
 
@@ -30,6 +40,7 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\Column(name="nameFirst", type="string", length=255)
      * @Gedmo\Translatable()
+     * @Serializer\Type("string")
      */
     protected $nameFirst;
 
@@ -38,20 +49,15 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\Column(name="nameLast", type="string", length=255)
      * @Gedmo\Translatable()
+     * @Serializer\Type("string")
      */
     protected $nameLast;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
-     */
-    protected $phone;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="chatSkype", type="string", length=255)
+     * @Serializer\Type("string")
      */
     protected $chatSkype;
 
@@ -59,6 +65,7 @@ class User extends BaseUser implements Translatable
      * @var \DateTime
      *
      * @ORM\Column(name="birthdate", type="date")
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     protected $birthdate;
 
@@ -67,34 +74,39 @@ class User extends BaseUser implements Translatable
      *
      * @ORM\OneToOne(targetEntity="FileImage")
      * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
+     * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\FileImage")
      */
     protected $image_avatar;
-
 
     /**
      * @var Location |null
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location")
      * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
+     *
+     * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
      */
     protected $location;
-
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255)
+     */
+    protected $phone;
+    /**
+     * @var Social[]|Collection
+     *
      * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="User")
+     * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;
 
+    // -- Accessors ---------------------------------------
 
-    public function __construct()
-    {
-        parent::__constructor();
-
-        $this->socials = new ArrayCollection();
-    }
-        /**
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -117,7 +129,7 @@ class User extends BaseUser implements Translatable
     /**
      * Get nameFirst
      *
-     * @return string 
+     * @return string
      */
     public function getNameFirst()
     {
@@ -140,7 +152,7 @@ class User extends BaseUser implements Translatable
     /**
      * Get nameLast
      *
-     * @return string 
+     * @return string
      */
     public function getNameLast()
     {
@@ -163,7 +175,7 @@ class User extends BaseUser implements Translatable
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -186,7 +198,7 @@ class User extends BaseUser implements Translatable
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -209,7 +221,7 @@ class User extends BaseUser implements Translatable
     /**
      * Get chatSkype
      *
-     * @return string 
+     * @return string
      */
     public function getChatSkype()
     {
@@ -222,7 +234,7 @@ class User extends BaseUser implements Translatable
      * @param \DateTime $birthdate
      * @return User
      */
-    public function setBirthdate($birthdate)
+    public function setBirthdate(\DateTime  $birthdate = null)
     {
         $this->birthdate = $birthdate;
 
@@ -230,9 +242,57 @@ class User extends BaseUser implements Translatable
     }
 
     /**
+     * @param FileImage|null $image_avatar
+     */
+    public function setImageAvatar(FileImage $image_avatar= null)
+    {
+        $this->image_avatar = $image_avatar;
+    }
+
+    /**
+     * @return FileImage|null
+     */
+    public function getImageAvatar()
+    {
+        return $this->image_avatar;
+    }
+
+    /**
+     * @param Location|null $location
+     */
+    public function setLocation(Location $location = null)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * @return Location|null
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param Collection|Social[] $socials
+     */
+    public function setSocials(Collection $socials)
+    {
+        $this->socials = $socials;
+    }
+
+    /**
+     * @return Collection|Social[]
+     */
+    public function getSocials()
+    {
+        return $this->socials;
+    }
+
+    /**
      * Get birthdate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthdate()
     {

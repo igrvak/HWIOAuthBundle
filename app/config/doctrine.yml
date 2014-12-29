@@ -10,6 +10,12 @@ doctrine:
         dir: %gedmo.lib.directory%/Gedmo/Translatable/Entity
         alias: GedmoTranslatable
         is_bundle: false
+      gedmo_tree:
+        type: annotation
+        prefix: Gedmo\Tree\Entity
+        dir: %gedmo.lib.directory%/Gedmo/Tree/Entity
+        alias: GedmoTree
+        is_bundle: false
       # Iwin Bundles
       IwinAppBundle: ~
       IwinAdvertBundle: ~

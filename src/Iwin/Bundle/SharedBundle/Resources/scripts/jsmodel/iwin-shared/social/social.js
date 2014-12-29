@@ -2,7 +2,7 @@ define([
     'jquery',
     'lodash',
     'backbone',
-    'iwin-app/util/basemodel',
+    'util/basemodel',
 ], function ($, _, Backbone, BaseModel) {
     'use strict';
 
@@ -10,7 +10,7 @@ define([
         "idAttribute": 'type',
 
 
-        defaults: {
+        "defaults": {
             "type":     "",
             "isActive": false
         }

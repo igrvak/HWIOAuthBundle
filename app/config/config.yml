@@ -28,6 +28,14 @@ parameters:
   meest.routing.admin: /admin
   meest.routing.cabinet: /cabinet
 
+  # Маппим параметры, на массив
+  socials:
+    facebook:
+      id: %social.facebook.id%
+      secret: %social.facebook.secret%
+  socials_pub:
+    facebook: %social.facebook.id%
+
 # Generic framework config
 framework:
   secret: %secret%

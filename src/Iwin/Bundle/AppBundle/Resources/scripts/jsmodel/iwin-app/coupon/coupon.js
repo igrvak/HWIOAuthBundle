@@ -1,7 +1,7 @@
 define([
     'lodash',
     'backbone',
-    'iwin-app/util/basemodel',
+    'util/basemodel',
     './couponMultilang',
     './couponType',
     './couponDiscount',

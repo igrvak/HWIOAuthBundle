@@ -3,7 +3,7 @@ define([
     'lodash',
     'backbone',
     'templating',
-    'iwin-app/util/collectionView',
+    'util/collectionView',
     './coupon',
     './couponEditView',
 ], function ($, _, Backbone, templating, CollectionView, CouponModel, CouponEditView) {

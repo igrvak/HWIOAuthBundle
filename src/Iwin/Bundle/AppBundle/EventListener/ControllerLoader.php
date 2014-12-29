@@ -55,8 +55,9 @@ class ControllerLoader
         // Скрипты бандла
         $dir = $this->par('iwin_app.scripts_dir');
 
-        // Шрифты
+        // Переменные для JS
         $webapp->addVar('debug', $this->par('kernel.debug'));
+        $webapp->addVar('socials', $this->par('socials_pub'));
 
         $webapp->attachFile($dir . '/frontend/defines.scss');
         $webapp->attachFile($dir . '/frontend/messages.scss');

@@ -3,7 +3,7 @@ define([
     'lodash',
     'backbone',
     'templating',
-    'iwin-app/util/collectionView',
+    'util/collectionView',
     'iwin-shared/social/userSocial',
     'iwin-shared/social/networkManager',
     'backbone/modelbinder'

@@ -13,7 +13,7 @@ define([
 
     console.log(gapi);
     FB.init({
-        appId: '774836025885842', //TODO: bidlokod
+        appId: window.$webapp.var.socials.facebook, //TODO: bidlokod
     });
 
     var Facebook = Backbone.Model.extend({

@@ -27,3 +27,6 @@ parameters:
   werkint_redis_pass: ~
 
   app.gempath: null
+
+  social.facebook.id: ~
+  social.facebook.secret: ~

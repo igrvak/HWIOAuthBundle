@@ -1,14 +1,11 @@
 define([
+    'lodash',
     'backbone',
     'util/basemodel',
-], function (Backbone, BaseModel) {
+], function (_, Backbone, BaseModel) {
     'use strict';
 
     var Model = BaseModel.extend({
-        "defaults": {
-            "amount":     0,
-            "isAbsolute": 0,
-        },
     });
 
     return Model;

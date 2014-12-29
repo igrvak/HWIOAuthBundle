@@ -1,5 +1,4 @@
 <?php
-
 namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;

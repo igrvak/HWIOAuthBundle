@@ -6,7 +6,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="iwin_app_video")
+ * @ORM\Table(name="iwin_shared_video")
  */
 class Video
 {

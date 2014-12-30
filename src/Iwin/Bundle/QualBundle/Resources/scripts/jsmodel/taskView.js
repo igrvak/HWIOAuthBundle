@@ -2,12 +2,13 @@ define([
     'lodash',
     'backbone',
     'templating',
-    'iwin-app/images/galleryView',
-    'iwin-app/videos/videosView',
+    'iwin-shared/images/galleryView',
+    'iwin-shared/videos/videosView',
     'iwin-app/profile/profileView',
     'iwin-shared/location/routeView',
+    'iwin-shared/category/categoryView',
     'jquery/openclose',
-], function (_, Backbone, templating, ImagesView, VideosView, ProfileView, RouteView) {
+], function (_, Backbone, templating, ImagesView, VideosView, ProfileView, RouteView, CategoryView) {
     'use strict';
 
     var viewId = 'iwin-qual-task';
@@ -37,6 +38,9 @@ define([
                 "route":   new RouteView({
                     "model": this.model.get('locations'),
                 }),
+                "category": new CategoryView({
+                    "model": this.model.get('category'),
+                }),
             };
         },
 
@@ -56,7 +60,7 @@ define([
                 view.render();
             }, this);
 
-            this.$el.find('div.open-close').openClose({
+            this.$el.find('.benefits div.open-close').openClose({
                 activeClass: 'active',
                 opener:      '.opener',
                 slider:      '.slide',

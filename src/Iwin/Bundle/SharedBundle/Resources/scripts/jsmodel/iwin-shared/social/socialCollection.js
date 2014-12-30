@@ -8,7 +8,7 @@ define([
 
     var Collection = Backbone.Collection.extend({
         "model": Social,
-        "url":   Routing.generate('socials-list')
+        "url":   Routing.generate('iwin_social_list')
     });
 
     return Collection;

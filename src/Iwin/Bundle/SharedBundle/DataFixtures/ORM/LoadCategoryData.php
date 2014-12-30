@@ -6,8 +6,10 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Iwin\Bundle\SharedBundle\Entity\Category;
+use Iwin\Bundle\SharedBundle\Service\File\ProgrammaticFileUploader;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Грузит список категорий
@@ -36,18 +38,16 @@ class LoadCategoryData extends AbstractFixture implements
     public function load(ObjectManager $manager)
     {
         # TODO: нормальные имена
-        $gen = function ($maxLevel, $level = 1) use (&$gen, &$manager) {
+        $gen = function ($maxLevel, $level = 1, Category $parent = null) use (&$gen, &$manager) {
             $ret = [];
-            $amount = mt_rand(1,5);
+            $amount = mt_rand(1, 5);
             for ($i = 0; $i < $amount; $i++) {
                 $cat = new Category();
                 $cat->setTitle(mt_rand(100000, 999999));
+                $cat->setParent($parent);
 
                 if ($level < $maxLevel) {
-                    foreach ($gen($maxLevel, $level + 1) as $row) {
-                        /** @var Category $row */
-                        $row->setParent($cat);
-                    }
+                    $gen($maxLevel, $level + 1, $cat);
                 }
 
                 $manager->persist($cat);
@@ -56,7 +56,25 @@ class LoadCategoryData extends AbstractFixture implements
             return $ret;
         };
 
-        $gen(4);
+        $trans = $manager->getRepository('GedmoTranslatable:Translation');
+        $i = 0;
+        foreach ($this->getData() as $row) {
+            $cat = new Category();
+            $cat->setImage($this->serviceUploader()->upload(
+                $this->getDataDir() . '/img/category/' . $row['class'] . '.png',
+                'category'
+            ));
+            foreach ($row['titles'] as $lang => $title) {
+                $trans->translate($cat, 'title', $lang, $title);
+            }
+
+            $gen(4, 2, $cat);
+
+            if (!$this->hasReference('category-' . $row['class'])) {
+                $this->addReference('category-' . $row['class'], $cat);
+                $this->addReference('category-' . (++$i), $cat);
+            }
+        }
 
         $manager->flush();
     }
@@ -67,5 +85,32 @@ class LoadCategoryData extends AbstractFixture implements
     public function getOrder()
     {
         return 1;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getData()
+    {
+        $path = $this->getDataDir() . '/category.yml';
+        $data = Yaml::parse(file_get_contents($path));
+
+        return $data;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getDataDir()
+    {
+        return $this->container->getParameter('iwin_shared.config_directory') . '/data';
+    }
+
+    /**
+     * @return ProgrammaticFileUploader
+     */
+    protected function serviceUploader()
+    {
+        return $this->container->get('iwin_shared.file.programmaticfileuploader');
     }
 }

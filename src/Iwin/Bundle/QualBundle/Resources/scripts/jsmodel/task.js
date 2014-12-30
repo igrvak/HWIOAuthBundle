@@ -2,11 +2,12 @@ define([
     'backbone',
     'routing',
     'util/basemodel',
-    'iwin-app/gallery',
+    'iwin-shared/gallery',
     'iwin-app/profile/profile',
+    'iwin-shared/category/category',
     'iwin-shared/location/location',
     'iwin-shared/location/locationCollection',
-], function (Backbone, Routing, BaseModel, GalleryModel, ProfileModel, LocationModel, LocationCollection) {
+], function (Backbone, Routing, BaseModel, GalleryModel, ProfileModel, CategoryModel, LocationModel, LocationCollection) {
     'use strict';
 
     var Model = BaseModel.extend({
@@ -21,6 +22,10 @@ define([
                 "type":         Backbone.HasOne,
                 "key":          'profile',
                 "relatedModel": ProfileModel,
+            }, {
+                "type":         Backbone.HasOne,
+                "key":          'category',
+                "relatedModel": CategoryModel,
             }, {
                 "type":              Backbone.HasMany,
                 "key":               'locations',

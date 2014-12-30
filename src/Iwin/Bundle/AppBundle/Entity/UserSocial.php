@@ -3,6 +3,7 @@
 namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Iwin\Bundle\SharedBundle\Entity\Social;
 
 /**
  * UserSocial
@@ -27,11 +28,11 @@ class UserSocial
      */
     protected $nickname;
     /**
-     * @var integer
+     * @var Social
      * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
      * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
      */
-    protected $socialId;
+    protected $social;
     /**
      * @var string
      *
@@ -44,11 +45,13 @@ class UserSocial
      */
     protected $urlProfile;
     /**
-     * @var integer
+     * @var User
      * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    protected $userId;
+    protected $user;
+
+    // -- Accessors ---------------------------------------
 
     /**
      * Get id
@@ -61,49 +64,39 @@ class UserSocial
     }
 
     /**
-     * Set userId
-     *
-     * @param integer $userId
-     * @return UserSocial
+     * @return Social
      */
-    public function setUserId($userId)
+    public function getSocial()
     {
-        $this->userId = $userId;
+        return $this->social;
+    }
 
+    /**
+     * @param Social $social
+     * @return $this
+     */
+    public function setSocial(Social $social)
+    {
+        $this->social = $social;
         return $this;
     }
 
     /**
-     * Get userId
-     *
-     * @return integer
+     * @return User
      */
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
 
     /**
-     * Set socialId
-     *
-     * @param integer $socialId
-     * @return UserSocial
+     * @param User $user
+     * @return $this
      */
-    public function setSocialId($socialId)
+    public function setUser(User $user)
     {
-        $this->socialId = $socialId;
-
+        $this->user = $user;
         return $this;
-    }
-
-    /**
-     * Get socialId
-     *
-     * @return integer
-     */
-    public function getSocialId()
-    {
-        return $this->socialId;
     }
 
     /**

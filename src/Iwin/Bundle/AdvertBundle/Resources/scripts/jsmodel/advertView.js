@@ -2,44 +2,42 @@ define([
     'lodash',
     'backbone',
     'templating',
-    'iwin-app/images/galleryView',
-    'iwin-app/videos/videosView',
-    'iwin-app/coupon/couponsView',
+    'iwin-shared/images/galleryView',
+    'iwin-shared/videos/videosView',
+    'iwin-shared/coupon/couponsView',
     'iwin-app/profile/profileView',
+    'iwin-shared/category/categoryView',
     'jquery/openclose',
-], function (_, Backbone, templating, ImagesView, VideosView, CouponsView, ProfileView) {
+], function (_, Backbone, templating, ImagesView, VideosView, CouponsView, ProfileView, CategoryView) {
     'use strict';
 
     var viewId = 'iwin-advert-advert';
 
     var View = Backbone.View.extend({
         "template": templating.get(viewId),
+        "views":    {},
 
         "initialize": function () {
-            this.initializeViews();
+            this.views = {
+                "gallery":  new ImagesView({
+                    "model": this.model.get('gallery.images'),
+                }),
+                "videos":   new VideosView({
+                    "model": this.model.get('gallery.videos'),
+                }),
+                "coupon":   new CouponsView({
+                    "model": this.model.get('coupons'),
+                }),
+                "profile":  new ProfileView({
+                    "model": this.model.get('profile'),
+                }),
+                "category": new CategoryView({
+                    "model": this.model.get('category'),
+                }),
+            };
 
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
-        },
-
-        "viewImages":  null,
-        "viewVideos":  null,
-        "viewCoupons": null,
-        "viewProfile": null,
-
-        "initializeViews": function () {
-            this.viewImages = new ImagesView({
-                "model": this.model.get('gallery.images'),
-            });
-            this.viewVideos = new VideosView({
-                "model": this.model.get('gallery.videos'),
-            });
-            this.viewCoupons = new CouponsView({
-                "model": this.model.get('coupons'),
-            });
-            this.viewProfile= new ProfileView({
-                "model": this.model.get('profile'),
-            });
         },
 
         "events": {
@@ -47,24 +45,18 @@ define([
         },
 
         "render": function () {
-            this.viewImages.remove();
-            this.viewVideos.remove();
+            _.each(this.views, function (view) {
+                view.remove();
+            });
 
             this.$el.html(this.template(this.model));
 
-            this.viewImages.setElement(this.$el.find('.gallery-container'));
-            this.viewImages.render();
+            _.each(this.views, function (view, name) {
+                view.setElement(this.$el.find('.' + name + '-container'));
+                view.render();
+            }, this);
 
-            this.viewVideos.setElement(this.$el.find('.videos-container'));
-            this.viewVideos.render();
-
-            this.viewCoupons.setElement(this.$el.find('.coupon-holder'));
-            this.viewCoupons.render();
-
-            this.viewProfile.setElement(this.$el.find('.profile-container'));
-            this.viewProfile.render();
-
-            this.$el.find('div.open-close').openClose({
+            this.$el.find('.benefits div.open-close').openClose({
                 activeClass: 'active',
                 opener:      '.opener',
                 slider:      '.slide',

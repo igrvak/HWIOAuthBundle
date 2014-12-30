@@ -3,6 +3,14 @@ parameters:
     Iwin\Bundle\SharedBundle\Entity\CategoryRepository
   iwin_shared.repo.social.class:
     Iwin\Bundle\SharedBundle\Entity\SocialRepository
+  iwin_shared.repo.coupon.class:
+    Iwin\Bundle\SharedBundle\Entity\CouponRepository
+  iwin_shared.repo.coupontype.class:
+    Iwin\Bundle\SharedBundle\Entity\CouponTypeRepository
+  iwin_shared.repo.file.class:
+    Iwin\Bundle\SharedBundle\Entity\FileRepository
+  iwin_shared.repo.image.class:
+    Iwin\Bundle\SharedBundle\Entity\FileImageRepository
 
 services:
   iwin_shared.repo.category:
@@ -15,3 +23,23 @@ services:
     factory_service:  doctrine.orm.entity_manager
     factory_method:   getRepository
     arguments: [IwinSharedBundle:Social]
+  iwin_shared.repo.coupon:
+    class:            %iwin_shared.repo.coupon.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinSharedBundle:Coupon]
+  iwin_shared.repo.coupontype:
+    class:            %iwin_shared.repo.coupontype.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinSharedBundle:CouponType]
+  iwin_shared.repo.file:
+    class:            %iwin_shared.repo.file.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinSharedBundle:File]
+  iwin_shared.repo.image:
+    class:            %iwin_shared.repo.image.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinSharedBundle:FileImage]

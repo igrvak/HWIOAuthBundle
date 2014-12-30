@@ -3,8 +3,8 @@ namespace Iwin\Bundle\AppBundle\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Intervention\Image\ImageManager;
-use Iwin\Bundle\AppBundle\Entity\File;
-use Iwin\Bundle\AppBundle\Entity\FileImage;
+use Iwin\Bundle\SharedBundle\Entity\File;
+use Iwin\Bundle\SharedBundle\Entity\FileImage;
 use Iwin\Bundle\AppBundle\Service\Util\FileUrlManager;
 use Iwin\Bundle\SharedBundle\Service\File\FileManager;
 use Oneup\UploaderBundle\Event\PostPersistEvent;

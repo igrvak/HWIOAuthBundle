@@ -1,0 +1,38 @@
+{# Шаблон списка категорий #}
+{# @formatter:off #}
+{% raw %}
+<script type="text/x-twig-template" data-id="iwin-shared-category-categories">
+  <section class="category-choose">
+    <h2 class="heading">Choose Category Of Your Ad</h2>
+    <div class="holder">
+      <div class="category-choose__list open-close">
+        {% set list1 = maxElements ? (root.toArray()|slice(0, maxElements)) : root.toArray() %}
+        {% set list2 = root.toArray()|slice(maxElements) %}
+        {% include 'iwin-shared-category-rows' with {'list': list1} %}
+        {% if maxElements and root.length > maxElements %}
+          <div class="slide js-slide-hidden" style="display: none;">
+            {% include 'iwin-shared-category-rows' with {'list': list2} %}
+          </div>
+          <a href="#" class="opener">
+            <span>SHOW ALL</span>
+            <span>HIDE</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</script>
+<script type="text/x-twig-template" data-id="iwin-shared-category-rows">
+  <ul>
+    {% for i, category in list %}
+      <li data-ordinal="{{ i }}">
+        <div class="icon">
+          <img src="{{ category.image.uri }}" height="24" width="24" alt="">
+        </div>
+        <a href="#popup-category" class="fancybox">{{ category.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</script>
+{% endraw %}
+{# @formatter:on #}

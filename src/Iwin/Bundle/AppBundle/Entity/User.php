@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
+use Iwin\Bundle\SharedBundle\Entity\FileImage;
 use Iwin\Bundle\SharedBundle\Entity\Location;
 use Iwin\Bundle\SharedBundle\Entity\Social;
 use JMS\Serializer\Annotation as Serializer;
@@ -34,33 +35,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nameFirst", type="string", length=255)
-     * @Gedmo\Translatable()
-     * @Serializer\Type("string")
-     */
-    protected $nameFirst;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nameLast", type="string", length=255)
-     * @Gedmo\Translatable()
-     * @Serializer\Type("string")
-     */
-    protected $nameLast;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="chatSkype", type="string", length=255)
-     * @Serializer\Type("string")
-     */
-    protected $chatSkype;
-
     /**
      * @var \DateTime
      *
@@ -68,18 +42,23 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     protected $birthdate;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chatSkype", type="string", length=255)
+     * @Serializer\Type("string")
+     */
+    protected $chatSkype;
     /**
      * @var FileImage|null
      *
-     * @ORM\OneToOne(targetEntity="FileImage")
+     * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage")
      * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
-     * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\FileImage")
+     * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
     protected $image_avatar;
-
     /**
-     * @var Location |null
+     * @var Location|null
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location")
      * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
@@ -90,13 +69,29 @@ class User extends BaseUser implements Translatable
     /**
      * @var string
      *
+     * @ORM\Column(name="nameFirst", type="string", length=255)
+     * @Gedmo\Translatable()
+     * @Serializer\Type("string")
+     */
+    protected $nameFirst;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nameLast", type="string", length=255)
+     * @Gedmo\Translatable()
+     * @Serializer\Type("string")
+     */
+    protected $nameLast;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
     /**
      * @var Social[]|Collection
      *
-     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="user")
      * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;
@@ -234,7 +229,7 @@ class User extends BaseUser implements Translatable
      * @param \DateTime $birthdate
      * @return User
      */
-    public function setBirthdate(\DateTime  $birthdate = null)
+    public function setBirthdate(\DateTime $birthdate = null)
     {
         $this->birthdate = $birthdate;
 
@@ -244,7 +239,7 @@ class User extends BaseUser implements Translatable
     /**
      * @param FileImage|null $image_avatar
      */
-    public function setImageAvatar(FileImage $image_avatar= null)
+    public function setImageAvatar(FileImage $image_avatar = null)
     {
         $this->image_avatar = $image_avatar;
     }

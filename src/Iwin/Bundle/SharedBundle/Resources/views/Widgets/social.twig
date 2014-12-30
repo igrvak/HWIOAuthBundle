@@ -1,0 +1,24 @@
+{# Шаблон социальных сетей #}
+{# @formatter:off #}
+{% raw %}
+<script type="text/x-twig-template" data-id="iwin-shared-social-social">
+  {% for social in list.toArray() %}
+    {% if social.type.is_active %}
+      <div class="social-btn {% if not (social.type.type in socialsLoaded) %}disable{% endif %} {% if (social.type.type in socialsLoaded) and social.isEmpty() %}connect{% endif %}" id="btn-{{ social.type.type }}" data-network="{{ social.type.type }}">
+        {% if social.isEmpty() %}
+          {{ social.type.type }}
+        {% else %}
+        <img src="{{ social.photo }}" class="user-photo"/>
+          {{ social.name }}
+        {% endif %}
+      </div>
+      {% if not social.isEmpty() %}
+        <div class="remove" data-network="{{ social.type.type }}">
+          X
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</script>
+{% endraw %}
+{# @formatter:on #}

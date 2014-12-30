@@ -6,7 +6,7 @@ define([
     'iwin-shared/social/userSocial',
     'iwin-shared/social/userSocialCollection',
     'iwin-shared/social/socialCollection',
-    'iwin-app/images/imageView',
+    'iwin-shared/images/imageView',
     'iwin-shared/location/locationView'
 ], function (_, Backbone, templating, SocialsView, UserSocial, UserSocialCollection, SocialCollection, ImageView, LocationView) {
     'use strict';

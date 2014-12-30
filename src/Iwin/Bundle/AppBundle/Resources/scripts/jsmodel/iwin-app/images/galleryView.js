@@ -27,9 +27,6 @@ define([
 
             CollectionView.prototype.initialize.apply(this, arguments);
 
-            //if (!this.isMultiple && this.model.get('list').length === 0) {
-            //    this.addItemEmpty();
-            //}
         },
 
         "events": {

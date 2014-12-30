@@ -240,7 +240,7 @@
   <script type="text/x-twig-template" data-id="iwin-app-location-route">
     <div class="section" style="padding: 20px 50px;">
       <div class="location-box">
-        <ul class="location-list">
+        <ul class="location-list {% if isMultiple %}multiple{% endif %}">
           {% for i, location in list.toArray() %}
             <li data-ordinal="{{ i }}">
             {% if loop.index == 1 %}
@@ -267,9 +267,11 @@
             </li>
           {% endfor %}
         </ul>
+        {% if isMultiple %}
         <div style="text-align: right">
           <a href="#add" class="link-add-location add">Add location</a>
         </div>
+        {% endif %}
       </div>
     </div>
     <div class="lightbox popup-location" id="popup-location" style="display: none">
@@ -359,6 +361,8 @@
           </div>
           <div class="right-block">
 
+          </div>
+          <div class="location">
           </div>
           <div class="gallery-container">
             <div class="profile-photo"></div>

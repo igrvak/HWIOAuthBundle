@@ -16,11 +16,15 @@ define([
     var View = CollectionView.extend({
         "relatedModel": LocationModel,
         "viewMap":      undefined,
+        "isMultiple":   true,
 
         "modelBinder": undefined,
         "template":    templating.get(viewId),
 
-        "initialize": function () {
+        "initialize": function (options) {
+
+            _.extend(this, _.pick(options, 'isMultiple', 'model'));
+
             this.modelBinder = new Backbone.ModelBinder();
 
             this.viewMap = new MapView({
@@ -43,7 +47,9 @@ define([
         },
 
         "render": function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template(this.model, {
+                'isMultiple': this.isMultiple
+            }));
 
             var map = this.viewMap, that = this, clb;
             this.$el.find('[href="#popup-location"]').click(function (e) {

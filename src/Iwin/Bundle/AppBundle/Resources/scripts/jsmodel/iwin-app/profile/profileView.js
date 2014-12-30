@@ -7,16 +7,17 @@ define([
     'iwin-shared/social/userSocialCollection',
     'iwin-shared/social/socialCollection',
     'iwin-app/images/imageView',
-    'iwin-app/images/image',
-], function (_, Backbone, templating, SocialsView, UserSocial, UserSocialCollection, SocialCollection, ImageView, Image) {
+    'iwin-shared/location/locationView'
+], function (_, Backbone, templating, SocialsView, UserSocial, UserSocialCollection, SocialCollection, ImageView, LocationView) {
     'use strict';
 
     var viewId = 'iwin-app-profile';
 
     var View = Backbone.View.extend({
-        "template":    templating.get(viewId),
-        "socialsView": undefined,
-        "imageView":   undefined,
+        "template":     templating.get(viewId),
+        "socialsView":  undefined,
+        "imageView":    undefined,
+        "locationView": undefined,
 
         "initialize": function () {
             this.model.on('change', this.render, this);
@@ -39,13 +40,16 @@ define([
                 });
             })();
 
+            //console.log(this); // TODO: у тебя this.model пустой. Так не должно быть
+
+
             this.socialsView = new SocialsView({
                 model: usc
             });
-
-
             this.imageView = new ImageView();
-            //console.log(this); // TODO: у тебя this.model пустой. Так не должно быть
+
+            this.locationView = new LocationView();
+
         },
 
         "render": function () {
@@ -53,8 +57,12 @@ define([
             this.socialsView.setElement(this.$el.find('.right-block'));
             this.socialsView.render();
 
+
             this.imageView.setElement(this.$el.find('.profile-photo'));
             this.imageView.render();
+
+            this.locationView.setElement(this.$el.find('.location'));
+            this.locationView.render();
             return this;
         },
     });

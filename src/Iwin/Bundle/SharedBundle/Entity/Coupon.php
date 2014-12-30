@@ -1,5 +1,5 @@
 <?php
-namespace Iwin\Bundle\AppBundle\Entity;
+namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -45,10 +45,6 @@ class Coupon implements
      */
     protected $expires;
     /**
-     * @Gedmo\Locale
-     */
-    protected $locale;
-    /**
      * @ORM\Column(type="string",length=100)
      * @Assert\NotBlank(message="iwin_app.coupon.name")
      * @Gedmo\Translatable()
@@ -62,6 +58,11 @@ class Coupon implements
      * @var CouponType
      */
     protected $type;
+
+    /**
+     * @Gedmo\Locale
+     */
+    protected $locale;
 
     /**
      * {@inheritdoc}

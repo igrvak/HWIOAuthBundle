@@ -1,7 +1,7 @@
 <?php
 namespace Iwin\Bundle\SharedBundle\Service\File;
 
-use Iwin\Bundle\AppBundle\Entity as Iwin;
+use Iwin\Bundle\SharedBundle\Entity as Iwin;
 use Iwin\Bundle\AppBundle\Service\Util\FileUrlManager;
 use Symfony\Component\HttpFoundation\File\File;
 

@@ -5,7 +5,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Iwin\Bundle\AppBundle\Entity\CouponType;
+use Iwin\Bundle\SharedBundle\Entity\CouponType;
 use Iwin\Bundle\SharedBundle\Entity\Social;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;

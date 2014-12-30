@@ -1,8 +1,8 @@
 <?php
-namespace Iwin\Bundle\AppBundle\Controller;
+namespace Iwin\Bundle\SharedBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Iwin\Bundle\AppBundle\Entity\CouponTypeRepository;
+use Iwin\Bundle\SharedBundle\Entity\CouponTypeRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
@@ -15,7 +15,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 class CouponController
 {
     /**
-     * @DI\Inject("iwin_app.repo.coupontype")
+     * @DI\Inject("iwin_shared.repo.coupontype")
      * @var CouponTypeRepository
      */
     private $repoCouponType;

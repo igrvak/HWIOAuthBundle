@@ -1,7 +1,7 @@
 <?php
 namespace Iwin\Bundle\AppBundle\Service\Util;
 
-use Iwin\Bundle\AppBundle\Entity\File;
+use Iwin\Bundle\SharedBundle\Entity\File;
 use JMS\Serializer\EventDispatcher\EventSubscriberInterface;
 use JMS\Serializer\EventDispatcher\ObjectEvent;
 use JMS\Serializer\GenericSerializationVisitor;
@@ -37,7 +37,7 @@ class FileUrlManager implements
     {
         return [[
             'event'  => 'serializer.post_serialize',
-            'class'  => 'Iwin\Bundle\AppBundle\Entity\FileImage',
+            'class'  => 'Iwin\Bundle\SharedBundle\Entity\FileImage',
             'method' => 'onPostSerialize',
         ]];
     }

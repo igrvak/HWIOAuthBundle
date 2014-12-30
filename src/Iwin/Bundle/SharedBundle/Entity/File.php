@@ -1,5 +1,5 @@
 <?php
-namespace Iwin\Bundle\AppBundle\Entity;
+namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

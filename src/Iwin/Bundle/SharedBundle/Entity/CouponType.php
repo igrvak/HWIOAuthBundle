@@ -1,5 +1,5 @@
 <?php
-namespace Iwin\Bundle\AppBundle\Entity;
+namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -11,7 +11,7 @@ use Gedmo\Translatable\Translatable;
  * @author Bogdan Yurov <bogdan@yurov.me>
  *
  * @ORM\Entity(repositoryClass="CouponTypeRepository")
- * @ORM\Table(name="iwin_shared_coupon_type")
+ * @ORM\Table(name="iwin_shared_coupontype")
  */
 class CouponType implements
     Translatable
@@ -34,16 +34,16 @@ class CouponType implements
      */
     protected $class;
     /**
+     * @ORM\Column(type="boolean")
+     * @var boolean
+     */
+    protected $hasDiscount;
+    /**
      * @ORM\Column(type="string")
      * @Gedmo\Translatable()
      * @var string
      */
     protected $title;
-    /**
-     * @ORM\Column(type="boolean")
-     * @var boolean
-     */
-    protected $hasDiscount;
 
     /**
      * @Gedmo\Locale

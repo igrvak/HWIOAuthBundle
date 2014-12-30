@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
-use Iwin\Bundle\AppBundle\Entity\FileImage;
+use Iwin\Bundle\SharedBundle\Entity\FileImage;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -43,7 +43,7 @@ class Category implements
      */
     protected $children;
     /**
-     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\FileImage", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage", cascade={"persist"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      * @Serializer\Expose
      * @var FileImage|null

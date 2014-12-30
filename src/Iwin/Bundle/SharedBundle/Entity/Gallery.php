@@ -1,5 +1,5 @@
 <?php
-namespace Iwin\Bundle\AppBundle\Entity;
+namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -40,7 +40,7 @@ class Gallery
      *   joinColumns={@ORM\JoinColumn(name="gallery_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id")}
      * )
-     * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\FileImage>")
+     * @Serializer\Type("array<Iwin\Bundle\SharedBundle\Entity\FileImage>")
      * @var FileImage[]|Collection
      */
     protected $images;
@@ -50,7 +50,7 @@ class Gallery
      *   joinColumns={@ORM\JoinColumn(name="gallery_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="video_id", referencedColumnName="id")}
      * )
-     * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\Video>")
+     * @Serializer\Type("array<Iwin\Bundle\SharedBundle\Entity\Video>")
      * @var Video[]|Collection
      */
     protected $videos;

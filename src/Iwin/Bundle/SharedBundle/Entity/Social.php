@@ -34,6 +34,8 @@ class Social
      */
     protected $type;
 
+    // -- Accessors ---------------------------------------
+
     /**
      * Get id
      *

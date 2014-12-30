@@ -1,0 +1,99 @@
+{# Шаблон редактирования купона #}
+{# Шаблон списка купонов #}
+{# @formatter:off #}
+{% raw %}
+<script type="text/x-twig-template" data-id="iwin-shared-coupon-coupons">
+  {% if not couponEditing %}
+    <section class="coupon-start">
+      <h2 class="heading">Coupons</h2>
+      <div class="holder">
+        <div class="block">
+          <span class="sub-title">Didn’t add any coupons yet?</span>
+          <p>Don’t miss the chance to increase a number of customers!</p>
+        </div>
+        <a href="#add" class="btn-add">Add coupon</a>
+      </div>
+    </section>
+  {% else %}
+    <h2 class="heading">Coupon editing</h2>
+    <section class="coupon-create">
+      <div class="coupon-holder"></div>
+    </section>
+  {% endif %}
+</script>
+<script type="text/x-twig-template" data-id="iwin-shared-coupon-coupon">
+  <div class="two-columns-input">
+    <label>
+      <div class="caption">Type of coupon</div>
+      <div class="value-box">
+        <select class="select2" name="type">
+          {% for type in types.toArray %}
+            <option value="{{ type.id }}">{{ type.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </label>
+    <label>
+      <div class="caption">Expires</div>
+      <div class="value-box">
+        <input type="text" class="date-field" name="expires"/>
+      </div>
+    </label>
+  </div>
+  {% if coupon.type.has_discount %}
+    <div class="two-columns-input">
+      <label>
+        <div class="caption">Discount</div>
+        <div class="value-box">
+          <input type="text" name="discount.amount" />
+        </div>
+      </label>
+      <label>
+        <div class="caption"></div>
+        <div class="value-box">
+          <select class="select2" name="discount.isAbsolute">
+            <option value="0">%</option>
+            <option value="1">$</option>
+          </select>
+        </div>
+      </label>
+    </div>
+  {% endif %}
+
+  <div class="inner-tabs">
+    <ul class="tabset">
+      {% for lang, title in langs %}
+        <li class="{{ lang==langsSelected?'active':'' }}">
+          <a href="#iwin-coupon-tab" data-lang="{{ lang }}">{{ title }}{% if lang == langsDef %} <span>(default)</span>{% endif %}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="tab-content">
+      {% for lang, title in langs %}
+      {% if lang == langsSelected %}
+        {% set mlPrefix = 'multilang['~(loop.index-1)~']' %}
+        <label class="title">
+          <div class="caption">Name</div>
+          <div class="value-box">
+            <div class="progress"></div>
+            <input type="text" name="{{ mlPrefix }}.name" data-maxlength="100" class="limited-length" />
+          </div>
+        </label>
+        <label class="textarea1">
+          <div class="caption">Caption</div>
+          <div class="value-box">
+            <div class="progress"></div>
+            <textarea cols="30" name="{{ mlPrefix }}.caption" rows="10" data-maxlength="200" class="limited-length"></textarea>
+          </div>
+        </label>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="value-box">
+    <button type="submit" class="btn">Create</button>
+    <button type="submit" class="btn btn-cancel">Cancel</button>
+  </div>
+</script>
+{% endraw %}
+{# @formatter:on #}

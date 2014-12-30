@@ -12,7 +12,7 @@ define([
 ], function ($, _, Backbone, templating, CouponTypeCollection) {
     'use strict';
 
-    var viewId = 'iwin-app-coupon-coupon',
+    var viewId = 'iwin-shared-coupon-coupon',
         langDefault = $('html').attr('lang'),
         langs = window.$langs;
 

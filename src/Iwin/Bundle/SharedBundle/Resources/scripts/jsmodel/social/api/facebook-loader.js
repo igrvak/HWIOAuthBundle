@@ -3,6 +3,11 @@ define([
 ], function (module) {
     'use strict';
 
+    // Remove facebook warning
+    var el = document.createElement('div');
+    el.id = 'fb-root';
+    document.body.appendChild(el);
+
     var config = module.config();
 
     // @formatter:off

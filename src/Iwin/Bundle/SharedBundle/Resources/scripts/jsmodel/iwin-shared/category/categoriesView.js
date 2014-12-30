@@ -14,6 +14,7 @@ define([
 
     var View = CollectionView.extend({
         "isMultiple":   true,
+        "maxElements":  6,
         "relatedModel": CategoryLinkModel,
 
         "modelBinder": undefined,
@@ -23,6 +24,10 @@ define([
             _.extend(this, _.pick(options, 'isMultiple'));
 
             this.modelBinder = new Backbone.ModelBinder();
+
+            this.on('selectitem', function(el){
+                console.log(el.toJSON());
+            });
 
             this.root = new CategoryCollection();
             this.root.on('sync', this.render, this);
@@ -39,13 +44,15 @@ define([
         },
 
         "events": {
-            "click .add":    'addItem',
-            "click .remove": 'removeItem',
+            "click .add":                     'addItem',
+            "click .remove":                  'removeItem',
+            "click [href='#popup-category']": 'selectItem',
         },
 
         "render": function () {
             this.$el.html(this.template(this.model, {
-                "root": this.root,
+                "root":        this.root,
+                "maxElements": this.maxElements,
             }));
 
             this.modelBinder.bind(this.model, this.el);
@@ -84,6 +91,16 @@ define([
             list.remove(el);
 
             this.render();
+        },
+
+        "selectItem": function (e) {
+            e.preventDefault();
+            var obj = this.$(e.currentTarget),
+                list = this.root,
+                index = obj.closest('li').data('ordinal'),
+                el = list.at(index);
+
+            this.trigger('selectitem', el);
         },
     });
 

@@ -5,9 +5,9 @@ define([
     'backbone',
     'routing',
     'util/basemodel',
-    'iwin-app/coupon/coupon',
-    'iwin-app/coupon/couponCollection',
-    'iwin-app/gallery',
+    'iwin-shared/coupon/coupon',
+    'iwin-shared/coupon/couponCollection',
+    'iwin-shared/gallery',
     'iwin-app/profile/profile',
     'iwin-shared/category/category',
 ], function (Backbone, Routing, BaseModel, Coupon, CouponCollection, GalleryModel, ProfileModel, CategoryModel) {

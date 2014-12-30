@@ -9,7 +9,7 @@ define([
 ], function ($, _, Backbone, templating, CollectionView, CouponModel, CouponEditView) {
     'use strict';
 
-    var viewId = 'iwin-app-coupon-coupons';
+    var viewId = 'iwin-shared-coupon-coupons';
 
     var View = CollectionView.extend({
         "couponEditing": false,

@@ -1,10 +1,10 @@
 define([
     'backbone',
     'util/basemodel',
-    'iwin-app/videos/video',
-    'iwin-app/videos/videoCollection',
-    'iwin-app/images/image',
-    'iwin-app/images/imageCollection',
+    'iwin-shared/videos/video',
+    'iwin-shared/videos/videoCollection',
+    'iwin-shared/images/image',
+    'iwin-shared/images/imageCollection',
 ], function (Backbone, BaseModel, Video, VideoCollection, Image, ImageCollection) {
     'use strict';
 

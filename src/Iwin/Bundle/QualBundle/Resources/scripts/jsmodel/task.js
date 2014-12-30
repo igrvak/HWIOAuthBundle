@@ -2,7 +2,7 @@ define([
     'backbone',
     'routing',
     'util/basemodel',
-    'iwin-app/gallery',
+    'iwin-shared/gallery',
     'iwin-app/profile/profile',
     'iwin-shared/category/category',
     'iwin-shared/location/location',

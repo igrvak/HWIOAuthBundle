@@ -2,7 +2,7 @@ define([
     'lodash',
     'backbone',
     'util/basemodel',
-    'iwin-app/images/image',
+    'iwin-shared/images/image',
 ], function (_, Backbone, BaseModel, ImageModel) {
     'use strict';
 

@@ -10,7 +10,7 @@ define([
 ], function (_, Backbone, templating, Routing, Dropzone, CollectionView, ImageModel) {
     'use strict';
 
-    var viewId = 'iwin-app-images-gallery';
+    var viewId = 'iwin-shared-images-gallery';
 
     var View = CollectionView.extend({
         "relatedModel": ImageModel,

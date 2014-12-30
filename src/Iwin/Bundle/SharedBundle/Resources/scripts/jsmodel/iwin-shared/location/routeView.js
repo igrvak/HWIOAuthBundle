@@ -11,7 +11,7 @@ define([
 ], function ($, _, Backbone, templating, CollectionView, LocationModel, MapView) {
     'use strict';
 
-    var viewId = 'iwin-app-location-route';
+    var viewId = 'iwin-shared-location-route';
 
     var View = CollectionView.extend({
         "relatedModel": LocationModel,

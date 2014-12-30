@@ -8,7 +8,7 @@ define([
 ], function (_, Backbone, templating, CollectionView, VideoModel) {
     'use strict';
 
-    var viewId = 'iwin-app-videos-videos';
+    var viewId = 'iwin-shared-videos-video';
 
     var View = CollectionView.extend({
         "relatedModel": VideoModel,

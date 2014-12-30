@@ -10,7 +10,7 @@ define([
 ], function ($, _, Backbone, templating, CollectionView, UserSocial, socialManager) {
     'use strict';
 
-    var viewId = 'iwin-app-profile-socials';
+    var viewId = 'iwin-shared-social-social';
 
     var View = CollectionView.extend({
         "relatedModel": UserSocial,

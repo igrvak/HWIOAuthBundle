@@ -14,15 +14,22 @@ define([
 
     var View = CollectionView.extend({
         "relatedModel": ImageModel,
+        "isMultiple":   true,
+        "dropzone":     null,
+        "template":     templating.get(viewId),
 
-        "dropzone": null,
-        "template": templating.get(viewId),
+        "initialize": function (options) {
 
-        "initialize": function () {
+            _.extend(this, _.pick(options, 'isMultiple', 'model'));
+
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
 
             CollectionView.prototype.initialize.apply(this, arguments);
+
+            //if (!this.isMultiple && this.model.get('list').length === 0) {
+            //    this.addItemEmpty();
+            //}
         },
 
         "events": {
@@ -32,7 +39,7 @@ define([
 
         "removeDropzone": function () {
             if (this.dropzone) {
-                this.dropzone.disable();
+                this.dropzone.disable(); // TODO: CHECK CHECK CHECK
             }
             this.dropzone = null;
         },
@@ -46,7 +53,9 @@ define([
         "render": function () {
             this.removeDropzone();
 
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template(this.model, {
+                'isMultiple': this.isMultiple,
+            }));
 
             this.$el.find('.drop').each(_.bind(function (ind, el) {
                 this.dropzone = new Dropzone(el, {
@@ -54,7 +63,11 @@ define([
                 });
             }, this));
             this.dropzone.on('success', _.bind(function (event, data) {
-                this.model.get('list').add(new ImageModel(data));
+                if(!this.isMultiple){
+                    this.model.get('list').first().set(data);
+                } else {
+                    this.model.get('list').add(new ImageModel(data));
+                }
                 this.render();
             }, this));
 

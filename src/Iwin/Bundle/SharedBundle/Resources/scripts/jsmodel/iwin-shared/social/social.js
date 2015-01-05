@@ -9,10 +9,9 @@ define([
     var Model = BaseModel.extend({
         "idAttribute": 'type',
 
-
         "defaults": {
             "type":     "",
-            "isActive": false
+            "is_active": false
         }
     });
 

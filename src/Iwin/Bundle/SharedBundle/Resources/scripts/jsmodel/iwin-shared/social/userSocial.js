@@ -9,7 +9,7 @@ define([
 
     var Model = BaseModel.extend({
         "isEmpty":   function () {
-            return !this.get('link');
+            return !this.get('name');
         },
         "defaults":  {
             "id":    "",

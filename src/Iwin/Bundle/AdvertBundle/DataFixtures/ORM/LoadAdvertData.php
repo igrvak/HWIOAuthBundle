@@ -6,7 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Iwin\Bundle\AdvertBundle\Entity\Advert;
-use Iwin\Bundle\AppBundle\Entity\Coupon;
+use Iwin\Bundle\SharedBundle\Entity\Coupon;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -37,6 +37,7 @@ class LoadAdvertData extends AbstractFixture implements
     public function load(ObjectManager $manager)
     {
         $advert = new Advert();
+        $advert->setCategory($this->getReference('category-1'));
         $manager->persist($advert);
 
         $coupon = new Coupon();

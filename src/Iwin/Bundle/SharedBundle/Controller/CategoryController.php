@@ -1,9 +1,9 @@
 <?php
 namespace Iwin\Bundle\SharedBundle\Controller;
 
-use Entity\Category;
 use Entity\Repository\CategoryRepository;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Iwin\Bundle\SharedBundle\Entity\Category;
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * Возвращает категории
  *
  * @author Bogdan Yurov <bogdan@yurov.me>
+ *
+ * @Rest\Route("/categoryapi")
  */
 class CategoryController extends Controller
 {
@@ -23,7 +25,7 @@ class CategoryController extends Controller
     // -- Actions ---------------------------------------
 
     /**
-     * @Rest\Get("/list.json", defaults={"_format": "json"})
+     * @Rest\Get("/list.json", name="iwin_shared_category_root", defaults={"_format": "json"})
      * @Rest\Get("/list/{category}.json", name="iwin_shared_category_list", defaults={"_format": "json"})
      * @Rest\View()
      */

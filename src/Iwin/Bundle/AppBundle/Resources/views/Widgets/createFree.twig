@@ -1,0 +1,24 @@
+{# Шаблон страницы CreateFree #}
+{# @formatter:off #}
+{% raw %}
+<script type="text/x-twig-template" data-id="iwin-app-createfree">
+  <div class="create-content tabs">
+    <ul class="tabset">
+      {% for tab, title in tabs %}
+      <li class="{{ tab==currentTab?'active':'' }}"><a href="#{{ tab }}" data-tab="{{ tab }}">{{ title }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="tab-content">
+      <div id="ad">
+        <div class="create-ad">
+          {{ block('pageBenefits') }}
+          <div class="advertmodel-container"></div>
+        </div>
+      </div>
+      <div id="task"></div>
+      <div id="profile"></div>
+    </div>
+  </div>
+</script>
+{% endraw %}
+{# @formatter:on #}

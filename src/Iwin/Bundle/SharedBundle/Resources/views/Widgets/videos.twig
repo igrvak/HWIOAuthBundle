@@ -1,0 +1,19 @@
+{# Шаблон галереи видео #}
+{# @formatter:off #}
+{% raw %}
+<script type="text/x-twig-template" data-id="iwin-shared-videos-video">
+  <ul>
+    {% for i, video in _context.list.toArray() %}
+      <li data-ordinal="{{ i }}">
+        <input type="text" value="{{ video.uri }}" name="list[{{ i }}].uri" />
+        <a href="#remove" class="btn-location-remove remove"></a>
+      </li>
+    {% endfor %}
+    <li>
+      <input type="text" value="" class="new"/>
+      <button class="btn add">Добавить</button>
+    </li>
+  </ul>
+</script>
+{% endraw %}
+{# @formatter:on #}

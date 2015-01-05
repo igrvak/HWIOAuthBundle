@@ -5,8 +5,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Iwin\Bundle\AppBundle\Entity\Coupon;
-use Iwin\Bundle\AppBundle\Entity\Gallery;
+use Iwin\Bundle\SharedBundle\Entity\Coupon;
+use Iwin\Bundle\SharedBundle\Entity\Gallery;
+use Iwin\Bundle\SharedBundle\Entity\Category;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -29,6 +30,9 @@ class Advert
         if (!$this->gallery) {
             $this->setGallery(new Gallery());
         }
+        if (!$this->category) {
+            $this->setCategory(new Category());
+        }
     }
 
     /**
@@ -40,22 +44,29 @@ class Advert
      */
     protected $id;
     /**
-     * @ORM\ManyToMany(targetEntity="\Iwin\Bundle\AppBundle\Entity\Coupon",cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="\Iwin\Bundle\SharedBundle\Entity\Coupon",cascade={"all"})
      * @ORM\JoinTable(name="iwin_advert_advert_coupons",
      *   joinColumns={@ORM\JoinColumn(name="advert_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="coupon_id", referencedColumnName="id")}
      * )
-     * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\Coupon>")
+     * @Serializer\Type("array<Iwin\Bundle\SharedBundle\Entity\Coupon>")
      * @var Coupon[]|Collection
      */
     protected $coupons;
     /**
-     * @ORM\OneToOne(targetEntity="\Iwin\Bundle\AppBundle\Entity\Gallery",cascade={"all"})
+     * @ORM\OneToOne(targetEntity="\Iwin\Bundle\SharedBundle\Entity\Gallery",cascade={"all"})
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", nullable=false)
-     * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\Gallery")
+     * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Gallery")
      * @var Gallery
      */
     protected $gallery;
+    /**
+     * @ORM\OneToOne(targetEntity="\Iwin\Bundle\SharedBundle\Entity\Category")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Category")
+     * @var Category
+     */
+    protected $category;
 
     // -- Accessors ---------------------------------------
 
@@ -65,6 +76,24 @@ class Advert
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     * @return $this
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
+        return $this;
     }
 
     /**

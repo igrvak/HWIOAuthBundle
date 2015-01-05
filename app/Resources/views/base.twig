@@ -9,6 +9,7 @@
       <script>window.$debug = {{ app.debug?'true':'false' }};</script>
       <script>window.$assets_version = '{{ assets_version }}';</script>
       <script>window.$langs = {"en": "English","ru": "Русский","es": "Español",};</script>
+      <script>window.$socials = {{ var.socials|json_encode|raw }};</script>
 
       {% block baseIcon %}
         <link rel="icon" type="image/png" href="{{ asset('bundles/iwinapp/img/logo.png') }}">

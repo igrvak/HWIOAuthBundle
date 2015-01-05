@@ -21,28 +21,18 @@ class UserSocial
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @var User
-     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\User", inversedBy="socials")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $user;
-
     /**
      * @var Social
      * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
      * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
      */
     protected $social;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nickname", type="string", length=255)
      */
     protected $nickname;
-
     /**
      * @var string
      *
@@ -55,7 +45,14 @@ class UserSocial
      * @ORM\Column(name="url_profile", type="string", length=255)
      */
     protected $urlProfile;
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
 
+    // -- Accessors ---------------------------------------
 
     /**
      * Get id
@@ -68,15 +65,7 @@ class UserSocial
     }
 
     /**
-     * @param \Iwin\Bundle\SharedBundle\Entity\Social $social
-     */
-    public function setSocial($social)
-    {
-        $this->social = $social;
-    }
-
-    /**
-     * @return \Iwin\Bundle\SharedBundle\Entity\Social
+     * @return Social
      */
     public function getSocial()
     {
@@ -84,19 +73,31 @@ class UserSocial
     }
 
     /**
-     * @param \Iwin\Bundle\AppBundle\Entity\User $user
+     * @param Social $social
+     * @return $this
      */
-    public function setUser(User $user)
+    public function setSocial(Social $social)
     {
-        $this->user = $user;
+        $this->social = $social;
+        return $this;
     }
 
     /**
-     * @return \Iwin\Bundle\AppBundle\Entity\User
+     * @return User
      */
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @param User $user
+     * @return $this
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+        return $this;
     }
 
     /**

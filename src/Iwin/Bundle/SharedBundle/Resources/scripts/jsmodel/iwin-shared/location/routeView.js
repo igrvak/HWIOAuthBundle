@@ -11,7 +11,7 @@ define([
 ], function ($, _, Backbone, templating, CollectionView, LocationModel, MapView) {
     'use strict';
 
-    var viewId = 'iwin-app-location-route';
+    var viewId = 'iwin-shared-location-route';
 
     var View = CollectionView.extend({
         "relatedModel": LocationModel,
@@ -24,7 +24,7 @@ define([
             this.modelBinder = new Backbone.ModelBinder();
 
             this.viewMap = new MapView({
-                "model": new LocationModel(),
+                "model": new this.relatedModel(),
             });
 
             this.model.on('change', this.render, this);
@@ -85,7 +85,7 @@ define([
 
                         map.setElement(mapCont);
                         map.render();
-                        map.updatePosition(new LocationModel(obj.toJSON()));
+                        map.updatePosition(new that.relatedModel(obj.toJSON()));
 
                         clb = function (address) {
                             input.val(address);
@@ -107,9 +107,6 @@ define([
             return this;
         },
 
-        "addItemEmpty": function () {
-            this.model.get('list').add(new LocationModel());
-        },
         "addItem":      function (e) {
             e.preventDefault();
             var list = this.model.get('list');

@@ -1,11 +1,11 @@
 <?php
 namespace Iwin\Bundle\SharedBundle\Entity;
 
-use Doctrine\ORM\EntityRepository;
+use Gedmo\Tree\Entity\Repository\MaterializedPathRepository;
 
 /**
  * Репозитарий Entity\Category.
  */
-class CategoryRepository extends EntityRepository
+class CategoryRepository extends MaterializedPathRepository
 {
 }

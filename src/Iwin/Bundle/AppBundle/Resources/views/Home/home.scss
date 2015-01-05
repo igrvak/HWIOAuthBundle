@@ -131,6 +131,9 @@
         border: 1px solid brown;
         background: #ceeeff;
       }
+      &.disable {
+        background: #AAA;
+      }
 
       height: 2.8em;
       display: block;

@@ -3,7 +3,7 @@ namespace Iwin\Bundle\SharedBundle\Service\File;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Intervention\Image\ImageManager;
-use Iwin\Bundle\AppBundle\Entity as Iwin;
+use Iwin\Bundle\SharedBundle\Entity as Iwin;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**

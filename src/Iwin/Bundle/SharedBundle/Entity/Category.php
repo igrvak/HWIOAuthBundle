@@ -5,6 +5,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
+use Iwin\Bundle\SharedBundle\Entity\FileImage;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -15,8 +17,10 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="CategoryRepository")
  * @ORM\Table(name="iwin_shared_category")
  * @Gedmo\Tree(type="materializedPath")
+ * @Serializer\ExclusionPolicy("all")
  */
-class Category
+class Category implements
+    Translatable
 {
     public function __construct()
     {
@@ -29,20 +33,28 @@ class Category
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Gedmo\TreePathSource
      * @Serializer\Type("integer")
+     * @Serializer\Expose
      * @var integer
      */
     protected $id;
     /**
-     * @ORM\Column(name="title", type="string", length=100)
-     * @var string
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist"})
+     * @var Category[]|Collection
      */
-    protected $title;
+    protected $children;
     /**
-     * @Gedmo\TreePath
-     * @ORM\Column(name="path", type="string", length=3000, nullable=true)
-     * @var string
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage", cascade={"persist"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     * @Serializer\Expose
+     * @var FileImage|null
      */
-    protected $path;
+    protected $image;
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer", nullable=true)
+     * @var integer
+     */
+    protected $level;
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
@@ -51,16 +63,31 @@ class Category
      */
     protected $parent;
     /**
-     * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer", nullable=true)
-     * @var integer
+     * @Gedmo\TreePath
+     * @ORM\Column(name="path", type="string", length=3000, nullable=true)
+     * @var string
      */
-    protected $level;
+    protected $path;
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist"})
-     * @var Category[]|Collection
+     * @Gedmo\Translatable()
+     * @ORM\Column(name="title", type="string", length=100)
+     * @Serializer\Expose
+     * @var string
      */
-    protected $children;
+    protected $title;
+
+    /**
+     * @Gedmo\Locale
+     */
+    protected $locale;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
+    }
 
     // -- Accessors ---------------------------------------
 
@@ -70,6 +97,24 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return FileImage|null
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param FileImage|null $image
+     * @return $this
+     */
+    public function setImage(FileImage $image = null)
+    {
+        $this->image = $image;
+        return $this;
     }
 
     /**

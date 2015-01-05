@@ -16,6 +16,7 @@ parameters:
   app.path.webres: /res
   app.path.img:    %app.path.webres%/img
   app.dir.web:     %kernel.root_dir%/../web
+  locale: en
   locales_supported:
     - en
     - ru
@@ -29,15 +30,13 @@ parameters:
   meest.routing.cabinet: /cabinet
 
   # Маппим параметры, на массив
-  socials:
-    facebook:
-      id: %service.facebook.id%
-      secret: %service.facebook.secret%
+  socials: {}
   socials_pub:
     facebook: %service.facebook.id%
     gplus:
       oauthid: %service.google.key_browser%
       apikey: %service.google.oauth.id%
+    linkedin: %service.linkedin.id%
 
 # Generic framework config
 framework:
@@ -149,3 +148,8 @@ jms_i18n_routing:
   strategy: prefix
 
 nelmio_api_doc: ~
+
+services: # TODO: check
+  jms_serializer.object_constructor:
+    alias: jms_serializer.doctrine_object_constructor
+    public: false

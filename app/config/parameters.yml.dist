@@ -19,7 +19,6 @@ parameters:
   app.email.contact: contact@%app.defaulthost%
   app.email.noreply: noreply@%app.defaulthost%
 
-  locale:            ru
   secret:            ThisTokenIsNotSoSecretChangeIt
 
   timezone: "America/New_York"
@@ -35,3 +34,7 @@ parameters:
   service.google.key_server: ~
   service.google.oauth.id: ~
   service.google.oauth.key: ~
+  service.linkedin.id: ~
+  service.linkedin.secret: ~
+  service.linkedin.oauth.id: ~
+  service.linkedin.oauth.key: ~

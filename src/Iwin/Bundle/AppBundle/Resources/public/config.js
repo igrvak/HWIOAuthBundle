@@ -4,12 +4,8 @@
     requirejs.config({
         'waitSeconds': 20,
         'urlArgs':     'bust=' + window.$assets_version,
-        "paths":       {
-            'facebook-api': '//connect.facebook.net/en_US/all',
-            'linkedin-api': '//platform.linkedin.com/in.js?async=true',
-            'google-api':   '//apis.google.com/js/client:plus'
-        },
-        "map":         {
+
+        "map":    {
             "*":           {
                 "select2/select2": "config/select2/select2",
                 "fancybox":        "config/fancybox",
@@ -19,16 +15,19 @@
                 "twig": "twig",
             },
         },
-        "shim":        {
-            'facebook-api': {
-                exports: 'FB',
+        "config": {
+            "social/manager":      {
+                "list":[
+                    'gplus', 'facebook', 'linkedin',
+                ],
             },
-            'linkedin-api': {
-                exports: 'IN',
+            "social/api/google-loader":   window.$socials.gplus,
+            "social/api/facebook-loader": {
+                appId: window.$socials.facebook,
             },
-            'google-api':   {
-                exports: 'gapi'
-            }
+            "social/api/linkedin-loader": {
+                api_key: window.$socials.linkedin,
+            },
         },
     });
     requirejs([

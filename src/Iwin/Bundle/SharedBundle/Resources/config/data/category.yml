@@ -1,0 +1,38 @@
+- class: appliances
+  titles:
+    en: appliances set up & repair
+- class: delivery
+  titles:
+    en: pickup / delivery / moving
+- class: psassist
+  titles:
+    en: PC repair & assistance
+- class: healthcare
+  titles:
+    en: nurse & healthcare
+- class: babysitting
+  titles:
+    en: baby sitting / care
+- class: photovideo
+  titles:
+    en: photo & video
+
+# TODO: remove
+- class: appliances
+  titles:
+    en: appliances set up & repair
+- class: delivery
+  titles:
+    en: pickup / delivery / moving
+- class: psassist
+  titles:
+    en: PC repair & assistance
+- class: healthcare
+  titles:
+    en: nurse & healthcare
+- class: babysitting
+  titles:
+    en: baby sitting / care
+- class: photovideo
+  titles:
+    en: photo & video

@@ -1,7 +1,7 @@
 <?php
 namespace Iwin\Bundle\SharedBundle\Service\File;
 
-use Iwin\Bundle\AppBundle\Entity as Iwin;
+use Iwin\Bundle\SharedBundle\Entity as Iwin;
 use Iwin\Bundle\AppBundle\Service\Util\FileUrlManager;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -26,9 +26,9 @@ class ProgrammaticFileUploader
     protected $urlManager;
 
     /**
-     * @param FileManager $fileManager
+     * @param FileManager    $fileManager
      * @param FileUrlManager $urlManager
-     * @param string $webDir
+     * @param string         $webDir
      */
     public function __construct(FileManager $fileManager, FileUrlManager $urlManager, $webDir)
     {
@@ -39,22 +39,20 @@ class ProgrammaticFileUploader
 
 
     /**
-     * @param string $source full path to source file
+     * @param string $source  full path to source file
      * @param string $gallery Gallery Id for OneupUploaderBundle
-     * @return Iwin\File
+     * @return Iwin\File|Iwin\FileImage
      */
     public function upload($source, $gallery)
     {
-
         $oldFile = sys_get_temp_dir() . '/' . uniqid() . '.' . pathinfo($source, PATHINFO_EXTENSION);
         copy($source, $oldFile);
         $f = new File($oldFile);
 
-        $file = $this->fileManager
-            ->createFile(
-                $f,
-                $gallery
-            );
+        $file = $this->fileManager->createFile(
+            $f,
+            $gallery
+        );
 
         $newFile = $this->webDir . '/' . $this->urlManager->getDir($file);
         $f->move($newFile);

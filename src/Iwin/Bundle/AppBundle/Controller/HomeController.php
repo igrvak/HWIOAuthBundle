@@ -22,34 +22,4 @@ class HomeController
         return [
         ];
     }
-
-    /**
-     * @Rest\Get("/social", name="social")
-     * @Rest\View()
-     */
-    public function socialAction()
-    {
-        return [
-        ];
-    }
-
-    /**
-     * @Rest\Get("/socials", name="socials-list", defaults={"_format": "json"})
-     * @Rest\View()
-     */
-    public function socialListAction()
-    {
-        return [
-            [
-                'type' => 'twitter'
-            ], [
-                'type' => 'gplus'
-            ], [
-                'type' => 'facebook',
-                'isActive' => true
-            ], [
-                'type' => 'linkedin'
-            ]
-        ];
-    }
 }

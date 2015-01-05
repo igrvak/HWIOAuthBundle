@@ -27,12 +27,14 @@ class UserSocial
      * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
      */
     protected $social;
+
     /**
      * @var string
      *
      * @ORM\Column(name="nickname", type="string", length=255)
      */
     protected $nickname;
+
     /**
      * @var string
      *
@@ -45,6 +47,7 @@ class UserSocial
      * @ORM\Column(name="url_profile", type="string", length=255)
      */
     protected $urlProfile;
+
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")

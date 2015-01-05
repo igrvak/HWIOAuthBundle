@@ -49,14 +49,16 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $chatSkype;
+
     /**
      * @var FileImage|null
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage")
-     * @ORM\JoinColumn(name="ref_imageAvatar", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
     protected $imageAvatar;
+
     /**
      * @var Location|null
      *
@@ -98,126 +100,38 @@ class User extends BaseUser implements Translatable
      **/
     protected $socials;
 
-    // -- Accessors ---------------------------------------
+
+    /*
+     *   Accessories
+     * */
+
+
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @param \DateTime $birthdate
      */
-    public function getId()
+    public function setBirthdate($birthdate)
     {
-        return $this->id;
+        $this->birthdate = $birthdate;
     }
 
     /**
-     * Set nameFirst
-     *
-     * @param string $nameFirst
-     * @return User
+     * @return \DateTime
      */
-    public function setNameFirst($nameFirst)
+    public function getBirthdate()
     {
-        $this->nameFirst = $nameFirst;
-
-        return $this;
+        return $this->birthdate;
     }
 
     /**
-     * Get nameFirst
-     *
-     * @return string
-     */
-    public function getNameFirst()
-    {
-        return $this->nameFirst;
-    }
-
-    /**
-     * Set nameLast
-     *
-     * @param string $nameLast
-     * @return User
-     */
-    public function setNameLast($nameLast)
-    {
-        $this->nameLast = $nameLast;
-
-        return $this;
-    }
-
-    /**
-     * Get nameLast
-     *
-     * @return string
-     */
-    public function getNameLast()
-    {
-        return $this->nameLast;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Set chatSkype
-     *
      * @param string $chatSkype
-     * @return User
      */
     public function setChatSkype($chatSkype)
     {
         $this->chatSkype = $chatSkype;
-
-        return $this;
     }
 
     /**
-     * Get chatSkype
-     *
      * @return string
      */
     public function getChatSkype()
@@ -226,28 +140,15 @@ class User extends BaseUser implements Translatable
     }
 
     /**
-     * Set birthdate
-     *
-     * @param \DateTime $birthdate
-     * @return User
+     * @param \Iwin\Bundle\SharedBundle\Entity\FileImage|null $imageAvatar
      */
-    public function setBirthdate(\DateTime $birthdate = null)
-    {
-        $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    /**
-     * @param FileImage|null $imageAvatar
-     */
-    public function setImageAvatar(FileImage $imageAvatar = null)
+    public function setImageAvatar($imageAvatar)
     {
         $this->imageAvatar = $imageAvatar;
     }
 
     /**
-     * @return FileImage|null
+     * @return \Iwin\Bundle\SharedBundle\Entity\FileImage|null
      */
     public function getImageAvatar()
     {
@@ -255,15 +156,15 @@ class User extends BaseUser implements Translatable
     }
 
     /**
-     * @param Location|null $location
+     * @param \Iwin\Bundle\SharedBundle\Entity\Location|null $location
      */
-    public function setLocation(Location $location = null)
+    public function setLocation($location)
     {
         $this->location = $location;
     }
 
     /**
-     * @return Location|null
+     * @return \Iwin\Bundle\SharedBundle\Entity\Location|null
      */
     public function getLocation()
     {
@@ -271,28 +172,67 @@ class User extends BaseUser implements Translatable
     }
 
     /**
-     * @param Collection|Social[] $socials
+     * @param string $nameFirst
      */
-    public function setSocials(Collection $socials)
+    public function setNameFirst($nameFirst)
+    {
+        $this->nameFirst = $nameFirst;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameFirst()
+    {
+        return $this->nameFirst;
+    }
+
+    /**
+     * @param string $nameLast
+     */
+    public function setNameLast($nameLast)
+    {
+        $this->nameLast = $nameLast;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameLast()
+    {
+        return $this->nameLast;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection|\Iwin\Bundle\SharedBundle\Entity\Social[] $socials
+     */
+    public function setSocials($socials)
     {
         $this->socials = $socials;
     }
 
     /**
-     * @return Collection|Social[]
+     * @return \Doctrine\Common\Collections\Collection|\Iwin\Bundle\SharedBundle\Entity\Social[]
      */
     public function getSocials()
     {
         return $this->socials;
     }
 
-    /**
-     * Get birthdate
-     *
-     * @return \DateTime
-     */
-    public function getBirthdate()
-    {
-        return $this->birthdate;
-    }
 }

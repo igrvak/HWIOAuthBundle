@@ -3936,13 +3936,13 @@
             "source": {
                 "type": "git",
                 "url": "git@code.werkint.com:werkint/frameworkextrabundle.git",
-                "reference": "7c75cecdd5f0dbe2f04c8792b0fc6785e922ed93"
+                "reference": "c26b18ea3025092d669f76f8eb4c1e2983e6696e"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://composer.werkint.com/dist/werkint-framework-extra-bundle-dev-master-ae5a6f.tar",
-                "reference": "7c75cecdd5f0dbe2f04c8792b0fc6785e922ed93",
-                "shasum": "3119e070f4f0f7660efb1a4ed322db7228f6af97"
+                "url": "https://composer.werkint.com/dist/werkint-framework-extra-bundle-dev-master-5e8c56.tar",
+                "reference": "c26b18ea3025092d669f76f8eb4c1e2983e6696e",
+                "shasum": "45df9a6411383079531c6e4f37e551f276581460"
             },
             "require": {
                 "php": ">=5.4",
@@ -3981,7 +3981,7 @@
                     "local_cert": "app/config/composer/satis-brander.pem"
                 }
             },
-            "time": "2014-12-20 18:17:47"
+            "time": "2015-01-05 14:32:28"
         },
         {
             "name": "werkint/jsmin",
@@ -4428,13 +4428,13 @@
             "source": {
                 "type": "git",
                 "url": "git@code.werkint.com:werkint/webcomponents.git",
-                "reference": "c9f5b060a96de3ab61c7ef4aceb867da2ee78c36"
+                "reference": "a0f0e42132819f0e91e351eaec98213e50cdac36"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-604c42.tar",
-                "reference": "c9f5b060a96de3ab61c7ef4aceb867da2ee78c36",
-                "shasum": "f57380564439f89c0b1267757088e1ef8be6e3e5"
+                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-f324ff.tar",
+                "reference": "a0f0e42132819f0e91e351eaec98213e50cdac36",
+                "shasum": "1029a255f86351b377d162b318f98a8c5e3a5475"
             },
             "require": {
                 "php": ">=5.4"
@@ -4467,7 +4467,7 @@
                     "local_cert": "app/config/composer/satis-brander.pem"
                 }
             },
-            "time": "2014-12-25 18:47:01"
+            "time": "2015-01-05 14:32:42"
         },
         {
             "name": "willdurand/js-translation-bundle",

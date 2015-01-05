@@ -3060,7 +3060,7 @@ select, .select2 {width: 100%;}
 	position: relative;
 	counter-reset: list;
 	margin-bottom: 8px;
-	&:before {
+	&.multiple:before {
 		content: "";
 		position: absolute;
 		left: -29px;
@@ -3069,28 +3069,32 @@ select, .select2 {width: 100%;}
 		width: 4px;
 		background: url('@IwinAppBundle/img/old/bg-location.png') repeat-y;
 	}
+    &.multiple{
+	  li{
+		&:before {
+		  counter-increment: list;
+		  content: counter(list, lower-alpha);
+		  position: absolute;
+		  top: 50%;
+		  left: -40px;
+		  width: 26px;
+		  height: 26px;
+		  border-radius: 50%;
+		  background: #589a38;
+		  text-align: center;
+		  font-size: 16px;
+		  line-height: 25px;
+		  font-weight: bold;
+		  text-transform: uppercase;
+		  margin-top: -13px;
+		  color: #fff;
+		}
+	  }
+	}
 	li {
 		margin-top: 10px;
 		position: relative;
 		&:first-child {margin: 0;}
-		&:before {
-			counter-increment: list;
-			content: counter(list, lower-alpha);
-			position: absolute;
-			top: 50%;
-			left: -40px;
-			width: 26px;
-			height: 26px;
-			border-radius: 50%;
-			background: #589a38;
-			text-align: center;
-			font-size: 16px;
-			line-height: 25px;
-			font-weight: bold;
-			text-transform: uppercase;
-			margin-top: -13px;
-			color: #fff;
-		}
 	}
 }
 .link-add-location {

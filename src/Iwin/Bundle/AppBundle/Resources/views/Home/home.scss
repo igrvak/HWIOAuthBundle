@@ -24,6 +24,13 @@
       width: 850px;
       margin: 1em auto 2em;
       position: relative;
+
+      &:not(.multiple) {
+        li:not(:last-child) {
+          position: absolute;
+        }
+      }
+
       li {
         display: inline-block;
         margin: .5em 40px;
@@ -132,7 +139,7 @@
         background: #ceeeff;
       }
       &.disable {
-        background: #AAA;
+        background: #aaa;
       }
 
       height: 2.8em;

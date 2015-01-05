@@ -3,67 +3,69 @@
 {% raw %}
 <script type="text/x-twig-template" data-id="iwin-shared-location-route">
   <div class="section" style="padding: 20px 50px;">
-    <div class="location-box">
-      <ul class="location-list">
-        {% for i, location in list.toArray() %}
-          <li data-ordinal="{{ i }}">
-          {% if loop.index == 1 %}
-            <div class="location-field">
-              <a href="#popup-location" class="btn-location square fancybox">
-                <span>Choose on map</span>
-              </a>
-              {% if not location.isEmpty %}
+      <div class="location-box">
+        <ul class="location-list {% if isMultiple %}multiple{% endif %}">
+          {% for i, location in list.toArray() %}
+            <li data-ordinal="{{ i }}">
+            {% if loop.index == 1 %}
+              <div class="location-field">
+                <a href="#popup-location" class="btn-location square fancybox">
+                  <span>Choose on map</span>
+                </a>
+                {% if not location.isEmpty %}
+                  <a href="#remove" class="btn-location-remove square remove" title="Remove location">Remove</a>
+                {% endif %}
+                <div class="location-input">
+                  <input type="text" value="{{ location.address }}" readonly />
+                </div>
+              </div>
+            {% else %}
+              <div class="location-field">
                 <a href="#remove" class="btn-location-remove square remove" title="Remove location">Remove</a>
-              {% endif %}
-              <div class="location-input">
-                <input type="text" value="{{ location.address }}" readonly />
+                <a href="#popup-location" class="btn-location square"></a>
+                <div class="location-input">
+                  <input type="text" value="{{ location.address }}" readonly>
+                </div>
               </div>
-            </div>
-          {% else %}
-            <div class="location-field">
-              <a href="#remove" class="btn-location-remove square remove" title="Remove location">Remove</a>
-              <a href="#popup-location" class="btn-location square"></a>
-              <div class="location-input">
-                <input type="text" value="{{ location.address }}" readonly>
-              </div>
-            </div>
-          {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-      <div style="text-align: right">
-        <a href="#add" class="link-add-location add">Add location</a>
+            {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        {% if isMultiple %}
+        <div style="text-align: right">
+          <a href="#add" class="link-add-location add">Add location</a>
+        </div>
+        {% endif %}
       </div>
     </div>
-  </div>
-  <div class="lightbox popup-location" id="popup-location" style="display: none">
-    <div class="heading">
-      <h3>Location A</h3>
-      <a href="#cancel" class="close action-close" title="Close">Close</a>
-    </div>
-    <div class="holder">
-      <div class="choose-location">
-        <div class="map-holder">
-          <div class="message-tip closable">
-            <p>Place the insertion point on the map addresses and we will automatically fill in the address.</p>
-            <a href="#" class="tip-close" title="Close">Close</a>
-          </div>
-          <div id="map"></div>
-        </div>
-        <div class="choose-form">
-          <label><div class="caption">Address</div>
-            <div class="value-box">
-              <input type="text" class="address" readonly />
-            </div>
-          </label>
-          <div class="actions">
-            <a href="#confirm" class="btn confirm disabled">Confirm</a>
-            <a href="#cancel" class="link-cancel action-close">Cancel</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="lightbox popup-location" id="popup-location" style="display: none">
+			<div class="heading">
+				<h3>Location A</h3>
+				<a href="#cancel" class="close action-close" title="Close">Close</a>
+			</div>
+			<div class="holder">
+				<div class="choose-location">
+					<div class="map-holder">
+						<div class="message-tip closable">
+							<p>Place the insertion point on the map addresses and we will automatically fill in the address.</p>
+							<a href="#" class="tip-close" title="Close">Close</a>
+						</div>
+						<div id="map"></div>
+					</div>
+					<div class="choose-form">
+						<label><div class="caption">Address</div>
+              <div class="value-box">
+                <input type="text" class="address" readonly />
+              </div>
+            </label>
+						<div class="actions">
+							<a href="#confirm" class="btn confirm disabled">Confirm</a>
+							<a href="#cancel" class="link-cancel action-close">Cancel</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </script>
 {% endraw %}
 {# @formatter:on #}

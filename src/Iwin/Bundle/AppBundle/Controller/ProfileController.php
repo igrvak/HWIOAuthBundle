@@ -65,15 +65,16 @@ class ProfileController
             */
 
             'location' => [
-                'id' => 1
+                'id' => '5e8fd4d4-8f3f-11e4-8acc-e06995d8233e'
             ],
-
+            /*
             'socials' => [
                 ["id"=> 1],
                 ["id" => 2],
                 ["id" => 3],
                 ["id" => 4],
             ]
+            */
         ];
 
         $strSerialize = json_encode($userData);

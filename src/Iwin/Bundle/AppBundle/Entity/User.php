@@ -53,10 +53,10 @@ class User extends BaseUser implements Translatable
      * @var FileImage|null
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage")
-     * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ref_imageAvatar", referencedColumnName="id", nullable=true)
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
-    protected $image_avatar;
+    protected $imageAvatar;
     /**
      * @var Location|null
      *
@@ -66,6 +66,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
      */
     protected $location;
+
     /**
      * @var string
      *
@@ -88,6 +89,7 @@ class User extends BaseUser implements Translatable
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
+
     /**
      * @var Social[]|Collection
      *
@@ -237,11 +239,11 @@ class User extends BaseUser implements Translatable
     }
 
     /**
-     * @param FileImage|null $image_avatar
+     * @param FileImage|null $imageAvatar
      */
-    public function setImageAvatar(FileImage $image_avatar = null)
+    public function setImageAvatar(FileImage $imageAvatar = null)
     {
-        $this->image_avatar = $image_avatar;
+        $this->imageAvatar = $imageAvatar;
     }
 
     /**
@@ -249,7 +251,7 @@ class User extends BaseUser implements Translatable
      */
     public function getImageAvatar()
     {
-        return $this->image_avatar;
+        return $this->imageAvatar;
     }
 
     /**

@@ -1,0 +1,21 @@
+- position: 1
+  isActive: TRUE
+  uniq_name: "classifieds"
+  titles:
+    ru: "Доска обявление"
+    en: "Classifieds"
+    es: "Clasificados"
+- position: 2
+  isActive: TRUE
+  uniq_name: "qual-services"
+  titles:
+    ru: "Качественные услуги"
+    en: "Qual Services"
+    es: "Servicios Qual"
+- position: 3
+  isActive: FALSE
+  uniq_name: "trusty-advices"
+  titles:
+    ru: "Платные советы"
+    en: "Trusty Advices"
+    es: "Consejos trusty"

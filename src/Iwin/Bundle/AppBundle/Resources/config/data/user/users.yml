@@ -1,0 +1,33 @@
+- birthdate : '2014-11-28'
+  chatSkype : 'abrahamLinkoln'
+  phone : '380552465869'
+  imageAvatar : ''
+  username: 'abrahamLinkoln'
+  email: 'abrahamLinkoln@gmail.com'
+  password: 'abrahamLinkoln'
+  location :
+    nameFirst:
+      en: 'Abraham'
+      es: 'Abraham'
+      ru: 'Авраам'
+    nameLast:
+      en: 'Lincoln'
+      es: 'Lincoln'
+      ru: 'Линкольн'
+  socials:
+    facebook:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''
+    twitter:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''
+    gplus:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''
+    linkedin:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''

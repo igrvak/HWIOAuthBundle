@@ -42,6 +42,7 @@ class LoadSocialData extends AbstractFixture implements
             $row->setType($drow['type']);
             $row->setIsActive($drow['is_active']);
 
+            $this->addReference('social-'.$drow['type'], $row);
             $manager->persist($row);
         }
 

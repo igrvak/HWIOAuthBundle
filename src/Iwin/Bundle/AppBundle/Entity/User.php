@@ -24,6 +24,7 @@ class User extends BaseUser implements Translatable
         parent::__construct();
 
         $this->socials = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -97,22 +98,38 @@ class User extends BaseUser implements Translatable
     /**
      * @var Social[]|Collection
      *
-     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="user", cascade={"persist"})
      * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;
 
 
+    /**
+     * @ORM\OneToMany(
+     *   targetEntity="Iwin\Bundle\AppBundle\Entity\UserTranslation", mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */
+    private $translations;
+
+    /**
+     * @param UserTranslation $t
+     */
+    public function addTranslation(UserTranslation $t)
+    {
+        if (!$this->translations->contains($t)) {
+            $this->translations[] = $t;
+            $t->setObject($this);
+        }
+    }
     /*
      *   Accessories
      * */
 
-
-
     /**
      * @param \DateTime $birthdate
      */
-    public function setBirthdate($birthdate)
+    public function setBirthdate(\DateTime $birthdate)
     {
         $this->birthdate = $birthdate;
     }

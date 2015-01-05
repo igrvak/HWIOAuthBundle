@@ -102,7 +102,6 @@ class FaqItems implements Translatable
 
     /***************  Accessories  **************/
 
-
     /**
      * @param string $answer
      */

@@ -49,12 +49,14 @@ class Category implements
      * @var FileImage|null
      */
     protected $image;
+
     /**
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer", nullable=true)
      * @var integer
      */
     protected $level;
+
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
@@ -62,6 +64,7 @@ class Category implements
      * @var Category
      */
     protected $parent;
+
     /**
      * @Gedmo\TreePath
      * @ORM\Column(name="path", type="string", length=3000, nullable=true)

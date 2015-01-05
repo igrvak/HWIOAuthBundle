@@ -4,10 +4,11 @@
 {% raw %}
 <script type="text/x-twig-template" data-id="iwin-shared-coupon-coupons">
   {% if not couponEditing %}
+    <h2 class="heading">Coupons</h2>
     {% if list.length > 0 %}
       <div class="coupon-carousel">
-      {% for coupon in list.toArray() %}
-        <div>
+      {% for i, coupon in list.toArray() %}
+        <div data-ordinal="{{ i }}" class="row">
           <div class="fleft">
             <div class="coupon-preview special-gift" style="background-image: url('{{ asset('bundles/iwinapp/img/old/bg-coupon-gift.png') }}')">
               <span class="title">{{ coupon.type.title }}</span>
@@ -20,7 +21,9 @@
             <span class="coupon-title">20% off for next consultation</span>
             <div class="coupon-descr"><p>One coupon per guest. Coupon discount does not apply to previous transactions.</p></div>
             <div class="layout">
-              <a href="#" class="btn-frame">Edit</a>
+              <a href="#edit" class="btn-frame action-edit">Edit</a>
+              <a href="#add" class="btn-frame action-new">New</a>
+              <a href="#add" class="btn-frame action-delete">del</a>
             </div>
           </div>
         </div>
@@ -28,13 +31,12 @@
       </div>
     {% else %}
       <section class="coupon-start">
-        <h2 class="heading">Coupons</h2>
         <div class="holder">
           <div class="block">
             <span class="sub-title">Didn’t add any coupons yet?</span>
             <p>Don’t miss the chance to increase a number of customers!</p>
           </div>
-          <a href="#add" class="btn-add">Add coupon</a>
+          <a href="#add" class="btn-add action-new">Add coupon</a>
         </div>
       </section>
     {% endif %}

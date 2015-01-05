@@ -91,9 +91,8 @@ define([
             e.preventDefault();
             var obj = this.$(e.currentTarget),
                 list = this.model.get('list'),
-                index = obj.closest('li').data('ordinal');
-
-            var el = list.at(index);
+                index = obj.closest('li').data('ordinal'),
+                el = list.at(index);
             list.remove(el);
 
             this.selectLast();

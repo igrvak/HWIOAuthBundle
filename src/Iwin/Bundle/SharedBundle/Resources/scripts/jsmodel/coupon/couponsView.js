@@ -6,6 +6,7 @@ define([
     'util/collectionView',
     './coupon',
     './couponEditView',
+    'jquery/owl.carousel',
 ], function ($, _, Backbone, templating, CollectionView, CouponModel, CouponEditView) {
     'use strict';
 
@@ -25,9 +26,11 @@ define([
         },
 
         "events": {
-            "click .btn-add":    'createCoupon',
-            "click .btn-cancel": 'createCancel',
-            "click .btn-save":   'editSave',
+            "click .action-new":    'createCoupon',
+            "click .action-delete": 'deleteCoupon',
+            "click .btn-cancel":    'createCancel',
+            "click .btn-save":      'editSave',
+            "click .action-edit":   'edit',
         },
 
         "render": function () {
@@ -38,10 +41,10 @@ define([
             if (this.couponEditing) {
                 this.couponView.setElement(this.$el.find('.coupon-holder'));
                 this.couponView.render();
-            } else {
-                $(".coupon-carousel").owlCarousel({
+            } else if (this.model.get('list').length > 0) {
+                this.$el.find(".coupon-carousel").owlCarousel({
                     items: "1",
-                    nav: true
+                    nav:   true,
                 });
             }
 
@@ -50,12 +53,35 @@ define([
             return this;
         },
 
-        "editSave":function(e){
+        "edit": function (e) {
+            e.preventDefault();
+            var obj = this.$(e.currentTarget),
+                list = this.model.get('list'),
+                index = obj.closest('.row').data('ordinal'),
+                el = list.at(index);
+
+            if (this.couponView) {
+                throw 'Wrong view';
+            }
+
+            this.couponView = new CouponEditView({
+                "model": el,
+            });
+
+            this.couponEditing = true;
+
+            this.render();
+        },
+
+        "editSave": function (e) {
             e.preventDefault();
 
             if (!this.couponView) {
                 throw 'Wrong view';
             }
+
+            var model = this.couponView.model;
+            model.set('isCreated', true);
 
             this.couponView.remove();
             this.couponView = null;
@@ -91,12 +117,29 @@ define([
             }
 
             var model = this.couponView.model;
-            this.model.get('list').remove(model);
+            if (!model.get('isCreated')) {
+                this.model.get('list').remove(model);
+            }
 
             this.couponView.remove();
             this.couponView = null;
 
             this.couponEditing = false;
+
+            this.render();
+        },
+        "deleteCoupon": function (e) {
+            e.preventDefault();
+            var obj = this.$(e.currentTarget),
+                list = this.model.get('list'),
+                index = obj.closest('.row').data('ordinal'),
+                el = list.at(index);
+
+            if (this.couponView) {
+                throw 'Wrong view';
+            }
+
+            this.model.get('list').remove(el);
 
             this.render();
         },

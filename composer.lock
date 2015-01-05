@@ -1440,16 +1440,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.0.16",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "b5350f62f59f8fa24f5d9c1ffbd094a7fd91c0e3"
+                "reference": "b91b0d63488f9a295815af082f987e4773d2843c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/b5350f62f59f8fa24f5d9c1ffbd094a7fd91c0e3",
-                "reference": "b5350f62f59f8fa24f5d9c1ffbd094a7fd91c0e3",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/b91b0d63488f9a295815af082f987e4773d2843c",
+                "reference": "b91b0d63488f9a295815af082f987e4773d2843c",
                 "shasum": ""
             },
             "require": {
@@ -1492,7 +1492,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2014-12-20 14:14:38"
+            "time": "2014-12-29 11:58:35"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -4428,13 +4428,13 @@
             "source": {
                 "type": "git",
                 "url": "git@code.werkint.com:werkint/webcomponents.git",
-                "reference": "a0f0e42132819f0e91e351eaec98213e50cdac36"
+                "reference": "4245168f688af6328a85dea05ac78144818a4109"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-f324ff.tar",
-                "reference": "a0f0e42132819f0e91e351eaec98213e50cdac36",
-                "shasum": "1029a255f86351b377d162b318f98a8c5e3a5475"
+                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-a67c79.tar",
+                "reference": "4245168f688af6328a85dea05ac78144818a4109",
+                "shasum": "30777b132bacf54ad69d76d44606e3dbfc4f11d9"
             },
             "require": {
                 "php": ">=5.4"
@@ -4467,7 +4467,7 @@
                     "local_cert": "app/config/composer/satis-brander.pem"
                 }
             },
-            "time": "2015-01-05 14:32:42"
+            "time": "2015-01-05 19:43:53"
         },
         {
             "name": "willdurand/js-translation-bundle",

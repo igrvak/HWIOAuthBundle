@@ -35,6 +35,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $id;
+
     /**
      * @var \DateTime
      *
@@ -42,6 +43,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     protected $birthdate;
+
     /**
      * @var string
      *

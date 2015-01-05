@@ -8,14 +8,14 @@ use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Faq-category
+ * FaqMessages
  *
  * @author Garyk Malinovskiy <garrykmia@gmail.com>
  *
- * @ORM\Entity(repositoryClass="FaqCategoryRepository")
- * @ORM\Table(name="iwin_app_faq_category")
+ * @ORM\Entity(repositoryClass="FaqMessageRepository")
+ * @ORM\Table(name="iwin_app_faq_message")
  */
-class FaqCategory implements Translatable
+class FaqMessage implements Translatable
 {
     /**
      * @var integer
@@ -26,14 +26,6 @@ class FaqCategory implements Translatable
      * @Serializer\Type("string")
      */
     protected $id;
-
-    /**
-     *  @var integer
-     *
-     * @ORM\Column(name="position", type="integer")
-     * @Serializer\Type("integer")
-     */
-    protected $position;
 
     /**
      * @var boolean
@@ -59,27 +51,61 @@ class FaqCategory implements Translatable
     protected $updatedAt;
 
     /**
-     * @ORM\Column(type="string",length=100, unique=true)
-     * @Serializer\Type("string")
+     * @var User|null
      *
-     * @var string
+     * @ORM\OneToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="ref_user_answer", referencedColumnName="id", nullable=true)
+     * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\User")
      */
-    protected $uniqName;
-
-    /**
-     * @ORM\Column(type="string",length=200)
-     * @Gedmo\Translatable()
-     * @Serializer\Type("string")
-     *
-     * @var string
-     */
-    protected $title;
+    protected $userAnswer;
 
     /**
      * @Gedmo\Locale
      */
     protected $locale;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string",length=200)
+     * @Gedmo\Translatable()
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="text",length=200)
+     * @Gedmo\Translatable()
+     * @var string
+     */
+    protected $question;
+
+    /**
+     * @ORM\Column(type="text",length=200)
+     * @Gedmo\Translatable()
+     * @var string
+     */
+    protected $answer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Iwin\Bundle\SharedBundle\Entity\File")
+     * @ORM\JoinTable(name="iwin_app_faq_message_files",
+     *   joinColumns={@ORM\JoinColumn(name="ref_faq_message_id", referencedColumnName="id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="ref_file_id", referencedColumnName="id")}
+     * )
+     * @Serializer\Type("array<Iwin\Bundle\SharedBundle\Entity\File>")
+     * @var File[]|Collection
+     */
+    protected $files;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->files = new ArrayCollection();
+    }
+
+    /******************* Accessories *****************/
     /**
      * @return int
      */
@@ -192,6 +218,20 @@ class FaqCategory implements Translatable
         return $this->createdAt;
     }
 
+    /**
+     * @param \Iwin\Bundle\AppBundle\Entity\Collection|\Iwin\Bundle\AppBundle\Entity\File[] $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
 
+    /**
+     * @return \Iwin\Bundle\AppBundle\Entity\Collection|\Iwin\Bundle\AppBundle\Entity\File[]
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
 
 }

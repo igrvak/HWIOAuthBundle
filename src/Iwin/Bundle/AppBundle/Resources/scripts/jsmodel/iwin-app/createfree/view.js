@@ -7,7 +7,7 @@ define([
     'iwin-qual/taskView',
     './profileView',
     'jquery/openclose',
-    'css!config/inner-tabs',
+    'scss!config/inner-tabs',
     'domReady!',
 ], function ($, _, Backbone, templating, AdvertView, TaskView, ProfileView) {
     'use strict';
@@ -15,7 +15,7 @@ define([
     var viewId = 'iwin-app-createfree';
 
     var View = Backbone.View.extend({
-        "currentTab": 'advert',
+        "currentTab": 'task',
 
         "template": templating.get(viewId),
 

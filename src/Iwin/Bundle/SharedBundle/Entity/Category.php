@@ -52,6 +52,7 @@ class Category implements
     /**
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer", nullable=true)
+     * @Serializer\Expose
      * @var integer
      */
     protected $level;
@@ -59,6 +60,7 @@ class Category implements
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Serializer\Expose
      * @var Category
      */
     protected $parent;

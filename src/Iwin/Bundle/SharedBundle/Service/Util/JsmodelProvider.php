@@ -28,7 +28,7 @@ class JsmodelProvider implements
     public function getPaths()
     {
         return [
-            [$this->jsmodelDir, ''], # Root dir
+            [$this->jsmodelDir, 'iwin-shared'], # Root dir
         ];
     }
 }

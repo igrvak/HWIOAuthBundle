@@ -27,6 +27,7 @@ define([
         "events": {
             "click .btn-add":    'createCoupon',
             "click .btn-cancel": 'createCancel',
+            "click .btn-save":   'editSave',
         },
 
         "render": function () {
@@ -37,11 +38,31 @@ define([
             if (this.couponEditing) {
                 this.couponView.setElement(this.$el.find('.coupon-holder'));
                 this.couponView.render();
+            } else {
+                $(".coupon-carousel").owlCarousel({
+                    items: "1",
+                    nav: true
+                });
             }
 
             this.delegateEvents();
 
             return this;
+        },
+
+        "editSave":function(e){
+            e.preventDefault();
+
+            if (!this.couponView) {
+                throw 'Wrong view';
+            }
+
+            this.couponView.remove();
+            this.couponView = null;
+
+            this.couponEditing = false;
+
+            this.render();
         },
 
         "createCoupon": function (e) {

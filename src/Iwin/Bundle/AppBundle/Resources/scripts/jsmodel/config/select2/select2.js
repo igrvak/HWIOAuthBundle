@@ -1,7 +1,7 @@
 /**
  * Select2 Russian translation
  */
-define(['jquery', 'select2/core', 'css!./select2'], function ($) {
+define(['jquery', 'select2/core', 'scss!./select2'], function ($) {
     'use strict';
 
     $.extend($.fn.select2.defaults, {

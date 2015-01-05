@@ -53,11 +53,10 @@ class User extends BaseUser implements Translatable
      * @var FileImage|null
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage")
-     * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ref_imageAvatar", referencedColumnName="id", nullable=true)
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
     protected $imageAvatar;
-
     /**
      * @var Location|null
      *
@@ -108,7 +107,23 @@ class User extends BaseUser implements Translatable
     }
 
     /**
-     * @return \DateTime
+     * @param FileImage|null $imageAvatar
+     */
+    public function setImageAvatar(FileImage $imageAvatar = null)
+    {
+        $this->imageAvatar = $imageAvatar;
+    }
+
+    /**
+     * @return FileImage|null
+     */
+    public function getImageAvatar()
+    {
+        return $this->imageAvatar;
+    }
+
+    /**
+     * @param Location|null $location
      */
     public function getBirthdate()
     {

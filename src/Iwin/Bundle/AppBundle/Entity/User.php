@@ -56,7 +56,8 @@ class User extends BaseUser implements Translatable
      * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
-    protected $image_avatar;
+    protected $imageAvatar;
+
     /**
      * @var Location|null
      *
@@ -66,6 +67,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
      */
     protected $location;
+
     /**
      * @var string
      *
@@ -88,6 +90,7 @@ class User extends BaseUser implements Translatable
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
+
     /**
      * @var Social[]|Collection
      *
@@ -96,201 +99,23 @@ class User extends BaseUser implements Translatable
      **/
     protected $socials;
 
-    // -- Accessors ---------------------------------------
-
     /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set nameFirst
-     *
-     * @param string $nameFirst
-     * @return User
-     */
-    public function setNameFirst($nameFirst)
-    {
-        $this->nameFirst = $nameFirst;
-
-        return $this;
-    }
-
-    /**
-     * Get nameFirst
-     *
-     * @return string
-     */
-    public function getNameFirst()
-    {
-        return $this->nameFirst;
-    }
-
-    /**
-     * Set nameLast
-     *
-     * @param string $nameLast
-     * @return User
-     */
-    public function setNameLast($nameLast)
-    {
-        $this->nameLast = $nameLast;
-
-        return $this;
-    }
-
-    /**
-     * Get nameLast
-     *
-     * @return string
-     */
-    public function getNameLast()
-    {
-        return $this->nameLast;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Set chatSkype
-     *
-     * @param string $chatSkype
-     * @return User
-     */
-    public function setChatSkype($chatSkype)
-    {
-        $this->chatSkype = $chatSkype;
-
-        return $this;
-    }
-
-    /**
-     * Get chatSkype
-     *
-     * @return string
-     */
-    public function getChatSkype()
-    {
-        return $this->chatSkype;
-    }
-
-    /**
-     * Set birthdate
-     *
      * @param \DateTime $birthdate
-     * @return User
      */
-    public function setBirthdate(\DateTime $birthdate = null)
+    public function setBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
-
-        return $this;
     }
 
     /**
-     * @param FileImage|null $image_avatar
-     */
-    public function setImageAvatar(FileImage $image_avatar = null)
-    {
-        $this->image_avatar = $image_avatar;
-    }
-
-    /**
-     * @return FileImage|null
-     */
-    public function getImageAvatar()
-    {
-        return $this->image_avatar;
-    }
-
-    /**
-     * @param Location|null $location
-     */
-    public function setLocation(Location $location = null)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * @return Location|null
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * @param Collection|Social[] $socials
-     */
-    public function setSocials(Collection $socials)
-    {
-        $this->socials = $socials;
-    }
-
-    /**
-     * @return Collection|Social[]
-     */
-    public function getSocials()
-    {
-        return $this->socials;
-    }
-
-    /**
-     * Get birthdate
-     *
      * @return \DateTime
      */
     public function getBirthdate()
     {
         return $this->birthdate;
     }
+
+
+
+
 }

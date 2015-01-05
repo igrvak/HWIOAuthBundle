@@ -21,37 +21,40 @@ class UserSocial
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nickname", type="string", length=255)
-     */
-    protected $nickname;
+
     /**
      * @var Social
      * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
      * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
      */
     protected $social;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nickname", type="string", length=255)
+     */
+    protected $nickname;
+
     /**
      * @var string
      *
      * @ORM\Column(name="url_image", type="string", length=255)
      */
     protected $urlImage;
+
     /**
      * @var string
      * @ORM\Column(name="url_profile", type="string", length=255)
      */
     protected $urlProfile;
+
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
-
-    // -- Accessors ---------------------------------------
 
     /**
      * Get id

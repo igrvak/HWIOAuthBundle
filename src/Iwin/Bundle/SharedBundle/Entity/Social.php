@@ -21,6 +21,7 @@ class Social
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
      * @var boolean
      *

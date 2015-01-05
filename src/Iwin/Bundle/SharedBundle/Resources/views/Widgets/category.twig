@@ -4,27 +4,64 @@
 <script type="text/x-twig-template" data-id="iwin-shared-category-categories">
   <section class="category-choose">
     <h2 class="heading">Choose Category Of Your Ad</h2>
-    <div class="holder list-container"></div>
+    <div class="holder">
+      {% if isFilled %}
+      <div class="category-choose__chosen">
+        <ul class="chosen-list">
+          {% for i, cat in list.toArray() %}
+            {% if cat.category %}
+            {% set parents = cat.category.getParentNodesArray(1) %}
+            <li data-ordinal="{{ i }}">
+              <div class="item">
+                <a href="#delete" class="link-delete"><span>Delete</span></a>
+                <a href="#change" class="link-change fancybox"><span>Change</span></a>
+                <div class="title">
+                  <div class="icon">
+                    <img src="{{ parents[1].image.uri }}" height="24" width="24" alt="">
+                  </div>
+                  <span>{{ parents[1].title }}</span>
+                </div>
+              </div>
+              <div class="layout">
+                <ul>
+                  {% for rowId in parents|keys|slice(1)|sort %}
+                    <li>{{ parents[rowId].title }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% if isMultiple %}
+          <div class="layout">
+            <a href="#add" class="link-add">Add category</a>
+          </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      <div class="list-container"></div>
+    </div>
   </section>
 </script>
 <script type="text/x-twig-template" data-id="iwin-shared-category-list">
   {% if isPopup %}
+    {% set parents = selected?selected.getParentNodesArray(cols|keys|length):null %}
     <div class="heading">
-      <h3>{% if selected %}{{ selected.title }}{% else %}Please select category{% endif %}</h3>
-      <a href="#close" class="close" title="Close">Close</a>
+      <h3>{% if selected %}{{ parents[1].title }}{% else %}Please select category{% endif %}</h3>
+      <a href="#close" class="close action-close" title="Close">Close</a>
       {% if selected %}
         <a href="#back" class="link-back"><span>Back</span></a>
       {% endif %}
     </div>
     <div class="holder">
       {% if selected %}
-        {% set parents = selected.getParentNodesArray(cols|length) %}
         <div class="layout">
           {% for i, col in cols %}
             <div class="column {{ col }}-level scroll-block">
               <ul>
                 {% for cat in subCategories[i].toArray() %}
-                  <li class="{% if parents[i].id == cat.id %}active{% endif %}"
+                  <li class="{% if parents[i+1].id == cat.id %}active{% endif %}"
                       data-id="{{ cat.id }}" data-col="{{ i }}">
                     <a href="#cat-{{ cat.id }}" class="select-cat">{{ cat.title }}</a>
                   </li>
@@ -34,8 +71,8 @@
           {% endfor %}
         </div>
         <div class="actions">
-          <a href="#" class="btn">Confirm</a>
-          <a href="javascript:$.fancybox.close()" class="link-cancel">Cancel</a>
+          <a href="#" class="btn action-confirm {% if not selected.isLeaf %}disabled{% endif %}">Confirm</a>
+          <a href="#close" class="action-close link-cancel">Cancel</a>
         </div>
       {% else %}
         <div class="category-choose__list scroll-block scroll-right popup">
@@ -44,20 +81,22 @@
       {% endif %}
     </div>
   {% else %}
-    <div class="category-choose__list open-close non-popup">
-      {% set list1 = maxElements ? (list.toArray()|slice(0, maxElements)) : list.toArray() %}
-      {% set list2 = list.toArray()|slice(maxElements) %}
-      {% include 'iwin-shared-category-rows' with {'list': list1} %}
-      {% if maxElements and list.length > maxElements %}
-        <div class="slide js-slide-hidden" style="display: none;">
-          {% include 'iwin-shared-category-rows' with {'list': list2} %}
-        </div>
-        <a href="#toggle" class="opener">
-          <span>SHOW ALL</span>
-          <span>HIDE</span>
-        </a>
-      {% endif %}
-    </div>
+    {% if not isCollapsed %}
+      <div class="category-choose__list open-close non-popup">
+        {% set list1 = maxElements ? (list.toArray()|slice(0, maxElements)) : list.toArray() %}
+        {% set list2 = list.toArray()|slice(maxElements) %}
+        {% include 'iwin-shared-category-rows' with {'list': list1} %}
+        {% if maxElements and list.length > maxElements %}
+          <div class="slide js-slide-hidden" style="display: none;">
+            {% include 'iwin-shared-category-rows' with {'list': list2} %}
+          </div>
+          <a href="#toggle" class="opener">
+            <span>SHOW ALL</span>
+            <span>HIDE</span>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
     <div class="lightbox popup-category" id="popup-category" style="display: none;"></div>
   {% endif %}
 </script>

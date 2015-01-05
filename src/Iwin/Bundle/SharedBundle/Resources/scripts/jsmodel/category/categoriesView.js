@@ -17,7 +17,8 @@ define([
 
         "relatedModel": CategoryLinkModel,
 
-        "selectView": null,
+        "selectView":  null,
+        "selectModel": null,
 
         "modelBinder": undefined,
         "template":    templating.get(viewId),
@@ -32,45 +33,60 @@ define([
             });
             this.selectView.model.get('list').fetch();
 
-            this.model.on('change', this.render, this);
-            this.model.on('sync', this.render, this);
+            this.selectView.on('confirm', function (el) {
+                this.selectModel.set('category', el);
+                this.selectLast();
+                this.render();
+            }, this);
 
             CollectionView.prototype.initialize.apply(this, arguments);
 
-            if (!this.isMultiple && this.model.get('list').length === 0) {
-                this.addItemEmpty();
-            }
+            this.model.get('list').on('change', this.render, this);
+            this.model.get('list').on('sync', this.render, this);
+
+            this.selectLast();
         },
 
         "events": {
-            "click .add":    'addItem',
-            "click .remove": 'removeItem',
+            "click .link-add":    'addItem',
+            "click .link-delete": 'removeItem',
+            "click .link-change": 'changeItem',
         },
 
         "render": function () {
-            this.$el.html(this.template(this.model));
+            var isFilled = !!this.model.get('list[0].category')
+            this.$el.html(this.template(this.model, {
+                "isFilled":   isFilled,
+                "isMultiple": true,
+            }));
 
             this.modelBinder.bind(this.model, this.el);
             this.delegateEvents();
 
             this.selectView.setElement(this.$el.find('.list-container'));
+            this.selectView.isCollapsed = isFilled;
             this.selectView.render();
 
             return this;
         },
 
-        "addItem":    function (e) {
-            e.preventDefault();
-
-            if (!this.isMultiple) {
-                throw 'Multiple categories not allowed';
+        "selectLast": function () {
+            if(!this.model.get('list').length){
+                this.addItemEmpty();
+                return;
             }
-
-            var list = this.model.get('list');
-
-            this.model.get('list').add(new this.relatedModel());
-            this.render();
+            this.selectModel = this.model.get('list').at(this.model.get('list').length - 1);
+            if (this.selectModel.get('category')) {
+                this.addItemEmpty();
+            }
         },
+
+        "addItemEmpty": function () {
+            var el = CollectionView.prototype.addItemEmpty.apply(this, arguments);
+            this.selectModel = el;
+            return el;
+        },
+
         "removeItem": function (e) {
             e.preventDefault();
             var obj = this.$(e.currentTarget),
@@ -80,7 +96,28 @@ define([
             var el = list.at(index);
             list.remove(el);
 
+            this.selectLast();
+
             this.render();
+        },
+        "changeItem": function (e) {
+            e.preventDefault();
+            var obj = this.$(e.currentTarget),
+                list = this.model.get('list'),
+                index = obj.closest('li').data('ordinal'),
+                el = list.at(index);
+
+            this.selectModel = el;
+
+            this.selectView.popup();
+        },
+        "addItem":    function (e) {
+            e.preventDefault();
+            this.selectLast();
+
+            // TODO: привести в порядок
+            this.selectView.childView.model.set('selected', null);
+            this.selectView.popup();
         },
     });
 

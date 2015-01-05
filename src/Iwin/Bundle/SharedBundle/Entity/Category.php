@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
-use Iwin\Bundle\SharedBundle\Entity\FileImage;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -82,6 +81,16 @@ class Category implements
      * @Gedmo\Locale
      */
     protected $locale;
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("isLeaf")
+     * @return bool
+     */
+    public function isLeaf()
+    {
+        return count($this->getChildren()) === 0;
+    }
 
     /**
      * {@inheritdoc}

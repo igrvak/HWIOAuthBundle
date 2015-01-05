@@ -40,7 +40,9 @@ define([
         },
 
         "addItemEmpty": function () {
-            this.model.get('list').add(new this.relatedModel());
+            var el = new this.relatedModel();
+            this.model.get('list').add(el);
+            return el;
         },
     });
 

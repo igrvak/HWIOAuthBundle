@@ -4,12 +4,13 @@ define([
     'backbone',
     'templating',
     'util/collectionView',
+    './category',
     './categoryCollection',
     './categoryLink',
     'jquery/openclose',
     'jquery/malihu-scrollbar/scroll',
     'fancybox/fancybox',
-], function ($, _, Backbone, templating, CollectionView, CategoryCollection, CategoryLinkModel) {
+], function ($, _, Backbone, templating, CollectionView, CategoryModel, CategoryCollection) {
     'use strict';
 
     var viewId = 'iwin-shared-category-list';
@@ -18,15 +19,16 @@ define([
         '1': 'first',
         '2': 'second',
         '3': 'third',
-    };
+    }, colsMax = _.keys(cols).length;
 
     var View = CollectionView.extend({
-        "isPopup":   false,
-        "childView": null,
+        "isPopup":     false,
+        "isCollapsed": false,
+        "childView":   null,
 
         "subCategories": {},
         "maxElements":   6,
-        "relatedModel":  CategoryLinkModel,
+        "relatedModel":  CategoryModel,
 
         "template": templating.get(viewId),
 
@@ -39,6 +41,9 @@ define([
                     "isPopup": true,
                 });
                 this.childView.model.get('list').fetch();
+                this.childView.on('confirm', function (el) {
+                    this.trigger('confirm', el);
+                }, this);
             }
 
             this.model.on('sync', this.render, this);
@@ -53,17 +58,22 @@ define([
 
                 this.model.on('change:selected', function () {
                     var el = this.model.get('selected');
-                    if(!el){
+                    if (!(el && el.get('level') > 0 && !el.get('isLeaf'))) {
                         return;
                     }
-                    var parents = el.getParentNodesArray(_.keys(cols).length);
-                    _.each(parents, function(obj, ind){
+                    var parents = el.getParentNodesArray(colsMax);
+                    _.each(parents, function (obj, ind) {
                         var list = this.subCategories[ind];
-                        if(list.parent.id !== obj.id) {
+                        if (!obj.id) {
+                            list.parent = null;
+                            list.reset();
+                        } else if (!list.parent || list.parent.id !== obj.id) {
                             list.parent = obj;
+                            list.reset();
                             list.fetch();
                         }
                     }, this);
+                    this.render();
                 }, this);
             }
 
@@ -74,7 +84,8 @@ define([
 
         "events": {
             "click .link-back":               'back',
-            "click .close":                   'closeFancybox',
+            "click .action-close":            'closeFancybox',
+            "click .action-confirm":          'confirmSelected',
             "click .select-cat":              'selectSubItem',
             "click [href='#popup-category']": 'selectItem',
         },
@@ -84,6 +95,7 @@ define([
 
             var opts = {
                 "isPopup":       this.isPopup,
+                "isCollapsed":   this.isCollapsed,
                 "maxElements":   this.isPopup ? null : this.maxElements,
                 "subCategories": this.isPopup ? this.subCategories : null,
             };
@@ -119,23 +131,28 @@ define([
             return this;
         },
 
+        "popup": function () {
+            $.fancybox({
+                "href":      '#popup-category',
+                "padding":   0,
+                "closeBtn":  false,
+                "scrolling": false,
+            });
+            this.childView.setElement($('.fancybox-wrap .popup-category'));
+            this.childView.render();
+        },
+
         "setItem": function (item) {
             this.trigger('selectitem', item);
 
-            if (!this.isPopup) {
-                $.fancybox({
-                    "href":      '#popup-category',
-                    "padding":   0,
-                    "closeBtn":  false,
-                    "scrolling": false,
-                });
-            }
-
             var view = this.isPopup ? this : this.childView;
-
             view.model.set('selected', item);
-            view.setElement($('.fancybox-wrap .popup-category'));
-            view.render();
+
+            if (!this.isPopup) {
+                this.popup();
+            } else {
+                this.render();
+            }
         },
 
         "selectItem": function (e) {
@@ -146,6 +163,18 @@ define([
                 el = list.at(index);
 
             this.setItem(el);
+        },
+
+        "confirmSelected": function (e) {
+            e.preventDefault();
+            var el = this.model.get('selected');
+
+            if (!el.get('isLeaf')) {
+                return;
+            }
+
+            this.trigger('confirm', el);
+            this.closeFancybox(e);
         },
 
         "selectSubItem": function (e) {
@@ -173,7 +202,7 @@ define([
             if (Number(model.get('level')) === 1) {
                 this.model.set('selected', null);
             } else {
-                this.model.set('selected', model.get('parent'));
+                this.model.set('selected', model.getParentNodesArray(1)[1]);
             }
             this.render();
         }

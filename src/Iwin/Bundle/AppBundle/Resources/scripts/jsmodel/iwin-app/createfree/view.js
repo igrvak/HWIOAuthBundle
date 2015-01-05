@@ -15,7 +15,7 @@ define([
     var viewId = 'iwin-app-createfree';
 
     var View = Backbone.View.extend({
-        "currentTab": 'task',
+        "currentTab": 'advert',
 
         "template": templating.get(viewId),
 

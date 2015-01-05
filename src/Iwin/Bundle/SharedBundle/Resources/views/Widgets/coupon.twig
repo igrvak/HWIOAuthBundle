@@ -4,16 +4,40 @@
 {% raw %}
 <script type="text/x-twig-template" data-id="iwin-shared-coupon-coupons">
   {% if not couponEditing %}
-    <section class="coupon-start">
-      <h2 class="heading">Coupons</h2>
-      <div class="holder">
-        <div class="block">
-          <span class="sub-title">Didn’t add any coupons yet?</span>
-          <p>Don’t miss the chance to increase a number of customers!</p>
+    {% if list.length > 0 %}
+      <div class="coupon-carousel">
+      {% for coupon in list.toArray() %}
+        <div>
+          <div class="fleft">
+            <div class="coupon-preview special-gift" style="background-image: url('{{ asset('bundles/iwinapp/img/old/bg-coupon-gift.png') }}')">
+              <span class="title">{{ coupon.type.title }}</span>
+              <span class="sub-title">includes one free consultation for you with</span>
+              <span class="name">Melissa Friberg</span>
+              <span class="expires">Expires {{ coupon.expires }}</span>
+            </div>
+          </div>
+          <div class="block">
+            <span class="coupon-title">20% off for next consultation</span>
+            <div class="coupon-descr"><p>One coupon per guest. Coupon discount does not apply to previous transactions.</p></div>
+            <div class="layout">
+              <a href="#" class="btn-frame">Edit</a>
+            </div>
+          </div>
         </div>
-        <a href="#add" class="btn-add">Add coupon</a>
+      {% endfor %}
       </div>
-    </section>
+    {% else %}
+      <section class="coupon-start">
+        <h2 class="heading">Coupons</h2>
+        <div class="holder">
+          <div class="block">
+            <span class="sub-title">Didn’t add any coupons yet?</span>
+            <p>Don’t miss the chance to increase a number of customers!</p>
+          </div>
+          <a href="#add" class="btn-add">Add coupon</a>
+        </div>
+      </section>
+    {% endif %}
   {% else %}
     <h2 class="heading">Coupon editing</h2>
     <section class="coupon-create">
@@ -91,7 +115,7 @@
     </div>
   </div>
   <div class="value-box">
-    <button type="submit" class="btn">Create</button>
+    <button type="submit" class="btn btn-save">Save</button>
     <button type="submit" class="btn btn-cancel">Cancel</button>
   </div>
 </script>

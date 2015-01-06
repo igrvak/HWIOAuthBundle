@@ -32,15 +32,16 @@ class IwinAppExtension extends AbstractExtension
     }
 
     /**
-     * @param array        $vars
+     * @param array $vars
      * @param Request|null $request
-     * @param array        $locales
+     * @param array $locales
      */
     public function __construct(
         array $vars,
         Request $request = null,
         array $locales
-    ) {
+    )
+    {
         $this->request = $request;
         $this->locales = $locales;
         $this->vars = $vars['params'];
@@ -53,7 +54,8 @@ class IwinAppExtension extends AbstractExtension
      */
     public function initRuntime(
         \Twig_Environment $env
-    ) {
+    )
+    {
         $this->globals['macros'] = $env->loadTemplate('::twig/macros.twig');
     }
 

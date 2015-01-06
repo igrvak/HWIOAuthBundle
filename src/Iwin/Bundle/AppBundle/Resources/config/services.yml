@@ -36,7 +36,9 @@ services:
     class: %iwin_app.twig.appextension.class%
     public: false
     arguments:
-      - params:
+      - params: # ТУТ ГОВНО
+          locales:  @=parameter('locales')
+          locales_self_name:  @=parameter('locales_self_name')
           socials:  @=parameter('socials_pub')
           title:    @=parameter('app.title')
           langs:    @=parameter('locales_supported')

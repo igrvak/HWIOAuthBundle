@@ -71,7 +71,7 @@ class LoadFaqMessagesData extends AbstractFixture implements
      */
     public function getOrder()
     {
-        return 2;
+        return 7;
     }
 
     /**

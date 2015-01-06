@@ -86,7 +86,7 @@ class LoadUserData extends AbstractFixture implements
      */
     public function getOrder()
     {
-        return 3;
+        return 6;
     }
 
     /**

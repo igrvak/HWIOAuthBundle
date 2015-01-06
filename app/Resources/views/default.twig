@@ -39,4 +39,8 @@
       </div>
     </div>
   </div>
+  <div class="login-popup" id="login-popup">
+    {{ render(controller('FOSUserBundle:Security:login')) }}
+    <a href="#" class="close-popup"><span>Cancel</span></a>
+  </div>
 {% endblock %}

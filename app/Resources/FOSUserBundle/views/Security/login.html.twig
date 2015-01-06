@@ -1,0 +1,34 @@
+<form action="{{ path('fos_user_security_check') }}" id="login-form" method="post">
+    <fieldset>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <div class="input-row">
+            <input type="text" placeholder="E-mail" value="{{ last_username }}">
+        </div>
+        <div class="input-row">
+            <input type="password" placeholder="Password">
+            <a href="#" class="link-show">Show password</a>
+        </div>
+        <label class="single-checkbox">
+            <input type="checkbox" id="check1">
+            <span></span>
+        </label>
+        <div class="caption inline-caption">
+            <label for="check1" class="single-caption">Remember me</label>
+        </div>
+        <button type="submit" class="btn-small1 wide">Sign in</button>
+        <a href="#" class="link-restore">Forgot password?</a>
+        <div class="socials">
+            <span class="title">Sign in with</span>
+            <ul>
+                <li><a href="#" class="in" title="Instagram">Instagram</a></li>
+                <li><a href="#" class="gp" title="Google+">Google+</a></li>
+                <li><a href="#" class="fb" title="Facebook">Facebook</a></li>
+                <li><a href="#" class="tw" title="Twitter">Twitter</a></li>
+            </ul>
+        </div>
+        <div class="register">
+            <span class="title">Don't have an account?</span>
+            <a href="#" class="btn-frame wide white">Sign up for free</a>
+        </div>
+    </fieldset>
+</form>

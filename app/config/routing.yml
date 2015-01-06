@@ -28,8 +28,8 @@ fos_js_routing:
 _bazinga_jstranslation:
   resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
 
-werkint_framework_extra:
-  resource: "@WerkintFrameworkExtraBundle/Resources/config/routing.yml"
+#werkint_framework_extra:
+#  resource: "@WerkintFrameworkExtraBundle/Resources/config/routing.yml"
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

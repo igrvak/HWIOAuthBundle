@@ -1,6 +1,8 @@
 parameters:
   iwin_app.repo.user.class:
     Iwin\Bundle\AppBundle\Entity\UserRepository
+  iwin_app.repo.util_language.class:
+    Iwin\Bundle\AppBundle\Entity\UtilLanguageRepository
 
 services:
   iwin_app.repo.profile:
@@ -8,3 +10,8 @@ services:
     factory_service:  doctrine.orm.entity_manager
     factory_method:   getRepository
     arguments: [IwinAppBundle:User]
+  iwin_app.repo.util_language:
+    class:            %iwin_app.repo.util_language.class%
+    factory_service:  doctrine.orm.entity_manager
+    factory_method:   getRepository
+    arguments: [IwinAppBundle:UtilLanguage]

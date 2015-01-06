@@ -11,6 +11,10 @@ define([
     var langs = window.$langs;
 
     var Model = BaseModel.extend({
+        "defaults": {
+            "isCreated": false,
+        },
+
         "initialize": function () {
             if (!this.get('multilang').length) {
                 _.each(langs, function (i, el) {
@@ -21,6 +25,10 @@ define([
             }
             if (!this.get('discount')) {
                 this.set('discount', new CouponDiscount());
+            }
+
+            if (this.id) {
+                this.set('isCreated', true);
             }
         },
 

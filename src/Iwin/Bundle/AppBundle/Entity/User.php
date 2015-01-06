@@ -161,6 +161,7 @@ class User extends BaseUser implements Translatable
 
     /**
      * @param \Iwin\Bundle\SharedBundle\Entity\FileImage|null $imageAvatar
+     * @param FileImage|null $imageAvatar
      */
     public function setImageAvatar($imageAvatar)
     {
@@ -177,6 +178,7 @@ class User extends BaseUser implements Translatable
 
     /**
      * @param \Iwin\Bundle\SharedBundle\Entity\Location|null $location
+     * @param Location|null $location
      */
     public function setLocation($location)
     {

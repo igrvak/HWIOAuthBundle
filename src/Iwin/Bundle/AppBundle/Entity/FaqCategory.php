@@ -26,22 +26,6 @@ class FaqCategory implements Translatable
      * @Serializer\Type("string")
      */
     protected $id;
-
-    /**
-     *  @var integer
-     *
-     * @ORM\Column(name="position", type="integer")
-     * @Serializer\Type("integer")
-     */
-    protected $position;
-
-    /**
-     * @var boolean
-     * @Serializer\Type("boolean")
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    protected $isActive;
-
     /**
      * @var \DateTime $createdAt
      *
@@ -49,6 +33,32 @@ class FaqCategory implements Translatable
      * @Gedmo\Timestampable(on="create")
      */
     protected $createdAt;
+    /**
+     * @var boolean
+     * @Serializer\Type("boolean")
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    protected $isActive;
+    /**
+     *  @var integer
+     *
+     * @ORM\Column(name="position", type="integer")
+     * @Serializer\Type("integer")
+     */
+    protected $position;
+    /**
+     * @ORM\Column(type="string",length=200)
+     * @Gedmo\Translatable()
+     * @var string
+     */
+    protected $title;
+    /**
+     * @ORM\Column(type="string",length=100, unique=true)
+     * @Serializer\Type("string")
+     *
+     * @var string
+     */
+    protected $uniqName;
 
     /**
      * @var \DateTime $updatedAt
@@ -59,34 +69,9 @@ class FaqCategory implements Translatable
     protected $updatedAt;
 
     /**
-     * @ORM\Column(type="string",length=100, unique=true)
-     * @Serializer\Type("string")
-     *
-     * @var string
-     */
-    protected $uniqName;
-
-    /**
-     * @ORM\Column(type="string",length=200)
-     * @Gedmo\Translatable()
-     * @Serializer\Type("string")
-     *
-     * @var string
-     */
-    protected $title;
-
-    /**
      * @Gedmo\Locale
      */
     protected $locale;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * {@inheritdoc}
@@ -94,6 +79,16 @@ class FaqCategory implements Translatable
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+    // -- Accessors ---------------------------------------
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

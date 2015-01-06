@@ -21,6 +21,7 @@ class UserSocial
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
      * @var Social
      * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")

@@ -17,16 +17,13 @@ define([
             this.viewProfile = new ProfileView({
                 "model": this.model,
             });
-
         },
-
 
         "render": function () {
             this.$el.html(this.template());
 
             this.viewProfile.setElement(this.$el.find('.profile-container'));
             this.viewProfile.render();
-
 
             this.$el.find('div.open-close').openClose({
                 activeClass: 'active',

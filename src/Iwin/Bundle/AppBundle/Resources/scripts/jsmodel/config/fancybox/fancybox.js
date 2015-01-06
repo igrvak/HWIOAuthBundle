@@ -1,4 +1,4 @@
-define(['jquery', './fancybox.min', 'css!./fancybox'], function ($) {
+define(['jquery', './fancybox.min', 'scss!./fancybox'], function ($) {
     'use strict';
 
     return $;

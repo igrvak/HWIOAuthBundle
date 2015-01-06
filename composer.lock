@@ -767,22 +767,27 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "v1.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb"
+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/2f708a85bb3aab5d99dab8be435abd73e0b18acb",
-                "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\Common\\Lexer\\": "lib/"
@@ -794,19 +799,16 @@
             ],
             "authors": [
                 {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
                     "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
@@ -815,7 +817,7 @@
                 "lexer",
                 "parser"
             ],
-            "time": "2013-01-12 18:59:04"
+            "time": "2014-09-09 13:34:57"
         },
         {
             "name": "doctrine/migrations",
@@ -1012,12 +1014,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "8c76b05de4b16723855c878f5d081dc2a18e8510"
+                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/8c76b05de4b16723855c878f5d081dc2a18e8510",
-                "reference": "8c76b05de4b16723855c878f5d081dc2a18e8510",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/6c8b756d5b1cc1194d0989ba67adebe347ed9443",
+                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443",
                 "shasum": ""
             },
             "require": {
@@ -1081,7 +1083,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2014-12-29 13:19:19"
+            "time": "2015-01-05 14:29:22"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1438,16 +1440,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.0.16",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "b5350f62f59f8fa24f5d9c1ffbd094a7fd91c0e3"
+                "reference": "b91b0d63488f9a295815af082f987e4773d2843c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/b5350f62f59f8fa24f5d9c1ffbd094a7fd91c0e3",
-                "reference": "b5350f62f59f8fa24f5d9c1ffbd094a7fd91c0e3",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/b91b0d63488f9a295815af082f987e4773d2843c",
+                "reference": "b91b0d63488f9a295815af082f987e4773d2843c",
                 "shasum": ""
             },
             "require": {
@@ -1490,7 +1492,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2014-12-20 14:14:38"
+            "time": "2014-12-29 11:58:35"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -3025,16 +3027,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "d4be306d0aca28b5633b96adef03b29fea569c2f"
+                "reference": "7a170b3d8123c556597b4fbdb88631f99de180c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/d4be306d0aca28b5633b96adef03b29fea569c2f",
-                "reference": "d4be306d0aca28b5633b96adef03b29fea569c2f",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/7a170b3d8123c556597b4fbdb88631f99de180c2",
+                "reference": "7a170b3d8123c556597b4fbdb88631f99de180c2",
                 "shasum": ""
             },
             "require": {
@@ -3048,11 +3050,6 @@
                 "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Predis\\": "src/"
@@ -3076,7 +3073,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2014-08-01 09:59:50"
+            "time": "2015-01-02 12:51:34"
         },
         {
             "name": "psr/log",
@@ -3546,16 +3543,16 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v2.7.0",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "e8f71c91a3784f3fa1a75fb1f7f4d4826c5f2773"
+                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/e8f71c91a3784f3fa1a75fb1f7f4d4826c5f2773",
-                "reference": "e8f71c91a3784f3fa1a75fb1f7f4d4826c5f2773",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
+                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
                 "shasum": ""
             },
             "require": {
@@ -3601,7 +3598,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2014-12-28 16:37:56"
+            "time": "2015-01-04 20:21:17"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -3939,13 +3936,13 @@
             "source": {
                 "type": "git",
                 "url": "git@code.werkint.com:werkint/frameworkextrabundle.git",
-                "reference": "7c75cecdd5f0dbe2f04c8792b0fc6785e922ed93"
+                "reference": "c26b18ea3025092d669f76f8eb4c1e2983e6696e"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://composer.werkint.com/dist/werkint-framework-extra-bundle-dev-master-ae5a6f.tar",
-                "reference": "7c75cecdd5f0dbe2f04c8792b0fc6785e922ed93",
-                "shasum": "3119e070f4f0f7660efb1a4ed322db7228f6af97"
+                "url": "https://composer.werkint.com/dist/werkint-framework-extra-bundle-dev-master-5e8c56.tar",
+                "reference": "c26b18ea3025092d669f76f8eb4c1e2983e6696e",
+                "shasum": "45df9a6411383079531c6e4f37e551f276581460"
             },
             "require": {
                 "php": ">=5.4",
@@ -3984,7 +3981,7 @@
                     "local_cert": "app/config/composer/satis-brander.pem"
                 }
             },
-            "time": "2014-12-20 18:17:47"
+            "time": "2015-01-05 14:32:28"
         },
         {
             "name": "werkint/jsmin",
@@ -4431,13 +4428,13 @@
             "source": {
                 "type": "git",
                 "url": "git@code.werkint.com:werkint/webcomponents.git",
-                "reference": "c9f5b060a96de3ab61c7ef4aceb867da2ee78c36"
+                "reference": "4245168f688af6328a85dea05ac78144818a4109"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-604c42.tar",
-                "reference": "c9f5b060a96de3ab61c7ef4aceb867da2ee78c36",
-                "shasum": "f57380564439f89c0b1267757088e1ef8be6e3e5"
+                "url": "https://composer.werkint.com/dist/werkint-webcomponents-dev-master-a67c79.tar",
+                "reference": "4245168f688af6328a85dea05ac78144818a4109",
+                "shasum": "30777b132bacf54ad69d76d44606e3dbfc4f11d9"
             },
             "require": {
                 "php": ">=5.4"
@@ -4470,21 +4467,21 @@
                     "local_cert": "app/config/composer/satis-brander.pem"
                 }
             },
-            "time": "2014-12-25 18:47:01"
+            "time": "2015-01-05 19:43:53"
         },
         {
             "name": "willdurand/js-translation-bundle",
-            "version": "v2.1.4",
+            "version": "v2.2.0",
             "target-dir": "Bazinga/Bundle/JsTranslationBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/BazingaJsTranslationBundle.git",
-                "reference": "5f19f8bf5c8494da2916283c53f215d77ea5f666"
+                "reference": "5b37606184528c4fca6a2e540926bb4516180137"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaJsTranslationBundle/zipball/5f19f8bf5c8494da2916283c53f215d77ea5f666",
-                "reference": "5f19f8bf5c8494da2916283c53f215d77ea5f666",
+                "url": "https://api.github.com/repos/willdurand/BazingaJsTranslationBundle/zipball/5b37606184528c4fca6a2e540926bb4516180137",
+                "reference": "5b37606184528c4fca6a2e540926bb4516180137",
                 "shasum": ""
             },
             "require": {
@@ -4494,7 +4491,7 @@
                 "symfony/intl": "~2.3"
             },
             "replace": {
-                "willdurand/expose-translation-bundle": "2.1.*"
+                "willdurand/expose-translation-bundle": "2.2.*"
             },
             "require-dev": {
                 "symfony/browser-kit": "~2.3",
@@ -4504,7 +4501,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -4528,7 +4525,7 @@
                 "symfony",
                 "translation"
             ],
-            "time": "2014-11-03 10:27:20"
+            "time": "2015-01-02 23:15:20"
         },
         {
             "name": "willdurand/jsonp-callback-validator",

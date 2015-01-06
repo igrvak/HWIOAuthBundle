@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Iwin\Bundle\AppBundle\Entity\FaqItems;
 use Iwin\Bundle\AppBundle\Entity\FaqMessage;
 use Iwin\Bundle\AppBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -17,7 +18,7 @@ use Symfony\Component\Yaml\Yaml;
  *
  * @author Igor Malinovskiy <garrykmia@gmail.com>
  */
-class LoadFaqMessagesData extends AbstractFixture implements
+class LoadFaqItemsData extends AbstractFixture implements
     FixtureInterface,
     OrderedFixtureInterface,
     ContainerAwareInterface
@@ -38,39 +39,35 @@ class LoadFaqMessagesData extends AbstractFixture implements
      */
     public function load(ObjectManager $manager)
     {
+        $trans = $manager->getRepository('GedmoTranslatable:Translation');
         foreach ($this->getData() as $drow) {
-            $row = new FaqMessage();
+#            print_r($drow);
+#            die();
+            $row = new FaqItems();
+            // Load base properties
+            $row->setIsActive($drow['isActive']);
+            $row->setPosition($drow['position']);
 
-            $row->setEmail($drow['email']);
+            // Load localizations
+            foreach ($drow['questions'] as $lang => $nameFirst) {
+                $trans->translate($row, 'question', $lang, $nameFirst);
+            }
 
-            $row->setLang($drow['ref_lang']);
-            $row->setName($drow['name']);
-            $row->setQuestion($drow['question']);
-            $row->setAnswer($drow['answer']);
+            foreach ($drow['answers'] as $lang => $nameLast) {
+                $trans->translate($row, 'answer', $lang, $nameLast);
+            }
 
             // Load relations
-            if (!empty($drow['refUserAnswer'])) {
-                if ($this->hasReference('user-' . $drow['refUserAnswer'])) {
-                    $row->setUserAnswer($this->getReference('user-' . $drow['refUserAnswer']));
+            if (!empty($drow['userOwner'])) {
+                if ($this->hasReference('user-' . $drow['userOwner'])) {
+                    $row->setUserOwner($this->getReference('user-' . $drow['userOwner']));
                 }
             }
 
-            // Load assigned files
-            $files = [];
-            if (isset($drow['files']) and count($drow['files']) > 0) {
-                foreach ($drow['files'] as $file) {
-                    $file = $this->serviceUploader()->upload($this->getDataDir() . 'files/'. $file,
-                        'faq_messages'
-                    );
-
-                    if (!empty($file)) {
-                        $files[] = $file;
-                    }
+            if (!empty($drow['categoryUniq'])) {
+                if ($this->hasReference('faq-category-' . $drow['categoryUniq'])) {
+                    $row->setCategory($this->getReference('faq-category-' . $drow['categoryUniq']));
                 }
-            }
-
-            if (count($files) > 0) {
-                $row->setFiles($files);
             }
 
             // Set data for user
@@ -85,7 +82,7 @@ class LoadFaqMessagesData extends AbstractFixture implements
      */
     public function getOrder()
     {
-        return 7;
+        return 8;
     }
 
     /**
@@ -93,7 +90,8 @@ class LoadFaqMessagesData extends AbstractFixture implements
      */
     protected function getData()
     {
-        $path = $this->getDataDir().'faq-messages.yml';
+        $path = $this->getDataDir().'faq-items.yml';
+
         $data = Yaml::parse(file_get_contents($path));
 
         return $data;
@@ -104,15 +102,7 @@ class LoadFaqMessagesData extends AbstractFixture implements
      */
     protected function getDataDir()
     {
-        return $this->container->getParameter('iwin_app.config_directory') . '/data/faq_messages/';
-    }
-
-    /**
-     * @return \Iwin\Bundle\SharedBundle\Service\File\ProgrammaticFileUploader
-     */
-    protected function serviceUploader()
-    {
-        return $this->container->get('iwin_shared.file.programmaticfileuploader');
+        return $this->container->getParameter('iwin_app.config_directory') . '/data/';
     }
 
 }

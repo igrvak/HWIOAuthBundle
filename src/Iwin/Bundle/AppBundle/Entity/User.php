@@ -65,7 +65,7 @@ class User extends BaseUser implements Translatable
     /**
      * @var Location|null
      *
-     * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location")
+     * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location", cascade={"persist"})
      * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
      *
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
@@ -88,6 +88,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $nameLast;
+
     /**
      * @var string
      *

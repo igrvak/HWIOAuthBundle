@@ -3,13 +3,20 @@
   ref_lang: 'ru'
   question: 'Как мне восстановить пароль на сайте?'
   answer: "Тестовый ответ"
+  refUserAnswer: "abrahamLinkoln"
+  files:
+    - "message1.txt"
+    - "message2.txt"
 - name: "djem"
   email: "djem@gmail.com"
   ref_lang: 'en'
   question: 'How can I delete my account?'
   answer: ""
+  files:
+    - "message3.txt"
 - name: "king"
   email: "king@gmail.com"
   ref_lang: 'es'
   question: 'Cómo puedo cambiar mi avatar?'
   answer: ""
+  files:

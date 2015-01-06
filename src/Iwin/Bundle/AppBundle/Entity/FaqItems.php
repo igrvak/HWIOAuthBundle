@@ -84,8 +84,8 @@ class FaqItems implements Translatable
     /**
      * @var User|null
      *
-     * @ORM\OneToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\User")
-     * @ORM\JoinColumn(name="ref_user_owner", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="ref_user_owner", referencedColumnName="id")
      * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\User")
      */
     protected $userOwner;
@@ -93,8 +93,8 @@ class FaqItems implements Translatable
     /**
      * @var FaqCategory|null
      *
-     * @ORM\OneToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\FaqCategory")
-     * @ORM\JoinColumn(name="ref_category", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\AppBundle\Entity\FaqCategory")
+     * @ORM\JoinColumn(name="ref_category", referencedColumnName="id")
      * @Serializer\Type("Iwin\Bundle\AppBundle\Entity\FaqCategory")
      */
     protected $category;

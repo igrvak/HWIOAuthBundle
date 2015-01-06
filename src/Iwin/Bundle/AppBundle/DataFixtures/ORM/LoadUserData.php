@@ -11,6 +11,7 @@ use Iwin\Bundle\AppBundle\Entity\UserSocial;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Yaml\Yaml;
+use Iwin\Bundle\SharedBundle\Entity\Location;
 
 /**
  * Загружает список социальных сетей
@@ -39,32 +40,50 @@ class LoadUserData extends AbstractFixture implements
     public function load(ObjectManager $manager)
     {
         $trans = $manager->getRepository('GedmoTranslatable:Translation');
-        //print_r($trans);
-        //die();
 
         foreach ($this->getData() as $drow) {
             $row = new User();
 
+            // Load base properties
             $date = new \DateTime($drow['birthdate']);
             $row->setBirthdate($date);
-
             $row->setChatSkype($drow['chatSkype']);
             $row->setUsername($drow['username']);
             $row->setPhone($drow['phone']);
             $row->setEmail($drow['email']);
             $row->setPlainPassword($drow['password']);
-            //$row->setImageAvatar(null);
 
-            foreach ($drow['location']['nameFirst'] as $lang => $nameFirst) {
+            // Load localizations
+            foreach ($drow['nameFirst'] as $lang => $nameFirst) {
                 $trans->translate($row, 'nameFirst', $lang, $nameFirst);
             }
 
-            foreach ($drow['location']['nameLast'] as $lang => $nameLast) {
+            foreach ($drow['nameLast'] as $lang => $nameLast) {
                 $trans->translate($row, 'nameLast', $lang, $nameLast);
+            }
+
+            // Load assigned entities
+            if (isset($drow['imageAvatar']) and !empty($drow['imageAvatar'])) {
+                $image = $this->serviceUploader()->upload($this->getDataDir() . 'images/'. $drow['imageAvatar'], 'users');
+                if (!empty($image))
+                    $row->setImageAvatar($image);
+
+            }
+
+            if (isset($drow['location']) and !empty($drow['location'])) {
+                $location = new Location();
+                $location->setAddress($drow['location']['address']);
+                $location->setPosLat($drow['location']['posLat']);
+                $location->setPosLong($drow['location']['posLong']);
+
+                $row->setLocation($location);
             }
 
             // Set data for user
             $manager->persist($row);
+
+            // Load relations
+            // $row->setImageAvatar(null);
 
             foreach($drow['socials'] as $social => $socialData) {
                 $userSocial = new UserSocial() ;
@@ -74,8 +93,12 @@ class LoadUserData extends AbstractFixture implements
                            ->setUrlProfile($socialData['urlProfile'])
                            ->setUrlImage($socialData['urlImage']);
 
+                // Set data for userSocial
                 $manager->persist($userSocial);
             }
+
+            // Create reference
+            $this->addReference('user-'.$drow['username'], $row);
         }
 
         $manager->flush();
@@ -94,12 +117,28 @@ class LoadUserData extends AbstractFixture implements
      */
     protected function getData()
     {
-        $path = $this->container->getParameter('iwin_app.config_directory');
-        $path .= '/data/user/users.yml';
+        $path = $this->getDataDir().'users.yml';
 
         $data = Yaml::parse(file_get_contents($path));
 
         return $data;
+    }
+
+
+    /**
+     * @return string
+     */
+    protected function getDataDir()
+    {
+        return $this->container->getParameter('iwin_app.config_directory') . '/data/user/';
+    }
+
+    /**
+     * @return \Iwin\Bundle\SharedBundle\Service\File\ProgrammaticFileUploader
+     */
+    protected function serviceUploader()
+    {
+        return $this->container->get('iwin_shared.file.programmaticfileuploader');
     }
 
 }

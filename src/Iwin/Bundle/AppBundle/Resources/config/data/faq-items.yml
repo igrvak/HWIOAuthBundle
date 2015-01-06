@@ -1,8 +1,7 @@
-- createdBy:
-    id: 1
-  category:
-    id: 1
-  status: "active"
+- userOwner: "abrahamLinkoln"
+  categoryUniq: "classifieds"
+  isActive: TRUE
+  position: 1
   questions:
     ru: "Как я могу восстановить свой аккаунт?"
     en: "How can I recover my account?"
@@ -11,70 +10,72 @@
     ru: "ru Ответ Lorem ipsum"
     en: "en Answer Lorem ipsum"
     es: "es respuesta Lorem ipsum"
-- createdBy:
-    id: 1
-  category:
-    id: 1
-  status: "active"
+- userOwner: "abrahamLinkoln"
+  categoryUniq: "classifieds"
+  isActive: TRUE
+  position: 2
   questions:
     ru: "Могу ли я оплатить задачи, используя наличные деньги?"
     en: "Can I pay for a task using cash?"
     es: "Puedo pagar una tarea usando dinero en efectivo?"
   answers:
-    ru: "ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
-         Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
-         При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
-         а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть. Более подробно вы включать,
-         Это тем выше шанс ваша задача будет завершена вовремя и с вашими требованиями.
-         Вы можете выбирать между вашу задачу автоматически присваивается Укажите вас по цене, или открытие
-         это до заявок, так что вы может выбрать для задачи самостоятельно."
-    en: "en If you have a task that you need done, just post it here. Posting a task is easy and free.
-         All you need is a valid credit card (you won't be charged until after the task has been completed):
-         When you post a task, make sure you describe it in detail. Indicate when and where it needs to
-         be done as well as any reimbursable expenses your TaskRabbit will need to cover.
-         The more detail you include, the higher the chance that your task will be completed on time
-         and to your specifications. You can choose between having your task automatically assigned at
-         a price you indicate, or opening it up to bids so that you can select a Task yourself."
-    es: "es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
-         Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
-         Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
-         así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
-         la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
-         Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
-         en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo."
-- createdBy:
-    id: 1
-  category:
-    id: 1
-  status: "active"
+    ru: >
+        ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
+        При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано:
+        а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть. Более подробно вы включать,
+        Это тем выше шанс ваша задача будет завершена вовремя и с вашими требованиями.
+        Вы можете выбирать между вашу задачу автоматически присваивается Укажите вас по цене, или открытие
+        это до заявок, так что вы может выбрать для задачи самостоятельно.
+    en: >
+        en If you have a task that you need done, just post it here. Posting a task is easy and free.
+        All you need is a valid credit card (you won't be charged until after the task has been completed):
+        When you post a task, make sure you describe it in detail. Indicate when and where it needs to
+        be done as well as any reimbursable expenses your TaskRabbit will need to cover.
+        The more detail you include, the higher the chance that your task will be completed on time
+        and to your specifications. You can choose between having your task automatically assigned at
+        a price you indicate, or opening it up to bids so that you can select a Task yourself."
+    es: >
+        es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
+        Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
+        Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
+        así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
+        la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
+        Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
+        en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo."
+- userOwner: "abrahamLinkoln"
+  categoryUniq: "classifieds"
+  isActive: TRUE
+  position: 3
   questions:
     ru: "Как деактивировать свой аккаунт?"
     en: "How do I deactivate my account?"
     es: "Cómo desactivo mi cuenta?"
   answers:
-    ru: "ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
-         Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
-         При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
-         а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть. "
-    en: "en If you have a task that you need done, just post it here. Posting a task is easy and free.
-         All you need is a valid credit card (you won't be charged until after the task has been completed):
-         When you post a task, make sure you describe it in detail. Indicate when and where it needs to
-         be done as well as any reimbursable expenses your TaskRabbit will need to cover.
-         The more detail you include, the higher the chance that your task will be completed on time
-         and to your specifications. You can choose between having your task automatically assigned at
-         a price you indicate, or opening it up to bids so that you can select a Task yourself."
-    es: "es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
-         Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
-         Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
-         así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
-         la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
-         Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
-         en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo."
-- createdBy:
-    id: 1
-  category:
-    id: 2
-  status: "active"
+    ru: >
+        ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
+        Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
+        При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
+        а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть.
+    en: >
+        en If you have a task that you need done, just post it here. Posting a task is easy and free.
+        All you need is a valid credit card (you won't be charged until after the task has been completed):
+        When you post a task, make sure you describe it in detail. Indicate when and where it needs to
+        be done as well as any reimbursable expenses your TaskRabbit will need to cover.
+        The more detail you include, the higher the chance that your task will be completed on time
+        and to your specifications. You can choose between having your task automatically assigned at
+        a price you indicate, or opening it up to bids so that you can select a Task yourself.
+    es: >
+        es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
+        Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
+        Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
+        así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
+        la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
+        Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
+        en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo.
+- userOwner: "abrahamLinkoln"
+  categoryUniq: "qual-services"
+  isActive: TRUE
+  position: 1
   questions:
     ru: "Как я могу восстановить свой аккаунт?"
     en: "How can I recover my account?"
@@ -83,62 +84,66 @@
     ru: "ru Ответ Lorem ipsum"
     en: "en Answer Lorem ipsum"
     es: "es respuesta Lorem ipsum"
-- createdBy:
-    id: 1
-  category:
-    id: 2
-  status: "active"
+- userOwner: "abrahamLinkoln"
+  categoryUniq: "qual-services"
+  isActive: TRUE
+  position: 2
   questions:
     ru: "2 Могу ли я оплатить задачи, используя наличные деньги?"
     en: "2 Can I pay for a task using cash?"
     es: "2 Puedo pagar una tarea usando dinero en efectivo?"
   answers:
-    ru: "ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
-         Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
-         При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
-         а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть. Более подробно вы включать,
-         Это тем выше шанс ваша задача будет завершена вовремя и с вашими требованиями.
-         Вы можете выбирать между вашу задачу автоматически присваивается Укажите вас по цене, или открытие
-         это до заявок, так что вы может выбрать для задачи самостоятельно."
-    en: "en If you have a task that you need done, just post it here. Posting a task is easy and free.
-         All you need is a valid credit card (you won't be charged until after the task has been completed):
-         When you post a task, make sure you describe it in detail. Indicate when and where it needs to
-         be done as well as any reimbursable expenses your TaskRabbit will need to cover.
-         The more detail you include, the higher the chance that your task will be completed on time
-         and to your specifications. You can choose between having your task automatically assigned at
-         a price you indicate, or opening it up to bids so that you can select a Task yourself."
-    es: "es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
-         Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
-         Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
-         así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
-         la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
-         Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
-         en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo."
-- createdBy:
-    id: 1
-  category:
-    id: 3
-  status: "active"
+    ru: >
+        ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
+        Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
+        При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
+        а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть. Более подробно вы включать,
+        Это тем выше шанс ваша задача будет завершена вовремя и с вашими требованиями.
+        Вы можете выбирать между вашу задачу автоматически присваивается Укажите вас по цене, или открытие
+        это до заявок, так что вы может выбрать для задачи самостоятельно.
+    en: >
+        en If you have a task that you need done, just post it here. Posting a task is easy and free.
+        All you need is a valid credit card (you won't be charged until after the task has been completed):
+        When you post a task, make sure you describe it in detail. Indicate when and where it needs to
+        be done as well as any reimbursable expenses your TaskRabbit will need to cover.
+        The more detail you include, the higher the chance that your task will be completed on time
+        and to your specifications. You can choose between having your task automatically assigned at
+        a price you indicate, or opening it up to bids so that you can select a Task yourself.
+    es: >
+        es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
+        Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
+        Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
+        así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
+        la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
+        Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
+        en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo.
+- userOwner: "abrahamLinkoln"
+  categoryUniq: "trusty-advices"
+  isActive: TRUE
+  position: 1
   questions:
     ru: "3 Как деактивировать свой аккаунт?"
     en: "3 How do I deactivate my account?"
     es: "3 Cómo desactivo mi cuenta?"
   answers:
-    ru: "ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
-         Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
-         При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
-         а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть. "
-    en: "en If you have a task that you need done, just post it here. Posting a task is easy and free.
-         All you need is a valid credit card (you won't be charged until after the task has been completed):
-         When you post a task, make sure you describe it in detail. Indicate when and where it needs to
-         be done as well as any reimbursable expenses your TaskRabbit will need to cover.
-         The more detail you include, the higher the chance that your task will be completed on time
-         and to your specifications. You can choose between having your task automatically assigned at
-         a price you indicate, or opening it up to bids so that you can select a Task yourself."
-    es: "es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
-         Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
-         Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
-         así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
-         la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
-         Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
-         en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo."
+    ru: >
+        ru Если у вас есть любые доступные задачи, которые вы должны сделать, просто разместить его здесь. Публикация задачу легко и свободно.
+        Все, что вам нужно, это действующая кредитная карта (вы выиграли так как не взимается до тех пор, после того как задача-завершены):
+        При проводке задачу, убедитесь, что вы описать его подробно. Укажите, когда и где это должно быть сделано
+        а также вашего TaskRabbit Любые возмещаемые расходы нужно будет покрыть.
+    en: >
+        en If you have a task that you need done, just post it here. Posting a task is easy and free.
+        All you need is a valid credit card (you won't be charged until after the task has been completed):
+        When you post a task, make sure you describe it in detail. Indicate when and where it needs to
+        be done as well as any reimbursable expenses your TaskRabbit will need to cover.
+        The more detail you include, the higher the chance that your task will be completed on time
+        and to your specifications. You can choose between having your task automatically assigned at
+        a price you indicate, or opening it up to bids so that you can select a Task yourself.
+    es: >
+        es Si tiene una tarea que usted necesita hacer, simplemente publicar aquí. Publicar una tarea es fácil y gratis.
+        Todo lo que necesitas es una tarjeta de crédito válida (que usted ganó 't ser cargado hasta después de la tarea se ha completado):
+        Al publicar una tarea, asegúrese de que usted lo describe en detalle. Indique cuándo y dónde hay que hacer
+        así como los gastos reembolsables su TaskRabbit tendrá que cubrir. Mientras más detalles incluya,
+        la más alta es la probabilidad de que su tarea se ha completado a tiempo y según sus especificaciones.
+        Usted puede elegir entre tener su tarea asignada automáticamente a un precio que usted indique, o la apertura
+        en manos de las ofertas de modo que usted puede seleccionar una tarea a ti mismo.

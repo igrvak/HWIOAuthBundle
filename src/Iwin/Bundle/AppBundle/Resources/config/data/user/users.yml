@@ -1,0 +1,36 @@
+- birthdate : '2014-11-28'
+  chatSkype : 'abrahamLinkoln'
+  phone : '380552465869'
+  imageAvatar : 'avatar_1.jpg'
+  username: 'abrahamLinkoln'
+  email: 'abrahamLinkoln@gmail.com'
+  password: 'abrahamLinkoln'
+  location:
+    address : 'Heart of Iowa Nature Trail, Slater, IA 50244, США'
+    posLat : 40.7143528
+    posLong : -74.0059731
+  nameFirst:
+    en: 'Abraham'
+    es: 'Abraham'
+    ru: 'Авраам'
+  nameLast:
+    en: 'Lincoln'
+    es: 'Lincoln'
+    ru: 'Линкольн'
+  socials:
+    facebook:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''
+    twitter:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''
+    gplus:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''
+    linkedin:
+      nickname: ''
+      urlImage: ''
+      urlProfile: ''

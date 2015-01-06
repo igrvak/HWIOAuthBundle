@@ -11,16 +11,15 @@ use Symfony\Component\HttpFoundation\File\File;
  */
 class FileManager
 {
-
     /**
      * @var EntityManagerInterface
      */
     private $em;
+
     /**
      * @var ImageManager
      */
     private $manager;
-
 
     /**
      * @param EntityManagerInterface $em

@@ -34,6 +34,7 @@ class Gallery
      * @var string
      */
     protected $id;
+
     /**
      * @ORM\ManyToMany(targetEntity="FileImage")
      * @ORM\JoinTable(name="iwin_app_gallery_images",

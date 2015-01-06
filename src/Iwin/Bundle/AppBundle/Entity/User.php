@@ -24,6 +24,7 @@ class User extends BaseUser implements Translatable
         parent::__construct();
 
         $this->socials = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -35,6 +36,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $id;
+
     /**
      * @var \DateTime
      *
@@ -42,6 +44,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     protected $birthdate;
+
     /**
      * @var string
      *
@@ -49,18 +52,20 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $chatSkype;
+
     /**
      * @var FileImage|null
      *
      * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\FileImage")
-     * @ORM\JoinColumn(name="ref_imageAvatar", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ref_image_avatar", referencedColumnName="id", nullable=true)
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
     protected $imageAvatar;
+
     /**
      * @var Location|null
      *
-     * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location")
+     * @ORM\OneToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Location", cascade={"persist"})
      * @ORM\JoinColumn(name="location", referencedColumnName="id", nullable=true)
      *
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
@@ -83,6 +88,7 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $nameLast;
+
     /**
      * @var string
      *
@@ -93,29 +99,77 @@ class User extends BaseUser implements Translatable
     /**
      * @var Social[]|Collection
      *
-     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UserSocial", mappedBy="user", cascade={"persist"})
      * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;
 
+
+    /**
+     * @ORM\OneToMany(
+     *   targetEntity="Iwin\Bundle\AppBundle\Entity\UserTranslation", mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */
+    private $translations;
+
+    /**
+     * @param UserTranslation $t
+     */
+    public function addTranslation(UserTranslation $t)
+    {
+        if (!$this->translations->contains($t)) {
+            $this->translations[] = $t;
+            $t->setObject($this);
+        }
+    }
+    /*
+     *   Accessories
+     * */
+
     /**
      * @param \DateTime $birthdate
      */
-    public function setBirthdate($birthdate)
+    public function setBirthdate(\DateTime $birthdate)
     {
         $this->birthdate = $birthdate;
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * @param string $chatSkype
+     */
+    public function setChatSkype($chatSkype)
+    {
+        $this->chatSkype = $chatSkype;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChatSkype()
+    {
+        return $this->chatSkype;
+    }
+
+    /**
+     * @param \Iwin\Bundle\SharedBundle\Entity\FileImage|null $imageAvatar
      * @param FileImage|null $imageAvatar
      */
-    public function setImageAvatar(FileImage $imageAvatar = null)
+    public function setImageAvatar($imageAvatar)
     {
         $this->imageAvatar = $imageAvatar;
     }
 
     /**
-     * @return FileImage|null
+     * @return \Iwin\Bundle\SharedBundle\Entity\FileImage|null
      */
     public function getImageAvatar()
     {
@@ -123,14 +177,84 @@ class User extends BaseUser implements Translatable
     }
 
     /**
+     * @param \Iwin\Bundle\SharedBundle\Entity\Location|null $location
      * @param Location|null $location
      */
-    public function getBirthdate()
+    public function setLocation($location)
     {
-        return $this->birthdate;
+        $this->location = $location;
     }
 
+    /**
+     * @return \Iwin\Bundle\SharedBundle\Entity\Location|null
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
 
+    /**
+     * @param string $nameFirst
+     */
+    public function setNameFirst($nameFirst)
+    {
+        $this->nameFirst = $nameFirst;
+    }
 
+    /**
+     * @return string
+     */
+    public function getNameFirst()
+    {
+        return $this->nameFirst;
+    }
+
+    /**
+     * @param string $nameLast
+     */
+    public function setNameLast($nameLast)
+    {
+        $this->nameLast = $nameLast;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameLast()
+    {
+        return $this->nameLast;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection|\Iwin\Bundle\SharedBundle\Entity\Social[] $socials
+     */
+    public function setSocials($socials)
+    {
+        $this->socials = $socials;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection|\Iwin\Bundle\SharedBundle\Entity\Social[]
+     */
+    public function getSocials()
+    {
+        return $this->socials;
+    }
 
 }

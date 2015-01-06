@@ -24,10 +24,10 @@ define([
                 ret = {};
 
             do {
-                ret[obj.get('level') - 1] = obj;
+                ret[obj.get('level')] = obj;
             } while (obj = obj.get('parent'));
             if (min) {
-                _.each(_.range(1, min), function (ind) {
+                _.each(_.range(1, min +1), function (ind) {
                     if (!ret[ind]) {
                         ret[ind] = {};
                     }

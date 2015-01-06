@@ -1,5 +1,5 @@
 <?php
-namespace Iwin\Bundle\SharedBundle\DataFixtures\ORM;
+namespace Iwin\Bundle\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -42,15 +42,19 @@ class LoadFaqCategoriesData extends AbstractFixture implements
         foreach ($this->getData() as $name => $drow) {
 
             $row = new FaqCategory();
+            // Load base properties
             $row->setPosition($drow['position']);
             $row->setIsActive($drow['isActive']);
             $row->setUniqName($drow['uniq_name']);
 
+            // Load localizations
             foreach ($drow['titles'] as $lang => $title) {
                 $trans->translate($row, 'title', $lang, $title);
             }
-
             $manager->persist($row);
+
+            // Create reference
+            $this->addReference('faq-category-'.$drow['uniq_name'], $row);
         }
 
         $manager->flush();

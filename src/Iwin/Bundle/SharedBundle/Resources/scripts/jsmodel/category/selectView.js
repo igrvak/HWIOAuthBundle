@@ -53,6 +53,7 @@ define([
             if (this.isPopup) {
                 _.each(_.keys(cols), function (ind) {
                     this.subCategories[ind] = new CategoryCollection();
+                    this.subCategories[ind].on('change', this.render, this);
                     this.subCategories[ind].on('sync', this.render, this);
                 }, this);
 
@@ -137,9 +138,12 @@ define([
                 "padding":   0,
                 "closeBtn":  false,
                 "scrolling": false,
+                "afterShow": _.bind(function () {
+                    this.childView.setElement($('.fancybox-wrap .popup-category'));
+                    this.childView.render();
+                    console.log(this.childView);
+                }, this),
             });
-            this.childView.setElement($('.fancybox-wrap .popup-category'));
-            this.childView.render();
         },
 
         "setItem": function (item) {

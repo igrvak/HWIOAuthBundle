@@ -4,18 +4,20 @@ define([
     'backbone',
     'templating',
     'util/collectionView',
+    './selectView',
     './categoryCollection',
     './categoryLink',
-    'jquery/openclose',
-], function ($, _, Backbone, templating, CollectionView, CategoryCollection, CategoryLinkModel) {
+], function ($, _, Backbone, templating, CollectionView, SelectView, CategoryCollection, CategoryLinkModel) {
     'use strict';
 
     var viewId = 'iwin-shared-category-categories';
 
     var View = CollectionView.extend({
-        "isMultiple":   true,
-        "maxElements":  6,
+        "isMultiple": true,
+
         "relatedModel": CategoryLinkModel,
+
+        "selectView": null,
 
         "modelBinder": undefined,
         "template":    templating.get(viewId),
@@ -25,13 +27,10 @@ define([
 
             this.modelBinder = new Backbone.ModelBinder();
 
-            this.on('selectitem', function(el){
-                console.log(el.toJSON());
+            this.selectView = new SelectView({
+                "model": new CategoryCollection()
             });
-
-            this.root = new CategoryCollection();
-            this.root.on('sync', this.render, this);
-            this.root.fetch();
+            this.selectView.model.get('list').fetch();
 
             this.model.on('change', this.render, this);
             this.model.on('sync', this.render, this);
@@ -44,27 +43,18 @@ define([
         },
 
         "events": {
-            "click .add":                     'addItem',
-            "click .remove":                  'removeItem',
-            "click [href='#popup-category']": 'selectItem',
+            "click .add":    'addItem',
+            "click .remove": 'removeItem',
         },
 
         "render": function () {
-            this.$el.html(this.template(this.model, {
-                "root":        this.root,
-                "maxElements": this.maxElements,
-            }));
+            this.$el.html(this.template(this.model));
 
             this.modelBinder.bind(this.model, this.el);
             this.delegateEvents();
 
-            this.$el.find('div.open-close').openClose({
-                activeClass: 'active',
-                opener:      '.opener',
-                slider:      '.slide',
-                animSpeed:   400,
-                effect:      'slide',
-            });
+            this.selectView.setElement(this.$el.find('.list-container'));
+            this.selectView.render();
 
             return this;
         },
@@ -91,16 +81,6 @@ define([
             list.remove(el);
 
             this.render();
-        },
-
-        "selectItem": function (e) {
-            e.preventDefault();
-            var obj = this.$(e.currentTarget),
-                list = this.root,
-                index = obj.closest('li').data('ordinal'),
-                el = list.at(index);
-
-            this.trigger('selectitem', el);
         },
     });
 

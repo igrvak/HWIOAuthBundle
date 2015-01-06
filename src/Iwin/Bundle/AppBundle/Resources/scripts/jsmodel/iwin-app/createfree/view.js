@@ -7,7 +7,7 @@ define([
     'iwin-qual/taskView',
     './profileView',
     'jquery/openclose',
-    'css!config/inner-tabs',
+    'scss!config/inner-tabs',
     'domReady!',
 ], function ($, _, Backbone, templating, AdvertView, TaskView, ProfileView) {
     'use strict';

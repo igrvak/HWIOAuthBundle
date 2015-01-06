@@ -2,14 +2,14 @@
     <fieldset>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         <div class="input-row">
-            <input type="text" placeholder="E-mail" value="{{ last_username }}">
+            <input type="text" placeholder="E-mail" name="_username" value="{{ last_username }}">
         </div>
         <div class="input-row">
-            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Password" name="_password">
             <a href="#" class="link-show">Show password</a>
         </div>
         <label class="single-checkbox">
-            <input type="checkbox" id="check1">
+            <input type="checkbox" id="check1" name="_remember_me">
             <span></span>
         </label>
         <div class="caption inline-caption">

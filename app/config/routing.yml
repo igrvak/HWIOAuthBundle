@@ -51,15 +51,21 @@ fos_user_change_password:
     prefix: /profile
     
 hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /oath_connect
+  resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+  prefix:   /oath_connect
+  options:
+    i18n: false
 
 hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /oath_login
+  resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+  prefix:   /oath_login
+  options:
+    i18n: false
 
 linkedin_login:
-    pattern: /oath_login/check-linkedin
+  pattern: /oath_login/check-linkedin
+  options:
+    i18n: false
 
 oneup_uploader:
   resource: .

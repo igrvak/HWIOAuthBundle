@@ -19,18 +19,22 @@
     ru: 'Линкольн'
   socials:
     facebook:
+      idSocial: ''
       nickname: ''
       urlImage: ''
       urlProfile: ''
     twitter:
+      idSocial: ''
       nickname: ''
       urlImage: ''
       urlProfile: ''
     gplus:
+      idSocial: ''
       nickname: ''
       urlImage: ''
       urlProfile: ''
     linkedin:
+      idSocial: 'Sv0Si4oXz5'
       nickname: ''
       urlImage: ''
       urlProfile: ''

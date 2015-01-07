@@ -6,11 +6,19 @@
   <div id="wrapper">
     <header id="header" class="header">
       <strong class="logo"><a href="{{ path('home') }}">{{ var.title }}</a></strong>
-      <a href="#user_profile" class="account">
+      <a href="#user_profile" class="account {% if app.user %}authorized{% endif %}">
+        {% if app.user %}
+          <span class="account__availability online"></span>
+          <span class="account__inbox">{{ '0' }}</span>
+        {% endif %}
 				<span class="account__avatar">
-					<img src="{{ asset('bundles/iwinapp/img/old/ico01.png') }}" height="17" width="17" alt="">
+          {% if not app.user %}
+            <img src="{{ asset('bundles/iwinapp/img/old/ico01.png') }}" height="17" width="17" alt=""/>
+          {% else %}
+            <img src="{{ file_url(app.user.imageAvatar) }}" width="49" height="50" alt=""/>
+          {% endif %}
 				</span>
-        <span class="account__name"><span>{{ 'user.login'|trans }}</span></span>
+        <span class="account__name"><span>{{ app.user?app.user.nameFirst:('user.login'|trans) }}</span></span>
       </a>
       <a href="#send_invite" class="btn wide square">{{ 'main.sendinvite'|trans }}</a>
       <nav id="sections">

@@ -19,6 +19,14 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class User extends BaseUser implements Translatable
 {
+    /**
+     * @ORM\OneToMany(
+     *   targetEntity="Iwin\Bundle\AppBundle\Entity\UserTranslation", mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */
+    private $translations;
+
     public function __construct()
     {
         parent::__construct();
@@ -26,7 +34,6 @@ class User extends BaseUser implements Translatable
         $this->socials = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
-
     /**
      * @var integer
      *
@@ -36,7 +43,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $id;
-
     /**
      * @var \DateTime
      *
@@ -44,7 +50,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     protected $birthdate;
-
     /**
      * @var string
      *
@@ -52,7 +57,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $chatSkype;
-
     /**
      * @var FileImage|null
      *
@@ -61,7 +65,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\FileImage")
      */
     protected $imageAvatar;
-
     /**
      * @var Location|null
      *
@@ -71,7 +74,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("Iwin\Bundle\SharedBundle\Entity\Location")
      */
     protected $location;
-
     /**
      * @var string
      *
@@ -88,14 +90,12 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("string")
      */
     protected $nameLast;
-
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
-
     /**
      * @var Social[]|Collection
      *
@@ -103,15 +103,6 @@ class User extends BaseUser implements Translatable
      * @Serializer\Type("array<Iwin\Bundle\AppBundle\Entity\UserSocial>")
      **/
     protected $socials;
-
-
-    /**
-     * @ORM\OneToMany(
-     *   targetEntity="Iwin\Bundle\AppBundle\Entity\UserTranslation", mappedBy="object",
-     *   cascade={"persist", "remove"}
-     * )
-     */
-    private $translations;
 
     /**
      * @param UserTranslation $t

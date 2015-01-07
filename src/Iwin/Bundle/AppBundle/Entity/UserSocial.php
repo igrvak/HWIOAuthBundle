@@ -1,9 +1,9 @@
 <?php
-
 namespace Iwin\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Iwin\Bundle\SharedBundle\Entity\Social;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * UserSocial
@@ -14,45 +14,43 @@ use Iwin\Bundle\SharedBundle\Entity\Social;
 class UserSocial
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="guid")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @Serializer\Type("string")
+     * @var string
      */
     protected $id;
-
     /**
-     * @var Social
-     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
-     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
-     */
-    protected $social;
-
-    /**
+     * @ORM\Column(name="id_social", type="string")
      * @var string
-     *
+     */
+    protected $idSocial;
+    /**
      * @ORM\Column(name="nickname", type="string", length=255)
+     * @var string
      */
     protected $nickname;
-
     /**
-     * @var string
-     *
+     * @ORM\ManyToOne(targetEntity="Iwin\Bundle\SharedBundle\Entity\Social")
+     * @ORM\JoinColumn(name="social_id", referencedColumnName="id")
+     * @var Social
+     */
+    protected $social;
+    /**
      * @ORM\Column(name="url_image", type="string", length=255)
+     * @var string
      */
     protected $urlImage;
-
     /**
-     * @var string
      * @ORM\Column(name="url_profile", type="string", length=255)
+     * @var string
      */
     protected $urlProfile;
-
     /**
-     * @var User
      * @ORM\ManyToOne(targetEntity="User", inversedBy="socials")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @var User
      */
     protected $user;
 
@@ -61,11 +59,29 @@ class UserSocial
     /**
      * Get id
      *
-     * @return integer
+     * @return string
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdSocial()
+    {
+        return $this->idSocial;
+    }
+
+    /**
+     * @param string $idSocial
+     * @return $this
+     */
+    public function setIdSocial($idSocial)
+    {
+        $this->idSocial = $idSocial;
+        return $this;
     }
 
     /**

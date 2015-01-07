@@ -32,6 +32,8 @@ security:
             oauth:
                 resource_owners:
                   linkedin: linkedin_login
+                  google: google_login
+                  facebook: facebook_login
                 login_path:   /oath_login
                 use_forward:  false
                 failure_path: /oath_login

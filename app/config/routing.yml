@@ -69,6 +69,16 @@ linkedin_login:
   pattern: /oath_login/check-linkedin
   options:
     i18n: false
+    
+google_login:
+  pattern: /oath_login/check-google
+  options:
+    i18n: false
+
+facebook_login:
+  pattern: /oath_login/check-facebook
+  options:
+    i18n: false
 
 oneup_uploader:
   resource: .

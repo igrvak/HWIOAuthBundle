@@ -6,7 +6,6 @@ define([
     'util/collectionView',
     './category',
     './categoryCollection',
-    './categoryLink',
     'jquery/openclose',
     'jquery/malihu-scrollbar/scroll',
     'fancybox/fancybox',
@@ -37,10 +36,9 @@ define([
 
             if (!this.isPopup) {
                 this.childView = new View({
-                    "model":   new CategoryCollection(),
+                    "model":   this.model,
                     "isPopup": true,
                 });
-                this.childView.model.get('list').fetch();
                 this.childView.on('confirm', function (el) {
                     this.trigger('confirm', el);
                 }, this);
@@ -76,10 +74,6 @@ define([
                     }, this);
                     this.render();
                 }, this);
-            }
-
-            if (!this.isMultiple && this.model.get('list').length === 0) {
-                this.addItemEmpty();
             }
         },
 
@@ -141,7 +135,6 @@ define([
                 "afterShow": _.bind(function () {
                     this.childView.setElement($('.fancybox-wrap .popup-category'));
                     this.childView.render();
-                    console.log(this.childView);
                 }, this),
             });
         },

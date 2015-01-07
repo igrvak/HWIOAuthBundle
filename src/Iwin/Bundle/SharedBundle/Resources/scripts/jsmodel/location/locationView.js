@@ -2,28 +2,20 @@ define([
     'lodash',
     'backbone',
     './routeView',
-    './location',
     './locationCollection'
-], function (_, Backbone, RouteView, LocationModel, LocationCollection) {
+], function (_, Backbone, RouteView, LocationCollection) {
     'use strict';
 
     var viewId = 'iwin-app-location-route';
 
     var View = RouteView.extend({
         "initialize": function () {
-            var args = _.toArray(arguments),
-                options = args.shift() || {};
-
-            options.model = new LocationCollection([
-                options.model ? options.model : new LocationModel(),
+            this.isMultiple = false;
+            this.model = new LocationCollection([
+                this.model,
             ]);
 
-            options.isMultiple = false;
-
-            args.unshift(options);
-
-
-            RouteView.prototype.initialize.apply(this, args);
+            RouteView.prototype.initialize.apply(this, arguments);
         },
     });
 

@@ -2,6 +2,7 @@
 namespace Iwin\Bundle\SharedBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Iwin\Bundle\SharedBundle\Entity\Coupon;
 use Iwin\Bundle\SharedBundle\Entity\CouponTypeRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 

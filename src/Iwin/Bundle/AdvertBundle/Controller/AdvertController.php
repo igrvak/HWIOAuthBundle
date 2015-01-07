@@ -1,6 +1,7 @@
 <?php
 namespace Iwin\Bundle\AdvertBundle\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Iwin\Bundle\AdvertBundle\Entity\Advert;
 use Iwin\Bundle\AdvertBundle\Entity\AdvertRepository;
@@ -34,6 +35,11 @@ class AdvertController
      * @var ValidatorInterface
      */
     private $validator;
+    /**
+     * @DI\Inject("doctrine.orm.entity_manager")
+     * @var EntityManagerInterface
+     */
+    private $manager;
 
     // -- Actions ---------------------------------------
 
@@ -77,16 +83,11 @@ class AdvertController
         );
         /** @var Advert $advert */
 
-        $errors = [];
+        $this->manager->merge($advert->getCategory());
 
-        foreach ($advert->getCoupons() as $i => $coupon) {
-            $err = $this->validator->validate($coupon, ['Default'], false, true);
-            if (count($err)) {
-                $errors['coupons[' . $i . ']'] = (string)$err;
-            }
-        }
+        $this->manager->persist($advert);
+        $this->manager->flush();
 
-        var_dump($errors);
         die();
     }
 }

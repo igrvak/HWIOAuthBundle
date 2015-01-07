@@ -9,8 +9,7 @@
       <div class="category-choose__chosen">
         <ul class="chosen-list">
           {% for i, cat in list.toArray() %}
-            {% if cat.category %}
-            {% set parents = cat.category.getParentNodesArray(1) %}
+            {% set parents = cat.getParentNodesArray(1) %}
             <li data-ordinal="{{ i }}">
               <div class="item">
                 <a href="#delete" class="link-delete"><span>Delete</span></a>
@@ -30,7 +29,6 @@
                 </ul>
               </div>
             </li>
-            {% endif %}
           {% endfor %}
         </ul>
         {% if isMultiple %}

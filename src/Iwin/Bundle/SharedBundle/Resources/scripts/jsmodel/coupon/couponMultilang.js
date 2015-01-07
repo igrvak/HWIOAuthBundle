@@ -8,9 +8,9 @@ define([
         "idAttribute": 'hash',
 
         "defaults": {
-            "lang":    null,
-            "name":    null,
-            "caption": null,
+            "locale":      null,
+            "name":        null,
+            "description": null,
         },
     });
 

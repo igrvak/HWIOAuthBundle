@@ -27,12 +27,8 @@ class Task
     {
         $this->setLocations(new ArrayCollection());
 
-        if (!$this->gallery) {
-            $this->setGallery(new Gallery());
-        }
-        if (!$this->category) {
-            $this->setCategory(new Category());
-        }
+        $this->setGallery(new Gallery());
+        /*$this->setCategory(new Category());*/
     }
 
     /**

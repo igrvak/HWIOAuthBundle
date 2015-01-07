@@ -49,6 +49,17 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+    
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /oath_connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /oath_login
+
+linkedin_login:
+    pattern: /oath_login/check-linkedin
 
 oneup_uploader:
   resource: .

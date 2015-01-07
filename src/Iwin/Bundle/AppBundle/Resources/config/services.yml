@@ -11,6 +11,8 @@ parameters:
     Iwin\Bundle\AppBundle\Service\Util\FileUrlManager
   iwin_app.authentication_handler.class:
     Iwin\Bundle\AppBundle\Service\AuthenticationHandler
+  iwin_app.oauth_aware.user_provider.class:
+    Iwin\Bundle\AppBundle\Service\OAuthAwareUserProvider
 
 services:
   # Фабрика меню
@@ -72,3 +74,6 @@ services:
       - { name: jms_serializer.event_subscriber }
   iwin_app.authentication_handler:
     class: %iwin_app.authentication_handler.class%
+    
+  iwin_app.oauth_aware.user_provider:
+    class: %iwin_app.oauth_aware.user_provider.class%

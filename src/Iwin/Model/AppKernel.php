@@ -57,6 +57,7 @@ class AppKernel extends Kernel
             new \Oneup\UploaderBundle\OneupUploaderBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
             new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         ]);
 
         // Debug

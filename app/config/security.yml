@@ -28,9 +28,21 @@ security:
                 failure_handler: iwin_app.authentication_handler
             logout:       true
             anonymous:    true
+            
+        secured_area:
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    linkedin:           "/oath_login/check-linkedin"
+                login_path:        /oath_login
+                use_forward:       false
+                failure_path:      /oath_login
+                oauth_user_provider:
+                    service: iwin_app.oauth_aware.user_provider
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY } #TODO: remove debug
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/oath_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -136,12 +136,12 @@ fos_user:
   user_class: Iwin\Bundle\AppBundle\Entity\User
   
 hwi_oauth:
-    firewall_name: secured_area
+    firewall_name: main
     resource_owners:
         linkedin:
             type:           linkedin
-            client_id:      7802yqir2vkvbj
-            client_secret:  77uQk2T84O8MveWu
+            client_id:      %service.linkedin.id%
+            client_secret:  %service.linkedin.secret%
             scope: r_basicprofile
                 
 oneup_uploader:

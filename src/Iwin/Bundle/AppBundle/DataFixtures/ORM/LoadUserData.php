@@ -5,13 +5,12 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Iwin\Bundle\AppBundle\Entity\User;
 use Iwin\Bundle\AppBundle\Entity\UserSocial;
+use Iwin\Bundle\SharedBundle\Entity\Location;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Yaml\Yaml;
-use Iwin\Bundle\SharedBundle\Entity\Location;
 
 /**
  * Загружает список социальных сетей
@@ -64,7 +63,7 @@ class LoadUserData extends AbstractFixture implements
 
             // Load assigned entities
             if (isset($drow['imageAvatar']) and !empty($drow['imageAvatar'])) {
-                $image = $this->serviceUploader()->upload($this->getDataDir() . 'images/'. $drow['imageAvatar'], 'users');
+                $image = $this->serviceUploader()->upload($this->getDataDir() . 'images/' . $drow['imageAvatar'], 'users');
                 if (!empty($image))
                     $row->setImageAvatar($image);
 
@@ -85,20 +84,21 @@ class LoadUserData extends AbstractFixture implements
             // Load relations
             // $row->setImageAvatar(null);
 
-            foreach($drow['socials'] as $social => $socialData) {
-                $userSocial = new UserSocial() ;
+            foreach ($drow['socials'] as $social => $socialData) {
+                $userSocial = new UserSocial();
                 $userSocial->setUser($row)
-                           ->setSocial($this->getReference('social-'.$social))
-                           ->setNickname($socialData['nickname'])
-                           ->setUrlProfile($socialData['urlProfile'])
-                           ->setUrlImage($socialData['urlImage']);
+                    ->setSocial($this->getReference('social-' . $social))
+                    ->setIdSocial($socialData['idSocial'])
+                    ->setNickname($socialData['nickname'])
+                    ->setUrlProfile($socialData['urlProfile'])
+                    ->setUrlImage($socialData['urlImage']);
 
                 // Set data for userSocial
                 $manager->persist($userSocial);
             }
 
             // Create reference
-            $this->addReference('user-'.$drow['username'], $row);
+            $this->addReference('user-' . $drow['username'], $row);
         }
 
         $manager->flush();
@@ -117,7 +117,7 @@ class LoadUserData extends AbstractFixture implements
      */
     protected function getData()
     {
-        $path = $this->getDataDir().'users.yml';
+        $path = $this->getDataDir() . 'users.yml';
 
         $data = Yaml::parse(file_get_contents($path));
 

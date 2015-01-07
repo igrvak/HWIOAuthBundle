@@ -1,6 +1,8 @@
 <?php
 namespace Iwin\Bundle\AppBundle\Service\Twig;
 
+use Iwin\Bundle\AppBundle\Service\Util\FileUrlManager;
+use Iwin\Bundle\SharedBundle\Entity\File;
 use Symfony\Component\HttpFoundation\Request;
 use Werkint\Bundle\FrameworkExtraBundle\Twig\AbstractExtension;
 
@@ -14,6 +16,7 @@ class IwinAppExtension extends AbstractExtension
     protected $vars;
     protected $locales;
     protected $request;
+    protected $fileUrlManager;
     protected $globals;
 
     const EXT_NAME = 'iwin_app';
@@ -29,19 +32,24 @@ class IwinAppExtension extends AbstractExtension
         $this->globals = [
             'var' => $this->vars,
         ];
+
+        $this->addFunction('file_url', false, function (File $file) {
+            return $this->fileUrlManager->getUrl($file);
+        });
     }
 
     /**
-     * @param array $vars
+     * @param array        $vars
      * @param Request|null $request
-     * @param array $locales
+     * @param array        $locales
      */
     public function __construct(
         array $vars,
         Request $request = null,
-        array $locales
-    )
-    {
+        array $locales,
+        FileUrlManager $fileUrlManager
+    ) {
+        $this->fileUrlManager = $fileUrlManager;
         $this->request = $request;
         $this->locales = $locales;
         $this->vars = $vars['params'];
@@ -54,8 +62,7 @@ class IwinAppExtension extends AbstractExtension
      */
     public function initRuntime(
         \Twig_Environment $env
-    )
-    {
+    ) {
         $this->globals['macros'] = $env->loadTemplate('::twig/macros.twig');
     }
 

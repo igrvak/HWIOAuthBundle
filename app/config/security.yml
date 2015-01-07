@@ -15,7 +15,7 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     firewalls:
         main:
@@ -23,11 +23,23 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
+                check_path: fos_user_security_check
+                success_handler: iwin_app.authentication_handler
+                failure_handler: iwin_app.authentication_handler
+            oauth:
+                resource_owners:
+                  linkedin: linkedin_login
+                login_path:   /oath_login
+                use_forward:  false
+                failure_path: /oath_login
+                oauth_user_provider:
+                    service: iwin_app.oauth_aware.user_provider
             logout:       true
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY } #TODO: remove debug
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/oath_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

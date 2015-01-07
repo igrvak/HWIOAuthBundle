@@ -6,11 +6,19 @@
   <div id="wrapper">
     <header id="header" class="header">
       <strong class="logo"><a href="{{ path('home') }}">{{ var.title }}</a></strong>
-      <a href="#user_profile" class="account">
+      <a href="#user_profile" class="account {% if app.user %}authorized{% endif %}">
+        {% if app.user %}
+          <span class="account__availability online"></span>
+          <span class="account__inbox">{{ '0' }}</span>
+        {% endif %}
 				<span class="account__avatar">
-					<img src="{{ asset('bundles/iwinapp/img/old/ico01.png') }}" height="17" width="17" alt="">
+          {% if not app.user %}
+            <img src="{{ asset('bundles/iwinapp/img/old/ico01.png') }}" height="17" width="17" alt=""/>
+          {% else %}
+            <img src="{{ file_url(app.user.imageAvatar) }}" width="49" height="50" alt=""/>
+          {% endif %}
 				</span>
-        <span class="account__name"><span>{{ 'user.login'|trans }}</span></span>
+        <span class="account__name"><span>{{ app.user?app.user.nameFirst:('user.login'|trans) }}</span></span>
       </a>
       <a href="#send_invite" class="btn wide square">{{ 'main.sendinvite'|trans }}</a>
       <nav id="sections">
@@ -40,40 +48,7 @@
     </div>
   </div>
   <div class="login-popup" id="login-popup">
-    <form action="#" id="login-form">
-      <fieldset>
-        <div class="input-row">
-          <div class="message-tip">Profile photo enhances trust interest to your account</div>
-          <input type="text" placeholder="E-mail">
-        </div>
-        <div class="input-row">
-          <input type="password" placeholder="Password">
-          <a href="#" class="link-show">Show password</a>
-        </div>
-        <label class="single-checkbox">
-          <input type="checkbox" id="check1">
-          <span></span>
-        </label>
-        <div class="caption inline-caption">
-          <label for="check1" class="single-caption">Remember me</label>
-        </div>
-        <button type="submit" class="btn-small1 wide">Sign in</button>
-        <a href="#" class="link-restore">Forgot password?</a>
-        <div class="socials">
-          <span class="title">Sign in with</span>
-          <ul>
-            <li><a href="#" class="in" title="Instagram">Instagram</a></li>
-            <li><a href="#" class="gp" title="Google+">Google+</a></li>
-            <li><a href="#" class="fb" title="Facebook">Facebook</a></li>
-            <li><a href="#" class="tw" title="Twitter">Twitter</a></li>
-          </ul>
-        </div>
-        <div class="register">
-          <span class="title">Don't have an account?</span>
-          <a href="#" class="btn-frame wide white">Sign up for free</a>
-        </div>
-      </fieldset>
-    </form>
+    {{ render(controller('FOSUserBundle:Security:login')) }}
     <a href="#" class="close-popup"><span>Cancel</span></a>
   </div>
 {% endblock %}

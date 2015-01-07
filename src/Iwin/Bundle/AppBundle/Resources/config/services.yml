@@ -9,6 +9,10 @@ parameters:
     Iwin\Bundle\AppBundle\EventListener\UploadListener
   iwin_app.file_url_manager.class:
     Iwin\Bundle\AppBundle\Service\Util\FileUrlManager
+  iwin_app.authentication_handler.class:
+    Iwin\Bundle\AppBundle\Service\AuthenticationHandler
+  iwin_app.oauth_aware.user_provider.class:
+    Iwin\Bundle\AppBundle\Service\OAuthAwareUserProvider
 
 services:
   # Фабрика меню
@@ -49,6 +53,7 @@ services:
               parameter('locale') == parameter('kernel.default_locale')
       - "@=service('service_container').isScopeActive('request') ? service('request') : null"
       - %locales_supported%
+      - @iwin_app.file_url_manager
     tags:
       - { name: twig.extension }
   iwin_app.uploader:
@@ -68,3 +73,9 @@ services:
     class: %iwin_app.file_url_manager.class%
     tags:
       - { name: jms_serializer.event_subscriber }
+  iwin_app.authentication_handler:
+    class: %iwin_app.authentication_handler.class%
+  iwin_app.oauth_aware.user_provider:
+    class: %iwin_app.oauth_aware.user_provider.class%
+    arguments:
+      - @iwin_app.repo.user

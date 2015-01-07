@@ -26,6 +26,9 @@ security:
                 check_path: fos_user_security_check
                 success_handler: iwin_app.authentication_handler
                 failure_handler: iwin_app.authentication_handler
+            logout:
+                path: logout
+                target: home
             oauth:
                 resource_owners:
                   linkedin: linkedin_login
@@ -34,7 +37,6 @@ security:
                 failure_path: /oath_login
                 oauth_user_provider:
                     service: iwin_app.oauth_aware.user_provider
-            logout:       true
             anonymous:    true
 
     access_control:

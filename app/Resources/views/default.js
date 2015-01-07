@@ -15,21 +15,21 @@ requirejs([
             loginPopup = $('#login-popup'),
             popupClose = loginPopup.find('.close-popup'),
             loginLink = $('#header').find('a.account');
-
-        function popupToggle(link) {
-            link.on('click', function (e) {
-                e.preventDefault(e);
-                loginPopup.toggleClass('popup-active');
-                if (loginPopup.hasClass('popup-active')) {
-                    body.addClass('lock');
-                } else {
-                    body.removeClass('lock');
-                }
-            })
+        if (!loginLink.hasClass('authorized')) {
+             var popupToggle = function(link) {
+                link.on('click', function (e) {
+                    e.preventDefault(e);
+                    loginPopup.toggleClass('popup-active');
+                    if (loginPopup.hasClass('popup-active')) {
+                        body.addClass('lock');
+                    } else {
+                        body.removeClass('lock');
+                    }
+                })
+            };
+            popupToggle(popupClose);
+            popupToggle(loginLink);
         }
-
-        popupToggle(popupClose);
-        popupToggle(loginLink);
     })();
 
     //sign in form

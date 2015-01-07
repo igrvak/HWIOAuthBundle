@@ -6,7 +6,7 @@
   <div id="wrapper">
     <header id="header" class="header">
       <strong class="logo"><a href="{{ path('home') }}">{{ var.title }}</a></strong>
-      <a href="#user_profile" class="account {% if app.user %}authorized{% endif %}">
+      <a href="{% if app.user %}{{ path('logout') }} {% else %}#user_profile{% endif %}" class="account {% if app.user %}authorized{% endif %}">
         {% if app.user %}
           <span class="account__availability online"></span>
           <span class="account__inbox">{{ '0' }}</span>

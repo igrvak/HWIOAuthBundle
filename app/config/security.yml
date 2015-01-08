@@ -26,6 +26,12 @@ security:
                 check_path: fos_user_security_check
                 success_handler: iwin_app.authentication_handler
                 failure_handler: iwin_app.authentication_handler
+                remember_me: true
+            remember_me:
+                key:      kren9delk8ova0nnayak1rab
+                lifetime: 31536000
+                path:     /
+                domain:   ~
             logout:
                 path: logout
                 target: home
@@ -34,6 +40,7 @@ security:
                   linkedin: linkedin_login
                   google: google_login
                   facebook: facebook_login
+                  twitter: twitter_login
                 login_path:   /oath_login
                 use_forward:  false
                 failure_path: /oath_login

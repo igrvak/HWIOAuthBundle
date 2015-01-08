@@ -4,6 +4,7 @@ namespace Iwin\Bundle\AppBundle\Service;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 use Iwin\Bundle\AppBundle\Entity\UserRepository;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
  * TODO: write "OAuthAwareUserProvider" info
@@ -30,9 +31,13 @@ class OAuthAwareUserProvider implements
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $social = $response->getResourceOwner()->getName();
-        return $this->repoUser->findBySocial(
+        $user =  $this->repoUser->findBySocial(
             $social,
             $response->getResponse()['id']
         );
+        if (!$user){
+            throw new UsernameNotFoundException();
+        }
+        return $user;
     }
 }

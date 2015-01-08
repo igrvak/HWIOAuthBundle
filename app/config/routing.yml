@@ -79,6 +79,11 @@ facebook_login:
   pattern: /oath_login/check-facebook
   options:
     i18n: false
+    
+twitter_login:
+  pattern: /oath_login/check-twitter
+  options:
+    i18n: false
 
 oneup_uploader:
   resource: .

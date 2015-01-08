@@ -38,3 +38,5 @@ parameters:
   service.linkedin.secret: ~
   service.linkedin.oauth.id: ~
   service.linkedin.oauth.key: ~
+  service.twitter.id: ~
+  service.twitter.secret: ~

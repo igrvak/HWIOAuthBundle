@@ -144,15 +144,27 @@ hwi_oauth:
             client_id:      %service.linkedin.id%
             client_secret:  %service.linkedin.secret%
             scope: r_basicprofile
+            options:
+                csrf:            false
         google:
             type:                google
             client_id:           %service.google.oauth.id%
             client_secret:       %service.google.oauth.key%
             scope:               "email profile"
+            options:
+                csrf:            false            
         facebook:
             type:                facebook
             client_id:           %service.facebook.id%
             client_secret:       %service.facebook.secret%
+            options:
+                csrf:            false            
+        twitter:
+            type:                twitter
+            client_id:           %service.twitter.id%
+            client_secret:       %service.twitter.secret%
+            options:
+                csrf:            false
 
 oneup_uploader:
   mappings:

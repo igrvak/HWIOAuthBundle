@@ -16,7 +16,7 @@ requirejs([
             popupClose = loginPopup.find('.close-popup'),
             loginLink = $('#header').find('a.account');
         if (!loginLink.hasClass('authorized')) {
-             var popupToggle = function(link) {
+            var popupToggle = function (link) {
                 link.on('click', function (e) {
                     e.preventDefault(e);
                     loginPopup.toggleClass('popup-active');
@@ -44,15 +44,26 @@ requirejs([
                 type: 'post',
                 data: signInForm.serialize(),
                 dataType: 'json',
-                success: function(data){
-                    if (data.success){
-                        location.reload();                        
+                success: function (data) {
+                    if (data.success) {
+                        location.reload();
                     } else {
                         //TODO: handle message
                         window.alert(data.message);
-                    }             
+                    }
                 }
             }
         )
-    })
+    });
+
+    var showPass = signInForm.find('.link-show'),
+        passField = signInForm.find('input[name="_password"]');
+    showPass.mousedown(function (e) {
+        e.preventDefault();
+        passField.attr('type', 'text')
+    });
+    showPass.mouseup(function (e) {
+        e.preventDefault();
+        passField.attr('type', 'password')
+    });
 });

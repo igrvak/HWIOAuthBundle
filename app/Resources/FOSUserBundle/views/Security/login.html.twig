@@ -21,9 +21,9 @@
             <span class="title">Sign in with</span>
             <ul>
                 <li><a href="{{ path('hwi_oauth_service_redirect', {service: 'linkedin'}) }}" class="in" title="LinkedIn">LinkedIn</a></li>
-                <li><a href="#" class="gp" title="Google+">Google+</a></li>
-                <li><a href="#" class="fb" title="Facebook">Facebook</a></li>
-                <li><a href="#" class="tw" title="Twitter">Twitter</a></li>
+                <li><a href="{{ path('hwi_oauth_service_redirect', {service: 'google'}) }}" class="gp" title="Google+">Google+</a></li>
+                <li><a href="{{ path('hwi_oauth_service_redirect', {service: 'facebook'}) }}" class="fb" title="Facebook">Facebook</a></li>
+                <li><a href="{{ path('hwi_oauth_service_redirect', {service: 'twitter'}) }}" class="tw" title="Twitter">Twitter</a></li>
             </ul>
         </div>
         <div class="register">

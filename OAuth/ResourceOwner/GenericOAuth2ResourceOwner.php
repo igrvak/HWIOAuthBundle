@@ -31,7 +31,7 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
     public function getUserInformation(array $accessToken, array $extraParameters = array())
     {
         if ($this->options['use_bearer_authorization']) {
-            $content = $this->httpRequest($this->normalizeUrl($this->options['infos_url']), null, array('Authorization: Bearer '.$accessToken['access_token']));
+            $content = $this->httpRequest($this->normalizeUrl($this->options['infos_url']), null, array('Authorization: Bearer ' . $accessToken['access_token']));
         } else {
             $content = $this->doGetUserInformationRequest($this->normalizeUrl($this->options['infos_url'], array($this->options['attr_name'] => $accessToken['access_token'])));
         }
@@ -50,20 +50,19 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
      */
     public function getAuthorizationUrl($redirectUri, array $extraParameters = array())
     {
+        if (null === $this->state) {
+            $this->state = $this->generateNonce();
+        }
         if ($this->options['csrf']) {
-            if (null === $this->state) {
-                $this->state = $this->generateNonce();
-            }
-
             $this->storage->save($this, $this->state, 'csrf_state');
         }
 
         $parameters = array_merge(array(
             'response_type' => 'code',
-            'client_id'     => $this->options['client_id'],
-            'scope'         => $this->options['scope'],
-            'state'         => $this->state ? urlencode($this->state) : null,
-            'redirect_uri'  => $redirectUri,
+            'client_id' => $this->options['client_id'],
+            'scope' => $this->options['scope'],
+            'state' => $this->state ? urlencode($this->state) : null,
+            'redirect_uri' => $redirectUri,
         ), $extraParameters);
 
         return $this->normalizeUrl($this->options['authorization_url'], $parameters);
@@ -72,9 +71,9 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
     /**
      * Retrieve an access token for a given code.
      *
-     * @param Request $request         The request object from where the code is going to extracted
-     * @param mixed   $redirectUri     The uri to redirect the client back to
-     * @param array   $extraParameters An array of parameters to add to the url
+     * @param Request $request The request object from where the code is going to extracted
+     * @param mixed $redirectUri The uri to redirect the client back to
+     * @param array $extraParameters An array of parameters to add to the url
      *
      * @return array Array containing the access token and it's 'expires_in' value,
      *               along with any other parameters returned from the authentication
@@ -85,11 +84,11 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
     public function getAccessToken(Request $request, $redirectUri, array $extraParameters = array())
     {
         $parameters = array_merge(array(
-            'code'          => $request->query->get('code'),
-            'grant_type'    => 'authorization_code',
-            'client_id'     => $this->options['client_id'],
+            'code' => $request->query->get('code'),
+            'grant_type' => 'authorization_code',
+            'client_id' => $this->options['client_id'],
             'client_secret' => $this->options['client_secret'],
-            'redirect_uri'  => $redirectUri,
+            'redirect_uri' => $redirectUri,
         ), $extraParameters);
 
         $response = $this->doGetTokenRequest($this->options['access_token_url'], $parameters);
@@ -105,10 +104,10 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
      */
     public function refreshAccessToken($refreshToken, array $extraParameters = array())
     {
-        $parameters = array_merge( array(
+        $parameters = array_merge(array(
             'refresh_token' => $refreshToken,
-            'grant_type'    => 'refresh_token',
-            'client_id'     => $this->options['client_id'],
+            'grant_type' => 'refresh_token',
+            'client_id' => $this->options['client_id'],
             'client_secret' => $this->options['client_secret'],
         ), $extraParameters);
 
@@ -130,7 +129,7 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
         }
 
         $parameters = array(
-            'client_id'     => $this->options['client_id'],
+            'client_id' => $this->options['client_id'],
             'client_secret' => $this->options['client_secret'],
         );
 
@@ -208,8 +207,8 @@ class GenericOAuth2ResourceOwner extends AbstractResourceOwner
         parent::configureOptions($resolver);
 
         $resolver->setDefaults(array(
-            'attr_name'                => 'access_token',
-            'use_commas_in_scope'      => false,
+            'attr_name' => 'access_token',
+            'use_commas_in_scope' => false,
             'use_bearer_authorization' => true,
         ));
 

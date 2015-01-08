@@ -4,6 +4,7 @@ imports:
   - { resource: doctrine.yml }
   - { resource: security.yml }
   - { resource: parameters_hash.yml }
+  - { resource: ../../vendor/nick4fake/doctrine-behaviors/config/orm-services.yml }
 
 parameters:
   session_expire: 63072000 # 365*2 days in seconds

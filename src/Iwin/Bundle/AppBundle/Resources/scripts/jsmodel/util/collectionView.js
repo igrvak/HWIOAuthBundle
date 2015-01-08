@@ -25,9 +25,11 @@ define([
                 }],
             });
 
-            var model = this.model;
-            this.model = new Model();
-            this.model.set(this.relatedKey, model);
+            if (!(this.model instanceof Model)) {
+                var model = this.model;
+                this.model = new Model();
+                this.model.set(this.relatedKey, model);
+            }
 
             this.template = _.bind(function (supr) {
                 return _.bind(function (obj, extra) {

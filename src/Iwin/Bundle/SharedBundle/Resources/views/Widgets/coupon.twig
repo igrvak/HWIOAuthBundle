@@ -97,7 +97,7 @@
     <div class="tab-content">
       {% for lang, title in langs %}
       {% if lang == langsSelected %}
-        {% set mlPrefix = 'multilang['~(loop.index-1)~']' %}
+        {% set mlPrefix = 'translations['~(loop.index-1)~']' %}
         <label class="title">
           <div class="caption">Name</div>
           <div class="value-box">
@@ -109,7 +109,7 @@
           <div class="caption">Caption</div>
           <div class="value-box">
             <div class="progress"></div>
-            <textarea cols="30" name="{{ mlPrefix }}.caption" rows="10" data-maxlength="200" class="limited-length"></textarea>
+            <textarea cols="30" name="{{ mlPrefix }}.description" rows="10" data-maxlength="200" class="limited-length"></textarea>
           </div>
         </label>
       {% endif %}

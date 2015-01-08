@@ -16,10 +16,10 @@ define([
         },
 
         "initialize": function () {
-            if (!this.get('multilang').length) {
+            if (!this.get('translations').length) {
                 _.each(langs, function (i, el) {
-                    this.get('multilang').add(new CouponMultilang({
-                        "lang": el,
+                    this.get('translations').add(new CouponMultilang({
+                        "locale": el,
                     }));
                 }, this);
             }
@@ -35,7 +35,7 @@ define([
         "relations": [
             {
                 "type":         Backbone.HasMany,
-                "key":          'multilang',
+                "key":          'translations',
                 "relatedModel": CouponMultilang
             }, {
                 "type":         Backbone.HasOne,

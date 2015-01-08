@@ -36,6 +36,7 @@
         "doctrine/doctrine-migrations-bundle":  "2.1.*@dev",
         "doctrine/migrations":                  "1.0.*@dev",
         "doctrine/orm":                         "*",
+        "nick4fake/doctrine-behaviors":         "dev-master",
         "stof/doctrine-extensions-bundle":      "*",
 
         "hautelook/alice-bundle":               "*",

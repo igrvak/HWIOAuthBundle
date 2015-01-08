@@ -2,25 +2,18 @@ define([
     'lodash',
     'backbone',
     './galleryView',
-    './image',
     './imageCollection',
-], function (_, Backbone, GalleryView, ImageModel, ImageCollection) {
+], function (_, Backbone, GalleryView, ImageCollection) {
     'use strict';
 
     var View = GalleryView.extend({
         "initialize": function () {
-            var args = _.toArray(arguments),
-                options = args.shift() || {};
-
-            options.model = new ImageCollection([
-                options.model ? options.model : new ImageModel(),
+            this.isMultiple = false;
+            this.model = new ImageCollection([
+                this.model,
             ]);
 
-            options.isMultiple = false;
-
-            args.unshift(options);
-
-            GalleryView.prototype.initialize.apply(this, args);
+            GalleryView.prototype.initialize.apply(this, arguments);
         },
     });
 

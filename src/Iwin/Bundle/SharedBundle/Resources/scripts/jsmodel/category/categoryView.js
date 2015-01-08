@@ -8,18 +8,12 @@ define([
 
     var View = CategoriesView.extend({
         "initialize": function () {
-            var args = _.toArray(arguments),
-                options = args.shift();
+            this.isMultiple = false;
+            this.model = new CategoryCollection([
+                this.model,
+            ]);
 
-            if (options.model) {
-                options.model = new CategoryCollection([
-                    options.model,
-                ]);
-            }
-            options.isMultiple = false;
-            args.unshift(options);
-
-            CategoriesView.prototype.initialize.apply(this, args);
+            CategoriesView.prototype.initialize.apply(this, arguments);
         },
     });
 

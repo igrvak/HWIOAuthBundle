@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ccea43deba212f879c5ff8f5a35c5866",
+    "hash": "e1ecdd6cb7fc30769ca21c2ba2e9165d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2932,6 +2932,66 @@
             "time": "2014-07-30 09:11:08"
         },
         {
+            "name": "nick4fake/doctrine-behaviors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nick4fake/DoctrineBehaviors.git",
+                "reference": "652fa030854967885e04e147d82658556adfcafb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nick4fake/DoctrineBehaviors/zipball/652fa030854967885e04e147d82658556adfcafb",
+                "reference": "652fa030854967885e04e147d82658556adfcafb",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": ">=2.2",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "doctrine/orm": ">=2.2",
+                "ext-pdo_pgsql": "*",
+                "ext-pdo_sqlite": "*",
+                "jakub-onderka/php-parallel-lint": "~0.8",
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\DoctrineBehaviors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Knplabs",
+                    "homepage": "http://knplabs.com"
+                }
+            ],
+            "description": "Doctrine2 behavior traits",
+            "homepage": "http://knplabs.com",
+            "keywords": [
+                "Blameable",
+                "behaviors",
+                "doctrine2",
+                "filterable",
+                "softdeletable",
+                "timestampable",
+                "translatable",
+                "tree"
+            ],
+            "time": "2015-01-07 15:47:41"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v0.9.1",
             "source": {
@@ -4786,6 +4846,7 @@
     "stability-flags": {
         "doctrine/doctrine-migrations-bundle": 20,
         "doctrine/migrations": 20,
+        "nick4fake/doctrine-behaviors": 20,
         "odesskij/generator-bundle": 20,
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
@@ -4801,6 +4862,7 @@
         "werkint/webcomponents": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "ext-openssl": "*",
         "ext-imagick": "*",

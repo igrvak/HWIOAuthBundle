@@ -3,7 +3,6 @@ namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
 
 /**
  * Тип купона
@@ -14,7 +13,7 @@ use Gedmo\Translatable\Translatable;
  * @ORM\Table(name="iwin_shared_coupontype")
  */
 class CouponType implements
-    Translatable
+    \Gedmo\Translatable\Translatable
 {
     public function __construct()
     {

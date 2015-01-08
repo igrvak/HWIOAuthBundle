@@ -5,9 +5,9 @@ define([
     'templating',
     'util/collectionView',
     './selectView',
+    './category',
     './categoryCollection',
-    './categoryLink',
-], function ($, _, Backbone, templating, CollectionView, SelectView, CategoryCollection, CategoryLinkModel) {
+], function ($, _, Backbone, templating, CollectionView, SelectView, CategoryModel, CategoryCollection) {
     'use strict';
 
     var viewId = 'iwin-shared-category-categories';
@@ -15,7 +15,7 @@ define([
     var View = CollectionView.extend({
         "isMultiple": true,
 
-        "relatedModel": CategoryLinkModel,
+        "relatedModel": CategoryModel,
 
         "selectView":  null,
         "selectModel": null,
@@ -34,7 +34,11 @@ define([
             this.selectView.model.get('list').fetch();
 
             this.selectView.on('confirm', function (el) {
-                this.selectModel.set('category', el);
+                if (this.selectModel) {
+                    this.selectModel.set(el.toJSON());
+                } else {
+                    this.model.get('list').add(el);
+                }
                 this.selectLast();
                 this.render();
             }, this);
@@ -42,7 +46,6 @@ define([
             CollectionView.prototype.initialize.apply(this, arguments);
 
             this.model.get('list').on('change', this.render, this);
-            this.model.get('list').on('sync', this.render, this);
 
             this.selectLast();
         },
@@ -54,10 +57,10 @@ define([
         },
 
         "render": function () {
-            var isFilled = !!this.model.get('list[0].category')
+            var isFilled = this.model.get('list').length > 0;
             this.$el.html(this.template(this.model, {
                 "isFilled":   isFilled,
-                "isMultiple": true,
+                "isMultiple": this.isMultiple,
             }));
 
             this.modelBinder.bind(this.model, this.el);
@@ -71,20 +74,7 @@ define([
         },
 
         "selectLast": function () {
-            if(!this.model.get('list').length){
-                this.addItemEmpty();
-                return;
-            }
-            this.selectModel = this.model.get('list').at(this.model.get('list').length - 1);
-            if (this.selectModel.get('category')) {
-                this.addItemEmpty();
-            }
-        },
-
-        "addItemEmpty": function () {
-            var el = CollectionView.prototype.addItemEmpty.apply(this, arguments);
-            this.selectModel = el;
-            return el;
+            this.selectModel = null;
         },
 
         "removeItem": function (e) {

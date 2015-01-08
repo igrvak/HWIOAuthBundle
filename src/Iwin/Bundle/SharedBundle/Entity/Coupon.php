@@ -3,8 +3,8 @@ namespace Iwin\Bundle\SharedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
 use JMS\Serializer\Annotation as Serializer;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,9 +14,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity(repositoryClass="CouponRepository")
  * @ORM\Table(name="iwin_shared_coupon")
+ *
+ * Переводные методы:
+ * @method CouponTranslation translate
+ * @method string getName()
+ * @method string setName(string $name)
  */
-class Coupon implements
-    Translatable
+class Coupon
 {
     /**
      * @ORM\Id
@@ -26,12 +30,6 @@ class Coupon implements
      * @var string
      */
     protected $id;
-    /**
-     * @ORM\Column(type="string",length=200)
-     * @Gedmo\Translatable()
-     * @var string
-     */
-    protected $description;
     /**
      * @ORM\OneToOne(targetEntity="CouponDiscount", inversedBy="coupon")
      * @ORM\JoinColumn(name="discount_id", referencedColumnName="id", nullable=true)
@@ -45,13 +43,6 @@ class Coupon implements
      */
     protected $expires;
     /**
-     * @ORM\Column(type="string",length=100)
-     * @Assert\NotBlank(message="iwin_app.coupon.name")
-     * @Gedmo\Translatable()
-     * @var string
-     */
-    protected $name;
-    /**
      * @ORM\ManyToOne(targetEntity="CouponType")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
      * @Assert\NotNull(message="iwin_app.coupon.type")
@@ -59,18 +50,16 @@ class Coupon implements
      */
     protected $type;
 
-    /**
-     * @Gedmo\Locale
-     */
-    protected $locale;
+    // -- Translations ---------------------------------------
 
     /**
-     * {@inheritdoc}
+     * @Serializer\Type("array<Iwin\Bundle\SharedBundle\Entity\CouponTranslation>")
+     * @var array
      */
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
-    }
+    protected $translations;
+
+    // Мы - переводимы!
+    use Translatable;
 
     // -- Accessors ---------------------------------------
 
@@ -115,42 +104,6 @@ class Coupon implements
     public function setType(CouponType $type)
     {
         $this->type = $type;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
         return $this;
     }
 

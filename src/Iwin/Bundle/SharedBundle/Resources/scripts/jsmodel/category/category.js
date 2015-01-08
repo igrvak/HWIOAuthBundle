@@ -7,6 +7,10 @@ define([
     'use strict';
 
     var Model = BaseModel.extend({
+        "defaults": {
+            "isLeaf": false,
+        },
+
         "relations": [
             {
                 "type":         Backbone.HasOne,
@@ -27,7 +31,7 @@ define([
                 ret[obj.get('level')] = obj;
             } while (obj = obj.get('parent'));
             if (min) {
-                _.each(_.range(1, min +1), function (ind) {
+                _.each(_.range(1, min + 1), function (ind) {
                     if (!ret[ind]) {
                         ret[ind] = {};
                     }

@@ -19,7 +19,6 @@ define([
         "template":     templating.get(viewId),
 
         "initialize": function (options) {
-
             _.extend(this, _.pick(options, 'isMultiple', 'model'));
 
             this.model.on('change', this.render, this);
